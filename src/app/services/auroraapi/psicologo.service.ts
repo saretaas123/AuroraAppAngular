@@ -15,11 +15,28 @@ export class PsicologoService {
             console.log('Psicologo Service Working')
         }
 
-    GetPsicologoFullInfoByPsicologoId(PsicologoId : string)
+    async GetPsicologoFullInfoByPsicologoId(PsicologoId : string) 
     {
-        let headers = new HttpHeaders().set('Type-content','aplication/json')
+       // let headers = new HttpHeaders().set('Type-content','aplication/json')
 
-        return this.http.get(this._url + 'ObtenerPsicologoFullInfoById/' +PsicologoId, { headers : headers});
+      //  return this.http.get(this._url + 'ObtenerPsicologoFullInfoById/' +PsicologoId, { headers : headers});
+
+      return {
+        "mnsj": "Se encontró el Psicologo",
+        "rpta": {
+          "psicologoId": 1,
+          "nombres": "Jordan",
+          "apellidoPaterno": "Peterson",
+          "apellidoMaterno": "Bernt",
+          "dni": "77777777",
+          "telefono": "777 777 777",
+          "correo": "JordanBPeterson@gmail.com",
+          "numeroDeColegiaturaDelPeru": "77777",
+          "especialidad": "Psicolgia Clinica",
+          "usuarioId": 2,
+          "cantPacientes": 4
+        }
+      };
 
     }
 

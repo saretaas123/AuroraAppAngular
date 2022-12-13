@@ -16,6 +16,9 @@ export class EstadisticaPacienteService {
         }
 
         peloncito(){
+
+
+            
             return {
                 nombre:'Victor',
                 apellido:'Bernedo',
