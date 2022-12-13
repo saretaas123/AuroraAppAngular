@@ -17,19 +17,13 @@ export class UsuarioService {
 
     PostLoginInterno(pUsuario : string, pContrasena : string)
     {
-       // let headers = new HttpHeaders().set('Type-content','aplication/json')
+       let headers = new HttpHeaders().set('Type-content','aplication/json')
 
-        
-         /* return
-         this.http.post(this._url, {
+       return this.http.post(this._url, {
             "usuario": pUsuario,
             "contrasena": pContrasena
           } ,
-          { headers : headers});*/
-          return {
-            "mnsj": "Usuario Exitoso!",
-            "rpta": true
-          }
+          { headers : headers});
 
     }
 }
