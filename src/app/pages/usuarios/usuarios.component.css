@@ -1,0 +1,17 @@
+/* Structure */
+table {
+    width: 100%;
+  }
+  
+  mat-form-field{
+    width: 100%;
+  }
+
+ th{
+  width: 5%;
+ }
+
+ .pointer{
+  cursor: pointer; 
+ }
+

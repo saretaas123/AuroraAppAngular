@@ -1,0 +1,33 @@
+/* Structure */
+table {
+    width: 100%;
+  }
+  
+  mat-form-field{
+    width: 100%;
+  }
+
+ th{
+  width: 5%;
+ }
+
+ .pointer{
+  cursor: pointer; 
+ }
+
+ .color{
+  background-color: #CCCCFF;
+ }
+
+ .color2{
+  background-color: #FFE699;
+ }
+
+ .color3{
+  background-color: #9BC2E6;
+ }
+
+ .color4{
+  background-color: #A9D08E;
+ }
+
