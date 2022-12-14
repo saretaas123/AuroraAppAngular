@@ -4,6 +4,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { UsuariosComponent } from './usuarios/usuarios.component';
 import { PagesComponent } from './pages.component';
 import { RouterModule } from '@angular/router';
+import { HttpClientModule } from '@angular/common/http';
 import { SharedModule } from '../shared/shared.module';
 
 //ANGULAR MATERIAL
@@ -42,7 +43,7 @@ import { ResultadosAutoestimaPreComponent } from './usuarios/pretest/resultados-
 import { ResultadosAutonomiaPreComponent } from './usuarios/pretest/resultados-autonomia-pre/resultados-autonomia-pre.component';
 import { ResultadosAutonomiaProComponent } from './usuarios/protest/resultados-autonomia-pro/resultados-autonomia-pro.component';
 import { ResultadosAutoestimaProComponent } from './usuarios/protest/resultados-autoestima-pro/resultados-autoestima-pro.component';
-import { HttpClientModule } from '@angular/common/http';
+
 
 
 

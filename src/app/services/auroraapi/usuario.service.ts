@@ -7,7 +7,7 @@ import { Injectable } from '@angular/core'
 
 export class UsuarioService {
 
-    _url = 'https://127.0.0.1:7226/api/Usuario/LoginInterno';
+    _url = 'https://localhost:7226/api/Usuario/LoginInterno';
 
     constructor(
         private http: HttpClient
@@ -22,8 +22,7 @@ export class UsuarioService {
        return this.http.post(this._url, {
             "usuario": pUsuario,
             "contrasena": pContrasena
-          } ,
-          { headers : headers});
+          },{ headers : headers});
 
     }
 }

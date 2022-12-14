@@ -91,8 +91,7 @@ export class LoginIComponent  implements OnInit {
     var LogeoExitoso = false;
     console.log("Usuario:"+p_Usuario +" | "+ "Contrasena:"+p_Contrasena);
 
-    this.UsuarioService.PostLoginInterno(p_Usuario,p_Contrasena)
-    .subscribe(APIrpta => {
+    this.UsuarioService.PostLoginInterno(p_Usuario,p_Contrasena).subscribe(APIrpta => {
       this.ApiFullobjPsicologoFullInfo = APIrpta;
       LogeoExitoso = this.ApiFullobjPsicologoFullInfo.rpta;
       console.log(this.ApiFullobjPsicologoFullInfo.mnsj);
