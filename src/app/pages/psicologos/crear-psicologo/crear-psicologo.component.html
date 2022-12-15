@@ -1,0 +1,43 @@
+
+
+<div class="content-wrapper">
+    <form>
+      <h1>Registar Psicologo</h1>
+  
+      <fieldset>
+        <legend><span class="number">1</span>Informacion Basica</legend>
+        <label>Nombre:</label>
+        <input type="text" #pNombres>
+  
+        <label>Apellido Paterno:</label>
+        <input type="text" #pApellidoPaterno>
+  
+        <label>Apellido Materno:</label>
+        <input type="text" #pApellidoMaterno>
+  
+        <label>Fecha de nacimiento:</label>
+        <input type="date" #pFechaNacimiento>
+  
+        <label>Dni:</label>
+        <input type="text" #pDni>
+  
+        <legend><span class="number">2</span>Datos secundarios</legend>
+  
+        <label>Direccion:</label>
+        <input type="text" #pDireccioUbigeo>
+  
+        <label>Telefono:</label>
+        <input type="text" #pTelefono>
+  
+        <label>Correo:</label>
+        <input type="email" #pCorreo>
+  
+        <!--<label>Tipo de Violencia:</label>
+        <input type="radio" id="under_13" value="under_13" name="user_age"><label for="under_13" class="light">Under 13</label><br>
+        <input type="radio" id="over_13" value="over_13" name="user_age"><label for="over_13" class="light">13 or older</label><br>
+        <input type="radio" id="over_13" value="over_13" name="user_age"><label for="over_13" class="light">13 or older</label>-->
+  
+      </fieldset>
+      <button (click)="RegistrarPaciente(pNombres.value , pApellidoPaterno.value ,pApellidoMaterno.value ,pFechaNacimiento.value ,pDni.value ,pTelefono.value ,pDireccioUbigeo.value ,pCorreo.value)">Registrar</button>
+    </form>
+  </div>

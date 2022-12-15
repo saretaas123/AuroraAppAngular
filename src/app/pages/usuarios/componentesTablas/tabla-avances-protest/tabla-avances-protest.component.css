@@ -16,18 +16,30 @@ table {
  }
 
  .color{
+  background-color: #e6e6fc;
+ }
+ .colorHead{
   background-color: #CCCCFF;
  }
 
  .color2{
+  background-color: #fceec4;
+ }
+ .color2Head{
   background-color: #FFE699;
  }
 
  .color3{
+  background-color: #bfd2e4;
+ }
+ .color3Head{
   background-color: #9BC2E6;
  }
 
  .color4{
+  background-color: #bed1b0;
+ }
+ .color4Head{
   background-color: #A9D08E;
  }
 

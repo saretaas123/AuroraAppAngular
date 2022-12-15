@@ -1,0 +1,89 @@
+<section class="content mt-3">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12">           
+          <div class="card">
+            <div class="card-header">                       
+              <mat-form-field>
+                <mat-label>Buscar</mat-label>
+                <input matInput (keyup)="applyFilter($event)" placeholder="" #input>
+              </mat-form-field>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+              <div class="mat-elevation-z8">
+
+                    <table class="table-responsive" mat-table [dataSource]="dataSource" >
+
+                      <!-- Position Column -->
+                      <ng-container matColumnDef="dni">
+                      <th class="text-center" mat-header-cell *matHeaderCellDef> Dni </th>
+                      <td class="text-center" mat-cell *matCellDef="let element"> {{element.dni}} </td>
+                    </ng-container>
+                  
+                    <!-- Position Column -->
+                    <ng-container matColumnDef="nombre">
+                      <th class="text-center" mat-header-cell *matHeaderCellDef> Nombre </th>
+                      <td class="text-center" mat-cell *matCellDef="let element"> {{element.nombre}} </td>
+                    </ng-container>
+                  
+                    <!-- Name Column -->
+                    <ng-container matColumnDef="apellidos">
+                      <th class="text-center" mat-header-cell *matHeaderCellDef> Apellidos </th>
+                      <td class="text-center" mat-cell *matCellDef="let element"> {{element.apellidos}} </td>
+                    </ng-container>
+                  
+                    <!-- Weight Column -->
+                    <ng-container matColumnDef="zona">
+                      <th class="anchoColumnaEdad text-center" mat-header-cell *matHeaderCellDef> Zona </th>
+                      <td class="text-center" mat-cell *matCellDef="let element"> {{element.zona}} </td>
+                    </ng-container>                  
+                    
+  
+                      <!-- Symbol Column -->
+                      <ng-container matColumnDef="formularioPro">
+                        <th class="text-center" mat-header-cell *matHeaderCellDef> Lista Pacientes </th>
+                        <td class="text-center" mat-cell *matCellDef="let element"> 
+                          <button type="button" class="btn btn-warning" routerLink="/dashboard/1/listaPacienteXPsicologo" >Ver Pacientes</button>
+                        </td>                      
+                      </ng-container>
+  
+                      <!-- Symbol Column -->
+                      <ng-container matColumnDef="acciones">
+                        <th mat-header-cell *matHeaderCellDef> </th>
+                        <td class="text-center" mat-cell *matCellDef="let element"> 
+                         <!--<a class="pointer" style="color: #1878B0;" matTooltip="Ver usuario">
+                            <mat-icon>search</mat-icon>
+                          </a>--> 
+                          <!--<a class="pointer" style="color: #1f516f;" matTooltip="Editar usuario">
+                            <mat-icon>edit</mat-icon>
+                          </a>-->
+                          <a class="pointer" style="color: #e15639;" matTooltip="eliminar usuario">
+                            <mat-icon>delete</mat-icon>
+                          </a>
+                        </td>
+                      </ng-container>
+                  
+                    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                  
+                    <!-- Row shown when there is no matching data. -->
+                    <tr class="mat-row" *matNoDataRow>
+                      <td class="mat-cell" colspan="4">No se encontraron datos "{{input.value}}"</td>
+                    </tr>
+                    </table>
+
+               <!--PAGINACION-->
+               <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"></mat-paginator>
+              </div>
+              
+            
+             
+            </div>
+            <!-- /.card-body -->
+          </div>
+          <!-- /.card -->
+       </div>
+      </div>
+      </div>
+    </section>

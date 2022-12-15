@@ -1,0 +1,58 @@
+
+<div class="content-wrapper">
+
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <nav class="navbar navbar-light bg-light justify-content-between">
+        <a class="navbar-brand"></a>
+        <form class="form-inline">
+          <button type="button" class="btn btn-secondary my-2 my-sm-0" routerLink="/dashboard/1/listapsicologo">Regresar</button>
+        </form>
+      </nav>
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-12">
+            <section class="vh-50" style="background-color: #f4f5f7;">
+              <div class="container py-5 h-100" >
+                <div class="row d-flex justify-content-center align-items-center h-100">
+                  <div class="col col-lg-12 mb-4 mb-lg-0">
+                    <div class="card mb-3" style="border-radius: .5rem;">
+                      <div class="row g-0">
+                        <div class="col-md-12">
+                          <div class="card-body p-4">
+                            <h6>Psicologo</h6>
+                            <hr class="mt-0 mb-4">
+                            <div class="row pt-1">
+                              <div class="col-4 mb-3">
+                                <h6>Nombre Completo</h6>
+                                <p class="text-muted">{{objPsicologoFullInfo.nombres +' '+ objPsicologoFullInfo.apellidoPaterno+ ' '+ objPsicologoFullInfo.apellidoMaterno}}</p>
+                              </div>
+                              <div class="col-4 mb-3">
+                                <h6>Cantidad de pacientes</h6>
+                                <p class="text-muted">{{objPsicologoFullInfo.cantPacientes}}</p>
+                              </div>
+                              <div class="col-4 mb-3">
+                                <h6>Zona</h6>
+                                <p class="text-muted">--</p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+        </section>
+          </div>
+        </div>
+      </div><!-- /.container-fluid -->    
+    </section>
+
+    <section class="content">
+      <div class="container-fluid">
+        <app-pestana-paciente></app-pestana-paciente>
+      </div>
+    </section>
+
+    </div>
