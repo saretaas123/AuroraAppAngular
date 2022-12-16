@@ -15,40 +15,15 @@ export class EstadisticaPacienteService {
             console.log('Estado Paciente oki')
         }
 
-        peloncito(){
-
-
-            
+        peloncito(){           
             return {
-                nombre:'Victor',
-                apellido:'Bernedo',
-                canciones:{
-                    nombreCancion:'Perreito',
-                    genero:'regueton',    
-                    autores:[
-                        {nombre:'daddy yanke'},
-                        {nombre:'bad bunny',
-                        premio:{
-                            nombre:'el mas monce',
-                            ano:2018,
-                            dinero:5
-                        }}
-                    ]                
-                },
-                coloresFav:[
-                    {
-                        nombre:'rojo',
-                        tipo:'feliz'
-                    },
-                    {
-                        nombre:'azul',
-                        tipo:'molesto',
-                    },
-                    {
-                        nombre:'naranja',
-                        tipo:'renegon'
-                    }
-                ]
+                totalNumerico:10,
+                totalBaremo:40,
+                nivel:'nivel',
+                siMismo:3,
+                social:3,
+                familiar:5,       
+             
               };
         }
 

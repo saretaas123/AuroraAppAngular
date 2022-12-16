@@ -1,0 +1,17 @@
+table {
+    width: 100%;
+  }
+
+  mat-form-field{
+    width: 100%;
+  }
+
+ th{
+  width: 100px; 
+ }
+
+ 
+ 
+ .tipoletra{
+  font-family: sans-serif;
+ }

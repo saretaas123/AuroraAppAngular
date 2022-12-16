@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
+
 export interface PeriodicElement {
   totalNumerico: number;
   totalBaremo: number;

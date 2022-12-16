@@ -33,7 +33,7 @@ export class ReportesComponent implements OnInit {
 
   @ViewChild(BaseChartDirective) chart: BaseChartDirective | undefined;
 
-  public barChartOptions: ChartConfiguration['options'] = {
+  /*public barChartOptions: ChartConfiguration['options'] = {
     responsive: true,
     // We use these empty structures as placeholders for dynamic theming.
 
@@ -70,7 +70,7 @@ export class ReportesComponent implements OnInit {
       40 ];
 
     this.chart?.update();
-  }
+  }*/
 
 
 
