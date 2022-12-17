@@ -23,7 +23,8 @@ export class PacienteService {
 
     }
 
-    PostRegistrarPaciente(pPsicologoId: number, pNombres : string, pApellidoPaterno : string,pApellidoMaterno : string,pFechaNacimiento : string,pDni : string,pTelefono : string,pDireccioUbigeo : string,pCorreo : string)
+    PostRegistrarPaciente(pPsicologoId: number, pNombres : string, pApellidoPaterno : string,pApellidoMaterno : string,pFechaNacimiento : string,pDni : string
+        ,pTelefono : string,pDireccioUbigeo : string,pCorreo : string,pTipoViolencia : string,pRiesgo : string,pAnoDeEvaluacion : string,pEntidadProblema :string,pModalidadAdministrativo :string)
     {
         let headers = new HttpHeaders().set('Type-content','aplication/json')
 
@@ -37,9 +38,11 @@ export class PacienteService {
             "Telefono": pTelefono,
             "DireccioUbigeo": pDireccioUbigeo,
             "Correo": pCorreo,
-            "TipoViolencia":'Tipo Violencia',
-            "Riesgo":'Riesgo',
-            "AnoDeEvaluacion":'2000'
+            "TipoViolencia":pTipoViolencia,
+            "Riesgo":pRiesgo,
+            "AnoDeEvaluacion":pAnoDeEvaluacion,
+            "EntidadProblema":pEntidadProblema,
+            "ModalidadAdministrativo":pModalidadAdministrativo
           } , { headers : headers});
 
     }

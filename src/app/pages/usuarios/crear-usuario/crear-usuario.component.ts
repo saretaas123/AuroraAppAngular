@@ -31,7 +31,7 @@ export class CrearUsuarioComponent implements OnInit {
   RegistrarPaciente(
     pNombres : string, pApellidoPaterno : string,pApellidoMaterno : string,
     pFechaNacimiento : string,pDni : string,pTelefono : string,
-    pDireccioUbigeo : string,pCorreo : string)
+    pDireccioUbigeo : string,pCorreo : string,pTipoViolencia : string,pRiesgo : string,pAnoDeEvaluacion : string,pEntidadProblema :string,pModalidadAdministrativo :string)
   {
     var RegistroExitoso = false;
     var pPsicologoId = this.g_routeparam_PsicologoId;
@@ -42,7 +42,8 @@ export class CrearUsuarioComponent implements OnInit {
       Number(pPsicologoId),
       pNombres, pApellidoPaterno, pApellidoMaterno,
       pFechaNacimiento ,pDni ,pTelefono ,
-      pDireccioUbigeo ,pCorreo
+      pDireccioUbigeo ,pCorreo,pTipoViolencia,pRiesgo,pAnoDeEvaluacion,pEntidadProblema,
+      pModalidadAdministrativo
       )
       .subscribe(APIrpta => {
 

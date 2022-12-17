@@ -53,26 +53,7 @@ export class CrearPsicologoComponent implements OnInit {
 
     console.log("pPsicologoId:"+pPsicologoId);
 
-    this.PacienteService.PostRegistrarPaciente(
-      Number(pPsicologoId),
-      pNombres, pApellidoPaterno, pApellidoMaterno,
-      pFechaNacimiento ,pDni ,pTelefono ,
-      pDireccioUbigeo ,pCorreo
-      ).subscribe(APIrpta => {
-
-      this.ApiFullobjPsicologoFullInfo = APIrpta;
-      RegistroExitoso = this.ApiFullobjPsicologoFullInfo.rpta;
-      console.log(this.ApiFullobjPsicologoFullInfo.mnsj);
-      if(RegistroExitoso)
-      {
-        alert('Registrado Correctamente');
-        //this.router.navigate(['/dashboard/usuarios']);
-      }
-      else{
-        alert('No se pudo registrar');
-      }
-
-    })
+  
 
 
   }
