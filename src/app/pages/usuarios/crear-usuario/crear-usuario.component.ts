@@ -10,7 +10,7 @@ import { PacienteService } from 'src/app/services/auroraapi/paciente.service';
 })
 export class CrearUsuarioComponent implements OnInit {
 
-  g_routeparam_PsicologoId: string = '-3';
+  g_routeparam_PsicologoId: string = '0';
 
   ngOnInit(): void {
     this.g_routeparam_PsicologoId = this.route.snapshot.paramMap.get("psicologoid")??'0';
@@ -19,20 +19,6 @@ export class CrearUsuarioComponent implements OnInit {
   public ApiFullobjPsicologoFullInfo : any = {
     mnsj: '',
     rpta : {}
-  };
-
-  public objPsicologoFullInfo : any = {
-    nombres: '',
-    apellidoMaterno:'',
-    apellidoPaterno:'',
-    cantPacientes : 0,
-    correo : '',
-    dni : '',
-    especialidad : '',
-    numeroDeColegiaturaDelPeru : '',
-    psicologoId : 0,
-    telefono : '',
-    usuarioId : 0
   };
 
   constructor(
@@ -57,20 +43,21 @@ export class CrearUsuarioComponent implements OnInit {
       pNombres, pApellidoPaterno, pApellidoMaterno,
       pFechaNacimiento ,pDni ,pTelefono ,
       pDireccioUbigeo ,pCorreo
-      ).subscribe(APIrpta => {
+      )
+      .subscribe(APIrpta => {
 
       this.ApiFullobjPsicologoFullInfo = APIrpta;
       RegistroExitoso = this.ApiFullobjPsicologoFullInfo.rpta;
       console.log(this.ApiFullobjPsicologoFullInfo.mnsj);
+
       if(RegistroExitoso)
       {
         alert('Registrado Correctamente');
-        //this.router.navigate(['/dashboard/usuarios']);
+      //this.router.navigate(['/dashboard/usuarios']);
       }
       else{
         alert('No se pudo registrar');
       }
-
     })
 
 

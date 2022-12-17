@@ -29,11 +29,9 @@ export class VerPacienteXPsicologoComponent implements OnInit {
     usuarioId : 0
   };
 
-
-
-
   ngOnInit(): void {
-    this.PsicologoService.GetPsicologoFullInfoByPsicologoId(this.g_FromUser_PsicologoId+"").subscribe(apiRpta => {
+    this.PsicologoService.GetPsicologoFullInfoByPsicologoId(this.g_FromUser_PsicologoId+"")
+    .subscribe(apiRpta => {
       this.ApiFullobjPsicologoFullInfo = apiRpta;
       console.log(this.ApiFullobjPsicologoFullInfo.mnsj);
       this.objPsicologoFullInfo = this.ApiFullobjPsicologoFullInfo.rpta;
@@ -46,6 +44,6 @@ export class VerPacienteXPsicologoComponent implements OnInit {
 
     }
 
-  
+
 
 }

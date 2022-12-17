@@ -61,9 +61,6 @@ import { ResultadosMotivacionProComponent } from './usuarios/protest/resultados-
 
 
 
-
-
-
 @NgModule({
   declarations: [
     DashboardComponent,
@@ -107,11 +104,6 @@ import { ResultadosMotivacionProComponent } from './usuarios/protest/resultados-
     ResultadosMotivacionProComponent,
 
 
-
-
-
-
-
   ],
   imports: [
     CommonModule,
@@ -125,6 +117,7 @@ import { ResultadosMotivacionProComponent } from './usuarios/protest/resultados-
     MatDatepickerModule,
     NgChartsModule,
     HttpClientModule
+
 
   ],
   exports:[
