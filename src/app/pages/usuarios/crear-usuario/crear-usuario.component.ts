@@ -36,8 +36,6 @@ export class CrearUsuarioComponent implements OnInit {
     var RegistroExitoso = false;
     var pPsicologoId = this.g_routeparam_PsicologoId;
 
-    console.log("pPsicologoId:"+pPsicologoId);
-
     this.PacienteService.PostRegistrarPaciente(
       Number(pPsicologoId),
       pNombres, pApellidoPaterno, pApellidoMaterno,
@@ -46,6 +44,8 @@ export class CrearUsuarioComponent implements OnInit {
       pModalidadAdministrativo
       )
       .subscribe(APIrpta => {
+
+        console.log(APIrpta);
 
       this.ApiFullobjPsicologoFullInfo = APIrpta;
       RegistroExitoso = this.ApiFullobjPsicologoFullInfo.rpta;

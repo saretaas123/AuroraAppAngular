@@ -24,8 +24,15 @@ export class PacienteService {
     }
 
     PostRegistrarPaciente(pPsicologoId: number, pNombres : string, pApellidoPaterno : string,pApellidoMaterno : string,pFechaNacimiento : string,pDni : string
-        ,pTelefono : string,pDireccioUbigeo : string,pCorreo : string,pTipoViolencia : string,pRiesgo : string,pAnoDeEvaluacion : string,pEntidadProblema :string,pModalidadAdministrativo :string)
+        ,pTelefono : string,pDireccioUbigeo : string,pCorreo : string, pTipoViolencia : string,pRiesgo : string,pAnoDeEvaluacion : string,pEntidadProblema :string,pModalidadAdministrativo :string)
     {
+
+      console.log(pTipoViolencia);
+      console.log(pRiesgo);
+      console.log(pAnoDeEvaluacion);
+      console.log(pEntidadProblema);
+      console.log(pModalidadAdministrativo);
+
         let headers = new HttpHeaders().set('Type-content','aplication/json')
 
         return this.http.post(this._url + 'AgregarPaciente', {
@@ -42,7 +49,7 @@ export class PacienteService {
             "Riesgo":pRiesgo,
             "AnoDeEvaluacion":pAnoDeEvaluacion,
             "EntidadProblema":pEntidadProblema,
-            "ModalidadAdministrativo":pModalidadAdministrativo
+            "modalidadAdminitrativo":pModalidadAdministrativo
           } , { headers : headers});
 
     }

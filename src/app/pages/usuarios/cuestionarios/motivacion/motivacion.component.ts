@@ -7,7 +7,6 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MotivacionComponent implements OnInit {
 
-
   Respuestas : any =
   {
     p01 : 0,
