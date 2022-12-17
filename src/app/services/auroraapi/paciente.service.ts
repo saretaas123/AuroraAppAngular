@@ -49,7 +49,7 @@ export class PacienteService {
             "Riesgo":pRiesgo,
             "AnoDeEvaluacion":pAnoDeEvaluacion,
             "EntidadProblema":pEntidadProblema,
-            "modalidadAdminitrativo":pModalidadAdministrativo
+            "modalidadAdministrativo":pModalidadAdministrativo
           } , { headers : headers});
 
     }
