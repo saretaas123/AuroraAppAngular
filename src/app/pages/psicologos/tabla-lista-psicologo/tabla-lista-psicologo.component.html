@@ -17,32 +17,32 @@
 
                       <!-- Position Column -->
                       <ng-container matColumnDef="dni">
-                      <th class="text-center" mat-header-cell *matHeaderCellDef> Dni </th>
+                      <th class="text-center" mat-header-cell *matHeaderCellDef><b>Dni</b></th>
                       <td class="text-center" mat-cell *matCellDef="let element"> {{element.dni}} </td>
                     </ng-container>
                   
                     <!-- Position Column -->
                     <ng-container matColumnDef="nombre">
-                      <th class="text-center" mat-header-cell *matHeaderCellDef> Nombre </th>
+                      <th class="text-center" mat-header-cell *matHeaderCellDef><b>Nombre</b></th>
                       <td class="text-center" mat-cell *matCellDef="let element"> {{element.nombre}} </td>
                     </ng-container>
                   
                     <!-- Name Column -->
                     <ng-container matColumnDef="apellidos">
-                      <th class="text-center" mat-header-cell *matHeaderCellDef> Apellidos </th>
+                      <th class="text-center" mat-header-cell *matHeaderCellDef><b> Apellidos </b></th>
                       <td class="text-center" mat-cell *matCellDef="let element"> {{element.apellidos}} </td>
                     </ng-container>
                   
                     <!-- Weight Column -->
                     <ng-container matColumnDef="zona">
-                      <th class="anchoColumnaEdad text-center" mat-header-cell *matHeaderCellDef> Zona </th>
+                      <th class="anchoColumnaEdad text-center" mat-header-cell *matHeaderCellDef><b>Distrito de Intervencion</b></th>
                       <td class="text-center" mat-cell *matCellDef="let element"> {{element.zona}} </td>
                     </ng-container>                  
                     
   
                       <!-- Symbol Column -->
                       <ng-container matColumnDef="formularioPro">
-                        <th class="text-center" mat-header-cell *matHeaderCellDef> Lista Pacientes </th>
+                        <th class="text-center" mat-header-cell *matHeaderCellDef><b> Lista Pacientes </b></th>
                         <td class="text-center" mat-cell *matCellDef="let element"> 
                           <button type="button" class="btn btn-warning" routerLink="/dashboard/1/listaPacienteXPsicologo" >Ver Pacientes</button>
                         </td>                      
@@ -50,15 +50,12 @@
   
                       <!-- Symbol Column -->
                       <ng-container matColumnDef="acciones">
-                        <th mat-header-cell *matHeaderCellDef> </th>
-                        <td class="text-center" mat-cell *matCellDef="let element"> 
-                         <!--<a class="pointer" style="color: #1878B0;" matTooltip="Ver usuario">
-                            <mat-icon>search</mat-icon>
-                          </a>--> 
-                          <!--<a class="pointer" style="color: #1f516f;" matTooltip="Editar usuario">
-                            <mat-icon>edit</mat-icon>
-                          </a>-->
-                          <a class="pointer" style="color: #e15639;" matTooltip="eliminar usuario">
+                        <th mat-header-cell class="text-center" *matHeaderCellDef><i class="fas fa-mouse-pointer"></i></th>
+                        <td class="text-center" mat-cell *matCellDef="let element">                         
+                          <a class="pointer" style="color: #1f516f;" matTooltip="Editar psicologo">
+                            <mat-icon (click)="openDialog()">edit</mat-icon>
+                          </a>
+                          <a class="pointer" style="color: #e15639;" matTooltip="eliminar psicologo">
                             <mat-icon>delete</mat-icon>
                           </a>
                         </td>

@@ -4,6 +4,8 @@ import {MatTableDataSource} from '@angular/material/table';
 import { Usuario } from 'src/app/interfaces/usuario';
 import { CasopacienteService } from 'src/app/services/auroraapi/casopaciente.service';
 import { DatePipe } from '@angular/common';
+import { MatDialog } from '@angular/material/dialog';
+import { EditarPacienteComponent } from '../editar-paciente/editar-paciente.component';
 
 var listUsuarios: Usuario[] = [
   {dni:'',nombre: '', apellidos: '', edad: 0, preTest: 'Incompleto',proTest: 'Incompleto', pacienteId : '0'}
@@ -122,7 +124,7 @@ export class TablaPacienteComponent implements OnInit {
 
   fechapipe = new DatePipe('en-US');
 
-  displayedColumns: string[] = ['dni','nombre', 'apellidos', 'edad', 'preTest','proTest','formularioPre','formularioPro','acciones'];
+  displayedColumns: string[] = ['dni','nombre', 'apellidos', 'edad', 'preTest','proTest','formularioPre','formularioPro','resumen','acciones'];
   dataSource = new MatTableDataSource(listUsuarios);
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -132,10 +134,17 @@ export class TablaPacienteComponent implements OnInit {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
-  constructor(
-    private CasopacienteService : CasopacienteService
-  ) {
+  //SE AGREGO PUBLIC DIALOG:MATDIALOG PARA EL MODAL
+  constructor(private CasopacienteService : CasopacienteService,public dialog:MatDialog ) {
    }
+
+
+ //Modal de editar paciente
+   openDialog()
+{
+  this.dialog.open(EditarPacienteComponent);
+}
+
 
    actualizarTabla()
    {

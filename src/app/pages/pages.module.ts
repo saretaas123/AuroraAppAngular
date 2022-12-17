@@ -32,6 +32,7 @@ import { ResultadosAutoestimaProComponent } from './usuarios/protest/resultados-
 import { TablaResultadosCuestionarioComponent } from './usuarios/pretest/resultados-autoestima-pre/tabla-resultados-cuestionario/tabla-resultados-cuestionario.component';
 import { TablaResultadosCuestionarioAutonomiaPreComponent } from './usuarios/pretest/resultados-autonomia-pre/tabla-resultados-cuestionario-autonomia-pre/tabla-resultados-cuestionario-autonomia-pre.component';
 import { PsicologosComponent } from './psicologos/psicologos.component';
+import { VerResumenComponent } from './usuarios/ver-resumen/ver-resumen.component';
 
 //ANGULAR MATERIAL
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
@@ -40,6 +41,8 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatTabsModule} from '@angular/material/tabs';
+import {MatDialogModule} from '@angular/material/dialog';
+
 
 
 //GRAFICOS
@@ -56,6 +59,9 @@ import { ResultadosMotivacionPreComponent } from './usuarios/pretest/resultados-
 import { ResultadosDecisionesPreComponent } from './usuarios/pretest/resultados-decisiones-pre/resultados-decisiones-pre.component';
 import { ResultadosDecisionesProComponent } from './usuarios/protest/resultados-decisiones-pro/resultados-decisiones-pro.component';
 import { ResultadosMotivacionProComponent } from './usuarios/protest/resultados-motivacion-pro/resultados-motivacion-pro.component';
+import { EditarPacienteComponent } from './usuarios/componentesTablas/editar-paciente/editar-paciente.component';
+import { EditarPsicologoComponent } from './psicologos/editar-psicologo/editar-psicologo.component';
+
 
 
 
@@ -103,14 +109,11 @@ import { ResultadosMotivacionProComponent } from './usuarios/protest/resultados-
     ResultadosDecisionesPreComponent,
     ResultadosDecisionesProComponent,
     ResultadosMotivacionProComponent,
- 
-   
-
-
-
-
-
+    EditarPacienteComponent,
+    EditarPsicologoComponent,
+    VerResumenComponent,
   ],
+  entryComponents:[EditarPacienteComponent],
   imports: [
     CommonModule,
     RouterModule,
@@ -122,7 +125,9 @@ import { ResultadosMotivacionProComponent } from './usuarios/protest/resultados-
     MatTabsModule,
     MatDatepickerModule,
     NgChartsModule,
-    HttpClientModule
+    HttpClientModule,
+    MatDialogModule,
+    
 
   ],
   exports:[

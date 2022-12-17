@@ -21,19 +21,6 @@ export class CrearUsuarioComponent implements OnInit {
     rpta : {}
   };
 
-  public objPsicologoFullInfo : any = {
-    nombres: '',
-    apellidoMaterno:'',
-    apellidoPaterno:'',
-    cantPacientes : 0,
-    correo : '',
-    dni : '',
-    especialidad : '',
-    numeroDeColegiaturaDelPeru : '',
-    psicologoId : 0,
-    telefono : '',
-    usuarioId : 0
-  };
 
   constructor(
     private PacienteService : PacienteService,
