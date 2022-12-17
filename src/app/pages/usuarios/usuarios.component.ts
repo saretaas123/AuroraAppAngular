@@ -41,12 +41,11 @@ export class UsuariosComponent implements OnInit {
   })
   }
 
-
   constructor(
     private PsicologoService: PsicologoService
-    ) {
+  ){
 
-    }
+  }
 
 
 
