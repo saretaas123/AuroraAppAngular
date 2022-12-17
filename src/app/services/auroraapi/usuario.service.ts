@@ -22,8 +22,7 @@ export class UsuarioService {
        return this.http.post(this._url, {
             "usuario": pUsuario,
             "contrasena": pContrasena
-          } ,
-          { headers : headers});
+          },{ headers : headers});
 
     }
 }

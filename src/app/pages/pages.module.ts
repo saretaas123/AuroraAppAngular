@@ -29,6 +29,7 @@ import { ResultadosAutoestimaPreComponent } from './usuarios/pretest/resultados-
 import { ResultadosAutonomiaPreComponent } from './usuarios/pretest/resultados-autonomia-pre/resultados-autonomia-pre.component';
 import { ResultadosAutonomiaProComponent } from './usuarios/protest/resultados-autonomia-pro/resultados-autonomia-pro.component';
 import { ResultadosAutoestimaProComponent } from './usuarios/protest/resultados-autoestima-pro/resultados-autoestima-pro.component';
+
 import { TablaResultadosCuestionarioComponent } from './usuarios/pretest/resultados-autoestima-pre/tabla-resultados-cuestionario/tabla-resultados-cuestionario.component';
 import { TablaResultadosCuestionarioAutonomiaPreComponent } from './usuarios/pretest/resultados-autonomia-pre/tabla-resultados-cuestionario-autonomia-pre/tabla-resultados-cuestionario-autonomia-pre.component';
 import { PsicologosComponent } from './psicologos/psicologos.component';
@@ -62,6 +63,7 @@ import { ResultadosDecisionesProComponent } from './usuarios/protest/resultados-
 import { ResultadosMotivacionProComponent } from './usuarios/protest/resultados-motivacion-pro/resultados-motivacion-pro.component';
 import { EditarPacienteComponent } from './usuarios/componentesTablas/editar-paciente/editar-paciente.component';
 import { EditarPsicologoComponent } from './psicologos/editar-psicologo/editar-psicologo.component';
+
 
 
 
@@ -113,6 +115,15 @@ import { EditarPsicologoComponent } from './psicologos/editar-psicologo/editar-p
     EditarPacienteComponent,
     EditarPsicologoComponent,
     VerResumenComponent,
+
+
+
+
+
+
+
+
+
   ],
   entryComponents:[EditarPacienteComponent],
   imports: [
