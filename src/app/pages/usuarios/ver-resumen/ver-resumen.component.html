@@ -20,51 +20,51 @@
                                     <div class="row">
                                         <div class="col-sm-6">
                                             <p class="m-b-10 f-w-600">Nombre Completo </p>
-                                            <h6 class="text-muted f-w-400">Melissa Salazar Carrera</h6>
+                                            <h6 class="text-muted f-w-400">{{objAPIRpta_objPacienteFullInfo.pacienteNombres + ' ' + objAPIRpta_objPacienteFullInfo.pacienteApellidoPaterno + ' ' + objAPIRpta_objPacienteFullInfo.pacienteApellidoMaterno}}</h6>
                                         </div>
                                         <div class="col-sm-6">
                                             <p class="m-b-10 f-w-600">DNI</p>
-                                            <h6 class="text-muted f-w-400">85632542</h6>
+                                            <h6 class="text-muted f-w-400">{{objAPIRpta_objPacienteFullInfo.pacienteDni}}</h6>
                                         </div>
                                     </div>
                                     <h6 class="m-b-20 m-t-40 p-b-5 b-b-default f-w-600"></h6>
                                     <div class="row">
                                         <div class="col-sm-6">
                                             <p class="m-b-10 f-w-600">Fecha de naciemiento</p>
-                                            <h6 class="text-muted f-w-400">24 de julio 1998</h6>
+                                            <h6 class="text-muted f-w-400">{{objAPIRpta_objPacienteFullInfo.pacienteFechaNacimiento}}</h6>
                                         </div>
                                         <div class="col-sm-6">
                                             <p class="m-b-10 f-w-600">Telefono</p>
-                                            <h6 class="text-muted f-w-400">968563210</h6>
+                                            <h6 class="text-muted f-w-400">{{objAPIRpta_objPacienteFullInfo.pacienteTelefono}}</h6>
                                         </div>
                                     </div>
                                     <h6 class="m-b-20 m-t-40 p-b-5 b-b-default f-w-600"></h6>
                                     <div class="row">
                                         <div class="col-sm-6">
                                             <p class="m-b-10 f-w-600">Direccion</p>
-                                            <h6 class="text-muted f-w-400">Av. la marina 256 San miguel</h6>
+                                            <h6 class="text-muted f-w-400">{{objAPIRpta_objPacienteFullInfo.pacienteDireccion}}</h6>
                                         </div>
                                         <div class="col-sm-6">
                                             <p class="m-b-10 f-w-600">Correo</p>
-                                            <h6 class="text-muted f-w-400">968563210</h6>
+                                            <h6 class="text-muted f-w-400">{{objAPIRpta_objPacienteFullInfo.pacienteCorreo}}</h6>
                                         </div>
                                     </div>
                                     <h6 class="m-b-20 m-t-40 p-b-5 b-b-default f-w-600"></h6>
                                     <div class="row">
                                         <div class="col-sm-6">
                                             <p class="m-b-10 f-w-600">Tipo de violencia</p>
-                                            <h6 class="text-muted f-w-400">Psicologica,Fisica</h6>
+                                            <h6 class="text-muted f-w-400">{{objAPIRpta_objPacienteFullInfo.pacienteTipoViolencia}}</h6>
                                         </div>
                                         <div class="col-sm-6">
                                             <p class="m-b-10 f-w-600">Riesgo</p>
-                                            <h6 class="text-muted f-w-400">Leve</h6>
+                                            <h6 class="text-muted f-w-400">{{objAPIRpta_objPacienteFullInfo.pacienteRiesgo}}</h6>
                                         </div>
                                     </div>
                                     <h6 class="m-b-20 m-t-40 p-b-5 b-b-default f-w-600"></h6>
                                     <div class="row">
                                         <div class="col-sm-6">
                                             <p class="m-b-10 f-w-600">Año de evaluacion</p>
-                                            <h6 class="text-muted f-w-400">2020</h6>
+                                            <h6 class="text-muted f-w-400">{{objAPIRpta_objPacienteFullInfo.pacienteAnoDeEvaluacion}}</h6>
                                         </div>
                                     </div>
                                 </div>
@@ -77,14 +77,13 @@
           </div>
         </div><!-- /.container-fluid -->
       </section>
-  
-  
+
       <!-- Main content -->
       <section class="content mb-5">
         <div class="container-fluid">
             <div class="container">
                 <div class="row">
-                  
+
                   <div class="col-sm">
                     <div class="card user-card-full">
                         <div class="row m-l-0 m-r-0">
@@ -94,7 +93,14 @@
                                     <div class="row">
                                         <div class="col-sm-6">
                                             <p class="m-b-10 f-w-600">Etapa de motivacion al cambio: </p>
-                                            <h6 class="text-muted f-w-400">Mantenimiento</h6>
+
+                                            <div *ngIf="objAPIRpta_objPacienteFullInfo.examenPreTestMotivacionAlCambioCompletado; else elseBlock">
+                                              <h6 class="f-w-400" style="color: green;">Mantenimiento</h6><span style="color: green;">(Verdadero)</span>
+                                            </div>
+                                            <ng-template #elseBlock>
+                                              <h6 class="f-w-400" style="color: red;">Incompleto</h6><span style="color: red;"><i class="fa fa-cross"></i></span>
+                                            </ng-template>
+
                                         </div>
                                         <div class="col-sm-6">
                                             <p class="m-b-10 f-w-600">Copersmith (Autoestima):</p>
@@ -111,7 +117,7 @@
                                             <p class="m-b-10 f-w-600">Autonomia:</p>
                                             <h6 class="text-muted f-w-400">Negativo</h6>
                                         </div>
-                                    </div>                             
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -145,12 +151,12 @@
                                             <p class="m-b-10 f-w-600">Autonomia:</p>
                                             <h6 class="text-muted f-w-400">Negativo</h6>
                                         </div>
-                                    </div>                             
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                  </div>  
+                  </div>
                   <div class="container">
                     <div class="card user-card-full">
                         <div class="row m-l-0 m-r-0">
@@ -160,18 +166,18 @@
                                     <mat-form-field class="example-full-width ancho">
                                         <mat-label>Escribir Interpretacion</mat-label>
                                         <textarea matInput></textarea>
-                                    </mat-form-field>                                                                      
+                                    </mat-form-field>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>           
+                </div>
                 </div>
               </div>
-        </div>            
+        </div>
       </section>
       <!-- /.content -->
     </div>
     <!-- /.content-wrapper -->
-    
-  
+
+
