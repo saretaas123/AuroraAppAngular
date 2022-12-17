@@ -95,27 +95,27 @@
                                             <p class="m-b-10 f-w-600">Etapa de motivacion al cambio: </p>
 
                                             <div *ngIf="objAPIRpta_objPacienteFullInfo.examenPreTestMotivacionAlCambioCompletado; else elseBlock">
-                                              <h6 class="f-w-400" style="color: green;">Mantenimiento</h6><span style="color: green;">(Verdadero)</span>
+                                              <h6 class="f-w-400">Mantenimiento</h6>
                                             </div>
                                             <ng-template #elseBlock>
-                                              <h6 class="f-w-400" style="color: red;">Incompleto</h6><span style="color: red;"><i class="fa fa-cross"></i></span>
+                                              <h6 class="f-w-400">Incompleto</h6>
                                             </ng-template>
 
                                         </div>
                                         <div class="col-sm-6">
                                             <p class="m-b-10 f-w-600">Copersmith (Autoestima):</p>
-                                            <h6 class="text-muted f-w-400">Medio bajo</h6>
+                                            <h6 class="text-muted f-w-400">{{objAPIRpta_objPacienteFullInfo.examenPreTestAutoestimaCompletado}}</h6>
                                         </div>
                                     </div>
                                     <h6 class="m-b-20 m-t-40 p-b-5 b-b-default f-w-600"></h6>
                                     <div class="row">
                                         <div class="col-sm-6">
                                             <p class="m-b-10 f-w-600">Niveles Toma de decisiones:</p>
-                                            <h6 class="text-muted f-w-400">Incipiente</h6>
+                                            <h6 class="text-muted f-w-400">{{objAPIRpta_objPacienteFullInfo.examenPreTestTomaDecisionCompletado}}</h6>
                                         </div>
                                         <div class="col-sm-6">
                                             <p class="m-b-10 f-w-600">Autonomia:</p>
-                                            <h6 class="text-muted f-w-400">Negativo</h6>
+                                            <h6 class="text-muted f-w-400">{{objAPIRpta_objPacienteFullInfo.examenPreTestAutonomiaCompletado}}</h6>
                                         </div>
                                     </div>
                                 </div>
@@ -134,22 +134,22 @@
                                     <div class="row">
                                         <div class="col-sm-6">
                                             <p class="m-b-10 f-w-600">Etapa de motivacion al cambio: </p>
-                                            <h6 class="text-muted f-w-400">Mantenimiento</h6>
+                                            <h6 class="text-muted f-w-400">{{objAPIRpta_objPacienteFullInfo.examenPostTestMotivacionAlCambioCompletado}}</h6>
                                         </div>
                                         <div class="col-sm-6">
                                             <p class="m-b-10 f-w-600">Copersmith (Autoestima):</p>
-                                            <h6 class="text-muted f-w-400">Medio bajo</h6>
+                                            <h6 class="text-muted f-w-400">{{objAPIRpta_objPacienteFullInfo.examenPostTestAutoestimaCompletado}}</h6>
                                         </div>
                                     </div>
                                     <h6 class="m-b-20 m-t-40 p-b-5 b-b-default f-w-600"></h6>
                                     <div class="row">
                                         <div class="col-sm-6">
                                             <p class="m-b-10 f-w-600">Niveles Toma de decisiones:</p>
-                                            <h6 class="text-muted f-w-400">Incipiente</h6>
+                                            <h6 class="text-muted f-w-400">{{objAPIRpta_objPacienteFullInfo.examenPostTestTomaDecisionCompletado}}</h6>
                                         </div>
                                         <div class="col-sm-6">
                                             <p class="m-b-10 f-w-600">Autonomia:</p>
-                                            <h6 class="text-muted f-w-400">Negativo</h6>
+                                            <h6 class="text-muted f-w-400">{{objAPIRpta_objPacienteFullInfo.examenPostTestAutonomiaCompletado}}</h6>
                                         </div>
                                     </div>
                                 </div>

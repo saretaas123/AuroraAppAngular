@@ -58,7 +58,6 @@ export class VerResumenComponent implements OnInit {
   {
       this.CasoPacienteService.GetCasoPaciente_CasoPaciente_ByPacienteId(p_PacienteId)
       .subscribe( APIRpta => {
-        console.log(APIRpta);
         this.objAPIRpta_Full = APIRpta;
         this.objAPIRpta_objPacienteFullInfo = this.objAPIRpta_Full.rpta;
       })
