@@ -3,6 +3,7 @@ import { ChartConfiguration, ChartData, ChartEvent, ChartType } from 'chart.js';
 import { BaseChartDirective } from 'ng2-charts';
 import { PsicologoService } from 'src/app/services/auroraapi/psicologo.service';
 
+
 @Component({
   selector: 'app-reportes',
   templateUrl: './reportes.component.html',

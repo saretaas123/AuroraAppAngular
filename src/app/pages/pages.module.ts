@@ -42,6 +42,7 @@ import {MatInputModule} from '@angular/material/input';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatDialogModule} from '@angular/material/dialog';
+import {MatSelectModule} from '@angular/material/select';
 
 
 
@@ -127,6 +128,7 @@ import { EditarPsicologoComponent } from './psicologos/editar-psicologo/editar-p
     NgChartsModule,
     HttpClientModule,
     MatDialogModule,
+    MatSelectModule
     
 
   ],
