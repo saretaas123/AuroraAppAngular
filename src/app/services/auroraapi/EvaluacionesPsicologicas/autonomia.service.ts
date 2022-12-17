@@ -12,30 +12,90 @@ export class EvaluacionAutonomiaService {
     constructor(
             private http: HttpClient
         ) {
-            console.log('Evluacion Service Working')
+            console.log('Evaluacion Service Working')
         }
 
-    PostRegistrarPaciente(pPsicologoId: number, pNombres : string, pApellidoPaterno : string,pApellidoMaterno : string,pFechaNacimiento : string,pDni : string
-        ,pTelefono : string,pDireccioUbigeo : string,pCorreo : string, pTipoViolencia : string,pRiesgo : string,pAnoDeEvaluacion : string,pEntidadProblema :string,pModalidadAdministrativo :string)
+        PostAPI_EvaluarExamenAutonomiaPreTest(pacienteId: number, psicologoId : number, p01 : number,p02 : number,p03 : number,p04 : number
+          ,p05 : number,p06 : number,p07 : number, p08 : number,p09 : number,p10 : number,p11 :number,p12 :number,p13:number,p14:number,p15:number,p16:number,p17:number,p18:number,p19:number,p20:number,p21:number,p22:number,
+          p23:number,p24:number,p25:number,p26:number,p27:number,p28:number,p29:number)
     {
         let headers = new HttpHeaders().set('Type-content','aplication/json')
 
-        return this.http.post(this._url + 'AgregarPaciente', {
-            "PsicologoId" : pPsicologoId,
-            "Nombres": pNombres,
-            "ApellidoPaterno": pApellidoPaterno,
-            "ApellidoMaterno": pApellidoMaterno,
-            "FechaNacimiento": pFechaNacimiento,
-            "Dni": pDni,
-            "Telefono": pTelefono,
-            "DireccioUbigeo": pDireccioUbigeo,
-            "Correo": pCorreo,
-            "TipoViolencia":pTipoViolencia,
-            "Riesgo":pRiesgo,
-            "AnoDeEvaluacion":pAnoDeEvaluacion,
-            "EntidadProblema":pEntidadProblema,
-            "modalidadAdminitrativo":pModalidadAdministrativo
+        return this.http.post(this._url + 'EvaluarExamenAutonomiaPre', {
+          "pacienteId": pacienteId,
+          "psicologoId": psicologoId,
+          "p01": p01,
+          "p02": p02,
+          "p03": p03,
+          "p04": p04,
+          "p05": p05,
+          "p06": p06,
+          "p07": p07,
+          "p08": p08,
+          "p09": p09,
+          "p10": p10,
+          "p11": p11,
+          "p12": p12,
+          "p13": p13,
+          "p14": p14,
+          "p15": p15,
+          "p16": p16,
+          "p17": p17,
+          "p18": p18,
+          "p19": p19,
+          "p20": p20,
+          "p21": p21,
+          "p22": p22,
+          "p23": p23,
+          "p24": p24,
+          "p25": p25,
+          "p26": p26,
+          "p27": p27,
+          "p28": p28,
+          "p29": p29
           } , { headers : headers});
     }
+
+    PostAPI_EvaluarExamenAutonomiaPosTest(pacienteId: number, psicologoId : number, p01 : number,p02 : number,p03 : number,p04 : number
+      ,p05 : number,p06 : number,p07 : number, p08 : number,p09 : number,p10 : number,p11 :number,p12 :number,p13:number,p14:number,p15:number,p16:number,p17:number,p18:number,p19:number,p20:number,p21:number,p22:number,
+      p23:number,p24:number,p25:number,p26:number,p27:number,p28:number,p29:number)
+{
+    let headers = new HttpHeaders().set('Type-content','aplication/json')
+
+    return this.http.post(this._url + 'EvaluarExamenAutonomiaPro', {
+      "pacienteId": pacienteId,
+      "psicologoId": psicologoId,
+      "p01": p01,
+      "p02": p02,
+      "p03": p03,
+      "p04": p04,
+      "p05": p05,
+      "p06": p06,
+      "p07": p07,
+      "p08": p08,
+      "p09": p09,
+      "p10": p10,
+      "p11": p11,
+      "p12": p12,
+      "p13": p13,
+      "p14": p14,
+      "p15": p15,
+      "p16": p16,
+      "p17": p17,
+      "p18": p18,
+      "p19": p19,
+      "p20": p20,
+      "p21": p21,
+      "p22": p22,
+      "p23": p23,
+      "p24": p24,
+      "p25": p25,
+      "p26": p26,
+      "p27": p27,
+      "p28": p28,
+      "p29": p29
+      } , { headers : headers});
+}
+
 
 }

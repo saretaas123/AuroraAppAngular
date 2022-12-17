@@ -15,26 +15,48 @@ export class EvaluacionTomaDecisionesService {
             console.log('Evluacion Service Working')
         }
 
-    PostRegistrarPaciente(pPsicologoId: number, pNombres : string, pApellidoPaterno : string,pApellidoMaterno : string,pFechaNacimiento : string,pDni : string
-        ,pTelefono : string,pDireccioUbigeo : string,pCorreo : string, pTipoViolencia : string,pRiesgo : string,pAnoDeEvaluacion : string,pEntidadProblema :string,pModalidadAdministrativo :string)
+        PostAPI_EvaluarExamenDecisionesPreTest(pacienteId: number, psicologoId : number, p01 : number,p02 : number,p03 : number,p04 : number
+          ,p05 : number,p06 : number,p07 : number, p08 : number,p09 : number,p10 : number,p11 :number)
+      {
+          let headers = new HttpHeaders().set('Type-content','aplication/json')
+
+          return this.http.post(this._url + 'EvaluarExamenTomaDecisionesPre', {
+              "pacienteId": pacienteId,
+              "psicologoId": psicologoId,
+              "p01": p01,
+              "p02": p02,
+              "p03": p03,
+              "p04": p04,
+              "p05": p05,
+              "p06": p06,
+              "p07": p07,
+              "p08": p08,
+              "p09": p09,
+              "p10": p10,
+              "p11": p11
+            } , { headers : headers});
+      }
+
+
+      PostAPI_EvaluarExamenDecisionesPostTest(pacienteId: number, psicologoId : number, p01 : number,p02 : number,p03 : number,p04 : number
+        ,p05 : number,p06 : number,p07 : number, p08 : number,p09 : number,p10 : number,p11 :number)
     {
         let headers = new HttpHeaders().set('Type-content','aplication/json')
 
-        return this.http.post(this._url + 'AgregarPaciente', {
-            "PsicologoId" : pPsicologoId,
-            "Nombres": pNombres,
-            "ApellidoPaterno": pApellidoPaterno,
-            "ApellidoMaterno": pApellidoMaterno,
-            "FechaNacimiento": pFechaNacimiento,
-            "Dni": pDni,
-            "Telefono": pTelefono,
-            "DireccioUbigeo": pDireccioUbigeo,
-            "Correo": pCorreo,
-            "TipoViolencia":pTipoViolencia,
-            "Riesgo":pRiesgo,
-            "AnoDeEvaluacion":pAnoDeEvaluacion,
-            "EntidadProblema":pEntidadProblema,
-            "modalidadAdminitrativo":pModalidadAdministrativo
+        return this.http.post(this._url + 'EvaluarExamenTomaDecisionesPost', {
+            "pacienteId": pacienteId,
+            "psicologoId": psicologoId,
+            "p01": p01,
+            "p02": p02,
+            "p03": p03,
+            "p04": p04,
+            "p05": p05,
+            "p06": p06,
+            "p07": p07,
+            "p08": p08,
+            "p09": p09,
+            "p10": p10,
+            "p11": p11
           } , { headers : headers});
     }
 

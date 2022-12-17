@@ -15,27 +15,67 @@ export class EvaluacionMotivacionService {
             console.log('Evluacion Service Working')
         }
 
-    PostRegistrarPaciente(pPsicologoId: number, pNombres : string, pApellidoPaterno : string,pApellidoMaterno : string,pFechaNacimiento : string,pDni : string
-        ,pTelefono : string,pDireccioUbigeo : string,pCorreo : string, pTipoViolencia : string,pRiesgo : string,pAnoDeEvaluacion : string,pEntidadProblema :string,pModalidadAdministrativo :string)
-    {
-        let headers = new HttpHeaders().set('Type-content','aplication/json')
+        PostAPI_EvaluarExamenAutoestimaPreTest(pacienteId: number, psicologoId : number, p01 : number,p02 : number,p03 : number,p04 : number
+          ,p05 : number,p06 : number,p07 : number, p08 : number,p09 : number,p10 : number,p11 :number,p12 :number,p13:number,p14:number,p15:number,p16:number,p17:number,p18:number,p19:number,p20:number)
+      {
+          let headers = new HttpHeaders().set('Type-content','aplication/json')
 
-        return this.http.post(this._url + 'AgregarPaciente', {
-            "PsicologoId" : pPsicologoId,
-            "Nombres": pNombres,
-            "ApellidoPaterno": pApellidoPaterno,
-            "ApellidoMaterno": pApellidoMaterno,
-            "FechaNacimiento": pFechaNacimiento,
-            "Dni": pDni,
-            "Telefono": pTelefono,
-            "DireccioUbigeo": pDireccioUbigeo,
-            "Correo": pCorreo,
-            "TipoViolencia":pTipoViolencia,
-            "Riesgo":pRiesgo,
-            "AnoDeEvaluacion":pAnoDeEvaluacion,
-            "EntidadProblema":pEntidadProblema,
-            "modalidadAdminitrativo":pModalidadAdministrativo
-          } , { headers : headers});
-    }
+          return this.http.post(this._url + 'EvaluarExamenMotivacionPre', {
+              "pacienteId": pacienteId,
+              "psicologoId": psicologoId,
+              "p01": p01,
+              "p02": p02,
+              "p03": p03,
+              "p04": p04,
+              "p05": p05,
+              "p06": p06,
+              "p07": p07,
+              "p08": p08,
+              "p09": p09,
+              "p10": p10,
+              "p11": p11,
+              "p12": p12,
+              "p13": p13,
+              "p14": p14,
+              "p15": p15,
+              "p16": p16,
+              "p17": p17,
+              "p18": p18,
+              "p19": p19,
+              "p20": p20,
+            } , { headers : headers});
+      }
+
+
+    PostAPI_EvaluarExamenAutoestimaPostTest(pacienteId: number, psicologoId : number, p01 : number,p02 : number,p03 : number,p04 : number
+      ,p05 : number,p06 : number,p07 : number, p08 : number,p09 : number,p10 : number,p11 :number,p12 :number,p13:number,p14:number,p15:number,p16:number,p17:number,p18:number,p19:number,p20:number)
+  {
+      let headers = new HttpHeaders().set('Type-content','aplication/json')
+
+      return this.http.post(this._url + 'EvaluarExamenMotivacionPost', {
+        "pacienteId": pacienteId,
+        "psicologoId": psicologoId,
+        "p01": p01,
+        "p02": p02,
+        "p03": p03,
+        "p04": p04,
+        "p05": p05,
+        "p06": p06,
+        "p07": p07,
+        "p08": p08,
+        "p09": p09,
+        "p10": p10,
+        "p11": p11,
+        "p12": p12,
+        "p13": p13,
+        "p14": p14,
+        "p15": p15,
+        "p16": p16,
+        "p17": p17,
+        "p18": p18,
+        "p19": p19,
+        "p20": p20,
+        } , { headers : headers});
+  }
 
 }

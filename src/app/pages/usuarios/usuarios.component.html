@@ -44,7 +44,7 @@
       <nav class="navbar navbar-light bg-light justify-content-between">
         <a class="navbar-brand"></a>
         <form class="form-inline">
-          <button type="button" class="btn btn-secondary my-2 my-sm-0" routerLink="/dashboard/{{g_FromUser_PsicologoId}}/crear-usuario/{{g_FromUser_PsicologoId}}"><i class="fas fa-user-plus"></i>&nbsp;Agregar Usuario</button>
+          <button type="button" class="btn btn-secondary my-2 my-sm-0" (click)="openDialog()"><i class="fas fa-user-plus"></i>&nbsp;Agregar Usuario</button>
         </form>
       </nav>
     </section>

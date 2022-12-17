@@ -1,4 +1,4 @@
-
+<!--
 
 <div class="content-wrapper">
   <form>
@@ -50,11 +50,113 @@
       <!--<label>Tipo de Violencia:</label>
       <input type="radio" id="under_13" value="under_13" name="user_age"><label for="under_13" class="light">Under 13</label><br>
       <input type="radio" id="over_13" value="over_13" name="user_age"><label for="over_13" class="light">13 or older</label><br>
-      <input type="radio" id="over_13" value="over_13" name="user_age"><label for="over_13" class="light">13 or older</label>-->
+      <input type="radio" id="over_13" value="over_13" name="user_age"><label for="over_13" class="light">13 or older</label>
 
     </fieldset>
   </form>
   <button (click)="RegistrarPaciente(pNombres.value , pApellidoPaterno.value ,pApellidoMaterno.value ,pFechaNacimiento.value , pDni.value ,pTelefono.value ,pDireccioUbigeo.value ,pCorreo.value,pTipoViolencia.value,pRiesgo.value,pAnoDeEvaluacion.value,pEntidadProblema.value,pModalidadAdministrativo.value)">Registrar</button>
 </div>
 
+-->
 
+<mat-dialog-actions align="end">
+  <button class="btn btn-danger" mat-dialog-close>Cerrar</button>
+</mat-dialog-actions>
+
+
+<mat-dialog-content class="mat-typography">
+<h2 mat-dialog-title class="text-center">Editar Usuario</h2>
+<div class="container">
+  <div class="row">
+    <div class="col-sm">
+      <mat-form-field appearance="fill">
+          <mat-label>Nombre</mat-label>
+          <input matInput type="text">
+      </mat-form-field>
+    </div>
+    <div class="col-sm">
+      <mat-form-field appearance="fill">
+          <mat-label>Apellido Paterno</mat-label>
+          <input matInput type="text">
+      </mat-form-field>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col-sm">
+      <mat-form-field appearance="fill">
+          <mat-label>Apellido Materno</mat-label>
+          <input matInput type="text">
+      </mat-form-field>
+    </div>
+    <div class="col-sm">
+      <mat-form-field appearance="fill">
+          <mat-label>Fecha de nacimiento</mat-label>
+          <input matInput type="date">
+      </mat-form-field>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col-sm">
+      <mat-form-field appearance="fill">
+          <mat-label>Dni</mat-label>
+          <input matInput type="text">
+      </mat-form-field>
+    </div>
+    <div class="col-sm">
+      <mat-form-field appearance="fill">
+          <mat-label>Direccion</mat-label>
+          <input matInput type="text">
+      </mat-form-field>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col-sm">
+      <mat-form-field appearance="fill">
+          <mat-label>Telefono</mat-label>
+          <input matInput type="text">
+      </mat-form-field>
+    </div>
+    <div class="col-sm">
+      <mat-form-field appearance="fill">
+          <mat-label>Correo</mat-label>
+          <input matInput type="email">
+      </mat-form-field>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col-sm">
+      <mat-form-field appearance="fill">
+          <mat-label>Tipo de Violencia</mat-label>
+          <input matInput type="text">
+      </mat-form-field>
+    </div>
+    <div class="col-sm">
+      <mat-form-field appearance="fill">
+          <mat-label>Riesgo</mat-label>
+          <input matInput type="text">
+      </mat-form-field>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col-sm">
+      <mat-form-field appearance="fill">
+          <mat-label>Año de Evaluacion</mat-label>
+          <input matInput type="number">
+      </mat-form-field>
+    </div>
+  </div>
+</div>
+</mat-dialog-content>
+<mat-dialog-actions >
+<button class="btn btn-primary" [mat-dialog-close]="true" cdkFocusInitial>Guardar</button>
+</mat-dialog-actions>

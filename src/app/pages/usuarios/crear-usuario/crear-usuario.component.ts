@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { ActivatedRoute } from "@angular/router";
 import { PacienteService } from 'src/app/services/auroraapi/paciente.service';
 
+
 @Component({
   selector: 'app-crear-usuario',
   templateUrl: './crear-usuario.component.html',

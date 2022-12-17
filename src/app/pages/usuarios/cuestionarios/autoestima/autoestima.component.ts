@@ -7,6 +7,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AutoestimaComponent implements OnInit {
 
+  pacienteId : string = '0';
+  psicologoId : string = '0';
+
   Respuestas : any =
   {
     p01 : 0,
@@ -38,13 +41,19 @@ export class AutoestimaComponent implements OnInit {
 
   constructor() { }
 
-  RespuestaValorPregunta1(valorMarcado : number){ this.Respuestas.p01 =valorMarcado; }
-  RespuestaValorPregunta2(valorMarcado : number){ this.Respuestas.p02 =valorMarcado; }
-  RespuestaValorPregunta3(valorMarcado : number){ this.Respuestas.p03 =valorMarcado; }
-  RespuestaValorPregunta4(valorMarcado : number){ this.Respuestas.p04 =valorMarcado; }
-  RespuestaValorPregunta5(valorMarcado : number){ this.Respuestas.p05 =valorMarcado; }
-  RespuestaValorPregunta6(valorMarcado : number){ this.Respuestas.p06 =valorMarcado; }
-  RespuestaValorPregunta7(valorMarcado : number){ this.Respuestas.p07 =valorMarcado; }
+  RespuestaValorPregunta1(valorMarcado : number)
+  {
+    console.log('Antes de igual: Respuestas:');
+    console.log(this.Respuestas);
+     this.Respuestas.p01 =valorMarcado;
+    console.log('despues de igual: Respuestas:');    console.log(this.Respuestas);
+  }
+  RespuestaValorPregunta2(valorMarcado : number){ this.Respuestas.p02 =valorMarcado;console.log('despues de igual: Respuestas:');    console.log(this.Respuestas); }
+  RespuestaValorPregunta3(valorMarcado : number){ this.Respuestas.p03 =valorMarcado;console.log('despues de igual: Respuestas:');    console.log(this.Respuestas); }
+  RespuestaValorPregunta4(valorMarcado : number){ this.Respuestas.p04 =valorMarcado;console.log('despues de igual: Respuestas:');    console.log(this.Respuestas); }
+  RespuestaValorPregunta5(valorMarcado : number){ this.Respuestas.p05 =valorMarcado;console.log('despues de igual: Respuestas:');    console.log(this.Respuestas); }
+  RespuestaValorPregunta6(valorMarcado : number){ this.Respuestas.p06 =valorMarcado;console.log('despues de igual: Respuestas:');    console.log(this.Respuestas); }
+  RespuestaValorPregunta7(valorMarcado : number){ this.Respuestas.p07 =valorMarcado;console.log('despues de igual: Respuestas:');    console.log(this.Respuestas); }
   RespuestaValorPregunta8(valorMarcado : number){ this.Respuestas.p08 =valorMarcado; }
   RespuestaValorPregunta9(valorMarcado : number){ this.Respuestas.p09 =valorMarcado; }
   RespuestaValorPregunta10(valorMarcado : number){ this.Respuestas.p10 =valorMarcado; }
