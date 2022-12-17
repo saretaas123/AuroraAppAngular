@@ -17,6 +17,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     AppComponent,
     NopageFoundComponent,
   ],
+ 
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -24,6 +25,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     MatSlideToggleModule,
      BrowserAnimationsModule,
   ],
+  
   providers: [],
   bootstrap: [AppComponent]
 })

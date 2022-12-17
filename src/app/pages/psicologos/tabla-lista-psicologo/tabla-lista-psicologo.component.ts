@@ -2,9 +2,14 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { Psicologo } from 'src/app/interfaces/psicologo';
+import { EditarPsicologoComponent} from '../editar-psicologo/editar-psicologo.component'
+import { MatDialog } from '@angular/material/dialog';
 
 const listUsuarios: Psicologo[] = [
   {dni:85632542,nombre: 'Jordan', apellidos: 'Peterson Bernt', zona:'Cercado de lima'},
+  {dni:85632542,nombre: 'Melisa', apellidos: 'Peterson Bernt', zona:'Cercado de lima'},
+  {dni:85632542,nombre: 'Julia', apellidos: 'Peterson Bernt', zona:'Cercado de lima'},
+  {dni:85632542,nombre: 'Carla', apellidos: 'Peterson Bernt', zona:'Cercado de lima'},
  
  
 ];
@@ -26,7 +31,14 @@ export class TablaListaPsicologoComponent implements OnInit {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
-  constructor() { }
+  constructor(public dialog:MatDialog) { }
+
+  
+ //Modal de editar paciente
+ openDialog()
+ {
+   this.dialog.open(EditarPsicologoComponent);
+ }
 
   ngOnInit(): void {
   }

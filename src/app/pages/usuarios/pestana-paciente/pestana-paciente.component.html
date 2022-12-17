@@ -1,11 +1,11 @@
-<mat-tab-group mat-stretch-tabs="false" mat-align-tabs="center">
+<mat-tab-group mat-stretch-tabs="false" mat-align-tabs="center">    
     <mat-tab label="Listado Pacientes">
         <app-tabla-paciente [g_TablaPacienteComponent_PsicologoId]="out_p_PsicologoId"></app-tabla-paciente>
     </mat-tab>
     <mat-tab label="Avances PreTest">
         <app-tabla-avancesPretest [g_TablaPreTest_PsicologoId]="out_p_PsicologoId"></app-tabla-avancesPretest>
     </mat-tab>
-    <mat-tab label="Avances ProTest">
+    <mat-tab label="Avances PostTest">
         <app-tabla-avances-protest [g_TablaPostTest_PsicologoId]="out_p_PsicologoId"></app-tabla-avances-protest>
     </mat-tab>
   </mat-tab-group>

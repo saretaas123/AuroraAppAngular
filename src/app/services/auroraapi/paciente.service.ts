@@ -37,9 +37,9 @@ export class PacienteService {
             "Telefono": pTelefono,
             "DireccioUbigeo": pDireccioUbigeo,
             "Correo": pCorreo,
-            "TipoViolencia": 'Tipo Violencia',
-            "Riesgo": 'Riesgo',
-            "AnoDeEvaluacion": '2000'
+            "TipoViolencia":'Tipo Violencia',
+            "Riesgo":'Riesgo',
+            "AnoDeEvaluacion":'2000'
           } , { headers : headers});
 
     }

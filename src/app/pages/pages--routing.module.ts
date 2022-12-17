@@ -21,6 +21,7 @@ import { ResultadosAutonomiaProComponent } from './usuarios/protest/resultados-a
 import { ResultadosAutoestimaProComponent } from './usuarios/protest/resultados-autoestima-pro/resultados-autoestima-pro.component';
 import { ResultadosMotivacionProComponent} from './usuarios/protest/resultados-motivacion-pro/resultados-motivacion-pro.component';
 import { ResultadosDecisionesProComponent} from './usuarios/protest/resultados-decisiones-pro/resultados-decisiones-pro.component';
+import { VerResumenComponent} from './usuarios/ver-resumen/ver-resumen.component';
 
 import { PsicologosComponent } from './psicologos/psicologos.component';
 import { VerPacienteXPsicologoComponent} from './psicologos/ver-paciente-xpsicologo/ver-paciente-xpsicologo.component';
@@ -51,6 +52,8 @@ const routes:Routes=[
     {path:'resultados-autonomia-pro/:pacienteid',component:ResultadosAutonomiaProComponent},
     {path: 'resultados-decisiones-pro/:pacienteid',component:ResultadosDecisionesProComponent},
     {path:'resultados-motivacion-pro/:pacienteid',component:ResultadosMotivacionProComponent},
+    //agregado recientemente
+    {path:'ver-resultados/:pacienteid',component:VerResumenComponent},
 
     //agregado recientemente
     {path:'listapsicologo',component:PsicologosComponent},
