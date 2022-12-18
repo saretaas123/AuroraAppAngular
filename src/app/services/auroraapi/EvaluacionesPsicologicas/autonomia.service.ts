@@ -56,13 +56,13 @@ export class EvaluacionAutonomiaService {
           } , { headers : headers});
     }
 
-    PostAPI_EvaluarExamenAutonomiaPosTest(pacienteId: number, psicologoId : number, p01 : number,p02 : number,p03 : number,p04 : number
+    PostAPI_EvaluarExamenAutonomiaPostTest(pacienteId: number, psicologoId : number, p01 : number,p02 : number,p03 : number,p04 : number
       ,p05 : number,p06 : number,p07 : number, p08 : number,p09 : number,p10 : number,p11 :number,p12 :number,p13:number,p14:number,p15:number,p16:number,p17:number,p18:number,p19:number,p20:number,p21:number,p22:number,
       p23:number,p24:number,p25:number,p26:number,p27:number,p28:number,p29:number)
 {
     let headers = new HttpHeaders().set('Type-content','aplication/json')
 
-    return this.http.post(this._url + 'EvaluarExamenAutonomiaPro', {
+    return this.http.post(this._url + 'EvaluarExamenAutonomiaPost', {
       "pacienteId": pacienteId,
       "psicologoId": psicologoId,
       "p01": p01,

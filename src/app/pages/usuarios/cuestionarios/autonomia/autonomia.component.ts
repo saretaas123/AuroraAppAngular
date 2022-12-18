@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { EvaluacionAutonomiaService } from 'src/app/services/auroraapi/EvaluacionesPsicologicas/autonomia.service';
 
 @Component({
   selector: 'app-autonomia',
@@ -7,7 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AutonomiaComponent implements OnInit {
 
-  Respuestas : any =
+  EsPreTest = true;
+  EsPostTest = false;
+
+  pacienteId : number = 0;
+  psicologoId : number = 0;
+
+  Resultados : any =
   {
     p01 : 0,
     p02 : 0,
@@ -43,36 +50,124 @@ export class AutonomiaComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  constructor() { }
+  constructor(private TestAutonomiaService : EvaluacionAutonomiaService) { }
 
-  RespuestaValorPregunta1(valorMarcado : number){ this.Respuestas.p01 =valorMarcado; }
-  RespuestaValorPregunta2(valorMarcado : number){ this.Respuestas.p02 =valorMarcado; }
-  RespuestaValorPregunta3(valorMarcado : number){ this.Respuestas.p03 =valorMarcado; }
-  RespuestaValorPregunta4(valorMarcado : number){ this.Respuestas.p04 =valorMarcado; }
-  RespuestaValorPregunta5(valorMarcado : number){ this.Respuestas.p05 =valorMarcado; }
-  RespuestaValorPregunta6(valorMarcado : number){ this.Respuestas.p06 =valorMarcado; }
-  RespuestaValorPregunta7(valorMarcado : number){ this.Respuestas.p07 =valorMarcado; }
-  RespuestaValorPregunta8(valorMarcado : number){ this.Respuestas.p08 =valorMarcado; }
-  RespuestaValorPregunta9(valorMarcado : number){ this.Respuestas.p09 =valorMarcado; }
-  RespuestaValorPregunta10(valorMarcado : number){ this.Respuestas.p10 =valorMarcado; }
-  RespuestaValorPregunta11(valorMarcado : number){ this.Respuestas.p11 =valorMarcado; }
-  RespuestaValorPregunta12(valorMarcado : number){ this.Respuestas.p12 =valorMarcado; }
-  RespuestaValorPregunta13(valorMarcado : number){ this.Respuestas.p13 =valorMarcado; }
-  RespuestaValorPregunta14(valorMarcado : number){ this.Respuestas.p14 =valorMarcado; }
-  RespuestaValorPregunta15(valorMarcado : number){ this.Respuestas.p15 =valorMarcado; }
-  RespuestaValorPregunta16(valorMarcado : number){ this.Respuestas.p16 =valorMarcado; }
-  RespuestaValorPregunta17(valorMarcado : number){ this.Respuestas.p17 =valorMarcado; }
-  RespuestaValorPregunta18(valorMarcado : number){ this.Respuestas.p18 =valorMarcado; }
-  RespuestaValorPregunta19(valorMarcado : number){ this.Respuestas.p19 =valorMarcado; }
-  RespuestaValorPregunta20(valorMarcado : number){ this.Respuestas.p20 =valorMarcado; }
-  RespuestaValorPregunta21(valorMarcado : number){ this.Respuestas.p21 =valorMarcado; }
-  RespuestaValorPregunta22(valorMarcado : number){ this.Respuestas.p22 =valorMarcado; }
-  RespuestaValorPregunta23(valorMarcado : number){ this.Respuestas.p23 =valorMarcado; }
-  RespuestaValorPregunta24(valorMarcado : number){ this.Respuestas.p24 =valorMarcado; }
-  RespuestaValorPregunta25(valorMarcado : number){ this.Respuestas.p25 =valorMarcado; }
-  RespuestaValorPregunta26(valorMarcado : number){ this.Respuestas.p26 =valorMarcado; }
-  RespuestaValorPregunta27(valorMarcado : number){ this.Respuestas.p27 =valorMarcado; }
-  RespuestaValorPregunta28(valorMarcado : number){ this.Respuestas.p28 =valorMarcado; }
-  RespuestaValorPregunta29(valorMarcado : number){ this.Respuestas.p29 =valorMarcado; }
+  EnviarRespuestasParaEvaluacionPre()
+  {
+
+    if(this.EsPreTest){
+    this.TestAutonomiaService.PostAPI_EvaluarExamenAutonomiaPreTest(
+      this.pacienteId,
+      this.psicologoId,
+      this.Resultados.p01,
+      this.Resultados.p02,
+      this.Resultados.p03,
+      this.Resultados.p04,
+      this.Resultados.p05,
+      this.Resultados.p06,
+      this.Resultados.p07,
+      this.Resultados.p08,
+      this.Resultados.p09,
+      this.Resultados.p10,
+      this.Resultados.p11,
+      this.Resultados.p12,
+      this.Resultados.p13,
+      this.Resultados.p14,
+      this.Resultados.p15,
+      this.Resultados.p16,
+      this.Resultados.p17,
+      this.Resultados.p18,
+      this.Resultados.p19,
+      this.Resultados.p20,
+      this.Resultados.p21,
+      this.Resultados.p22,
+      this.Resultados.p23,
+      this.Resultados.p24,
+      this.Resultados.p25,
+      this.Resultados.p26,
+      this.Resultados.p27,
+      this.Resultados.p28,
+      this.Resultados.p29
+
+      );
+    }
+
+    console.log("Aca deberia estar evaluandose trayendo la api");
+
+  }
+
+  EnviarRespuestasParaEvaluacionPost()
+  {
+
+    if(this.EsPostTest){
+    this.TestAutonomiaService.PostAPI_EvaluarExamenAutonomiaPostTest(
+      this.pacienteId,
+      this.psicologoId,
+      this.Resultados.p01,
+      this.Resultados.p02,
+      this.Resultados.p03,
+      this.Resultados.p04,
+      this.Resultados.p05,
+      this.Resultados.p06,
+      this.Resultados.p07,
+      this.Resultados.p08,
+      this.Resultados.p09,
+      this.Resultados.p10,
+      this.Resultados.p11,
+      this.Resultados.p12,
+      this.Resultados.p13,
+      this.Resultados.p14,
+      this.Resultados.p15,
+      this.Resultados.p16,
+      this.Resultados.p17,
+      this.Resultados.p18,
+      this.Resultados.p19,
+      this.Resultados.p20,
+      this.Resultados.p21,
+      this.Resultados.p22,
+      this.Resultados.p23,
+      this.Resultados.p24,
+      this.Resultados.p25,
+      this.Resultados.p26,
+      this.Resultados.p27,
+      this.Resultados.p28,
+      this.Resultados.p29
+
+      );
+    }
+
+    console.log("Aca deberia estar evaluandose trayendo la api");
+
+  }
+
+  RespuestaValorPregunta1(valorMarcado : number){ this.Resultados.p01 =valorMarcado; }
+  RespuestaValorPregunta2(valorMarcado : number){ this.Resultados.p02 =valorMarcado; }
+  RespuestaValorPregunta3(valorMarcado : number){ this.Resultados.p03 =valorMarcado; }
+  RespuestaValorPregunta4(valorMarcado : number){ this.Resultados.p04 =valorMarcado; }
+  RespuestaValorPregunta5(valorMarcado : number){ this.Resultados.p05 =valorMarcado; }
+  RespuestaValorPregunta6(valorMarcado : number){ this.Resultados.p06 =valorMarcado; }
+  RespuestaValorPregunta7(valorMarcado : number){ this.Resultados.p07 =valorMarcado; }
+  RespuestaValorPregunta8(valorMarcado : number){ this.Resultados.p08 =valorMarcado; }
+  RespuestaValorPregunta9(valorMarcado : number){ this.Resultados.p09 =valorMarcado; }
+  RespuestaValorPregunta10(valorMarcado : number){ this.Resultados.p10 =valorMarcado; }
+  RespuestaValorPregunta11(valorMarcado : number){ this.Resultados.p11 =valorMarcado; }
+  RespuestaValorPregunta12(valorMarcado : number){ this.Resultados.p12 =valorMarcado; }
+  RespuestaValorPregunta13(valorMarcado : number){ this.Resultados.p13 =valorMarcado; }
+  RespuestaValorPregunta14(valorMarcado : number){ this.Resultados.p14 =valorMarcado; }
+  RespuestaValorPregunta15(valorMarcado : number){ this.Resultados.p15 =valorMarcado; }
+  RespuestaValorPregunta16(valorMarcado : number){ this.Resultados.p16 =valorMarcado; }
+  RespuestaValorPregunta17(valorMarcado : number){ this.Resultados.p17 =valorMarcado; }
+  RespuestaValorPregunta18(valorMarcado : number){ this.Resultados.p18 =valorMarcado; }
+  RespuestaValorPregunta19(valorMarcado : number){ this.Resultados.p19 =valorMarcado; }
+  RespuestaValorPregunta20(valorMarcado : number){ this.Resultados.p20 =valorMarcado; }
+  RespuestaValorPregunta21(valorMarcado : number){ this.Resultados.p21 =valorMarcado; }
+  RespuestaValorPregunta22(valorMarcado : number){ this.Resultados.p22 =valorMarcado; }
+  RespuestaValorPregunta23(valorMarcado : number){ this.Resultados.p23 =valorMarcado; }
+  RespuestaValorPregunta24(valorMarcado : number){ this.Resultados.p24 =valorMarcado; }
+  RespuestaValorPregunta25(valorMarcado : number){ this.Resultados.p25 =valorMarcado; }
+  RespuestaValorPregunta26(valorMarcado : number){ this.Resultados.p26 =valorMarcado; }
+  RespuestaValorPregunta27(valorMarcado : number){ this.Resultados.p27 =valorMarcado; }
+  RespuestaValorPregunta28(valorMarcado : number){ this.Resultados.p28 =valorMarcado; }
+  RespuestaValorPregunta29(valorMarcado : number){ this.Resultados.p29 =valorMarcado; }
 
 }

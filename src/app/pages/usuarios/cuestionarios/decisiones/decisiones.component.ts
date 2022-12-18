@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { EvaluacionTomaDecisionesService } from 'src/app/services/auroraapi/EvaluacionesPsicologicas/tomadecisiones.service';
 
 @Component({
   selector: 'app-decisiones',
@@ -6,6 +7,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./decisiones.component.css']
 })
 export class DecisionesComponent implements OnInit {
+
+  EsPreTest = true;
+  EsPostTest = false;
+
+  pacienteId : number = 0;
+  psicologoId : number = 0;
 
   Respuestas : any =
   {
@@ -25,7 +32,56 @@ export class DecisionesComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  constructor() { }
+  constructor(private TestTomaDecisionesService : EvaluacionTomaDecisionesService) { }
+
+  EnviarRespuestasParaEvaluacionPre()
+  {
+
+    if(this.EsPreTest){
+    this.TestTomaDecisionesService.PostAPI_EvaluarExamenDecisionesPreTest(
+      this.pacienteId,
+      this.psicologoId,
+      this.Respuestas.p01,
+      this.Respuestas.p02,
+      this.Respuestas.p03,
+      this.Respuestas.p04,
+      this.Respuestas.p05,
+      this.Respuestas.p06,
+      this.Respuestas.p07,
+      this.Respuestas.p08,
+      this.Respuestas.p09,
+      this.Respuestas.p10,
+      this.Respuestas.p11
+      );
+    }
+    console.log("Aca deberia estar evaluandose trayendo la api");
+
+  }
+
+  EnviarRespuestasParaEvaluacionPost()
+  {
+
+    if(this.EsPostTest){
+    this.TestTomaDecisionesService.PostAPI_EvaluarExamenDecisionesPostTest(
+      this.pacienteId,
+      this.psicologoId,
+      this.Respuestas.p01,
+      this.Respuestas.p02,
+      this.Respuestas.p03,
+      this.Respuestas.p04,
+      this.Respuestas.p05,
+      this.Respuestas.p06,
+      this.Respuestas.p07,
+      this.Respuestas.p08,
+      this.Respuestas.p09,
+      this.Respuestas.p10,
+      this.Respuestas.p11,
+
+      );
+    }
+    console.log("Aca deberia estar evaluandose trayendo la api");
+
+  }
 
   RespuestaValorPregunta1(valorMarcado : number){ this.Respuestas.p01 =valorMarcado; }
   RespuestaValorPregunta2(valorMarcado : number){ this.Respuestas.p02 =valorMarcado; }

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { EvaluacionMotivacionService } from 'src/app/services/auroraapi/EvaluacionesPsicologicas/motivacion.service';
 
 @Component({
   selector: 'app-motivacion',
@@ -6,6 +7,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./motivacion.component.css']
 })
 export class MotivacionComponent implements OnInit {
+
+  EsPreTest = true;
+  EsPostTest = false;
+
+  pacienteId : number = 0;
+  psicologoId : number = 0;
 
   Respuestas : any =
   {
@@ -34,7 +41,74 @@ export class MotivacionComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  constructor() { }
+  constructor(private TestMotivacionService : EvaluacionMotivacionService) { }
+
+  EnviarRespuestasParaEvaluacionPre()
+  {
+
+    if(this.EsPreTest){
+    this.TestMotivacionService.PostAPI_EvaluarExamenMotivacionPreTest(
+      this.pacienteId,
+      this.psicologoId,
+      this.Respuestas.p01,
+      this.Respuestas.p02,
+      this.Respuestas.p03,
+      this.Respuestas.p04,
+      this.Respuestas.p05,
+      this.Respuestas.p06,
+      this.Respuestas.p07,
+      this.Respuestas.p08,
+      this.Respuestas.p09,
+      this.Respuestas.p10,
+      this.Respuestas.p11,
+      this.Respuestas.p12,
+      this.Respuestas.p13,
+      this.Respuestas.p14,
+      this.Respuestas.p15,
+      this.Respuestas.p16,
+      this.Respuestas.p17,
+      this.Respuestas.p18,
+      this.Respuestas.p19,
+      this.Respuestas.p20
+      );
+    }
+    console.log("Aca deberia estar evaluandose trayendo la api");
+
+  }
+
+  EnviarRespuestasParaEvaluacionPost()
+  {
+
+    if(this.EsPostTest){
+    this.TestMotivacionService.PostAPI_EvaluarExamenMotivacionPostTest(
+      this.pacienteId,
+      this.psicologoId,
+      this.Respuestas.p01,
+      this.Respuestas.p02,
+      this.Respuestas.p03,
+      this.Respuestas.p04,
+      this.Respuestas.p05,
+      this.Respuestas.p06,
+      this.Respuestas.p07,
+      this.Respuestas.p08,
+      this.Respuestas.p09,
+      this.Respuestas.p10,
+      this.Respuestas.p11,
+      this.Respuestas.p12,
+      this.Respuestas.p13,
+      this.Respuestas.p14,
+      this.Respuestas.p15,
+      this.Respuestas.p16,
+      this.Respuestas.p17,
+      this.Respuestas.p18,
+      this.Respuestas.p19,
+      this.Respuestas.p20,
+
+      );
+    }
+    console.log("Aca deberia estar evaluandose trayendo la api");
+
+  }
 
   //#region Funciones para las respuestas
 
