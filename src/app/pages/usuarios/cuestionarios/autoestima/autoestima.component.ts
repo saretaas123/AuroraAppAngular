@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { EvaluacionAutoestimaService } from 'src/app/services/auroraapi/EvaluacionesPsicologicas/autoestima.service';
 
 @Component({
   selector: 'app-autoestima',
@@ -6,6 +7,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./autoestima.component.css']
 })
 export class AutoestimaComponent implements OnInit {
+
+  EsPreTest = true;
+  EsPostTest = false;
 
   pacienteId : string = '0';
   psicologoId : string = '0';
@@ -37,23 +41,34 @@ export class AutoestimaComponent implements OnInit {
   };
 
   ngOnInit(): void {
+
   }
 
-  constructor() { }
+  constructor(private TestAutoestimaService : EvaluacionAutoestimaService) { }
 
-  RespuestaValorPregunta1(valorMarcado : number)
+  EnviarRespuestasParaEvaluacion()
   {
-    console.log('Antes de igual: Respuestas:');
-    console.log(this.Respuestas);
-     this.Respuestas.p01 =valorMarcado;
-    console.log('despues de igual: Respuestas:');    console.log(this.Respuestas);
+    /*
+    if(this.EsPreTest){
+    this.TestAutoestimaService.PostAPI_EvaluarExamenAutoestimaPreTest(
+      this.pacienteId,
+      this.psicologoId,
+      Respuestas.p01
+      );
+    }
+*/
+    console.log("Aca deberia estar evaluandose trayendo la api");
+
   }
-  RespuestaValorPregunta2(valorMarcado : number){ this.Respuestas.p02 =valorMarcado;console.log('despues de igual: Respuestas:');    console.log(this.Respuestas); }
-  RespuestaValorPregunta3(valorMarcado : number){ this.Respuestas.p03 =valorMarcado;console.log('despues de igual: Respuestas:');    console.log(this.Respuestas); }
-  RespuestaValorPregunta4(valorMarcado : number){ this.Respuestas.p04 =valorMarcado;console.log('despues de igual: Respuestas:');    console.log(this.Respuestas); }
-  RespuestaValorPregunta5(valorMarcado : number){ this.Respuestas.p05 =valorMarcado;console.log('despues de igual: Respuestas:');    console.log(this.Respuestas); }
-  RespuestaValorPregunta6(valorMarcado : number){ this.Respuestas.p06 =valorMarcado;console.log('despues de igual: Respuestas:');    console.log(this.Respuestas); }
-  RespuestaValorPregunta7(valorMarcado : number){ this.Respuestas.p07 =valorMarcado;console.log('despues de igual: Respuestas:');    console.log(this.Respuestas); }
+
+
+  RespuestaValorPregunta1(valorMarcado : number){this.Respuestas.p01 =valorMarcado;}
+  RespuestaValorPregunta2(valorMarcado : number){ this.Respuestas.p02 =valorMarcado;}
+  RespuestaValorPregunta3(valorMarcado : number){ this.Respuestas.p03 =valorMarcado;}
+  RespuestaValorPregunta4(valorMarcado : number){ this.Respuestas.p04 =valorMarcado;}
+  RespuestaValorPregunta5(valorMarcado : number){ this.Respuestas.p05 =valorMarcado;}
+  RespuestaValorPregunta6(valorMarcado : number){ this.Respuestas.p06 =valorMarcado;}
+  RespuestaValorPregunta7(valorMarcado : number){ this.Respuestas.p07 =valorMarcado;}
   RespuestaValorPregunta8(valorMarcado : number){ this.Respuestas.p08 =valorMarcado; }
   RespuestaValorPregunta9(valorMarcado : number){ this.Respuestas.p09 =valorMarcado; }
   RespuestaValorPregunta10(valorMarcado : number){ this.Respuestas.p10 =valorMarcado; }
