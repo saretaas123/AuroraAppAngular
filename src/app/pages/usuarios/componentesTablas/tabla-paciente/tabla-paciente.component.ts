@@ -7,8 +7,8 @@ import { DatePipe } from '@angular/common';
 import { MatDialog } from '@angular/material/dialog';
 import { EditarPacienteComponent } from '../editar-paciente/editar-paciente.component';
 
-var listUsuarios: Usuario[] = [
-  {dni:'',nombre: '', apellidos: '', edad: 0, preTest: 'Incompleto',proTest: 'Incompleto', pacienteId : '0'}
+var listUsuarios: any [] = [
+  {dni:'',nombre: '', apellidos: '', edad: 0, preTest: 'Incompleto',proTest: 'Incompleto', casoPacienteId: '0'}
 ];
 
 @Component({
@@ -26,6 +26,8 @@ export class TablaPacienteComponent implements OnInit {
   };
 
   public objTablaPacientes : any = [{
+    casoPacienteId : '0',
+    pacienteId : '0',
     examenPreTestAutoestimaCompletado: false,
     examenPreTestAutonomiaCompletado: false,
     examenPreTestMotivacionAlCambioCompletado: false,
@@ -61,7 +63,7 @@ export class TablaPacienteComponent implements OnInit {
 
     this.objTablaPacientes.forEach(
       (
-        element: { pacienteDni: any; pacienteNombres: any; pacienteApellidoPaterno: string; pacienteApellidoMaterno: string; pacienteFechaNacimiento: any; pacienteId: any;
+        element: { pacienteDni: any; pacienteNombres: any; pacienteApellidoPaterno: string; pacienteApellidoMaterno: string; pacienteFechaNacimiento: any; casoPacienteId: any;
           examenPreTestAutoestimaCompletado: boolean; examenPreTestAutonomiaCompletado: boolean; examenPreTestMotivacionAlCambioCompletado: boolean; examenPreTestTomaDecisionCompletado: boolean;
           examenPostTestAutoestimaCompletado: boolean; examenPostTestAutonomiaCompletado: boolean; examenPostTestMotivacionAlCambioCompletado: boolean; examenPostTestTomaDecisionCompletado: boolean;           }
         ) => {
@@ -115,7 +117,7 @@ export class TablaPacienteComponent implements OnInit {
             edad : temp_diferenciaDeEdad,
             preTest : temp_preTestStr,
             proTest : temp_postTestStr,
-            pacienteId : element.pacienteId});
+            casoPacienteId : element.casoPacienteId});
     });
 
     this.dataSource = new MatTableDataSource(listUsuarios);

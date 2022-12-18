@@ -18,26 +18,44 @@ export class PretestComponent implements OnInit {
   };
 
   public objPacienteFullInfo : any = {
-    nombres: '',
-    apellidoMaterno:'',
-    apellidoPaterno:'',
-    cantPacientes : 0,
+    apellidoMaterno : '',
+    apellidoPaterno: '',
     correo : '',
+    creadoEn : '',
+    creadoPor : '',
+    direccionUbigeo : '',
     dni : '',
-    especialidad : '',
-    numeroDeColegiaturaDelPeru : '',
-    psicologoId : 0,
+    fechaNacimiento : '',
+    id : '',
+    nombres : '',
+    siendoAtendido : '',
     telefono : '',
-    usuarioId : 0
+    tipoViolencia : '',
+    riesgo : '',
+    anoDeEvaluacion : '',
+    entidadProblema : '',
+    modalidadAdministrativo : '',
   };
 
 
   constructor(
     private route: ActivatedRoute,
-    private PsicologoService: PacienteService) { }
+    private PacienteService: PacienteService) { }
 
   ngOnInit(): void {
-    this.g_FromUser_PacienteId = this.route.snapshot.paramMap.get("pacienteId")??'0';
+    this.g_FromUser_PacienteId = this.route.snapshot.paramMap.get("casopacienteid")??'0';
+    this.ObtenerDatosPaciente();
+  }
+
+  ObtenerDatosPaciente()
+  {
+    this.PacienteService.GetPacienteFullInfoByCasoPacienteId(this.g_FromUser_PacienteId).subscribe(APIRpta =>
+      {
+        this.ApiFullobjPacienteFullInfo = APIRpta ;
+        this.objPacienteFullInfo = this.ApiFullobjPacienteFullInfo.rpta;
+        console.log(APIRpta);
+
+      });
   }
 
 }

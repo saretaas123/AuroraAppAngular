@@ -38,8 +38,8 @@ const routes:Routes=[
     {path:'usuarios',component:UsuariosComponent},
     {path:'reportes',component:ReportesComponent},
     {path:'crear-usuario/:psicologoid',component:CrearUsuarioComponent},
-    {path:'pretest/:pacienteid',component:PretestComponent},
-    {path:'protest/:pacienteid',component:ProtestComponent},
+    {path:'pretest/:casopacienteid',component:PretestComponent},
+    {path:'protest/:casopacienteid',component:ProtestComponent},
     {path:'autoestima/:pacienteid',component:AutoestimaComponent},
     {path:'autonomia/:pacienteid',component:AutonomiaComponent},
     {path:'decisiones/:pacienteid',component:DecisionesComponent},
@@ -53,7 +53,7 @@ const routes:Routes=[
     {path: 'resultados-decisiones-pro/:pacienteid',component:ResultadosDecisionesProComponent},
     {path:'resultados-motivacion-pro/:pacienteid',component:ResultadosMotivacionProComponent},
     //agregado recientemente
-    {path:'ver-resultados/:pacienteid',component:VerResumenComponent},
+    {path:'ver-resultados/:casopacienteid',component:VerResumenComponent},
 
     //agregado recientemente
     {path:'listapsicologo',component:PsicologosComponent},

@@ -43,7 +43,7 @@ export class VerResumenComponent implements OnInit {
   };
 
   ngOnInit(): void {
-    this.g_routeparam_PacienteId = this.route.snapshot.paramMap.get("pacienteid")??'0';
+    this.g_routeparam_PacienteId = this.route.snapshot.paramMap.get("casopacienteid")??'0';
     this.PintarLosDatosDelPacienteEnLaPantallaPrincipal(this.g_routeparam_PacienteId);
   }
 
@@ -56,11 +56,11 @@ export class VerResumenComponent implements OnInit {
 
   PintarLosDatosDelPacienteEnLaPantallaPrincipal(p_PacienteId : string)
   {
-      this.CasoPacienteService.GetCasoPaciente_CasoPaciente_ByPacienteId(p_PacienteId)
+      this.CasoPacienteService.GetCasoPacienteById(p_PacienteId)
       .subscribe( APIRpta => {
         this.objAPIRpta_Full = APIRpta;
         this.objAPIRpta_objPacienteFullInfo = this.objAPIRpta_Full.rpta;
-      })
+      });
   }
 
 }

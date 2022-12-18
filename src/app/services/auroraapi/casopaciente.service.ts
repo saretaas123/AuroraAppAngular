@@ -14,6 +14,14 @@ export class CasopacienteService {
     console.log('CasoPaciente Service working')
   }
 
+  GetCasoPacienteById(CasoPacienteId : string)
+  {
+      let headers = new HttpHeaders().set('Type-content','aplication/json')
+
+      return this.http.get(this._url + 'ObtenerCasoPacienteById/' +CasoPacienteId, { headers : headers});
+
+  }
+
   GetCasoPacienteByPsicologoId(PsicologoId : string)
   {
       let headers = new HttpHeaders().set('Type-content','aplication/json')

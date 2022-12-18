@@ -19,7 +19,23 @@ export class PacienteService {
     {
         let headers = new HttpHeaders().set('Type-content','aplication/json')
 
-        return this.http.get(this._url + 'ObtenerPsicologoFullInfoById/' +PacienteId, { headers : headers});
+        return this.http.get(this._url + 'ObtenerPacienteById/' +PacienteId, { headers : headers});
+
+    }
+
+    GetPacienteFullInfoById(PacienteId : string)
+    {
+        let headers = new HttpHeaders().set('Type-content','aplication/json')
+
+        return this.http.get(this._url + 'ObtenerPacienteFullInfoById/' +PacienteId, { headers : headers});
+
+    }
+
+    GetPacienteFullInfoByCasoPacienteId(CasoPacienteId : string)
+    {
+        let headers = new HttpHeaders().set('Type-content','aplication/json')
+
+        return this.http.get(this._url + 'ObtenerPacienteFullInfoByCasoPacienteId/' +CasoPacienteId, { headers : headers});
 
     }
 

@@ -57,10 +57,10 @@
                         <td mat-cell *matCellDef="let element" class="text-center">
 
                           <div *ngIf="element.preTest==='Completo'; else elseBlock">
-                            <button type="button" class="btn btn-success" routerLink="/dashboard/{{g_TablaPacienteComponent_PsicologoId}}/pretest/{{element.pacienteId}}">PreTest</button><!--Cuando es true-->
+                            <button type="button" class="btn btn-success" routerLink="/dashboard/{{g_TablaPacienteComponent_PsicologoId}}/pretest/{{element.casoPacienteId}}">PreTest</button><!--Cuando es true-->
                           </div>
                           <ng-template #elseBlock>
-                            <button type="button" class="btn btn-danger" routerLink="/dashboard/{{g_TablaPacienteComponent_PsicologoId}}/pretest/{{element.pacienteId}}">PreTest</button><!--Cuando es false-->
+                            <button type="button" class="btn btn-danger" routerLink="/dashboard/{{g_TablaPacienteComponent_PsicologoId}}/pretest/{{element.casoPacienteId}}">PreTest</button><!--Cuando es false-->
                           </ng-template>
 
                         </td>
@@ -72,10 +72,10 @@
                         <td mat-cell *matCellDef="let element" class="text-center">
 
                           <div *ngIf="element.proTest==='Completo'; else elseBlock">
-                            <button type="button" class="btn btn-success" routerLink="/dashboard/{{g_TablaPacienteComponent_PsicologoId}}/protest/{{element.pacienteId}}" >PostTest</button><!--cuando es true-->
+                            <button type="button" class="btn btn-success" routerLink="/dashboard/{{g_TablaPacienteComponent_PsicologoId}}/protest/{{element.casoPacienteId}}" >PostTest</button><!--cuando es true-->
                           </div>
                           <ng-template #elseBlock>
-                            <button type="button" class="btn btn-warning" routerLink="/dashboard/{{g_TablaPacienteComponent_PsicologoId}}/protest/{{element.pacienteId}}" >PosTest</button><!--Cuando es false-->
+                            <button type="button" class="btn btn-warning" routerLink="/dashboard/{{g_TablaPacienteComponent_PsicologoId}}/protest/{{element.casoPacienteId}}" >PosTest</button><!--Cuando es false-->
                           </ng-template>
                         </td>
                       </ng-container>
@@ -83,9 +83,9 @@
 
                       <ng-container matColumnDef="resumen">
                         <th mat-header-cell *matHeaderCellDef class="text-center"> Resumen</th>
-                        <td mat-cell *matCellDef="let element" class="text-center" > 
-                          <button type="button" class="btn btn-primary" routerLink="/dashboard/{{g_TablaPacienteComponent_PsicologoId}}/ver-resultados/{{element.pacienteId}}" >Ver Resumen</button>
-                        </td>                      
+                        <td mat-cell *matCellDef="let element" class="text-center" >
+                          <button type="button" class="btn btn-primary" routerLink="/dashboard/{{g_TablaPacienteComponent_PsicologoId}}/ver-resultados/{{element.casoPacienteId}}" >Ver Resumen</button>
+                        </td>
                       </ng-container>
 
 
@@ -93,7 +93,7 @@
                       <!-- Symbol Column -->
                       <ng-container matColumnDef="acciones">
                         <th mat-header-cell *matHeaderCellDef class="text-center"><i class="fas fa-mouse-pointer"></i></th>
-                        <td mat-cell *matCellDef="let element" class="text-center">                        
+                        <td mat-cell *matCellDef="let element" class="text-center">
                           <a class="pointer" style="color: #1f516f;" matTooltip="Editar usuario">
                             <mat-icon (click)="openDialog()">edit</mat-icon>
                           </a>
@@ -126,4 +126,4 @@
       </div>
       </div>
     </section>
-   
+
