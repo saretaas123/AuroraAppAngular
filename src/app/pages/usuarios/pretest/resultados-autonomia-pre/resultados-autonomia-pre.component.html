@@ -12,7 +12,7 @@
               <div class="row d-flex justify-content-center align-items-center h-100">
                 <div class="col col-lg-12 mb-4 mb-lg-0">
                   <div class="card mb-3" style="border-radius: .5rem;">
-                    <div class="row g-0">                                
+                    <div class="row g-0">
                       <div class="col-md-12">
                         <div class="card-body p-4">
                           <h6>Paciente</h6>
@@ -20,17 +20,17 @@
                           <div class="row pt-1">
                             <div class="col-4 mb-3">
                               <h6>Nombre Completo</h6>
-                              <p class="text-muted">Carla Maria Rojas Mendoza</p>
+                              <p class="text-muted">{{objAPIRpta_objPacienteFullInfo.pacienteNombres + ' ' + objAPIRpta_objPacienteFullInfo.pacienteApellidoPaterno + ' ' + objAPIRpta_objPacienteFullInfo.pacienteApellidoMaterno}}</p>
                             </div>
                             <div class="col-4 mb-3">
                               <h6>Dni</h6>
-                              <p class="text-muted">79635842</p>
+                              <p class="text-muted">{{objAPIRpta_objPacienteFullInfo.pacienteDni}}</p>
                             </div>
                             <div class="col-4 mb-3">
                               <h6>Resultado</h6>
-                              <p class="text-muted">BAJO</p>
+                              <p class="text-muted">{{objAPIRpta_objPacienteRespuestasCuestionarioAutonomiaPreFullInfo.sensacionDeControlPositiva}}</p>
                             </div>
-                          </div>                                                 
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -39,9 +39,9 @@
               </div>
             </div>
         </section>
-        </div>          
+        </div>
       </div>
-    </div><!-- /.container-fluid -->   
+    </div><!-- /.container-fluid -->
   </section>
 
 
@@ -58,82 +58,47 @@
                  <h1>Respuestas</h1>
                 </div>
                 <!-- /.card-header -->
-                <div class="card-body">                
+                <div class="card-body">
                   <app-tabla-resultados-cuestionario-autonomia-pre></app-tabla-resultados-cuestionario-autonomia-pre>
 
 
                   <div class="mat-elevation-z8">
-    
-                        <table class="table-responsive" mat-table [dataSource]="dataSource" >
-    
-                          <!-- Position Column -->
-                            <ng-container matColumnDef="controlPositivo">
-                              <th class="text-center" mat-header-cell *matHeaderCellDef> <b>Control positivo</b></th>
-                              <td class="text-center" mat-cell *matCellDef="let element"> {{element.controlPositivo}} </td>
-                            </ng-container>
-
-                            <!-- Name Column -->
-                            <ng-container matColumnDef="controlNegativo">
-                              <th class="text-center" mat-header-cell *matHeaderCellDef> <b>Control Negativo</b></th>
-                              <td class="text-center" mat-cell *matCellDef="let element"> {{element.controlNegativo}} </td>
-                            </ng-container>
-
-                            <!-- Weight Column -->
-                            <ng-container matColumnDef="deseoControl">
-                              <th class="text-center" mat-header-cell *matHeaderCellDef> <b>Deseo Control</b></th>
-                              <td class="text-center" mat-cell *matCellDef="let element"> {{element.deseoControl}} </td>
-                            </ng-container>
-
-                            <!-- Symbol Column -->
-                            <ng-container matColumnDef="controlInterno">
-                              <th class="text-center" mat-header-cell *matHeaderCellDef> <b>Control Interno </b></th>
-                              <td class="text-center" mat-cell *matCellDef="let element"> {{element.controlInterno}} </td>
-                            </ng-container>
-
-                            <!-- Symbol Column -->
-                            <ng-container matColumnDef="controlExterno">
-                                <th class="text-center" mat-header-cell *matHeaderCellDef> <b>Control Externo</b></th>
-                                <td class="text-center" mat-cell *matCellDef="let element"> {{element.controlExterno}} </td>
-                              </ng-container>
-
-                              <!-- Symbol Column -->
-                            <ng-container matColumnDef="sensacionControl">
-                                <th class="text-center" mat-header-cell *matHeaderCellDef> <b>Sensacion de Control</b></th>
-                                <td class="text-center" mat-cell *matCellDef="let element"> {{element.sensacionControl}} </td>
-                              </ng-container>
-
-                              <!-- Symbol Column -->
-                            <ng-container matColumnDef="deseo">
-                              <th class="text-center" mat-header-cell *matHeaderCellDef> <b>Deseo</b></th>
-                              <td class="text-center" mat-cell *matCellDef="let element"> {{element.deseo}} </td>
-                            </ng-container>
-
-                            <!-- Symbol Column -->
-                            <ng-container matColumnDef="agenteControlInterno">
-                              <th class="text-center" mat-header-cell *matHeaderCellDef> <b>Agente de Control Interno</b></th>
-                              <td class="text-center" mat-cell *matCellDef="let element"> {{element.agenteControlInterno}} </td>
-                            </ng-container>
-
-                            <!-- Symbol Column -->
-                            <ng-container matColumnDef="agenteControlExterno">
-                              <th class="text-center" mat-header-cell *matHeaderCellDef> <b>Agente de Control Externo</b></th>
-                              <td class="text-center" mat-cell *matCellDef="let element"> {{element.agenteControlExterno}} </td>
-                            </ng-container>
-
-
-
-                            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-                            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-                      
-                    
-                        </table>
-    
-                  
-                  
+                  <div class="table-responsive-sm">
+                    <table class="table table-bordered">
+                      <thead>
+                        <tr>
+                          <th class="text-center" scope="col">Control positivo</th>
+                          <th class="text-center" scope="col">Control Negativo</th>
+                          <th class="text-center" scope="col">Deseo Control</th>
+                          <th class="text-center" scope="col">Control Interno</th>
+                          <th class="text-center" scope="col">Control Externo</th>
+                          <th class="text-center" scope="col">Sensacion de Control</th>
+                          <th class="text-center" scope="col">Deseo</th>
+                          <th class="text-center" scope="col">Agente de Control Interno</th>
+                          <th class="text-center" scope="col">Agente de Control Externo</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td class="text-center">{{objAPIRpta_objPacienteRespuestasCuestionarioAutonomiaPreFullInfo.valorSensacionDeControlPositivo}}</td>
+                          <td class="text-center">{{objAPIRpta_objPacienteRespuestasCuestionarioAutonomiaPreFullInfo.valorSensacionDeControlNegativo}}</td>
+                          <td class="text-center">{{objAPIRpta_objPacienteRespuestasCuestionarioAutonomiaPreFullInfo.valorDeseoDeControl}}</td>
+                          <td class="text-center">{{objAPIRpta_objPacienteRespuestasCuestionarioAutonomiaPreFullInfo.valorControlInterno}}</td>
+                          <td class="text-center">{{objAPIRpta_objPacienteRespuestasCuestionarioAutonomiaPreFullInfo.valorControlExterno}}</td>
+                          <td class="text-center">{{objAPIRpta_objPacienteRespuestasCuestionarioAutonomiaPreFullInfo.sensacionDeControlPositiva}}</td>
+                          <td class="text-center">{{objAPIRpta_objPacienteRespuestasCuestionarioAutonomiaPreFullInfo.deseoDeControl}}</td>
+                          <td class="text-center">{{objAPIRpta_objPacienteRespuestasCuestionarioAutonomiaPreFullInfo.controlInterno}}</td>
+                          <td class="text-center">{{objAPIRpta_objPacienteRespuestasCuestionarioAutonomiaPreFullInfo.controlExterno}}</td>
+                        </tr>
+                      </tbody>
+                    </table>
                   </div>
-                  
-                
-                 
+                </div>
+
+
+
+
+
                 </div>
                 <!-- /.card-body -->
               </div>
@@ -143,14 +108,14 @@
           </div>
         </section>
 
- 
+
     </div>
     <nav class="navbar navbar-light bg-light justify-content-between">
       <a class="navbar-brand"></a>
-      <div class="form-inline">          
-        <button type="button" class="btn btn-secondary my-2 my-sm-0" routerLink="/dashboard/pretest">Regresar</button>          
+      <div class="form-inline">
+        <button type="button" class="btn btn-secondary my-2 my-sm-0" routerLink="/dashboard/pretest">Regresar</button>
       </div>
-    </nav> 
-  </section>   
+    </nav>
+  </section>
 
   </div>
