@@ -1,55 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { RespuestaAutoestimaService} from 'src/app/services/auroraapi/RespuestasPsicologicas/autoestima.service'
+import { ActivatedRoute } from '@angular/router';
 
-export interface PeriodicElement {
-  p1: string;
-  p2: string;
-  p3: string;
-  p4: string;
-  p5: string;
-  p6: string;
-  p7: string;
-  p8: string;
-  p9: string;
-  p10: string;
-  p11: string;
-  p12: string;
-  p13: string;
-  p14: string;
-  p15: string;
-  p16: string;
-  p17: string;
-  p18: string;
-  p19: string;
-  p20: string;
-  p21: string;
-  p22: string;
-}
 
-const ELEMENT_DATA: PeriodicElement[] = [
-  { p1: 'V',
-    p2: 'V',
-    p3: 'F',
-    p4: 'F',
-    p5: 'F',
-    p6: 'V',
-    p7: 'V',
-    p8: 'F',
-    p9: 'V',
-    p10: 'V',
-    p11: 'V',
-    p12: 'F',
-    p13: 'V',
-    p14: 'V',
-    p15: 'F',
-    p16: 'V',
-    p17: 'F',
-    p18: 'V',
-    p19: 'V',
-    p20: 'V',
-    p21: 'F',
-    p22: 'V',
-    }, 
-];
+
+
 
 @Component({
   selector: 'app-tabla-resultados-pro-auto',
@@ -57,12 +12,79 @@ const ELEMENT_DATA: PeriodicElement[] = [
   styleUrls: ['./tabla-resultados-pro-auto.component.css']
 })
 export class TablaResultadosProAutoComponent implements OnInit {
-  displayedColumns: string[] = ['p1','p2','p3','p4','p5','p6','p7','p8','p9','p10','p11','p12','p13','p14','p15','p16','p17','p18','p19','p20','p21','p22'];
-  dataSource = ELEMENT_DATA;
 
-  constructor() { }
+  g_routeparam_CasoPacienteId: string = '0';
+
+  //AUTOESTIMA Post RESPUESTAS
+  objAPIRpta_Full3 : any =
+  {
+    msnj : '',
+    rpta : {}
+  };
+
+  subeEstructuraApi3: any =
+  {
+    respuestas :  { },
+    significado : { },
+
+  }
+
+  objAPIRpta_objPacienteRespuestasCuestionarioAutoestimaPostRespuestasFullInfo : any =
+  {
+     casoPacienteId: 2,
+     p01: 0,
+     p02: 0,
+     p03: 0,
+     p04: 0,
+     p05: 0,
+     p06: 0,
+     p07: 0,
+     p08: 0,
+     p09: 0,
+     p10: 0,
+     p11: 0,
+     p12: 0,
+     p13: 0,
+     p14: 0,
+     p15: 0,
+     p16: 0,
+     p17: 0,
+     p18: 0,
+     p19: 0,
+     p20: 0,
+     p21: 0,
+     p22: 0,
+     id: 0,
+     creadoEn: null,
+     creadoPor: null,
+     editadoEn: null,
+     editadoPor: null,
+     estaEliminado: false
+
+  };
 
   ngOnInit(): void {
+    this.g_routeparam_CasoPacienteId = this.route.snapshot.paramMap.get("casopacienteid")??'0';
+      this.PintarLosDatosCuestionariosAutoestimaPostResultadosEnLaPatanllaPrincipal(this.g_routeparam_CasoPacienteId);
+
   }
+
+  constructor(
+    private RespuestaAutoestimaService : RespuestaAutoestimaService,
+    private route: ActivatedRoute
+  ) { }
+
+   //AUTOESTIMA PRE RESPUESTAS
+   PintarLosDatosCuestionariosAutoestimaPostResultadosEnLaPatanllaPrincipal(p_PacienteId : string)
+   {
+       this.RespuestaAutoestimaService.APIGet_RespuestasExamenAutoestimaPost(p_PacienteId)
+       .subscribe( APIRpta3 => {
+        this.objAPIRpta_Full3 = APIRpta3;
+        this.subeEstructuraApi3 = this.objAPIRpta_Full3.rpta;
+        this.objAPIRpta_objPacienteRespuestasCuestionarioAutoestimaPostRespuestasFullInfo = this.subeEstructuraApi3.respuestas;
+       });
+   }
+
+
 
 }

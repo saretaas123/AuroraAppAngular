@@ -1,33 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { RespuestaTomaDecionesService} from 'src/app/services/auroraapi/RespuestasPsicologicas/tomadecisiones.service'
+import { ActivatedRoute } from '@angular/router';
+import { CasopacienteService } from 'src/app/services/auroraapi/casopaciente.service';
 
-export interface PeriodicElement {
-  p1: number;
-  p2: number;
-  p3: number;
-  p4: number;
-  p5: number;
-  p6: number;
-  p7: number;
-  p8: number;
-  p9: number;
-  p10: number;
-  p11: number; 
-}
 
-const ELEMENT_DATA: PeriodicElement[] = [
-  { p1: 1,
-    p2: 2,
-    p3: 3,
-    p4: 3,
-    p5: 3,
-    p6: 2,
-    p7: 2,
-    p8: 3,
-    p9: 3,
-    p10: 3,
-    p11: 1   
-    }, 
-];
+
 
 @Component({
   selector: 'app-resultados-decisiones-pro',
@@ -36,12 +13,159 @@ const ELEMENT_DATA: PeriodicElement[] = [
 })
 export class ResultadosDecisionesProComponent implements OnInit {
 
-  displayedColumns: string[] = ['p1','p2','p3','p4','p5','p6','p7','p8','p9','p10','p11'];
-  dataSource = ELEMENT_DATA;
+  g_routeparam_CasoPacienteId: string = '0';
 
-  constructor() { }
+  //DATOS PACIENTES
+  objAPIRpta_Full : any =
+  {
+    msnj : '',
+    rpta : {}
+  };
 
-  ngOnInit(): void {
-  }
+  objAPIRpta_objPacienteFullInfo : any =
+  {
+    examenPreTestAutoestimaCompletado : false,
+    examenPreTestAutonomiaCompletado : false,
+    examenPreTestMotivacionAlCambioCompletado : false,
+    examenPreTestTomaDecisionCompletado : false,
+    examenPostTestAutoestimaCompletado : false,
+    examenPostTestAutonomiaCompletado : false,
+    examenPostTestMotivacionAlCambioCompletado : false,
+    examenPostTestTomaDecisionCompletado : false,
+    pacienteAnoDeEvaluacion : '',
+    pacienteApellidoMaterno : '',
+    pacienteApellidoPaterno : '',
+    pacienteCorreo : '',
+    pacienteDireccion : '',
+    pacienteDni : '',
+    pacienteFechaNacimiento : '',
+    pacienteId : '',
+    pacienteNombres : '',
+    pacienteRiesgo : '',
+    pacienteTipoViolencia : '',
+    pacienteTelefono : '',
+    psicologoId : '',
+  };
+
+//DECISIONES POST
+ objAPIRpta_Full2 : any =
+ {
+   msnj : '',
+   rpta : {}
+ };
+
+subeEstructuraApi : any =
+{
+  respuestas :  { },
+  significado : { },
+
+}
+
+objAPIRpta_objPacienteRespuestasCuestionarioDecisionesPostFullInfo : any =
+{
+
+  nivelTomaDeDecisiones: "IncipienteCapacidad"
+
+};
+
+ //DECISIONES POST RESPUESTAS
+ objAPIRpta_Full3 : any =
+ {
+   msnj : '',
+   rpta : {}
+ };
+
+ subeEstructuraApi3: any =
+ {
+   respuestas1 :  { },
+   significado1 : { },
+
+ }
+
+ objAPIRpta_objPacienteRespuestasCuestionarioDecisionesPostRespuestasFullInfo : any =
+ {
+
+    casoPacienteId: 2,
+    p01: 0,
+    p02: 0,
+    p03: 0,
+    p04: 0,
+    p05: 0,
+    p06: 0,
+    p07: 0,
+    p08: 0,
+    p09: 0,
+    p10: 0,
+    p11: 0,
+    p12: 0,
+    p13: 0,
+    p14: 0,
+    p15: 0,
+    p16: 0,
+    p17: 0,
+    p18: 0,
+    p19: 0,
+    p20: 0,
+    id: 0,
+    creadoEn: null,
+    creadoPor: null,
+    editadoEn: null,
+    editadoPor: null,
+    estaEliminado: false
+
+ };
+
+ ngOnInit(): void {
+  this.g_routeparam_CasoPacienteId = this.route.snapshot.paramMap.get("casopacienteid")??'0';
+    this.PintarLosDatosDelPacienteEnLaPantallaPrincipal(this.g_routeparam_CasoPacienteId);
+    this.PintarLosDatosCuestionariosDecionesPostEnLaPatanllaPrincipal(this.g_routeparam_CasoPacienteId);
+    this.PintarLosDatosCuestionariosDecisionesPostResultadosEnLaPatanllaPrincipal(this.g_routeparam_CasoPacienteId);
+}
+
+  constructor(
+    private CasoPacienteService : CasopacienteService,
+    private RespuestaTomaDecionesService : RespuestaTomaDecionesService,
+    private route: ActivatedRoute
+  ) { }
+
+     //DATOS PACIENTES
+     PintarLosDatosDelPacienteEnLaPantallaPrincipal(p_PacienteId : string)
+     {
+         this.CasoPacienteService.GetCasoPacienteById(p_PacienteId)
+         .subscribe( APIRpta => {
+           this.objAPIRpta_Full = APIRpta;
+           this.objAPIRpta_objPacienteFullInfo = this.objAPIRpta_Full.rpta;
+         });
+     }
+
+     //MOTIVACION POST
+    PintarLosDatosCuestionariosDecionesPostEnLaPatanllaPrincipal(p_PacienteId : string)
+    {
+      this.RespuestaTomaDecionesService.APIGet_RespuestasExamenTomaDecisionesPost(p_PacienteId)
+      .subscribe(APIRpta2 => {
+        /*console.log("apiRpta2:");
+        console.log(APIRpta2);*/
+        this.objAPIRpta_Full2 = APIRpta2;
+        this.subeEstructuraApi = this.objAPIRpta_Full2.rpta;
+        /*console.log("subeEstructuraApi:");
+        console.log(this.subeEstructuraApi);*/
+        this.objAPIRpta_objPacienteRespuestasCuestionarioDecisionesPostFullInfo = this.subeEstructuraApi.significado;
+        /*console.log("objAPIRpta_objPacienteRespuestasCuestionarioMotivacionPreFullInfo:");
+        console.log(this.objAPIRpta_objPacienteRespuestasCuestionarioMotivacionPreFullInfo);*/
+      });
+    }
+
+     //MOTIVACION POST RESPUESTAS
+     PintarLosDatosCuestionariosDecisionesPostResultadosEnLaPatanllaPrincipal(p_PacienteId : string)
+     {
+         this.RespuestaTomaDecionesService.APIGet_RespuestasExamenTomaDecisionesPost(p_PacienteId)
+         .subscribe( APIRpta3 => {
+          this.objAPIRpta_Full3 = APIRpta3;
+          this.subeEstructuraApi = this.objAPIRpta_Full3.rpta;
+          this.objAPIRpta_objPacienteRespuestasCuestionarioDecisionesPostRespuestasFullInfo = this.subeEstructuraApi.respuestas1;
+         });
+     }
+
+
 
 }

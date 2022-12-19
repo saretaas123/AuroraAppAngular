@@ -1,22 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { CasopacienteService } from 'src/app/services/auroraapi/casopaciente.service';
+import { RespuestaAutonomiaService} from 'src/app/services/auroraapi/RespuestasPsicologicas/autonomia.service'
 
-export interface PeriodicElement {
-  controlPositivo: number;
-  controlNegativo: number;
-  deseoControl: number;
-  controlInterno: number;
-  controlExterno:number;
-  sensacionControl:string;
-  deseo:string;
-  agenteControlInterno:string;
-  agenteControlExterno:string;
- 
-}
-
-const ELEMENT_DATA: PeriodicElement[] = [
-  {controlPositivo: 40, controlNegativo: 15, deseoControl: 39, controlInterno: 18,controlExterno:3,sensacionControl:'Negativo',deseo:'SI',agenteControlInterno:'SI',agenteControlExterno:'SI'},
- 
-];
 
 @Component({
   selector: 'app-resultados-autonomia-pro',
@@ -24,12 +10,91 @@ const ELEMENT_DATA: PeriodicElement[] = [
   styleUrls: ['./resultados-autonomia-pro.component.css']
 })
 export class ResultadosAutonomiaProComponent implements OnInit {
-  displayedColumns: string[] = ['controlPositivo', 'controlNegativo', 'deseoControl', 'controlInterno','controlExterno','sensacionControl','deseo','agenteControlInterno','agenteControlExterno'];
-  dataSource = ELEMENT_DATA;
 
-  constructor() { }
+  g_routeparam_CasoPacienteId: string = '0';
+
+  //DATOS PACIENTES
+  objAPIRpta_Full : any =
+  {
+    msnj : '',
+    rpta : {}
+  };
+
+  objAPIRpta_objPacienteFullInfo : any =
+  {
+    examenPreTestAutoestimaCompletado : false,
+    examenPreTestAutonomiaCompletado : false,
+    examenPreTestMotivacionAlCambioCompletado : false,
+    examenPreTestTomaDecisionCompletado : false,
+    examenPostTestAutoestimaCompletado : false,
+    examenPostTestAutonomiaCompletado : false,
+    examenPostTestMotivacionAlCambioCompletado : false,
+    examenPostTestTomaDecisionCompletado : false,
+    pacienteAnoDeEvaluacion : '',
+    pacienteApellidoMaterno : '',
+    pacienteApellidoPaterno : '',
+    pacienteCorreo : '',
+    pacienteDireccion : '',
+    pacienteDni : '',
+    pacienteFechaNacimiento : '',
+    pacienteId : '',
+    pacienteNombres : '',
+    pacienteRiesgo : '',
+    pacienteTipoViolencia : '',
+    pacienteTelefono : '',
+    psicologoId : '',
+  };
+
+   //AUTONOMIA Post
+   objAPIRpta_Full2 : any =
+   {
+     msnj : '',
+     rpta : {}
+   };
+
+  subeEstructuraApi : any =
+  {
+    respuestas :  { },
+    significado : { },
+
+  }
+
+  objAPIRpta_objPacienteRespuestasCuestionarioAutonomiaPostFullInfo : any =
+  {
+    valorSensacionDeControlPositivo: 0,
+    sensacionDeControlPositiva: "No Posee Sensacion De Control Positiva",
+    valorSensacionDeControlNegativo: 0,
+    sensacionDeControlNegativo: "No Posee Sensacion De Control Negativo",
+    valorDeseoDeControl: 0,
+    deseoDeControl: "No Posee Deseo De Control",
+    valorControlInterno: 0,
+    controlInterno: "No Posee Control Interno",
+    valorControlExterno: 0,
+    controlExterno: "No Posee Control Externo"
+
+  };
 
   ngOnInit(): void {
+    this.g_routeparam_CasoPacienteId = this.route.snapshot.paramMap.get("casopacienteid")??'0';
+    this.PintarLosDatosDelPacienteEnLaPantallaPrincipal(this.g_routeparam_CasoPacienteId);
   }
+
+  constructor(
+    private CasoPacienteService : CasopacienteService,
+    private RespuestaAutonomiaService : RespuestaAutonomiaService,
+    private route: ActivatedRoute
+  ) { }
+
+  //DATOS PACIENTES
+  PintarLosDatosDelPacienteEnLaPantallaPrincipal(p_PacienteId : string)
+  {
+      this.CasoPacienteService.GetCasoPacienteById(p_PacienteId)
+      .subscribe( APIRpta => {
+        this.objAPIRpta_Full = APIRpta;
+        this.objAPIRpta_objPacienteFullInfo = this.objAPIRpta_Full.rpta;
+      });
+  }
+
+
 
 }
