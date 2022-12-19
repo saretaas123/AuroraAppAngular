@@ -15,14 +15,13 @@ export class EvaluacionTomaDecisionesService {
             console.log('Evluacion Service Working')
         }
 
-        PostAPI_EvaluarExamenDecisionesPreTest(pacienteId: number, psicologoId : number, p01 : number,p02 : number,p03 : number,p04 : number
+        PostAPI_EvaluarExamenDecisionesPreTest(casoPacienteId: number, p01 : number,p02 : number,p03 : number,p04 : number
           ,p05 : number,p06 : number,p07 : number, p08 : number,p09 : number,p10 : number,p11 :number)
       {
           let headers = new HttpHeaders().set('Type-content','aplication/json')
 
           return this.http.post(this._url + 'EvaluarExamenTomaDecisionesPre', {
-              "pacienteId": pacienteId,
-              "psicologoId": psicologoId,
+              "casoPacienteId": casoPacienteId,
               "p01": p01,
               "p02": p02,
               "p03": p03,
@@ -38,14 +37,13 @@ export class EvaluacionTomaDecisionesService {
       }
 
 
-      PostAPI_EvaluarExamenDecisionesPostTest(pacienteId: number, psicologoId : number, p01 : number,p02 : number,p03 : number,p04 : number
+      PostAPI_EvaluarExamenDecisionesPostTest(casoPacienteId: number, p01 : number,p02 : number,p03 : number,p04 : number
         ,p05 : number,p06 : number,p07 : number, p08 : number,p09 : number,p10 : number,p11 :number)
     {
         let headers = new HttpHeaders().set('Type-content','aplication/json')
 
         return this.http.post(this._url + 'EvaluarExamenTomaDecisionesPost', {
-            "pacienteId": pacienteId,
-            "psicologoId": psicologoId,
+          "casoPacienteId": casoPacienteId,
             "p01": p01,
             "p02": p02,
             "p03": p03,

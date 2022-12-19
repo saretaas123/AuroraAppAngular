@@ -12,8 +12,7 @@ export class DecisionesPreComponent implements OnInit {
   EsPreTest = true;
   EsPostTest = false;
 
-  pacienteId : number = 0;
-  psicologoId : number = 0;
+  g_casoPacienteId : number = 0;
 
   Respuestas : any =
   {
@@ -40,8 +39,7 @@ export class DecisionesPreComponent implements OnInit {
 
     if(this.EsPreTest){
     this.TestTomaDecisionesService.PostAPI_EvaluarExamenDecisionesPreTest(
-      this.pacienteId,
-      this.psicologoId,
+      this.g_casoPacienteId,
       this.Respuestas.p01,
       this.Respuestas.p02,
       this.Respuestas.p03,

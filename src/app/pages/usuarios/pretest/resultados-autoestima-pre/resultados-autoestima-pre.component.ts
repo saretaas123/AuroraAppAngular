@@ -63,7 +63,8 @@ export class ResultadosAutoestimaPreComponent implements OnInit {
 
  objAPIRpta_objPacienteRespuestasCuestionarioAutoestimaPreFullInfo : any =
  {
-
+   totalBaremo : "-",
+   totalNumerico : "-",
    resultadoPrecontemplacion: "Muy Bajo",
    resultadoContemplacion: "Muy Bajo",
    resultadoAccion: "Muy Bajo",
@@ -82,15 +83,15 @@ export class ResultadosAutoestimaPreComponent implements OnInit {
 
   subeEstructuraApi3: any =
   {
-    respuestas1 :  { },
-    significado1 : { },
+    respuestas :  { },
+    significado : { },
 
   }
 
   objAPIRpta_objPacienteRespuestasCuestionarioAutoestimaPreRespuestasFullInfo : any =
   {
 
-     casoPacienteId: 2,
+     casoPacienteId: Number(this.g_routeparam_CasoPacienteId),
      p01: 0,
      p02: 0,
      p03: 0,
@@ -165,7 +166,7 @@ export class ResultadosAutoestimaPreComponent implements OnInit {
        .subscribe( APIRpta3 => {
         this.objAPIRpta_Full3 = APIRpta3;
         this.subeEstructuraApi3 = this.objAPIRpta_Full3.rpta;
-        this.objAPIRpta_objPacienteRespuestasCuestionarioAutoestimaPreRespuestasFullInfo = this.subeEstructuraApi3.respuestas1;
+        this.objAPIRpta_objPacienteRespuestasCuestionarioAutoestimaPreRespuestasFullInfo = this.subeEstructuraApi3.respuestas;
        });
    }
 

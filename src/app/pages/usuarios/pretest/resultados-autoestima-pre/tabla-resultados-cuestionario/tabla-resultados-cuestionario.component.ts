@@ -24,14 +24,13 @@ export class TablaResultadosCuestionarioComponent implements OnInit {
 
     subeEstructuraApi3: any =
     {
-      respuestas1 :  { },
-      significado1 : { },
+      respuestas :  { },
+      significado : { },
 
     }
 
     objAPIRpta_objPacienteRespuestasCuestionarioAutoestimaPreRespuestasFullInfo : any =
     {
-
        casoPacienteId: 2,
        p01: 0,
        p02: 0,
@@ -82,7 +81,7 @@ export class TablaResultadosCuestionarioComponent implements OnInit {
         .subscribe( APIRpta3 => {
          this.objAPIRpta_Full3 = APIRpta3;
          this.subeEstructuraApi3 = this.objAPIRpta_Full3.rpta;
-         this.objAPIRpta_objPacienteRespuestasCuestionarioAutoestimaPreRespuestasFullInfo = this.subeEstructuraApi3.respuestas1;
+         this.objAPIRpta_objPacienteRespuestasCuestionarioAutoestimaPreRespuestasFullInfo = this.subeEstructuraApi3.respuestas;
         });
     }
 

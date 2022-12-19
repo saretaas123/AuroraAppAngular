@@ -11,8 +11,7 @@ export class AutonomiaPreComponent implements OnInit {
   EsPreTest = true;
   EsPostTest = false;
 
-  pacienteId : number = 0;
-  psicologoId : number = 0;
+  g_casoPacienteId : number = 0;
 
   Resultados : any =
   {
@@ -57,8 +56,7 @@ export class AutonomiaPreComponent implements OnInit {
 
     if(this.EsPreTest){
     this.TestAutonomiaService.PostAPI_EvaluarExamenAutonomiaPreTest(
-      this.pacienteId,
-      this.psicologoId,
+      this.g_casoPacienteId,
       this.Resultados.p01,
       this.Resultados.p02,
       this.Resultados.p03,

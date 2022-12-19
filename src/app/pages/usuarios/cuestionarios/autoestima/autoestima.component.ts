@@ -11,8 +11,7 @@ export class AutoestimaComponent implements OnInit {
   EsPreTest = true;
   EsPostTest = false;
 
-  pacienteId : number = 0;
-  psicologoId : number = 0;
+  g_casoPacienteId : number = 0;
 
   Respuestas : any =
   {
@@ -51,8 +50,7 @@ export class AutoestimaComponent implements OnInit {
 
     if(this.EsPreTest){
     this.TestAutoestimaService.PostAPI_EvaluarExamenAutoestimaPreTest(
-      this.pacienteId,
-      this.psicologoId,
+      this.g_casoPacienteId,
       this.Respuestas.p01,
       this.Respuestas.p02,
       this.Respuestas.p03,
@@ -86,8 +84,7 @@ export class AutoestimaComponent implements OnInit {
 
     if(this.EsPostTest){
     this.TestAutoestimaService.PostAPI_EvaluarExamenAutoestimaPostTest(
-      this.pacienteId,
-      this.psicologoId,
+      this.g_casoPacienteId,
       this.Respuestas.p01,
       this.Respuestas.p02,
       this.Respuestas.p03,

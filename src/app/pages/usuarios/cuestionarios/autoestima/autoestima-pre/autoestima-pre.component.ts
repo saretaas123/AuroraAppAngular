@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { EvaluacionAutoestimaService } from 'src/app/services/auroraapi/EvaluacionesPsicologicas/autoestima.service';
 
 
@@ -12,8 +13,7 @@ export class AutoestimaPreComponent implements OnInit {
   EsPreTest = true;
   EsPostTest = false;
 
-  pacienteId : number = 0;
-  psicologoId : number = 0;
+  g_casoPacienteId : number = 0;
 
   Respuestas : any =
   {
@@ -42,18 +42,19 @@ export class AutoestimaPreComponent implements OnInit {
   };
 
   ngOnInit(): void {
+    this.g_casoPacienteId = Number(this.route.snapshot.paramMap.get("casopacienteid")??'0');
   }
 
 
-  constructor(private TestAutoestimaService : EvaluacionAutoestimaService) { }
+  constructor(private TestAutoestimaService : EvaluacionAutoestimaService,
+    private route: ActivatedRoute) { }
 
   EnviarRespuestasParaEvaluacionPre()
   {
 
     if(this.EsPreTest){
     this.TestAutoestimaService.PostAPI_EvaluarExamenAutoestimaPreTest(
-      this.pacienteId,
-      this.psicologoId,
+      this.g_casoPacienteId,
       this.Respuestas.p01,
       this.Respuestas.p02,
       this.Respuestas.p03,
@@ -76,9 +77,13 @@ export class AutoestimaPreComponent implements OnInit {
       this.Respuestas.p20,
       this.Respuestas.p21,
       this.Respuestas.p22,
-      );
+      ).subscribe(APIResponse =>
+        {
+          console.log("APIResponse:");
+          console.log(APIResponse);
+
+        });
     }
-    console.log("Aca deberia estar evaluandose trayendo la api");
 
   }
 

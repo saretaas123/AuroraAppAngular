@@ -11,8 +11,7 @@ export class MotivacionComponent implements OnInit {
   EsPreTest = true;
   EsPostTest = false;
 
-  pacienteId : number = 0;
-  psicologoId : number = 0;
+  g_casoPacienteId : number = 0;
 
   Respuestas : any =
   {
@@ -48,8 +47,7 @@ export class MotivacionComponent implements OnInit {
 
     if(this.EsPreTest){
     this.TestMotivacionService.PostAPI_EvaluarExamenMotivacionPreTest(
-      this.pacienteId,
-      this.psicologoId,
+      this.g_casoPacienteId,
       this.Respuestas.p01,
       this.Respuestas.p02,
       this.Respuestas.p03,
@@ -81,8 +79,7 @@ export class MotivacionComponent implements OnInit {
 
     if(this.EsPostTest){
     this.TestMotivacionService.PostAPI_EvaluarExamenMotivacionPostTest(
-      this.pacienteId,
-      this.psicologoId,
+      this.g_casoPacienteId,
       this.Respuestas.p01,
       this.Respuestas.p02,
       this.Respuestas.p03,
