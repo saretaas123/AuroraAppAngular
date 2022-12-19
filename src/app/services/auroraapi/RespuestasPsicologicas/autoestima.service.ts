@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core'
     providedIn: 'root'
 })
 
-export class EvaluacionAutoestimaService {
+export class RespuestaAutoestimaService {
 
   _url = 'https://localhost:7226/api/RespuestaTest/';
 
@@ -15,18 +15,18 @@ export class EvaluacionAutoestimaService {
           console.log('Evluacion Service Working')
       }
 
-  APIGet_RespuestasExamenMotivacionPre(CasoPacienteId : string)
+  APIGet_RespuestasExamenAutoestimaPre(CasoPacienteId : string)
   {
     let headers = new HttpHeaders().set('Type-content','aplication/json')
 
-    return this.http.get(this._url + 'RespuestasExamenMotivacionPre/' + CasoPacienteId, { headers : headers});
+    return this.http.get(this._url + 'RespuestasExamenAutoestimaPre/' + CasoPacienteId, { headers : headers});
   }
 
-  APIGet_RespuestasExamenMotivacionPost(CasoPacienteId : string)
+  APIGet_RespuestasExamenAutoestimaPost(CasoPacienteId : string)
   {
     let headers = new HttpHeaders().set('Type-content','aplication/json')
 
-    return this.http.get(this._url + 'RespuestasExamenMotivacionPost/' + CasoPacienteId, { headers : headers});
+    return this.http.get(this._url + 'RespuestasExamenAutoestimaPost/' + CasoPacienteId, { headers : headers});
 
   }
 

@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { CasopacienteService } from 'src/app/services/auroraapi/casopaciente.service';
+import { RespuestaAutonomiaService} from 'src/app/services/auroraapi/RespuestasPsicologicas/autonomia.service'
+
 
 export interface PeriodicElement {
   controlPositivo: number;

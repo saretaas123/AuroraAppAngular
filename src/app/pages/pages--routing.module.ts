@@ -22,6 +22,16 @@ import { ResultadosAutoestimaProComponent } from './usuarios/protest/resultados-
 import { ResultadosMotivacionProComponent} from './usuarios/protest/resultados-motivacion-pro/resultados-motivacion-pro.component';
 import { ResultadosDecisionesProComponent} from './usuarios/protest/resultados-decisiones-pro/resultados-decisiones-pro.component';
 import { VerResumenComponent} from './usuarios/ver-resumen/ver-resumen.component';
+//Cuestionarios
+import { AutoestimaPreComponent } from './usuarios/cuestionarios/autoestima/autoestima-pre/autoestima-pre.component';
+import { AutoestimaPostComponent } from './usuarios/cuestionarios/autoestima/autoestima-post/autoestima-post.component';
+import { AutonomiaPreComponent } from './usuarios/cuestionarios/autonomia/autonomia-pre/autonomia-pre.component';
+import { AutonomiaPostComponent } from './usuarios/cuestionarios/autonomia/autonomia-post/autonomia-post.component';
+import { DecisionesPreComponent } from './usuarios/cuestionarios/decisiones/decisiones-pre/decisiones-pre.component';
+import { DecisionesPostComponent } from './usuarios/cuestionarios/decisiones/decisiones-post/decisiones-post.component';
+import { MotivacionPreComponent } from './usuarios/cuestionarios/motivacion/motivacion-pre/motivacion-pre.component';
+import { MotivacionPostComponent } from './usuarios/cuestionarios/motivacion/motivacion-post/motivacion-post.component';
+
 
 import { PsicologosComponent } from './psicologos/psicologos.component';
 import { VerPacienteXPsicologoComponent} from './psicologos/ver-paciente-xpsicologo/ver-paciente-xpsicologo.component';
@@ -41,17 +51,25 @@ const routes:Routes=[
     {path:'pretest/:casopacienteid',component:PretestComponent},
     {path:'protest/:casopacienteid',component:ProtestComponent},
     {path:'autoestima/:pacienteid',component:AutoestimaComponent},
+    {path:'autoestima-pre/:pacienteid',component:AutoestimaPreComponent},
+    {path:'autoestima-post/:pacienteid',component:AutoestimaPostComponent},
     {path:'autonomia/:pacienteid',component:AutonomiaComponent},
+    {path:'autonomia-pre/:pacienteid',component:AutonomiaPreComponent},
+    {path:'autonomia-post/:pacienteid',component:AutonomiaPostComponent},
     {path:'decisiones/:pacienteid',component:DecisionesComponent},
+    {path:'decisiones-pre/:pacienteid',component:DecisionesPreComponent},
+    {path:'decisiones-post/:pacienteid',component:DecisionesPostComponent},
     {path:'motivacion/:pacienteid',component:MotivacionComponent},
-    {path:'resultados-autoestima-pre/:pacienteid',component:ResultadosAutoestimaPreComponent},
-    {path:'resultados-autonomia-pre/:pacienteid',component:ResultadosAutonomiaPreComponent},
-    {path:'resultados-motivacion-pre/:pacienteid',component:ResultadosMotivacionPreComponent},
-    {path:'resultados-decisiones-pre/:pacienteid',component:ResultadosDecisionesPreComponent},
-    {path:'resultados-autoestima-pro/:pacienteid',component:ResultadosAutoestimaProComponent},
-    {path:'resultados-autonomia-pro/:pacienteid',component:ResultadosAutonomiaProComponent},
-    {path: 'resultados-decisiones-pro/:pacienteid',component:ResultadosDecisionesProComponent},
-    {path:'resultados-motivacion-pro/:pacienteid',component:ResultadosMotivacionProComponent},
+    {path:'motivacion-pre/:pacienteid',component:MotivacionPreComponent},
+    {path:'motivacion-post/:pacienteid',component:MotivacionPostComponent},
+    {path:'resultados-autoestima-pre/:casopacienteid',component:ResultadosAutoestimaPreComponent},
+    {path:'resultados-autonomia-pre/:casopacienteid',component:ResultadosAutonomiaPreComponent},
+    {path:'resultados-motivacion-pre/:casopacienteid',component:ResultadosMotivacionPreComponent},
+    {path:'resultados-decisiones-pre/:casopacienteid',component:ResultadosDecisionesPreComponent},
+    {path:'resultados-autoestima-pro/:casopacienteid',component:ResultadosAutoestimaProComponent},
+    {path:'resultados-autonomia-pro/:casopacienteid',component:ResultadosAutonomiaProComponent},
+    {path: 'resultados-decisiones-pro/:casopacienteid',component:ResultadosDecisionesProComponent},
+    {path:'resultados-motivacion-pro/:casopacienteid',component:ResultadosMotivacionProComponent},
     //agregado recientemente
     {path:'ver-resultados/:casopacienteid',component:VerResumenComponent},
 

@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core'
     providedIn: 'root'
 })
 
-export class EvaluacionAutoestimaService {
+export class RespuestaTomaDecionesService {
 
   _url = 'https://localhost:7226/api/RespuestaTest/';
 

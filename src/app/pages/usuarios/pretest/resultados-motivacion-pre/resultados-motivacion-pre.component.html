@@ -10,7 +10,7 @@
                 <div class="row d-flex justify-content-center align-items-center h-100">
                   <div class="col col-lg-12 mb-4 mb-lg-0">
                     <div class="card mb-3" style="border-radius: .5rem;">
-                      <div class="row g-0">                                
+                      <div class="row g-0">
                         <div class="col-md-12">
                           <div class="card-body p-4">
                             <h6>Paciente</h6>
@@ -18,17 +18,17 @@
                             <div class="row pt-1">
                               <div class="col-4 mb-3">
                                 <h6>Nombre Completo</h6>
-                                <p class="text-muted">Carla Maria Rojas Mendoza</p>
+                                <p class="text-muted">{{objAPIRpta_objPacienteFullInfo.pacienteNombres + ' ' + objAPIRpta_objPacienteFullInfo.pacienteApellidoPaterno + ' ' + objAPIRpta_objPacienteFullInfo.pacienteApellidoMaterno}}</p>
                               </div>
                               <div class="col-4 mb-3">
                                 <h6>Dni</h6>
-                                <p class="text-muted">79635842</p>
+                                <p class="text-muted">{{objAPIRpta_objPacienteFullInfo.pacienteDni}}</p>
                               </div>
                               <div class="col-4 mb-3">
                                 <h6>Resultado</h6>
-                                <p class="text-muted">BAJO</p>
+                                <p class="text-muted">{{objAPIRpta_objPacienteRespuestasCuestionarioMotivacionPreFullInfo.resultadoPrecontemplacion}}</p>
                               </div>
-                            </div>                                                 
+                            </div>
                           </div>
                         </div>
                       </div>
@@ -37,14 +37,14 @@
                 </div>
               </div>
         </section>
-          </div>          
+          </div>
         </div>
-      </div><!-- /.container-fluid -->   
+      </div><!-- /.container-fluid -->
     </section>
-  
-  
-  
-  
+
+
+
+
     <section class="content">
       <div class="container-fluid">
         <section class="content">
@@ -54,134 +54,64 @@
                 <div class="card">
                   <div class="card-header text-center">
                     <h1>Respuestas</h1>
-                  </div>               
+                  </div>
                   <!-- /.card-header -->
                   <div class="card-body">
-                    <div class="mat-elevation-z8">    
-                        <table class="table-responsive" mat-table [dataSource]="dataSource" >
-                    
-                          <ng-container matColumnDef="p1">
-                            <th mat-header-cell *matHeaderCellDef><B>P1</B></th>
-                            <td  mat-cell *matCellDef="let element"> {{element.p1}} </td>
-                          </ng-container>
-                        
-                          <!-- Name Column -->
-                          <ng-container matColumnDef="p2">
-                            <th  mat-header-cell *matHeaderCellDef><B>P2</B></th>
-                            <td  mat-cell *matCellDef="let element"> {{element.p2}} </td>
-                          </ng-container>
-                        
-                          <!-- Weight Column -->
-                          <ng-container matColumnDef="p3">
-                            <th mat-header-cell *matHeaderCellDef><B>P3</B></th>
-                            <td  mat-cell *matCellDef="let element"> {{element.p3}} </td>
-                          </ng-container>
-                        
-                          <!-- Symbol Column -->
-                          <ng-container matColumnDef="p4">
-                            <th mat-header-cell *matHeaderCellDef><B>P4</B></th>
-                            <td  mat-cell *matCellDef="let element"> {{element.p4}} </td>
-                          </ng-container>
-                        
-                           <!-- Symbol Column -->
-                           <ng-container matColumnDef="p5">
-                              <th mat-header-cell *matHeaderCellDef><B>P5</B></th>
-                              <td  mat-cell *matCellDef="let element"> {{element.p5}} </td>
-                            </ng-container>
-                        
-                            <!-- Symbol Column -->
-                           <ng-container matColumnDef="p6">
-                              <th mat-header-cell *matHeaderCellDef><B>P6</B></th>
-                              <td  mat-cell *matCellDef="let element"> {{element.p6}} </td>
-                            </ng-container>
-                    
-                            <ng-container matColumnDef="p7">
-                              <th mat-header-cell *matHeaderCellDef><B>P7</B></th>
-                              <td  mat-cell *matCellDef="let element"> {{element.p7}} </td>
-                            </ng-container>
-                          
-                            <!-- Name Column -->
-                            <ng-container matColumnDef="p8">
-                              <th mat-header-cell *matHeaderCellDef><B>P8</B></th>
-                              <td  mat-cell *matCellDef="let element"> {{element.p8}} </td>
-                            </ng-container>
-                          
-                            <!-- Weight Column -->
-                            <ng-container matColumnDef="p9">
-                              <th mat-header-cell *matHeaderCellDef><B>P9</B></th>
-                              <td  mat-cell *matCellDef="let element"> {{element.p9}} </td>
-                            </ng-container>
-                          
-                            <!-- Symbol Column -->
-                            <ng-container matColumnDef="p10">
-                              <th mat-header-cell *matHeaderCellDef><B>P10</B></th>
-                              <td  mat-cell *matCellDef="let element"> {{element.p10}} </td>
-                            </ng-container>
-                          
-                             <!-- Symbol Column -->
-                             <ng-container matColumnDef="p11">
-                                <th mat-header-cell *matHeaderCellDef><B>P11</B></th>
-                                <td  mat-cell *matCellDef="let element"> {{element.p11}} </td>
-                              </ng-container>
-                          
-                              <!-- Symbol Column -->
-                             <ng-container matColumnDef="p12">
-                                <th mat-header-cell *matHeaderCellDef><B>P12</B></th>
-                                <td  mat-cell *matCellDef="let element"> {{element.p12}} </td>
-                              </ng-container>
-                    
-                              <ng-container matColumnDef="p13">
-                                <th mat-header-cell *matHeaderCellDef><B>P3</B></th>
-                                <td  mat-cell *matCellDef="let element"> {{element.p13}} </td>
-                              </ng-container>
-                            
-                              <!-- Name Column -->
-                              <ng-container matColumnDef="p14">
-                                <th mat-header-cell *matHeaderCellDef><B>P14</B></th>
-                                <td  mat-cell *matCellDef="let element"> {{element.p14}} </td>
-                              </ng-container>
-                            
-                              <!-- Weight Column -->
-                              <ng-container matColumnDef="p15">
-                                <th mat-header-cell *matHeaderCellDef><B>P15</B></th>
-                                <td  mat-cell *matCellDef="let element"> {{element.p15}} </td>
-                              </ng-container>
-                            
-                              <!-- Symbol Column -->
-                              <ng-container matColumnDef="p16">
-                                <th mat-header-cell *matHeaderCellDef><B>P16</B></th>
-                                <td  mat-cell *matCellDef="let element"> {{element.p16}} </td>
-                              </ng-container>
-                            
-                               <!-- Symbol Column -->
-                               <ng-container matColumnDef="p17">
-                                  <th mat-header-cell *matHeaderCellDef><B>P17</B></th>
-                                  <td  mat-cell *matCellDef="let element"> {{element.p17}} </td>
-                                </ng-container>
-                            
-                                <!-- Symbol Column -->
-                               <ng-container matColumnDef="p18">
-                                  <th mat-header-cell *matHeaderCellDef><B>P18</B></th>
-                                  <td  mat-cell *matCellDef="let element"> {{element.p18}} </td>
-                                </ng-container>
-                        
-                                <ng-container matColumnDef="p19">
-                                  <th mat-header-cell *matHeaderCellDef><B>P19</B></th>
-                                  <td  mat-cell *matCellDef="let element"> {{element.p19}} </td>
-                                </ng-container>
-                              
-                                <!-- Name Column -->
-                                <ng-container matColumnDef="p20">
-                                  <th mat-header-cell *matHeaderCellDef><B>P20</B></th>
-                                  <td  mat-cell *matCellDef="let element"> {{element.p20}} </td>
-                                </ng-container>                              
-                                    
-                            
-                        
-                          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-                          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>                 
-                        </table>              
-                    </div>             
+                    <div class="table-responsive-sm">
+                    <table class="table">
+                      <thead>
+                        <tr>
+                          <th class="text-center" scope="col">P1</th>
+                          <th class="text-center" scope="col">P2</th>
+                          <th class="text-center" scope="col">P3</th>
+                          <th class="text-center" scope="col">P4</th>
+                          <th class="text-center" scope="col">P5</th>
+                          <th class="text-center" scope="col">P6</th>
+                          <th class="text-center" scope="col">P7</th>
+                          <th class="text-center" scope="col">P8</th>
+                          <th class="text-center" scope="col">P9</th>
+                          <th class="text-center" scope="col">P10</th>
+                          <th class="text-center" scope="col">P11</th>
+                          <th class="text-center" scope="col">P12</th>
+                          <th class="text-center" scope="col">P13</th>
+                          <th class="text-center" scope="col">P14</th>
+                          <th class="text-center" scope="col">P15</th>
+                          <th class="text-center" scope="col">P16</th>
+                          <th class="text-center" scope="col">P17</th>
+                          <th class="text-center" scope="col">P18</th>
+                          <th class="text-center" scope="col">P19</th>
+                          <th class="text-center" scope="col">P20</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td class="text-center">{{objAPIRpta_objPacienteRespuestasCuestionarioMotivacionPreRespuestasFullInfo.p01}}</td>
+                          <td class="text-center">{{objAPIRpta_objPacienteRespuestasCuestionarioMotivacionPreRespuestasFullInfo.p02}}</td>
+                          <td class="text-center">{{objAPIRpta_objPacienteRespuestasCuestionarioMotivacionPreRespuestasFullInfo.p03}}</td>
+                          <td class="text-center">{{objAPIRpta_objPacienteRespuestasCuestionarioMotivacionPreRespuestasFullInfo.p04}}</td>
+                          <td class="text-center">{{objAPIRpta_objPacienteRespuestasCuestionarioMotivacionPreRespuestasFullInfo.p05}}</td>
+                          <td class="text-center">{{objAPIRpta_objPacienteRespuestasCuestionarioMotivacionPreRespuestasFullInfo.p06}}</td>
+                          <td class="text-center">{{objAPIRpta_objPacienteRespuestasCuestionarioMotivacionPreRespuestasFullInfo.p07}}</td>
+                          <td class="text-center">{{objAPIRpta_objPacienteRespuestasCuestionarioMotivacionPreRespuestasFullInfo.p08}}</td>
+                          <td class="text-center">{{objAPIRpta_objPacienteRespuestasCuestionarioMotivacionPreRespuestasFullInfo.p09}}</td>
+                          <td class="text-center">{{objAPIRpta_objPacienteRespuestasCuestionarioMotivacionPreRespuestasFullInfo.p10}}</td>
+                          <td class="text-center">{{objAPIRpta_objPacienteRespuestasCuestionarioMotivacionPreRespuestasFullInfo.p11}}</td>
+                          <td class="text-center">{{objAPIRpta_objPacienteRespuestasCuestionarioMotivacionPreRespuestasFullInfo.p12}}</td>
+                          <td class="text-center">{{objAPIRpta_objPacienteRespuestasCuestionarioMotivacionPreRespuestasFullInfo.p13}}</td>
+                          <td class="text-center">{{objAPIRpta_objPacienteRespuestasCuestionarioMotivacionPreRespuestasFullInfo.p14}}</td>
+                          <td class="text-center">{{objAPIRpta_objPacienteRespuestasCuestionarioMotivacionPreRespuestasFullInfo.p15}}</td>
+                          <td class="text-center">{{objAPIRpta_objPacienteRespuestasCuestionarioMotivacionPreRespuestasFullInfo.p16}}</td>
+                          <td class="text-center">{{objAPIRpta_objPacienteRespuestasCuestionarioMotivacionPreRespuestasFullInfo.p17}}</td>
+                          <td class="text-center">{{objAPIRpta_objPacienteRespuestasCuestionarioMotivacionPreRespuestasFullInfo.p18}}</td>
+                          <td class="text-center">{{objAPIRpta_objPacienteRespuestasCuestionarioMotivacionPreRespuestasFullInfo.p19}}</td>
+                          <td class="text-center">{{objAPIRpta_objPacienteRespuestasCuestionarioMotivacionPreRespuestasFullInfo.p20}}</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+
+
+
                   </div>
                   <!-- /.card-body -->
                 </div>
@@ -190,17 +120,17 @@
             </div>
             </div>
           </section>
-  
-   
+
+
       </div>
       <nav class="navbar navbar-light bg-light justify-content-between">
         <a class="navbar-brand"></a>
-        <div class="form-inline">          
-          <button type="button" class="btn btn-secondary my-2 my-sm-0" routerLink="/dashboard/pretest">Regresar</button>          
+        <div class="form-inline">
+          <button type="button" class="btn btn-secondary my-2 my-sm-0" routerLink="/dashboard/pretest">Regresar</button>
         </div>
-      </nav> 
-    </section>   
-  
+      </nav>
+    </section>
+
     </div>
-  
-  
+
+

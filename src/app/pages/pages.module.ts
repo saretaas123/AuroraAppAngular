@@ -63,6 +63,16 @@ import { ResultadosDecisionesProComponent } from './usuarios/protest/resultados-
 import { ResultadosMotivacionProComponent } from './usuarios/protest/resultados-motivacion-pro/resultados-motivacion-pro.component';
 import { EditarPacienteComponent } from './usuarios/componentesTablas/editar-paciente/editar-paciente.component';
 import { EditarPsicologoComponent } from './psicologos/editar-psicologo/editar-psicologo.component';
+import { AutoestimaPreComponent } from './usuarios/cuestionarios/autoestima/autoestima-pre/autoestima-pre.component';
+import { AutonomiaPreComponent } from './usuarios/cuestionarios/autonomia/autonomia-pre/autonomia-pre.component';
+import { DecisionesPreComponent } from './usuarios/cuestionarios/decisiones/decisiones-pre/decisiones-pre.component';
+import { MotivacionPreComponent } from './usuarios/cuestionarios/motivacion/motivacion-pre/motivacion-pre.component';
+import { MotivacionPostComponent } from './usuarios/cuestionarios/motivacion/motivacion-post/motivacion-post.component';
+import { AutonomiaPostComponent } from './usuarios/cuestionarios/autonomia/autonomia-post/autonomia-post.component';
+import { DecisionesPostComponent } from './usuarios/cuestionarios/decisiones/decisiones-post/decisiones-post.component';
+import { AutoestimaPostComponent } from './usuarios/cuestionarios/autoestima/autoestima-post/autoestima-post.component';
+
+
 
 
 
@@ -112,6 +122,16 @@ import { EditarPsicologoComponent } from './psicologos/editar-psicologo/editar-p
     EditarPacienteComponent,
     EditarPsicologoComponent,
     VerResumenComponent,
+    AutoestimaPreComponent,
+    AutonomiaPreComponent,
+    DecisionesPreComponent,
+    MotivacionPreComponent,
+    MotivacionPostComponent,
+    AutonomiaPostComponent,
+    DecisionesPostComponent,
+    AutoestimaPostComponent,
+
+
 
 
 
@@ -132,7 +152,7 @@ import { EditarPsicologoComponent } from './psicologos/editar-psicologo/editar-p
     HttpClientModule,
     MatDialogModule,
     MatSelectModule
-    
+
 
 
   ],

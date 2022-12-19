@@ -1,0 +1,859 @@
+<div class="content-wrapper">
+
+  <!-- Content Header (Page header) -->
+  <section class="content-header">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-sm-12">
+              <section class="vh-50" style="background-color: #f4f5f7;">
+                      <div class="container pt-5 h-100" >
+                        <div class="row d-flex justify-content-center align-items-center h-100">
+                          <div class="col col-lg-12 mb-4 mb-lg-0">
+                              <div class="card">
+                                  <div class="card-body" style="text-align:center ;">
+                                    <h1>Cuestionario Escala de Motivación para el Cambio</h1>
+                                  </div>
+                              </div>
+                          </div>
+                        </div>
+                      </div>
+                </section>
+          </div>
+        </div>
+      </div><!-- /.container-fluid -->
+    </section>
+
+
+
+    <section class="content-header">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-sm-12">
+              <section class="vh-50" style="background-color: #f4f5f7;">
+                      <div class="container pt-3 h-100" >
+                        <div class="row d-flex justify-content-center align-items-center h-100">
+                          <div class="col col-lg-10 mb-4 mb-lg-0">
+                              <div class="card">
+                                  <div class="card-header text-center">
+                                  <p style="text-align:justify ;">
+
+                                      Instrucciones:
+                                      A continuación, encontrarás una serie de frases que describen conductas, pensamientos y
+                                      sensaciones de algunas mujeres, respecto a la situación de violencia que viven, a los cuales
+                                      nos referiremos en adelante como “problema”. Léelas atentamente e indica qué tan de acuerdo
+                                      o en desacuerdo te encuentras con cada una de ellas en el presente. Por cada alternativa contesta
+                                      con un aspa (X) solo una de las opciones que se te brindan. Hay CINCO posibles respuestas para cada uno de los ítems:<br>
+                                      -	1 - “Muy en desacuerdo”<br>
+                                      -	2 - “En desacuerdo”<br>
+                                      -	3 - “Indecisa”<br>
+                                      -	4 - “De acuerdo”<br>
+                                      -	5 - “Muy de acuerdo<br>
+
+                                  </p>
+                                  </div>
+
+                                  <div class="card-body">
+                                      <form>
+                                          <!--PREGUNTA 3-->
+                                          <label>1. No tengo ningún problema que necesite cambiar. No tiene sentido que este aquí.
+                                              <span style="color:red ;">*</span></label>
+                                          <fieldset class="form-group">
+                                            <div class="row">
+                                              <div class="col-sm-10">
+                                                <div class="form-check">
+                                                  <input class="form-check-input" type="radio" name="pregunta3" id="gridRadios1" value="option1" (click)="RespuestaValorPregunta1(1)">
+                                                  <label class="form-check-label" for="gridRadios1">
+                                                      Muy en desacuerdo
+                                                  </label>
+                                                </div>
+                                                <div class="form-check">
+                                                  <input class="form-check-input" type="radio" name="pregunta3" id="gridRadios2" value="option2" (click)="RespuestaValorPregunta1(2)">
+                                                  <label class="form-check-label" for="gridRadios2">
+                                                      En desacuerdo
+                                                  </label>
+                                                </div>
+                                                <div class="form-check">
+                                                  <input class="form-check-input" type="radio" name="pregunta3" id="gridRadios2" value="option2" (click)="RespuestaValorPregunta1(3)">
+                                                  <label class="form-check-label" for="gridRadios2">
+                                                      Indeciso
+                                                  </label>
+                                                </div>
+                                                <div class="form-check">
+                                                  <input class="form-check-input" type="radio" name="pregunta3" id="gridRadios2" value="option2" (click)="RespuestaValorPregunta1(4)">
+                                                  <label class="form-check-label" for="gridRadios2">
+                                                      De acuerdo
+                                                  </label>
+                                                </div>
+                                                <div class="form-check">
+                                                  <input class="form-check-input" type="radio" name="pregunta3" id="gridRadios2" value="option2" (click)="RespuestaValorPregunta1(5)">
+                                                  <label class="form-check-label" for="gridRadios2">
+                                                      Muy de acuerdo
+                                                  </label>
+                                                </div>
+                                              </div>
+                                            </div>
+                                          </fieldset>
+
+                                          <!--PREGUNTA 4-->
+                                          <label>2. Estar aquí es casi una pérdida de tiempo ya que ese problema no es algo que tenga que ver conmigo<span style="color:red ;">*</span></label>
+                                          <fieldset class="form-group">
+                                              <div class="row">
+                                                  <div class="col-sm-10">
+                                                    <div class="form-check">
+                                                      <input class="form-check-input" type="radio" name="pregunta4" id="gridRadios1" value="option1" (click)="RespuestaValorPregunta2(1)">
+                                                      <label class="form-check-label" for="gridRadios1">
+                                                          Muy en desacuerdo
+                                                      </label>
+                                                    </div>
+                                                    <div class="form-check">
+                                                      <input class="form-check-input" type="radio" name="pregunta4" id="gridRadios2" value="option2" (click)="RespuestaValorPregunta2(2)">
+                                                      <label class="form-check-label" for="gridRadios2">
+                                                          En desacuerdo
+                                                      </label>
+                                                    </div>
+                                                    <div class="form-check">
+                                                      <input class="form-check-input" type="radio" name="pregunta4" id="gridRadios2" value="option2" (click)="RespuestaValorPregunta2(3)">
+                                                      <label class="form-check-label" for="gridRadios2">
+                                                          Indeciso
+                                                      </label>
+                                                    </div>
+                                                    <div class="form-check">
+                                                      <input class="form-check-input" type="radio" name="pregunta4" id="gridRadios2" value="option2" (click)="RespuestaValorPregunta2(4)">
+                                                      <label class="form-check-label" for="gridRadios2">
+                                                          De acuerdo
+                                                      </label>
+                                                    </div>
+                                                    <div class="form-check">
+                                                      <input class="form-check-input" type="radio" name="pregunta4" id="gridRadios2" value="option2" (click)="RespuestaValorPregunta2(5)">
+                                                      <label class="form-check-label" for="gridRadios2">
+                                                          Muy de acuerdo
+                                                      </label>
+                                                    </div>
+                                                  </div>
+                                                </div>
+                                          </fieldset>
+
+                                           <!--PREGUNTA 5-->
+                                           <label>3. Supongo que tengo problemas como cualquier otra persona, pero no es algo que yo necesite cambiar.<span style="color:red ;">*</span></label>
+                                           <fieldset class="form-group">
+                                              <div class="row">
+                                                  <div class="col-sm-10">
+                                                    <div class="form-check">
+                                                      <input class="form-check-input" type="radio" name="pregunta5" id="gridRadios1" value="option1" (click)="RespuestaValorPregunta3(1)">
+                                                      <label class="form-check-label" for="gridRadios1">
+                                                          Muy en desacuerdo
+                                                      </label>
+                                                    </div>
+                                                    <div class="form-check">
+                                                      <input class="form-check-input" type="radio" name="pregunta5" id="gridRadios2" value="option2" (click)="RespuestaValorPregunta3(2)">
+                                                      <label class="form-check-label" for="gridRadios2">
+                                                          En desacuerdo
+                                                      </label>
+                                                    </div>
+                                                    <div class="form-check">
+                                                      <input class="form-check-input" type="radio" name="pregunta5" id="gridRadios2" value="option2" (click)="RespuestaValorPregunta3(3)">
+                                                      <label class="form-check-label" for="gridRadios2">
+                                                          Indeciso
+                                                      </label>
+                                                    </div>
+                                                    <div class="form-check">
+                                                      <input class="form-check-input" type="radio" name="pregunta5" id="gridRadios2" value="option2" (click)="RespuestaValorPregunta3(4)">
+                                                      <label class="form-check-label" for="gridRadios2">
+                                                          De acuerdo
+                                                      </label>
+                                                    </div>
+                                                    <div class="form-check">
+                                                      <input class="form-check-input" type="radio" name="pregunta5" id="gridRadios2" value="option2" (click)="RespuestaValorPregunta3(5)">
+                                                      <label class="form-check-label" for="gridRadios2">
+                                                          Muy de acuerdo
+                                                      </label>
+                                                    </div>
+                                                  </div>
+                                                </div>
+                                           </fieldset>
+
+                                             <!--PREGUNTA 6-->
+                                             <label>4. Todas estas preguntas son aburridas, ¿Por qué la gente no puede olvidar sus problemas?.<span style="color:red ;">*</span></label>
+                                             <fieldset class="form-group">
+                                              <div class="row">
+                                                  <div class="col-sm-10">
+                                                    <div class="form-check">
+                                                      <input class="form-check-input" type="radio" name="pregunta6" id="gridRadios1" value="option1" (click)="RespuestaValorPregunta4(1)">
+                                                      <label class="form-check-label" for="gridRadios1">
+                                                          Muy en desacuerdo
+                                                      </label>
+                                                    </div>
+                                                    <div class="form-check">
+                                                      <input class="form-check-input" type="radio" name="pregunta6" id="gridRadios2" value="option2" (click)="RespuestaValorPregunta4(2)">
+                                                      <label class="form-check-label" for="gridRadios2">
+                                                          En desacuerdo
+                                                      </label>
+                                                    </div>
+                                                    <div class="form-check">
+                                                      <input class="form-check-input" type="radio" name="pregunta6" id="gridRadios2" value="option2" (click)="RespuestaValorPregunta4(3)">
+                                                      <label class="form-check-label" for="gridRadios2">
+                                                          Indeciso
+                                                      </label>
+                                                    </div>
+                                                    <div class="form-check">
+                                                      <input class="form-check-input" type="radio" name="pregunta6" id="gridRadios2" value="option2" (click)="RespuestaValorPregunta4(4)">
+                                                      <label class="form-check-label" for="gridRadios2">
+                                                          De acuerdo
+                                                      </label>
+                                                    </div>
+                                                    <div class="form-check">
+                                                      <input class="form-check-input" type="radio" name="pregunta6" id="gridRadios2" value="option2" (click)="RespuestaValorPregunta4(5)">
+                                                      <label class="form-check-label" for="gridRadios2">
+                                                          Muy de acuerdo
+                                                      </label>
+                                                    </div>
+                                                  </div>
+                                                </div>
+                                             </fieldset>
+
+                                             <!--PREGUNTA 7-->
+                                             <label>5. Prefiero vivir con mis problemas antes de intentar cambiarlos.<span style="color:red ;">*</span></label>
+                                             <fieldset class="form-group">
+                                              <div class="row">
+                                                  <div class="col-sm-10">
+                                                    <div class="form-check">
+                                                      <input class="form-check-input" type="radio" name="pregunta7" id="gridRadios1" value="option1" (click)="RespuestaValorPregunta5(1)">
+                                                      <label class="form-check-label" for="gridRadios1">
+                                                          Muy en desacuerdo
+                                                      </label>
+                                                    </div>
+                                                    <div class="form-check">
+                                                      <input class="form-check-input" type="radio" name="pregunta7" id="gridRadios2" value="option2" (click)="RespuestaValorPregunta5(2)">
+                                                      <label class="form-check-label" for="gridRadios2">
+                                                          En desacuerdo
+                                                      </label>
+                                                    </div>
+                                                    <div class="form-check">
+                                                      <input class="form-check-input" type="radio" name="pregunta7" id="gridRadios2" value="option2" (click)="RespuestaValorPregunta5(3)">
+                                                      <label class="form-check-label" for="gridRadios2">
+                                                          Indeciso
+                                                      </label>
+                                                    </div>
+                                                    <div class="form-check">
+                                                      <input class="form-check-input" type="radio" name="pregunta7" id="gridRadios2" value="option2" (click)="RespuestaValorPregunta5(4)">
+                                                      <label class="form-check-label" for="gridRadios2">
+                                                          De acuerdo
+                                                      </label>
+                                                    </div>
+                                                    <div class="form-check">
+                                                      <input class="form-check-input" type="radio" name="pregunta7" id="gridRadios2" value="option2" (click)="RespuestaValorPregunta5(5)">
+                                                      <label class="form-check-label" for="gridRadios2">
+                                                          Muy de acuerdo
+                                                      </label>
+                                                    </div>
+                                                  </div>
+                                                </div>
+                                             </fieldset>
+
+                                              <!--PREGUNTA 8-->
+                                              <label>6. Espero que aquí me ayuden a comprender mejor mi problema.<span style="color:red ;">*</span></label>
+                                              <fieldset class="form-group">
+                                                  <div class="row">
+                                                      <div class="col-sm-10">
+                                                        <div class="form-check">
+                                                          <input class="form-check-input" type="radio" name="pregunta8" id="gridRadios1" value="option1" (click)="RespuestaValorPregunta6(1)">
+                                                          <label class="form-check-label" for="gridRadios1">
+                                                              Muy en desacuerdo
+                                                          </label>
+                                                        </div>
+                                                        <div class="form-check">
+                                                          <input class="form-check-input" type="radio" name="pregunta8" id="gridRadios2" value="option2" (click)="RespuestaValorPregunta6(2)">
+                                                          <label class="form-check-label" for="gridRadios2">
+                                                              En desacuerdo
+                                                          </label>
+                                                        </div>
+                                                        <div class="form-check">
+                                                          <input class="form-check-input" type="radio" name="pregunta8" id="gridRadios2" value="option2" (click)="RespuestaValorPregunta6(3)">
+                                                          <label class="form-check-label" for="gridRadios2">
+                                                              Indeciso
+                                                          </label>
+                                                        </div>
+                                                        <div class="form-check">
+                                                          <input class="form-check-input" type="radio" name="pregunta8" id="gridRadios2" value="option2" (click)="RespuestaValorPregunta6(4)">
+                                                          <label class="form-check-label" for="gridRadios2">
+                                                              De acuerdo
+                                                          </label>
+                                                        </div>
+                                                        <div class="form-check">
+                                                          <input class="form-check-input" type="radio" name="pregunta8" id="gridRadios2" value="option2" (click)="RespuestaValorPregunta6(5)">
+                                                          <label class="form-check-label" for="gridRadios2">
+                                                              Muy de acuerdo
+                                                          </label>
+                                                        </div>
+                                                      </div>
+                                                    </div>
+                                              </fieldset>
+
+                                              <!--PREGUNTA 9-->
+                                              <label>7. Tengo un problema y pienso que debería intentar solucionarlo<span style="color:red ;">*</span></label>
+                                              <fieldset class="form-group">
+                                                  <div class="row">
+                                                      <div class="col-sm-10">
+                                                        <div class="form-check">
+                                                          <input class="form-check-input" type="radio" name="pregunta9" id="gridRadios1" value="option1" (click)="RespuestaValorPregunta7(1)">
+                                                          <label class="form-check-label" for="gridRadios1">
+                                                              Muy en desacuerdo
+                                                          </label>
+                                                        </div>
+                                                        <div class="form-check">
+                                                          <input class="form-check-input" type="radio" name="pregunta9" id="gridRadios2" value="option2" (click)="RespuestaValorPregunta7(2)">
+                                                          <label class="form-check-label" for="gridRadios2">
+                                                              En desacuerdo
+                                                          </label>
+                                                        </div>
+                                                        <div class="form-check">
+                                                          <input class="form-check-input" type="radio" name="pregunta9" id="gridRadios2" value="option2" (click)="RespuestaValorPregunta7(3)">
+                                                          <label class="form-check-label" for="gridRadios2">
+                                                              Indeciso
+                                                          </label>
+                                                        </div>
+                                                        <div class="form-check">
+                                                          <input class="form-check-input" type="radio" name="pregunta9" id="gridRadios2" value="option2" (click)="RespuestaValorPregunta7(4)">
+                                                          <label class="form-check-label" for="gridRadios2">
+                                                              De acuerdo
+                                                          </label>
+                                                        </div>
+                                                        <div class="form-check">
+                                                          <input class="form-check-input" type="radio" name="pregunta9" id="gridRadios2" value="option2" (click)="RespuestaValorPregunta7(5)">
+                                                          <label class="form-check-label" for="gridRadios2">
+                                                              Muy de acuerdo
+                                                          </label>
+                                                        </div>
+                                                      </div>
+                                                    </div>
+                                              </fieldset>
+
+                                               <!--PREGUNTA 10-->
+                                               <label>8. Desearía tener más ideas sobre cómo resolver mi problema.<span style="color:red ;">*</span></label>
+                                               <fieldset class="form-group">
+                                                  <div class="row">
+                                                      <div class="col-sm-10">
+                                                        <div class="form-check">
+                                                          <input class="form-check-input" type="radio" name="pregunta10" id="gridRadios1" value="option1" (click)="RespuestaValorPregunta8(1)">
+                                                          <label class="form-check-label" for="gridRadios1">
+                                                              Muy en desacuerdo
+                                                          </label>
+                                                        </div>
+                                                        <div class="form-check">
+                                                          <input class="form-check-input" type="radio" name="pregunta10" id="gridRadios2" value="option2" (click)="RespuestaValorPregunta8(2)">
+                                                          <label class="form-check-label" for="gridRadios2">
+                                                              En desacuerdo
+                                                          </label>
+                                                        </div>
+                                                        <div class="form-check">
+                                                          <input class="form-check-input" type="radio" name="pregunta10" id="gridRadios2" value="option2" (click)="RespuestaValorPregunta8(3)">
+                                                          <label class="form-check-label" for="gridRadios2">
+                                                              Indeciso
+                                                          </label>
+                                                        </div>
+                                                        <div class="form-check">
+                                                          <input class="form-check-input" type="radio" name="pregunta10" id="gridRadios2" value="option2" (click)="RespuestaValorPregunta8(4)">
+                                                          <label class="form-check-label" for="gridRadios2">
+                                                              De acuerdo
+                                                          </label>
+                                                        </div>
+                                                        <div class="form-check">
+                                                          <input class="form-check-input" type="radio" name="pregunta10" id="gridRadios2" value="option2" (click)="RespuestaValorPregunta8(5)">
+                                                          <label class="form-check-label" for="gridRadios2">
+                                                              Muy de acuerdo
+                                                          </label>
+                                                        </div>
+                                                      </div>
+                                                    </div>
+                                               </fieldset>
+
+                                              <!--PREGUNTA 11-->
+                                              <label>9. Quizá en este lugar me puedan ayudar con mi problema.<span style="color:red ;">*</span></label>
+                                              <fieldset class="form-group">
+                                                  <div class="row">
+                                                      <div class="col-sm-10">
+                                                        <div class="form-check">
+                                                          <input class="form-check-input" type="radio" name="pregunta11" id="gridRadios1" value="option1" (click)="RespuestaValorPregunta9(1)">
+                                                          <label class="form-check-label" for="gridRadios1">
+                                                              Muy en desacuerdo
+                                                          </label>
+                                                        </div>
+                                                        <div class="form-check">
+                                                          <input class="form-check-input" type="radio" name="pregunta11" id="gridRadios2" value="option2" (click)="RespuestaValorPregunta9(2)">
+                                                          <label class="form-check-label" for="gridRadios2">
+                                                              En desacuerdo
+                                                          </label>
+                                                        </div>
+                                                        <div class="form-check">
+                                                          <input class="form-check-input" type="radio" name="pregunta11" id="gridRadios2" value="option2" (click)="RespuestaValorPregunta9(3)">
+                                                          <label class="form-check-label" for="gridRadios2">
+                                                              Indeciso
+                                                          </label>
+                                                        </div>
+                                                        <div class="form-check">
+                                                          <input class="form-check-input" type="radio" name="pregunta11" id="gridRadios2" value="option2" (click)="RespuestaValorPregunta9(4)">
+                                                          <label class="form-check-label" for="gridRadios2">
+                                                              De acuerdo
+                                                          </label>
+                                                        </div>
+                                                        <div class="form-check">
+                                                          <input class="form-check-input" type="radio" name="pregunta11" id="gridRadios2" value="option2" (click)="RespuestaValorPregunta9(5)">
+                                                          <label class="form-check-label" for="gridRadios2">
+                                                              Muy de acuerdo
+                                                          </label>
+                                                        </div>
+                                                      </div>
+                                                    </div>
+                                              </fieldset>
+
+                                              <!--PREGUNTA 12-->
+                                              <label>10. Espero que alguien de aquí me pueda dar un buen consejo sobre mi problema.<span style="color:red ;">*</span></label>
+                                              <fieldset class="form-group">
+                                                <div class="row">
+                                                  <div class="col-sm-10">
+                                                    <div class="form-check">
+                                                      <input class="form-check-input" type="radio" name="pregunta12" id="gridRadios1" value="option1" (click)="RespuestaValorPregunta10(1)">
+                                                      <label class="form-check-label" for="gridRadios1">
+                                                          Muy en desacuerdo
+                                                      </label>
+                                                    </div>
+                                                    <div class="form-check">
+                                                      <input class="form-check-input" type="radio" name="pregunta12" id="gridRadios2" value="option2" (click)="RespuestaValorPregunta10(2)">
+                                                      <label class="form-check-label" for="gridRadios2">
+                                                          En desacuerdo
+                                                      </label>
+                                                    </div>
+                                                    <div class="form-check">
+                                                      <input class="form-check-input" type="radio" name="pregunta12" id="gridRadios2" value="option2" (click)="RespuestaValorPregunta10(3)">
+                                                      <label class="form-check-label" for="gridRadios2">
+                                                          Indeciso
+                                                      </label>
+                                                    </div>
+                                                    <div class="form-check">
+                                                      <input class="form-check-input" type="radio" name="pregunta12" id="gridRadios2" value="option2" (click)="RespuestaValorPregunta10(4)">
+                                                      <label class="form-check-label" for="gridRadios2">
+                                                          De acuerdo
+                                                      </label>
+                                                    </div>
+                                                    <div class="form-check">
+                                                      <input class="form-check-input" type="radio" name="pregunta12" id="gridRadios2" value="option2" (click)="RespuestaValorPregunta10(5)">
+                                                      <label class="form-check-label" for="gridRadios2">
+                                                          Muy de acuerdo
+                                                      </label>
+                                                    </div>
+                                                  </div>
+                                                </div>
+                                              </fieldset>
+
+                                               <!--PREGNTA 13-->
+                                               <label>11. A veces mi problema es difícil, pero estoy trabajando en ello.<span style="color:red ;">*</span></label>
+                                               <fieldset class="form-group">
+                                                <div class="row">
+                                                  <div class="col-sm-10">
+                                                    <div class="form-check">
+                                                      <input class="form-check-input" type="radio" name="pregunta13" id="gridRadios1" value="option1" (click)="RespuestaValorPregunta11(1)">
+                                                      <label class="form-check-label" for="gridRadios1">
+                                                          Muy en desacuerdo
+                                                      </label>
+                                                    </div>
+                                                    <div class="form-check">
+                                                      <input class="form-check-input" type="radio" name="pregunta13" id="gridRadios2" value="option2" (click)="RespuestaValorPregunta11(2)">
+                                                      <label class="form-check-label" for="gridRadios2">
+                                                          En desacuerdo
+                                                      </label>
+                                                    </div>
+                                                    <div class="form-check">
+                                                      <input class="form-check-input" type="radio" name="pregunta13" id="gridRadios2" value="option2" (click)="RespuestaValorPregunta11(3)">
+                                                      <label class="form-check-label" for="gridRadios2">
+                                                          Indeciso
+                                                      </label>
+                                                    </div>
+                                                    <div class="form-check">
+                                                      <input class="form-check-input" type="radio" name="pregunta13" id="gridRadios2" value="option2" (click)="RespuestaValorPregunta11(4)">
+                                                      <label class="form-check-label" for="gridRadios2">
+                                                          De acuerdo
+                                                      </label>
+                                                    </div>
+                                                    <div class="form-check">
+                                                      <input class="form-check-input" type="radio" name="pregunta13" id="gridRadios2" value="option2" (click)="RespuestaValorPregunta11(5)">
+                                                      <label class="form-check-label" for="gridRadios2">
+                                                          Muy de acuerdo
+                                                      </label>
+                                                    </div>
+                                                  </div>
+                                                </div>
+                                               </fieldset>
+
+                                                <!--PREGUNTA 14-->
+                                                <label>12. Estoy haciendo un gran esfuerzo para cambiar y solucionar mi problema.<span style="color:red ;">*</span></label>
+                                                <fieldset class="form-group">
+                                                  <div class="row">
+                                                    <div class="col-sm-10">
+                                                      <div class="form-check">
+                                                        <input class="form-check-input" type="radio" name="pregunta14" id="gridRadios1" value="option1" (click)="RespuestaValorPregunta12(1)">
+                                                        <label class="form-check-label" for="gridRadios1">
+                                                            Muy en desacuerdo
+                                                        </label>
+                                                      </div>
+                                                      <div class="form-check">
+                                                        <input class="form-check-input" type="radio" name="pregunta14" id="gridRadios2" value="option2" (click)="RespuestaValorPregunta12(2)">
+                                                        <label class="form-check-label" for="gridRadios2">
+                                                            En desacuerdo
+                                                        </label>
+                                                      </div>
+                                                      <div class="form-check">
+                                                        <input class="form-check-input" type="radio" name="pregunta14" id="gridRadios2" value="option2" (click)="RespuestaValorPregunta12(3)">
+                                                        <label class="form-check-label" for="gridRadios2">
+                                                            Indeciso
+                                                        </label>
+                                                      </div>
+                                                      <div class="form-check">
+                                                        <input class="form-check-input" type="radio" name="pregunta14" id="gridRadios2" value="option2" (click)="RespuestaValorPregunta12(4)">
+                                                        <label class="form-check-label" for="gridRadios2">
+                                                            De acuerdo
+                                                        </label>
+                                                      </div>
+                                                      <div class="form-check">
+                                                        <input class="form-check-input" type="radio" name="pregunta14" id="gridRadios2" value="option2" (click)="RespuestaValorPregunta12(5)">
+                                                        <label class="form-check-label" for="gridRadios2">
+                                                            Muy de acuerdo
+                                                        </label>
+                                                      </div>
+                                                    </div>
+                                                  </div>
+                                                </fieldset>
+
+                                                <!--PREGUNTA 15-->
+                                                <label>13. Aunque no siempre consigo el mejor resultado, al menos lo estoy intentandos.<span style="color:red ;">*</span></label>
+                                                <fieldset class="form-group">
+                                                  <div class="row">
+                                                    <div class="col-sm-10">
+                                                      <div class="form-check">
+                                                        <input class="form-check-input" type="radio" name="pregunta15" id="gridRadios1" value="option1" (click)="RespuestaValorPregunta13(1)">
+                                                        <label class="form-check-label" for="gridRadios1">
+                                                            Muy en desacuerdo
+                                                        </label>
+                                                      </div>
+                                                      <div class="form-check">
+                                                        <input class="form-check-input" type="radio" name="pregunta15" id="gridRadios2" value="option2" (click)="RespuestaValorPregunta13(2)">
+                                                        <label class="form-check-label" for="gridRadios2">
+                                                            En desacuerdo
+                                                        </label>
+                                                      </div>
+                                                      <div class="form-check">
+                                                        <input class="form-check-input" type="radio" name="pregunta15" id="gridRadios2" value="option2" (click)="RespuestaValorPregunta13(3)">
+                                                        <label class="form-check-label" for="gridRadios2">
+                                                            Indeciso
+                                                        </label>
+                                                      </div>
+                                                      <div class="form-check">
+                                                        <input class="form-check-input" type="radio" name="pregunta15" id="gridRadios2" value="option2" (click)="RespuestaValorPregunta13(4)">
+                                                        <label class="form-check-label" for="gridRadios2">
+                                                            De acuerdo
+                                                        </label>
+                                                      </div>
+                                                      <div class="form-check">
+                                                        <input class="form-check-input" type="radio" name="pregunta15" id="gridRadios2" value="option2" (click)="RespuestaValorPregunta13(5)">
+                                                        <label class="form-check-label" for="gridRadios2">
+                                                            Muy de acuerdo
+                                                        </label>
+                                                      </div>
+                                                    </div>
+                                                  </div>
+                                                </fieldset>
+
+                                                <!--PREGUNTA 16-->
+                                                <label>14.  He empezado a hacer frente a mi problema, pero me gustaría que me ayudaran.<span style="color:red ;">*</span></label>
+                                                <fieldset class="form-group">
+                                                  <div class="row">
+                                                    <div class="col-sm-10">
+                                                      <div class="form-check">
+                                                        <input class="form-check-input" type="radio" name="pregunta16" id="gridRadios1" value="option1" (click)="RespuestaValorPregunta14(1)">
+                                                        <label class="form-check-label" for="gridRadios1">
+                                                            Muy en desacuerdo
+                                                        </label>
+                                                      </div>
+                                                      <div class="form-check">
+                                                        <input class="form-check-input" type="radio" name="pregunta16" id="gridRadios2" value="option2" (click)="RespuestaValorPregunta14(2)">
+                                                        <label class="form-check-label" for="gridRadios2">
+                                                            En desacuerdo
+                                                        </label>
+                                                      </div>
+                                                      <div class="form-check">
+                                                        <input class="form-check-input" type="radio" name="pregunta16" id="gridRadios2" value="option2" (click)="RespuestaValorPregunta14(3)">
+                                                        <label class="form-check-label" for="gridRadios2">
+                                                            Indeciso
+                                                        </label>
+                                                      </div>
+                                                      <div class="form-check">
+                                                        <input class="form-check-input" type="radio" name="pregunta16" id="gridRadios2" value="option2" (click)="RespuestaValorPregunta14(4)">
+                                                        <label class="form-check-label" for="gridRadios2">
+                                                            De acuerdo
+                                                        </label>
+                                                      </div>
+                                                      <div class="form-check">
+                                                        <input class="form-check-input" type="radio" name="pregunta16" id="gridRadios2" value="option2" (click)="RespuestaValorPregunta14(5)">
+                                                        <label class="form-check-label" for="gridRadios2">
+                                                            Muy de acuerdo
+                                                        </label>
+                                                      </div>
+                                                    </div>
+                                                  </div>
+                                                </fieldset>
+
+                                                 <!--PREGUNTA 17-->
+                                                 <label>15. Cualquiera puede hablar sobre cambiar; pero yo estoy haciendo algo al respecto.<span style="color:red ;">*</span></label>
+                                                 <fieldset class="form-group">
+                                                  <div class="row">
+                                                    <div class="col-sm-10">
+                                                      <div class="form-check">
+                                                        <input class="form-check-input" type="radio" name="pregunta17" id="gridRadios1" value="option1" (click)="RespuestaValorPregunta15(1)">
+                                                        <label class="form-check-label" for="gridRadios1">
+                                                            Muy en desacuerdo
+                                                        </label>
+                                                      </div>
+                                                      <div class="form-check">
+                                                        <input class="form-check-input" type="radio" name="pregunta17" id="gridRadios2" value="option2" (click)="RespuestaValorPregunta15(2)">
+                                                        <label class="form-check-label" for="gridRadios2">
+                                                            En desacuerdo
+                                                        </label>
+                                                      </div>
+                                                      <div class="form-check">
+                                                        <input class="form-check-input" type="radio" name="pregunta17" id="gridRadios2" value="option2" (click)="RespuestaValorPregunta15(3)">
+                                                        <label class="form-check-label" for="gridRadios2">
+                                                            Indeciso
+                                                        </label>
+                                                      </div>
+                                                      <div class="form-check">
+                                                        <input class="form-check-input" type="radio" name="pregunta17" id="gridRadios2" value="option2" (click)="RespuestaValorPregunta15(4)">
+                                                        <label class="form-check-label" for="gridRadios2">
+                                                            De acuerdo
+                                                        </label>
+                                                      </div>
+                                                      <div class="form-check">
+                                                        <input class="form-check-input" type="radio" name="pregunta17" id="gridRadios2" value="option2" (click)="RespuestaValorPregunta15(5)">
+                                                        <label class="form-check-label" for="gridRadios2">
+                                                            Muy de acuerdo
+                                                        </label>
+                                                      </div>
+                                                    </div>
+                                                  </div>
+                                                 </fieldset>
+
+                                                 <!--PREGUNTA 18-->
+                                                 <label>16. Me preocupa recaer en un problema que ya he solucionado, por eso estoy aquí para pedir ayuda.<span style="color:red ;">*</span></label>
+                                                 <fieldset class="form-group">
+                                                  <div class="row">
+                                                    <div class="col-sm-10">
+                                                      <div class="form-check">
+                                                        <input class="form-check-input" type="radio" name="pregunta18" id="gridRadios1" value="option1" (click)="RespuestaValorPregunta16(1)">
+                                                        <label class="form-check-label" for="gridRadios1">
+                                                            Muy en desacuerdo
+                                                        </label>
+                                                      </div>
+                                                      <div class="form-check">
+                                                        <input class="form-check-input" type="radio" name="pregunta18" id="gridRadios2" value="option2" (click)="RespuestaValorPregunta16(2)">
+                                                        <label class="form-check-label" for="gridRadios2">
+                                                            En desacuerdo
+                                                        </label>
+                                                      </div>
+                                                      <div class="form-check">
+                                                        <input class="form-check-input" type="radio" name="pregunta18" id="gridRadios2" value="option2" (click)="RespuestaValorPregunta16(3)">
+                                                        <label class="form-check-label" for="gridRadios2">
+                                                            Indeciso
+                                                        </label>
+                                                      </div>
+                                                      <div class="form-check">
+                                                        <input class="form-check-input" type="radio" name="pregunta18" id="gridRadios2" value="option2" (click)="RespuestaValorPregunta16(4)">
+                                                        <label class="form-check-label" for="gridRadios2">
+                                                            De acuerdo
+                                                        </label>
+                                                      </div>
+                                                      <div class="form-check">
+                                                        <input class="form-check-input" type="radio" name="pregunta18" id="gridRadios2" value="option2" (click)="RespuestaValorPregunta16(5)">
+                                                        <label class="form-check-label" for="gridRadios2">
+                                                            Muy de acuerdo
+                                                        </label>
+                                                      </div>
+                                                    </div>
+                                                  </div>
+                                                 </fieldset>
+
+                                                 <!--PREGUNTA 19-->
+                                                 <label>17. He notado que aún me encuentro luchando con mi problema.<span style="color:red ;">*</span></label>
+                                                 <fieldset class="form-group">
+                                                  <div class="row">
+                                                    <div class="col-sm-10">
+                                                      <div class="form-check">
+                                                        <input class="form-check-input" type="radio" name="pregunta19" id="gridRadios1" value="option1" (click)="RespuestaValorPregunta17(1)">
+                                                        <label class="form-check-label" for="gridRadios1">
+                                                            Muy en desacuerdo
+                                                        </label>
+                                                      </div>
+                                                      <div class="form-check">
+                                                        <input class="form-check-input" type="radio" name="pregunta19" id="gridRadios2" value="option2" (click)="RespuestaValorPregunta17(2)">
+                                                        <label class="form-check-label" for="gridRadios2">
+                                                            En desacuerdo
+                                                        </label>
+                                                      </div>
+                                                      <div class="form-check">
+                                                        <input class="form-check-input" type="radio" name="pregunta19" id="gridRadios2" value="option2" (click)="RespuestaValorPregunta17(3)">
+                                                        <label class="form-check-label" for="gridRadios2">
+                                                            Indeciso
+                                                        </label>
+                                                      </div>
+                                                      <div class="form-check">
+                                                        <input class="form-check-input" type="radio" name="pregunta19" id="gridRadios2" value="option2" (click)="RespuestaValorPregunta17(4)">
+                                                        <label class="form-check-label" for="gridRadios2">
+                                                            De acuerdo
+                                                        </label>
+                                                      </div>
+                                                      <div class="form-check">
+                                                        <input class="form-check-input" type="radio" name="pregunta19" id="gridRadios2" value="option2" (click)="RespuestaValorPregunta17(5)">
+                                                        <label class="form-check-label" for="gridRadios2">
+                                                            Muy de acuerdo
+                                                        </label>
+                                                      </div>
+                                                    </div>
+                                                  </div>
+                                                 </fieldset>
+
+                                                  <!--PREGUNTA 20-->
+                                                  <label>18. Puede que ahora necesite un apoyo para ayudarme a mantener los cambios que he conseguido.<span style="color:red ;">*</span></label>
+                                                  <fieldset class="form-group">
+                                                    <div class="row">
+                                                      <div class="col-sm-10">
+                                                        <div class="form-check">
+                                                          <input class="form-check-input" type="radio" name="pregunta20" id="gridRadios1" value="option1" (click)="RespuestaValorPregunta18(1)">
+                                                          <label class="form-check-label" for="gridRadios1">
+                                                              Muy en desacuerdo
+                                                          </label>
+                                                        </div>
+                                                        <div class="form-check">
+                                                          <input class="form-check-input" type="radio" name="pregunta20" id="gridRadios2" value="option2" (click)="RespuestaValorPregunta18(2)">
+                                                          <label class="form-check-label" for="gridRadios2">
+                                                              En desacuerdo
+                                                          </label>
+                                                        </div>
+                                                        <div class="form-check">
+                                                          <input class="form-check-input" type="radio" name="pregunta20" id="gridRadios2" value="option2" (click)="RespuestaValorPregunta18(3)">
+                                                          <label class="form-check-label" for="gridRadios2">
+                                                              Indeciso
+                                                          </label>
+                                                        </div>
+                                                        <div class="form-check">
+                                                          <input class="form-check-input" type="radio" name="pregunta20" id="gridRadios2" value="option2" (click)="RespuestaValorPregunta18(4)">
+                                                          <label class="form-check-label" for="gridRadios2">
+                                                              De acuerdo
+                                                          </label>
+                                                        </div>
+                                                        <div class="form-check">
+                                                          <input class="form-check-input" type="radio" name="pregunta20" id="gridRadios2" value="option2" (click)="RespuestaValorPregunta18(5)">
+                                                          <label class="form-check-label" for="gridRadios2">
+                                                              Muy de acuerdo
+                                                          </label>
+                                                        </div>
+                                                      </div>
+                                                    </div>
+                                                  </fieldset>
+
+                                                  <!--PREGUNTA 21-->
+                                                  <label>19. Estoy aquí para prevenir la posibilidad de volver a caer en mi problema.<span style="color:red ;">*</span></label>
+                                                  <fieldset class="form-group">
+                                                    <div class="row">
+                                                      <div class="col-sm-10">
+                                                        <div class="form-check">
+                                                          <input class="form-check-input" type="radio" name="pregunta21" id="gridRadios1" value="option1" (click)="RespuestaValorPregunta19(1)">
+                                                          <label class="form-check-label" for="gridRadios1">
+                                                              Muy en desacuerdo
+                                                          </label>
+                                                        </div>
+                                                        <div class="form-check">
+                                                          <input class="form-check-input" type="radio" name="pregunta21" id="gridRadios2" value="option2" (click)="RespuestaValorPregunta19(2)">
+                                                          <label class="form-check-label" for="gridRadios2">
+                                                              En desacuerdo
+                                                          </label>
+                                                        </div>
+                                                        <div class="form-check">
+                                                          <input class="form-check-input" type="radio" name="pregunta21" id="gridRadios2" value="option2" (click)="RespuestaValorPregunta19(3)">
+                                                          <label class="form-check-label" for="gridRadios2">
+                                                              Indeciso
+                                                          </label>
+                                                        </div>
+                                                        <div class="form-check">
+                                                          <input class="form-check-input" type="radio" name="pregunta21" id="gridRadios2" value="option2" (click)="RespuestaValorPregunta19(4)">
+                                                          <label class="form-check-label" for="gridRadios2">
+                                                              De acuerdo
+                                                          </label>
+                                                        </div>
+                                                        <div class="form-check">
+                                                          <input class="form-check-input" type="radio" name="pregunta21" id="gridRadios2" value="option2" (click)="RespuestaValorPregunta19(5)">
+                                                          <label class="form-check-label" for="gridRadios2">
+                                                              Muy de acuerdo
+                                                          </label>
+                                                        </div>
+                                                      </div>
+                                                    </div>
+                                                  </fieldset>
+
+                                                  <!--PREGUNTA 22-->
+                                                  <label>20. Es preocupante, pero siento que podría reaparecer un problema que creía tener ya resuelto.<span style="color:red ;">*</span></label>
+                                                  <fieldset class="form-group">
+                                                    <div class="row">
+                                                      <div class="col-sm-10">
+                                                        <div class="form-check">
+                                                          <input class="form-check-input" type="radio" name="pregunta22" id="gridRadios1" value="option1" (click)="RespuestaValorPregunta20(1)">
+                                                          <label class="form-check-label" for="gridRadios1">
+                                                              Muy en desacuerdo
+                                                          </label>
+                                                        </div>
+                                                        <div class="form-check">
+                                                          <input class="form-check-input" type="radio" name="pregunta22" id="gridRadios2" value="option2" (click)="RespuestaValorPregunta20(2)">
+                                                          <label class="form-check-label" for="gridRadios2">
+                                                              En desacuerdo
+                                                          </label>
+                                                        </div>
+                                                        <div class="form-check">
+                                                          <input class="form-check-input" type="radio" name="pregunta22" id="gridRadios2" value="option2" (click)="RespuestaValorPregunta20(3)">
+                                                          <label class="form-check-label" for="gridRadios2">
+                                                              Indeciso
+                                                          </label>
+                                                        </div>
+                                                        <div class="form-check">
+                                                          <input class="form-check-input" type="radio" name="pregunta22" id="gridRadios2" value="option2" (click)="RespuestaValorPregunta20(4)">
+                                                          <label class="form-check-label" for="gridRadios2">
+                                                              De acuerdo
+                                                          </label>
+                                                        </div>
+                                                        <div class="form-check">
+                                                          <input class="form-check-input" type="radio" name="pregunta22" id="gridRadios2" value="option2" (click)="RespuestaValorPregunta20(5)">
+                                                          <label class="form-check-label" for="gridRadios2">
+                                                              Muy de acuerdo
+                                                          </label>
+                                                        </div>
+                                                      </div>
+                                                    </div>
+                                                  </fieldset>
+
+                                          <div class="form-group row">
+                                            <div class="col-sm-10">
+                                              <button type="submit" (click)="EnviarRespuestasParaEvaluacionPost()" class="btn btn-primary">Enviar</button>
+                                            </div>
+                                          </div>
+                                        </form>
+
+                                  </div>
+
+                              </div>
+                          </div>
+                        </div>
+                      </div>
+                </section>
+          </div>
+        </div>
+      </div><!-- /.container-fluid -->
+    </section>
+
+</div>
+
+

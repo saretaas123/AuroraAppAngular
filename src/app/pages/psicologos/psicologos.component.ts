@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { CrearPsicologoComponent } from './crear-psicologo/crear-psicologo.component';
 
 @Component({
   selector: 'app-psicologos',
@@ -7,9 +9,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PsicologosComponent implements OnInit {
 
-  constructor() { }
+  constructor(public dialog:MatDialog) { }
 
   ngOnInit(): void {
+  }
+
+  openDialog()
+  {
+    this.dialog.open(CrearPsicologoComponent);
   }
 
 }

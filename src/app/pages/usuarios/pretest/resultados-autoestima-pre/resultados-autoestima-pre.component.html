@@ -12,7 +12,7 @@
               <div class="row d-flex justify-content-center align-items-center h-100">
                 <div class="col col-lg-12 mb-4 mb-lg-0">
                   <div class="card mb-3" style="border-radius: .5rem;">
-                    <div class="row g-0">                                
+                    <div class="row g-0">
                       <div class="col-md-12">
                         <div class="card-body p-4">
                           <h6>Paciente</h6>
@@ -20,17 +20,17 @@
                           <div class="row pt-1">
                             <div class="col-4 mb-3">
                               <h6>Nombre Completo</h6>
-                              <p class="text-muted">Carla Maria Rojas Mendoza</p>
+                              <p class="text-muted">{{objAPIRpta_objPacienteFullInfo.pacienteNombres + ' ' + objAPIRpta_objPacienteFullInfo.pacienteApellidoPaterno + ' ' + objAPIRpta_objPacienteFullInfo.pacienteApellidoMaterno}}</p>
                             </div>
                             <div class="col-4 mb-3">
                               <h6>Dni</h6>
-                              <p class="text-muted">79635842</p>
+                              <p class="text-muted">{{objAPIRpta_objPacienteFullInfo.pacienteDni}}</p>
                             </div>
                             <div class="col-4 mb-3">
                               <h6>Resultado</h6>
-                              <p class="text-muted">BAJO</p>
+                              <p class="text-muted">{{objAPIRpta_objPacienteRespuestasCuestionarioAutoestimaPreFullInfo.nivelDeAutoestima}}</p>
                             </div>
-                          </div>                                                 
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -39,9 +39,9 @@
               </div>
             </div>
       </section>
-        </div>          
+        </div>
       </div>
-    </div><!-- /.container-fluid -->   
+    </div><!-- /.container-fluid -->
   </section>
 
 
@@ -56,57 +56,41 @@
               <div class="card">
                 <div class="card-header text-center">
                   <h1>Respuestas</h1>
-                </div>               
+                </div>
                 <!-- /.card-header -->
                 <div class="card-body">
                   <app-tabla-resultados-cuestionario></app-tabla-resultados-cuestionario>
 
-
-                  <div class="mat-elevation-z8">    
-                        <table class="table-responsive" mat-table [dataSource]="dataSource" >
-    
-                          <ng-container matColumnDef="totalNumerico">
-                            <th class="text-center" mat-header-cell *matHeaderCellDef> <b> Total Numerico </b> </th>
-                            <td class="text-center" mat-cell *matCellDef="let element"> {{element.totalNumerico}} </td>
-                          </ng-container>
-                        
-                          <!-- Name Column -->
-                          <ng-container matColumnDef="totalBaremo">
-                            <th class="text-center" mat-header-cell *matHeaderCellDef> <b> Total Baremo </b> </th>
-                            <td class="text-center" mat-cell *matCellDef="let element"> {{element.totalBaremo}} </td>
-                          </ng-container>
-                        
-                          <!-- Weight Column -->
-                          <ng-container matColumnDef="nivel">
-                            <th class="text-center" mat-header-cell *matHeaderCellDef> <b> Nivel </b> </th>
-                            <td class="text-center" mat-cell *matCellDef="let element"> {{element.nivel}} </td>
-                          </ng-container>
-                        
-                          <!-- Symbol Column -->
-                          <ng-container matColumnDef="siMismo">
-                            <th class="text-center" mat-header-cell *matHeaderCellDef> <b> Si Mismo </b> </th>
-                            <td class="text-center" mat-cell *matCellDef="let element"> {{element.siMismo}} </td>
-                          </ng-container>
-                        
-                           <!-- Symbol Column -->
-                           <ng-container matColumnDef="social">
-                              <th class="text-center" mat-header-cell *matHeaderCellDef> <b> Social </b> </th>
-                              <td class="text-center" mat-cell *matCellDef="let element"> {{element.social}} </td>
-                            </ng-container>
-                        
-                            <!-- Symbol Column -->
-                           <ng-container matColumnDef="familiar">
-                              <th class="text-center" mat-header-cell *matHeaderCellDef> <b> Familiar </b> </th>
-                              <td class="text-center" mat-cell *matCellDef="let element"> {{element.familiar}} </td>
-                            </ng-container>
-                        
-                          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-                          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>                 
-                        </table>              
+                  <div class="table-responsive-sm">
+                    <table class="table">
+                      <thead>
+                        <tr>
+                          <th class="text-center" scope="col">Total Numerico</th>
+                          <th class="text-center" scope="col">Total Baremo</th>
+                          <th class="text-center" scope="col">Nivel</th>
+                          <th class="text-center" scope="col">Si mismo</th>
+                          <th class="text-center" scope="col">Social</th>
+                          <th class="text-center" scope="col">Familiar</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td class="text-center"></td>
+                          <td class="text-center"></td>
+                          <td class="text-center">{{objAPIRpta_objPacienteRespuestasCuestionarioAutoestimaPreFullInfo.nivelDeAutoestima}}</td>
+                          <td class="text-center">{{objAPIRpta_objPacienteRespuestasCuestionarioAutoestimaPreFullInfo.sumaParaSiMismo}}</td>
+                          <td class="text-center">{{objAPIRpta_objPacienteRespuestasCuestionarioAutoestimaPreFullInfo.sumaParaSocial}}</td>
+                          <td class="text-center">{{objAPIRpta_objPacienteRespuestasCuestionarioAutoestimaPreFullInfo.sumaParaFamiliar}}</td>
+                        </tr>
+                      </tbody>
+                    </table>
                   </div>
-                  
-                
-                 
+
+
+
+
+
+
                 </div>
                 <!-- /.card-body -->
               </div>
@@ -116,15 +100,15 @@
           </div>
         </section>
 
- 
+
     </div>
     <nav class="navbar navbar-light bg-light justify-content-between">
       <a class="navbar-brand"></a>
-      <div class="form-inline">          
-        <button type="button" class="btn btn-secondary my-2 my-sm-0" routerLink="/dashboard/pretest">Regresar</button>          
+      <div class="form-inline">
+        <button type="button" class="btn btn-secondary my-2 my-sm-0" routerLink="/dashboard/pretest">Regresar</button>
       </div>
-    </nav> 
-  </section>   
+    </nav>
+  </section>
 
   </div>
 
