@@ -48,7 +48,7 @@ export class ResultadosAutoestimaPreComponent implements OnInit {
   };
 
   //AUTOESTIMA PRE
-  objAPIRpta_Full2 : any =
+  objAPIRpta_TablasRpta : any =
   {
     msnj : '',
     rpta : {}
@@ -72,26 +72,10 @@ export class ResultadosAutoestimaPreComponent implements OnInit {
 
  };
 
-
-
-  //AUTOESTIMA PRE RESPUESTAS
-  objAPIRpta_Full3 : any =
-  {
-    msnj : '',
-    rpta : {}
-  };
-
-  subeEstructuraApi3: any =
-  {
-    respuestas :  { },
-    significado : { },
-
-  }
-
   objAPIRpta_objPacienteRespuestasCuestionarioAutoestimaPreRespuestasFullInfo : any =
   {
-
-     casoPacienteId: Number(this.g_routeparam_CasoPacienteId),
+    id: 0,
+     casoPacienteId: '0',
      p01: 0,
      p02: 0,
      p03: 0,
@@ -114,21 +98,18 @@ export class ResultadosAutoestimaPreComponent implements OnInit {
      p20: 0,
      p21: 0,
      p22: 0,
-     id: 0,
      creadoEn: null,
      creadoPor: null,
      editadoEn: null,
      editadoPor: null,
      estaEliminado: false
-
   };
 
 
   ngOnInit(): void {
     this.g_routeparam_CasoPacienteId = this.route.snapshot.paramMap.get("casopacienteid")??'0';
     this.PintarLosDatosDelPacienteEnLaPantallaPrincipal(this.g_routeparam_CasoPacienteId);
-    this.PintarLosDatosCuestionariosAutoestimaPreEnLaPatanllaPrincipal(this.g_routeparam_CasoPacienteId);
-    this.PintarLosDatosCuestionariosAutoestimaPreResultadosEnLaPatanllaPrincipal(this.g_routeparam_CasoPacienteId);
+    this.PintarTablasDeCuestionariosAutoestimaPreEnLaPantallaPrincipal(this.g_routeparam_CasoPacienteId);
   }
 
 
@@ -139,9 +120,9 @@ export class ResultadosAutoestimaPreComponent implements OnInit {
   ) { }
 
    //DATOS PACIENTES
-   PintarLosDatosDelPacienteEnLaPantallaPrincipal(p_PacienteId : string)
+   PintarLosDatosDelPacienteEnLaPantallaPrincipal(p_CasoPacienteId : string)
    {
-       this.CasoPacienteService.GetCasoPacienteById(p_PacienteId)
+       this.CasoPacienteService.GetCasoPacienteById(p_CasoPacienteId)
        .subscribe( APIRpta => {
          this.objAPIRpta_Full = APIRpta;
          this.objAPIRpta_objPacienteFullInfo = this.objAPIRpta_Full.rpta;
@@ -149,25 +130,15 @@ export class ResultadosAutoestimaPreComponent implements OnInit {
    }
 
    //AUTOESTIMA PRE
-  PintarLosDatosCuestionariosAutoestimaPreEnLaPatanllaPrincipal(p_PacienteId : string)
+  PintarTablasDeCuestionariosAutoestimaPreEnLaPantallaPrincipal(p_CasoPacienteId : string)
   {
-    this.RespuestaAutoestimaService.APIGet_RespuestasExamenAutoestimaPre(p_PacienteId)
-    .subscribe(APIRpta2 => {
-      this.objAPIRpta_Full2 = APIRpta2;
-      this.subeEstructuraApi = this.objAPIRpta_Full2.rpta;
+    this.RespuestaAutoestimaService.APIGet_RespuestasExamenAutoestimaPre(p_CasoPacienteId)
+    .subscribe( APIRpta2 => {
+      this.objAPIRpta_TablasRpta = APIRpta2;
+      this.subeEstructuraApi = this.objAPIRpta_TablasRpta.rpta;
+      this.objAPIRpta_objPacienteRespuestasCuestionarioAutoestimaPreRespuestasFullInfo = this.subeEstructuraApi.respuestas;
       this.objAPIRpta_objPacienteRespuestasCuestionarioAutoestimaPreFullInfo = this.subeEstructuraApi.significado;
     });
   }
-
-   //AUTOESTIMA PRE RESPUESTAS
-   PintarLosDatosCuestionariosAutoestimaPreResultadosEnLaPatanllaPrincipal(p_PacienteId : string)
-   {
-       this.RespuestaAutoestimaService.APIGet_RespuestasExamenAutoestimaPre(p_PacienteId)
-       .subscribe( APIRpta3 => {
-        this.objAPIRpta_Full3 = APIRpta3;
-        this.subeEstructuraApi3 = this.objAPIRpta_Full3.rpta;
-        this.objAPIRpta_objPacienteRespuestasCuestionarioAutoestimaPreRespuestasFullInfo = this.subeEstructuraApi3.respuestas;
-       });
-   }
 
   }

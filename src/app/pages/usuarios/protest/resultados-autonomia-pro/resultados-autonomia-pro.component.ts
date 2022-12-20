@@ -46,7 +46,7 @@ export class ResultadosAutonomiaProComponent implements OnInit {
   };
 
    //AUTONOMIA Post
-   objAPIRpta_Full2 : any =
+   objAPIRpta_TablasRpta : any =
    {
      msnj : '',
      rpta : {}
@@ -77,6 +77,7 @@ export class ResultadosAutonomiaProComponent implements OnInit {
   ngOnInit(): void {
     this.g_routeparam_CasoPacienteId = this.route.snapshot.paramMap.get("casopacienteid")??'0';
     this.PintarLosDatosDelPacienteEnLaPantallaPrincipal(this.g_routeparam_CasoPacienteId);
+    this.PintarTablasDeCuestionariosAutonomiaPostEnLaPantallaPrincipal(this.g_routeparam_CasoPacienteId);
   }
 
   constructor(
@@ -86,14 +87,26 @@ export class ResultadosAutonomiaProComponent implements OnInit {
   ) { }
 
   //DATOS PACIENTES
-  PintarLosDatosDelPacienteEnLaPantallaPrincipal(p_PacienteId : string)
+  PintarLosDatosDelPacienteEnLaPantallaPrincipal(p_CasoPacienteId : string)
   {
-      this.CasoPacienteService.GetCasoPacienteById(p_PacienteId)
+      this.CasoPacienteService.GetCasoPacienteById(p_CasoPacienteId)
       .subscribe( APIRpta => {
         this.objAPIRpta_Full = APIRpta;
         this.objAPIRpta_objPacienteFullInfo = this.objAPIRpta_Full.rpta;
       });
   }
+
+  //AUTOESTIMA PRE
+  PintarTablasDeCuestionariosAutonomiaPostEnLaPantallaPrincipal(p_CasoPacienteId : string)
+  {
+    this.RespuestaAutonomiaService.APIGet_RespuestasExamenAutonomiaPost(p_CasoPacienteId)
+    .subscribe( APIRpta2 => {
+      this.objAPIRpta_TablasRpta = APIRpta2;
+      this.subeEstructuraApi = this.objAPIRpta_TablasRpta.rpta;
+      this.objAPIRpta_objPacienteRespuestasCuestionarioAutonomiaPostFullInfo = this.subeEstructuraApi.significado;
+    });
+  }
+
 
 
 

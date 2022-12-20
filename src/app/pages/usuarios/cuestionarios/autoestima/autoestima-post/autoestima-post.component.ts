@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { EvaluacionAutoestimaService } from 'src/app/services/auroraapi/EvaluacionesPsicologicas/autoestima.service';
+import {Location} from '@angular/common';
 
 @Component({
   selector: 'app-autoestima-post',
@@ -8,9 +9,6 @@ import { EvaluacionAutoestimaService } from 'src/app/services/auroraapi/Evaluaci
   styleUrls: ['./autoestima-post.component.css']
 })
 export class AutoestimaPostComponent implements OnInit {
-
-  EsPreTest = false;
-  EsPostTest = true;
 
   g_casoPacienteId : number = 0;
 
@@ -45,12 +43,12 @@ export class AutoestimaPostComponent implements OnInit {
   }
 
   constructor(private TestAutoestimaService : EvaluacionAutoestimaService,
-    private route: ActivatedRoute) { }
+    private route: ActivatedRoute,
+    private _location: Location) { }
 
   EnviarRespuestasParaEvaluacionPost()
   {
 
-    if(this.EsPostTest){
     this.TestAutoestimaService.PostAPI_EvaluarExamenAutoestimaPostTest(
       this.g_casoPacienteId,
       this.Respuestas.p01,
@@ -75,9 +73,10 @@ export class AutoestimaPostComponent implements OnInit {
       this.Respuestas.p20,
       this.Respuestas.p21,
       this.Respuestas.p22,
-      );
-    }
-    console.log("Aca deberia estar evaluandose trayendo la api");
+      ).subscribe(APIResponse =>
+        {
+          this._location.back();
+        });
 
   }
 

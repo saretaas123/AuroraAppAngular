@@ -69,20 +69,6 @@ export class ResultadosMotivacionProComponent implements OnInit {
 
   };
 
-   //MOTIVACION POST RESPUESTAS
-   objAPIRpta_Full3 : any =
-   {
-     msnj : '',
-     rpta : {}
-   };
-
-   subeEstructuraApi3: any =
-   {
-     respuestas1 :  { },
-     significado1 : { },
-
-   }
-
    objAPIRpta_objPacienteRespuestasCuestionarioMotivacionPostRespuestasFullInfo : any =
    {
 
@@ -119,8 +105,7 @@ export class ResultadosMotivacionProComponent implements OnInit {
    ngOnInit(): void {
     this.g_routeparam_CasoPacienteId = this.route.snapshot.paramMap.get("casopacienteid")??'0';
     this.PintarLosDatosDelPacienteEnLaPantallaPrincipal(this.g_routeparam_CasoPacienteId);
-    this.PintarLosDatosCuestionariosMotivacionPostEnLaPatanllaPrincipal(this.g_routeparam_CasoPacienteId);
-    this.PintarLosDatosCuestionariosMotivacionPostResultadosEnLaPatanllaPrincipal(this.g_routeparam_CasoPacienteId);
+    this.PintarLasTablasCuestionariosMotivacionPostEnLaPantallaPrincipal(this.g_routeparam_CasoPacienteId);
   }
 
 
@@ -132,9 +117,9 @@ export class ResultadosMotivacionProComponent implements OnInit {
   ) { }
 
   //DATOS PACIENTES
-  PintarLosDatosDelPacienteEnLaPantallaPrincipal(p_PacienteId : string)
+  PintarLosDatosDelPacienteEnLaPantallaPrincipal(p_CasoPacienteId : string)
   {
-      this.CasoPacienteService.GetCasoPacienteById(p_PacienteId)
+      this.CasoPacienteService.GetCasoPacienteById(p_CasoPacienteId)
       .subscribe( APIRpta => {
         this.objAPIRpta_Full = APIRpta;
         this.objAPIRpta_objPacienteFullInfo = this.objAPIRpta_Full.rpta;
@@ -142,34 +127,16 @@ export class ResultadosMotivacionProComponent implements OnInit {
   }
 
   //MOTIVACION PRE
- PintarLosDatosCuestionariosMotivacionPostEnLaPatanllaPrincipal(p_PacienteId : string)
+  PintarLasTablasCuestionariosMotivacionPostEnLaPantallaPrincipal(p_CasoPacienteId : string)
  {
-   this.RespuestaMotivacionService.APIGet_RespuestasExamenMotivacionPost(p_PacienteId)
+   this.RespuestaMotivacionService.APIGet_RespuestasExamenMotivacionPost(p_CasoPacienteId)
    .subscribe(APIRpta2 => {
-     /*console.log("apiRpta2:");
-     console.log(APIRpta2);*/
      this.objAPIRpta_Full2 = APIRpta2;
      this.subeEstructuraApi = this.objAPIRpta_Full2.rpta;
-     /*console.log("subeEstructuraApi:");
-     console.log(this.subeEstructuraApi);*/
+     this.objAPIRpta_objPacienteRespuestasCuestionarioMotivacionPostRespuestasFullInfo = this.subeEstructuraApi.respuestas;
      this.objAPIRpta_objPacienteRespuestasCuestionarioMotivacionPostFullInfo = this.subeEstructuraApi.significado;
-     /*console.log("objAPIRpta_objPacienteRespuestasCuestionarioMotivacionPreFullInfo:");
-     console.log(this.objAPIRpta_objPacienteRespuestasCuestionarioMotivacionPreFullInfo);*/
    });
  }
-
-  //MOTIVACION PRE RESPUESTAS
-  PintarLosDatosCuestionariosMotivacionPostResultadosEnLaPatanllaPrincipal(p_PacienteId : string)
-  {
-      this.RespuestaMotivacionService.APIGet_RespuestasExamenMotivacionPost(p_PacienteId)
-      .subscribe( APIRpta3 => {
-       this.objAPIRpta_Full3 = APIRpta3;
-       this.subeEstructuraApi = this.objAPIRpta_Full3.rpta;
-       this.objAPIRpta_objPacienteRespuestasCuestionarioMotivacionPostFullInfo = this.subeEstructuraApi.respuestas1;
-      });
-  }
-
-
 
 
 }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import {Location} from '@angular/common';
 import { EvaluacionAutonomiaService } from 'src/app/services/auroraapi/EvaluacionesPsicologicas/autonomia.service';
-
 
 @Component({
   selector: 'app-autonomia-post',
@@ -48,14 +49,16 @@ export class AutonomiaPostComponent implements OnInit {
   };
 
   ngOnInit(): void {
+    this.g_casoPacienteId = Number(this.route.snapshot.paramMap.get("casopacienteid")??'0');
   }
 
-  constructor(private TestAutonomiaService : EvaluacionAutonomiaService) { }
+  constructor(private TestAutonomiaService : EvaluacionAutonomiaService,
+    private route: ActivatedRoute,
+    private _location: Location) { }
 
   EnviarRespuestasParaEvaluacionPost()
   {
 
-    if(this.EsPostTest){
     this.TestAutonomiaService.PostAPI_EvaluarExamenAutonomiaPostTest(
       this.g_casoPacienteId,
       this.Resultados.p01,
@@ -87,9 +90,11 @@ export class AutonomiaPostComponent implements OnInit {
       this.Resultados.p27,
       this.Resultados.p28,
       this.Resultados.p29
-
-      );
-    }
+      ).subscribe(APIResponse =>
+        {
+          this._location.back();
+          console.log(APIResponse);
+        });
 
     console.log("Aca deberia estar evaluandose trayendo la api");
 

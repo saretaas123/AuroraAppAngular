@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { EvaluacionMotivacionService } from 'src/app/services/auroraapi/EvaluacionesPsicologicas/motivacion.service';
+import {Location} from '@angular/common';
 
 @Component({
   selector: 'app-motivacion-post',
@@ -7,10 +9,6 @@ import { EvaluacionMotivacionService } from 'src/app/services/auroraapi/Evaluaci
   styleUrls: ['./motivacion-post.component.css']
 })
 export class MotivacionPostComponent implements OnInit {
-
-
-  EsPreTest = false;
-  EsPostTest = true;
 
   g_casoPacienteId : number = 0;
 
@@ -39,14 +37,16 @@ export class MotivacionPostComponent implements OnInit {
   };
 
   ngOnInit(): void {
+    this.g_casoPacienteId = Number(this.route.snapshot.paramMap.get("casopacienteid")??'0');
   }
 
-  constructor(private TestMotivacionService : EvaluacionMotivacionService) { }
+  constructor(private TestMotivacionService : EvaluacionMotivacionService,
+    private route: ActivatedRoute,
+    private _location: Location) { }
 
   EnviarRespuestasParaEvaluacionPost()
   {
 
-    if(this.EsPostTest){
     this.TestMotivacionService.PostAPI_EvaluarExamenMotivacionPostTest(
       this.g_casoPacienteId,
       this.Respuestas.p01,
@@ -69,10 +69,10 @@ export class MotivacionPostComponent implements OnInit {
       this.Respuestas.p18,
       this.Respuestas.p19,
       this.Respuestas.p20,
-
-      );
-    }
-    console.log("Aca deberia estar evaluandose trayendo la api");
+      ).subscribe(APIResponse =>
+        {
+          this._location.back();
+        });
 
   }
 

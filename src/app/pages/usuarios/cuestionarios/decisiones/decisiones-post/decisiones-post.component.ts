@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { EvaluacionTomaDecisionesService } from 'src/app/services/auroraapi/EvaluacionesPsicologicas/tomadecisiones.service';
+import {Location} from '@angular/common';
 
 @Component({
   selector: 'app-decisiones-post',
@@ -7,9 +9,6 @@ import { EvaluacionTomaDecisionesService } from 'src/app/services/auroraapi/Eval
   styleUrls: ['./decisiones-post.component.css']
 })
 export class DecisionesPostComponent implements OnInit {
-
-  EsPreTest = false;
-  EsPostTest = true;
 
   g_casoPacienteId : number = 0;
 
@@ -29,14 +28,16 @@ export class DecisionesPostComponent implements OnInit {
   };
 
   ngOnInit(): void {
+    this.g_casoPacienteId = Number(this.route.snapshot.paramMap.get("casopacienteid")??'0');
   }
 
-  constructor(private TestTomaDecisionesService : EvaluacionTomaDecisionesService) { }
+  constructor(private TestTomaDecisionesService : EvaluacionTomaDecisionesService,
+    private route: ActivatedRoute,
+    private _location: Location) { }
 
   EnviarRespuestasParaEvaluacionPost()
   {
 
-    if(this.EsPostTest){
     this.TestTomaDecisionesService.PostAPI_EvaluarExamenDecisionesPostTest(
       this.g_casoPacienteId,
       this.Respuestas.p01,
@@ -49,11 +50,11 @@ export class DecisionesPostComponent implements OnInit {
       this.Respuestas.p08,
       this.Respuestas.p09,
       this.Respuestas.p10,
-      this.Respuestas.p11,
-
-      );
-    }
-    console.log("Aca deberia estar evaluandose trayendo la api");
+      this.Respuestas.p11
+    ).subscribe(APIResponse =>
+      {
+        this._location.back();
+      });
 
   }
 
