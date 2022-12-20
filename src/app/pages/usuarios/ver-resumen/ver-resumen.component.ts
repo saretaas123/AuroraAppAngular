@@ -280,6 +280,7 @@ export class VerResumenComponent implements OnInit {
       .subscribe( APIRpta => {
         this.objAPIRpta_Full = APIRpta;
         this.objAPIRpta_objPacienteFullInfo = this.objAPIRpta_Full.rpta;
+        console.log(this.objAPIRpta_objPacienteFullInfo);
       });
   }
 

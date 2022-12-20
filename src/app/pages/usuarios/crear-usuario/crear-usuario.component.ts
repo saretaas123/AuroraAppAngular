@@ -4,6 +4,7 @@ import { ActivatedRoute } from "@angular/router";
 import { PacienteService } from 'src/app/services/auroraapi/paciente.service';
 
 
+
 @Component({
   selector: 'app-crear-usuario',
   templateUrl: './crear-usuario.component.html',
@@ -14,7 +15,7 @@ export class CrearUsuarioComponent implements OnInit {
   g_routeparam_PsicologoId: string = '0';
 
   ngOnInit(): void {
-    this.g_routeparam_PsicologoId = this.route.snapshot.paramMap.get("psicologoid")??'0';
+    this.g_routeparam_PsicologoId = this.router.url.split('/')[2];
   }
 
   public ApiFullobjPsicologoFullInfo : any = {
@@ -25,8 +26,7 @@ export class CrearUsuarioComponent implements OnInit {
   constructor(
     private PacienteService : PacienteService,
     private router: Router,
-    private route: ActivatedRoute
-  ) { }
+    private route: ActivatedRoute) { }
 
 
   RegistrarPaciente(
@@ -55,14 +55,14 @@ export class CrearUsuarioComponent implements OnInit {
       if(RegistroExitoso)
       {
         alert('Registrado Correctamente');
-      //this.router.navigate(['/dashboard/usuarios']);
+
+        //Aca se actualize la pagina
+        this.router.navigate(['/dashboard/'+this.g_routeparam_PsicologoId+'/usuarios']);
       }
       else{
         alert('No se pudo registrar');
       }
     })
-
-
   }
 
 }
