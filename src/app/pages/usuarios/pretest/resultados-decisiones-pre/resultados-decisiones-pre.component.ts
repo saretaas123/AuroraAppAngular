@@ -64,23 +64,9 @@ export class ResultadosDecisionesPreComponent implements OnInit {
   objAPIRpta_objPacienteRespuestasCuestionarioDecisionesPreFullInfo : any =
   {
 
-    nivelTomaDeDecisiones: "IncipienteCapacidad"
+    nivelTomaDeDecisiones: "-"
 
   };
-
-   //DECISIONES PRE RESPUESTAS
-   objAPIRpta_Full3 : any =
-   {
-     msnj : '',
-     rpta : {}
-   };
-
-   subeEstructuraApi3: any =
-   {
-     respuestas1 :  { },
-     significado1 : { },
-
-   }
 
    objAPIRpta_objPacienteRespuestasCuestionarioDecisionesPreRespuestasFullInfo : any =
    {
@@ -118,8 +104,7 @@ export class ResultadosDecisionesPreComponent implements OnInit {
     ngOnInit(): void {
       this.g_routeparam_CasoPacienteId = this.route.snapshot.paramMap.get("casopacienteid")??'0';
     this.PintarLosDatosDelPacienteEnLaPantallaPrincipal(this.g_routeparam_CasoPacienteId);
-    this.PintarLosDatosCuestionariosDecionesPreEnLaPatanllaPrincipal(this.g_routeparam_CasoPacienteId);
-    this.PintarLosDatosCuestionariosDecisionesPreResultadosEnLaPatanllaPrincipal(this.g_routeparam_CasoPacienteId);
+    this.PintarLasTablasCuestionariosDecionesPreEnLaPatanllaPrincipal(this.g_routeparam_CasoPacienteId);
     }
 
 
@@ -130,9 +115,9 @@ export class ResultadosDecisionesPreComponent implements OnInit {
   ) { }
 
    //DATOS PACIENTES
-   PintarLosDatosDelPacienteEnLaPantallaPrincipal(p_PacienteId : string)
+   PintarLosDatosDelPacienteEnLaPantallaPrincipal(p_CasoPacienteId : string)
    {
-       this.CasoPacienteService.GetCasoPacienteById(p_PacienteId)
+       this.CasoPacienteService.GetCasoPacienteById(p_CasoPacienteId)
        .subscribe( APIRpta => {
          this.objAPIRpta_Full = APIRpta;
          this.objAPIRpta_objPacienteFullInfo = this.objAPIRpta_Full.rpta;
@@ -140,34 +125,16 @@ export class ResultadosDecisionesPreComponent implements OnInit {
    }
 
    //MOTIVACION PRE
-  PintarLosDatosCuestionariosDecionesPreEnLaPatanllaPrincipal(p_PacienteId : string)
+   PintarLasTablasCuestionariosDecionesPreEnLaPatanllaPrincipal(p_CasoPacienteId : string)
   {
-    this.RespuestaTomaDecionesService.APIGet_RespuestasExamenTomaDecisionesPre(p_PacienteId)
+    this.RespuestaTomaDecionesService.APIGet_RespuestasExamenTomaDecisionesPre(p_CasoPacienteId)
     .subscribe(APIRpta2 => {
-      /*console.log("apiRpta2:");
-      console.log(APIRpta2);*/
       this.objAPIRpta_Full2 = APIRpta2;
       this.subeEstructuraApi = this.objAPIRpta_Full2.rpta;
-      /*console.log("subeEstructuraApi:");
-      console.log(this.subeEstructuraApi);*/
       this.objAPIRpta_objPacienteRespuestasCuestionarioDecisionesPreFullInfo = this.subeEstructuraApi.significado;
-      /*console.log("objAPIRpta_objPacienteRespuestasCuestionarioMotivacionPreFullInfo:");
-      console.log(this.objAPIRpta_objPacienteRespuestasCuestionarioMotivacionPreFullInfo);*/
+      this.objAPIRpta_objPacienteRespuestasCuestionarioDecisionesPreRespuestasFullInfo = this.subeEstructuraApi.respuestas;
     });
   }
-
-   //MOTIVACION PRE RESPUESTAS
-   PintarLosDatosCuestionariosDecisionesPreResultadosEnLaPatanllaPrincipal(p_PacienteId : string)
-   {
-       this.RespuestaTomaDecionesService.APIGet_RespuestasExamenTomaDecisionesPre(p_PacienteId)
-       .subscribe( APIRpta3 => {
-        this.objAPIRpta_Full3 = APIRpta3;
-        this.subeEstructuraApi = this.objAPIRpta_Full3.rpta;
-        this.objAPIRpta_objPacienteRespuestasCuestionarioDecisionesPreRespuestasFullInfo = this.subeEstructuraApi.respuestas1;
-       });
-   }
-
-
 
 
 }

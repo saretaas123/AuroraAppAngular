@@ -48,7 +48,7 @@ export class ResultadosDecisionesProComponent implements OnInit {
   };
 
 //DECISIONES POST
- objAPIRpta_Full2 : any =
+objAPIRptaTabla : any =
  {
    msnj : '',
    rpta : {}
@@ -64,23 +64,9 @@ subeEstructuraApi : any =
 objAPIRpta_objPacienteRespuestasCuestionarioDecisionesPostFullInfo : any =
 {
 
-  nivelTomaDeDecisiones: "IncipienteCapacidad"
+  nivelTomaDeDecisiones: "-"
 
 };
-
- //DECISIONES POST RESPUESTAS
- objAPIRpta_Full3 : any =
- {
-   msnj : '',
-   rpta : {}
- };
-
- subeEstructuraApi3: any =
- {
-   respuestas1 :  { },
-   significado1 : { },
-
- }
 
  objAPIRpta_objPacienteRespuestasCuestionarioDecisionesPostRespuestasFullInfo : any =
  {
@@ -118,8 +104,7 @@ objAPIRpta_objPacienteRespuestasCuestionarioDecisionesPostFullInfo : any =
  ngOnInit(): void {
   this.g_routeparam_CasoPacienteId = this.route.snapshot.paramMap.get("casopacienteid")??'0';
     this.PintarLosDatosDelPacienteEnLaPantallaPrincipal(this.g_routeparam_CasoPacienteId);
-    this.PintarLosDatosCuestionariosDecionesPostEnLaPatanllaPrincipal(this.g_routeparam_CasoPacienteId);
-    this.PintarLosDatosCuestionariosDecisionesPostResultadosEnLaPatanllaPrincipal(this.g_routeparam_CasoPacienteId);
+    this.PintarLasTablasCuestionariosDecionesPostEnLaPatanllaPrincipal(this.g_routeparam_CasoPacienteId);
 }
 
   constructor(
@@ -139,33 +124,15 @@ objAPIRpta_objPacienteRespuestasCuestionarioDecisionesPostFullInfo : any =
      }
 
      //MOTIVACION POST
-    PintarLosDatosCuestionariosDecionesPostEnLaPatanllaPrincipal(p_PacienteId : string)
+     PintarLasTablasCuestionariosDecionesPostEnLaPatanllaPrincipal(p_PacienteId : string)
     {
       this.RespuestaTomaDecionesService.APIGet_RespuestasExamenTomaDecisionesPost(p_PacienteId)
       .subscribe(APIRpta2 => {
-        /*console.log("apiRpta2:");
-        console.log(APIRpta2);*/
-        this.objAPIRpta_Full2 = APIRpta2;
-        this.subeEstructuraApi = this.objAPIRpta_Full2.rpta;
-        /*console.log("subeEstructuraApi:");
-        console.log(this.subeEstructuraApi);*/
+        this.objAPIRptaTabla = APIRpta2;
+        this.subeEstructuraApi = this.objAPIRptaTabla.rpta;
         this.objAPIRpta_objPacienteRespuestasCuestionarioDecisionesPostFullInfo = this.subeEstructuraApi.significado;
-        /*console.log("objAPIRpta_objPacienteRespuestasCuestionarioMotivacionPreFullInfo:");
-        console.log(this.objAPIRpta_objPacienteRespuestasCuestionarioMotivacionPreFullInfo);*/
+        this.objAPIRpta_objPacienteRespuestasCuestionarioDecisionesPostRespuestasFullInfo = this.subeEstructuraApi.respuestas;
       });
     }
-
-     //MOTIVACION POST RESPUESTAS
-     PintarLosDatosCuestionariosDecisionesPostResultadosEnLaPatanllaPrincipal(p_PacienteId : string)
-     {
-         this.RespuestaTomaDecionesService.APIGet_RespuestasExamenTomaDecisionesPost(p_PacienteId)
-         .subscribe( APIRpta3 => {
-          this.objAPIRpta_Full3 = APIRpta3;
-          this.subeEstructuraApi = this.objAPIRpta_Full3.rpta;
-          this.objAPIRpta_objPacienteRespuestasCuestionarioDecisionesPostRespuestasFullInfo = this.subeEstructuraApi.respuestas1;
-         });
-     }
-
-
 
 }

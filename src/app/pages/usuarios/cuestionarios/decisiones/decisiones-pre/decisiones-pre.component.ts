@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { EvaluacionTomaDecisionesService } from 'src/app/services/auroraapi/EvaluacionesPsicologicas/tomadecisiones.service';
-
+import {Location} from '@angular/common';
 
 @Component({
   selector: 'app-decisiones-pre',
@@ -8,9 +9,6 @@ import { EvaluacionTomaDecisionesService } from 'src/app/services/auroraapi/Eval
   styleUrls: ['./decisiones-pre.component.css']
 })
 export class DecisionesPreComponent implements OnInit {
-
-  EsPreTest = true;
-  EsPostTest = false;
 
   g_casoPacienteId : number = 0;
 
@@ -30,14 +28,15 @@ export class DecisionesPreComponent implements OnInit {
   };
 
   ngOnInit(): void {
+    this.g_casoPacienteId = Number(this.route.snapshot.paramMap.get("casopacienteid")??'0');
   }
 
-  constructor(private TestTomaDecisionesService : EvaluacionTomaDecisionesService) { }
+  constructor(private TestTomaDecisionesService : EvaluacionTomaDecisionesService,
+    private route: ActivatedRoute,
+    private _location: Location) { }
 
   EnviarRespuestasParaEvaluacionPre()
   {
-
-    if(this.EsPreTest){
     this.TestTomaDecisionesService.PostAPI_EvaluarExamenDecisionesPreTest(
       this.g_casoPacienteId,
       this.Respuestas.p01,
@@ -51,9 +50,10 @@ export class DecisionesPreComponent implements OnInit {
       this.Respuestas.p09,
       this.Respuestas.p10,
       this.Respuestas.p11
-      );
-    }
-    console.log("Aca deberia estar evaluandose trayendo la api");
+      ).subscribe(APIResponse =>
+        {
+          this._location.back();
+        });;
 
   }
 

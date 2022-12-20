@@ -70,20 +70,6 @@ export class ResultadosMotivacionPreComponent implements OnInit {
 
   };
 
-   //MOTIVACION PRE RESPUESTAS
-   objAPIRpta_Full3 : any =
-   {
-     msnj : '',
-     rpta : {}
-   };
-
-   subeEstructuraApi3: any =
-   {
-     respuestas1 :  { },
-     significado1 : { },
-
-   }
-
    objAPIRpta_objPacienteRespuestasCuestionarioMotivacionPreRespuestasFullInfo : any =
    {
 
@@ -124,7 +110,6 @@ export class ResultadosMotivacionPreComponent implements OnInit {
     this.g_routeparam_CasoPacienteId = this.route.snapshot.paramMap.get("casopacienteid")??'0';
     this.PintarLosDatosDelPacienteEnLaPantallaPrincipal(this.g_routeparam_CasoPacienteId);
     this.PintarLosDatosCuestionariosMotivacionPreEnLaPatanllaPrincipal(this.g_routeparam_CasoPacienteId);
-    this.PintarLosDatosCuestionariosMotivacionPreResultadosEnLaPatanllaPrincipal(this.g_routeparam_CasoPacienteId);
   }
 
 
@@ -135,9 +120,9 @@ export class ResultadosMotivacionPreComponent implements OnInit {
   ) { }
 
    //DATOS PACIENTES
-   PintarLosDatosDelPacienteEnLaPantallaPrincipal(p_PacienteId : string)
+   PintarLosDatosDelPacienteEnLaPantallaPrincipal(p_CasoPacienteId : string)
    {
-       this.CasoPacienteService.GetCasoPacienteById(p_PacienteId)
+       this.CasoPacienteService.GetCasoPacienteById(p_CasoPacienteId)
        .subscribe( APIRpta => {
          this.objAPIRpta_Full = APIRpta;
          this.objAPIRpta_objPacienteFullInfo = this.objAPIRpta_Full.rpta;
@@ -145,32 +130,16 @@ export class ResultadosMotivacionPreComponent implements OnInit {
    }
 
    //MOTIVACION PRE
-  PintarLosDatosCuestionariosMotivacionPreEnLaPatanllaPrincipal(p_PacienteId : string)
+  PintarLosDatosCuestionariosMotivacionPreEnLaPatanllaPrincipal(p_CasoPacienteId : string)
   {
-    this.RespuestaMotivacionService.APIGet_RespuestasExamenMotivacionPre(p_PacienteId)
+    this.RespuestaMotivacionService.APIGet_RespuestasExamenMotivacionPre(p_CasoPacienteId)
     .subscribe(APIRpta2 => {
-      /*console.log("apiRpta2:");
-      console.log(APIRpta2);*/
       this.objAPIRpta_Full2 = APIRpta2;
       this.subeEstructuraApi = this.objAPIRpta_Full2.rpta;
-      /*console.log("subeEstructuraApi:");
-      console.log(this.subeEstructuraApi);*/
+      this.objAPIRpta_objPacienteRespuestasCuestionarioMotivacionPreRespuestasFullInfo = this.subeEstructuraApi.respuestas;
       this.objAPIRpta_objPacienteRespuestasCuestionarioMotivacionPreFullInfo = this.subeEstructuraApi.significado;
-      /*console.log("objAPIRpta_objPacienteRespuestasCuestionarioMotivacionPreFullInfo:");
-      console.log(this.objAPIRpta_objPacienteRespuestasCuestionarioMotivacionPreFullInfo);*/
     });
   }
-
-   //MOTIVACION PRE RESPUESTAS
-   PintarLosDatosCuestionariosMotivacionPreResultadosEnLaPatanllaPrincipal(p_PacienteId : string)
-   {
-       this.RespuestaMotivacionService.APIGet_RespuestasExamenMotivacionPre(p_PacienteId)
-       .subscribe( APIRpta3 => {
-        this.objAPIRpta_Full3 = APIRpta3;
-        this.subeEstructuraApi = this.objAPIRpta_Full3.rpta;
-        this.objAPIRpta_objPacienteRespuestasCuestionarioMotivacionPreFullInfo = this.subeEstructuraApi.respuestas1;
-       });
-   }
 
 
 

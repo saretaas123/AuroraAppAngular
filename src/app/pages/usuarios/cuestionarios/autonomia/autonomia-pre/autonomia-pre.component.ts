@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { EvaluacionAutonomiaService } from 'src/app/services/auroraapi/EvaluacionesPsicologicas/autonomia.service';
+import {Location} from '@angular/common';
 
 @Component({
   selector: 'app-autonomia-pre',
@@ -7,9 +9,6 @@ import { EvaluacionAutonomiaService } from 'src/app/services/auroraapi/Evaluacio
   styleUrls: ['./autonomia-pre.component.css']
 })
 export class AutonomiaPreComponent implements OnInit {
-
-  EsPreTest = true;
-  EsPostTest = false;
 
   g_casoPacienteId : number = 0;
 
@@ -47,14 +46,15 @@ export class AutonomiaPreComponent implements OnInit {
   };
 
   ngOnInit(): void {
+    this.g_casoPacienteId = Number(this.route.snapshot.paramMap.get("casopacienteid")??'0');
   }
 
-  constructor(private TestAutonomiaService : EvaluacionAutonomiaService) { }
+  constructor(private TestAutonomiaService : EvaluacionAutonomiaService,
+    private route: ActivatedRoute,
+    private _location: Location) { }
 
   EnviarRespuestasParaEvaluacionPre()
   {
-
-    if(this.EsPreTest){
     this.TestAutonomiaService.PostAPI_EvaluarExamenAutonomiaPreTest(
       this.g_casoPacienteId,
       this.Resultados.p01,
@@ -86,11 +86,10 @@ export class AutonomiaPreComponent implements OnInit {
       this.Resultados.p27,
       this.Resultados.p28,
       this.Resultados.p29
-
-      );
-    }
-
-    console.log("Aca deberia estar evaluandose trayendo la api");
+      ).subscribe(APIResponse =>
+        {
+          this._location.back();
+        });
 
   }
 
