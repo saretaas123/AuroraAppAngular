@@ -124,7 +124,7 @@
                                         </div>
                                         <div class="col-sm-6">
                                             <p class="m-b-10 f-w-600">Autonomia:</p>
-                                            <div *ngIf="objAPIRpta_objPacienteFullInfo.examenPostTestAutonomiaCompletado; else elseBlock">
+                                            <div *ngIf="objAPIRpta_objPacienteFullInfo.examenPreTestAutonomiaCompletado; else elseBlock">
                                               <h6 class="f-w-400" >{{objAPIRpta_objPacienteRespuestasCuestionarioAutonomiaPreFullInfo.sensacionDeControlPositiva}}</h6>
                                             </div>
                                             <ng-template #elseBlock>
@@ -148,7 +148,7 @@
                                     <div class="row">
                                         <div class="col-sm-6">
                                             <p class="m-b-10 f-w-600">Etapa de motivacion al cambio: </p>
-                                            <div *ngIf="objAPIRpta_objPacienteFullInfo.examenPreTestMotivacionAlCambioCompletado; else elseBlock">
+                                            <div *ngIf="objAPIRpta_objPacienteFullInfo.examenPostTestMotivacionAlCambioCompletado; else elseBlock">
                                               <h6 class="f-w-400" >{{objAPIRpta_objPacienteRespuestasCuestionarioMotivacionPostFullInfo.resultadoPrecontemplacion}}</h6>
                                             </div>
                                             <ng-template #elseBlock>
@@ -157,7 +157,7 @@
                                         </div>
                                         <div class="col-sm-6">
                                             <p class="m-b-10 f-w-600">Copersmith (Autoestima):</p>
-                                            <div *ngIf="objAPIRpta_objPacienteFullInfo.examenPreTestAutoestimaCompletado; else elseBlock">
+                                            <div *ngIf="objAPIRpta_objPacienteFullInfo.examenPostTestAutoestimaCompletado; else elseBlock">
                                               <h6 class="f-w-400" >{{objAPIRpta_objPacienteRespuestasCuestionarioAutoestimaPostFullInfo.nivelDeAutoestima}}</h6>
                                             </div>
                                             <ng-template #elseBlock>
@@ -169,7 +169,7 @@
                                     <div class="row">
                                         <div class="col-sm-6">
                                             <p class="m-b-10 f-w-600">Niveles Toma de decisiones:</p>
-                                            <div *ngIf="objAPIRpta_objPacienteFullInfo.examenPreTestTomaDecisionCompletado; else elseBlock">
+                                            <div *ngIf="objAPIRpta_objPacienteFullInfo.examenPostTestTomaDecisionCompletado; else elseBlock">
                                               <h6 class="f-w-400" >{{objAPIRpta_objPacienteRespuestasCuestionarioTomaDecisionesPostFullInfo.nivelTomaDeDecisiones}}</h6>
                                             </div>
                                             <ng-template #elseBlock>
@@ -178,7 +178,7 @@
                                         </div>
                                         <div class="col-sm-6">
                                             <p class="m-b-10 f-w-600">Autonomia:</p>
-                                            <div *ngIf="objAPIRpta_objPacienteFullInfo.examenPreTestAutonomiaCompletado; else elseBlock">
+                                            <div *ngIf="objAPIRpta_objPacienteFullInfo.examenPostTestAutonomiaCompletado; else elseBlock">
                                               <h6 class="f-w-400" >{{objAPIRpta_objPacienteRespuestasCuestionarioAutonomiaPostFullInfo.sensacionDeControlPositiva}}</h6>
                                             </div>
                                             <ng-template #elseBlock>

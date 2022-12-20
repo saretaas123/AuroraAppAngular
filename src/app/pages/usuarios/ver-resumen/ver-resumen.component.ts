@@ -55,6 +55,13 @@ export class VerResumenComponent implements OnInit {
     rpta : {}
   };
 
+  subeEstructuraApi : any =
+  {
+    respuestas :  { },
+    significado : { },
+
+  }
+
   objAPIRpta_objPacienteRespuestasCuestionarioMotivacionPreFullInfo : any =
   {
 
@@ -71,6 +78,13 @@ export class VerResumenComponent implements OnInit {
     msnj : '',
     rpta : {}
   };
+
+  subeEstructuraApi1 : any =
+  {
+    respuestas :  { },
+    significado : { },
+
+  }
 
   objAPIRpta_objPacienteRespuestasCuestionarioMotivacionPostFullInfo : any =
   {
@@ -89,13 +103,25 @@ export class VerResumenComponent implements OnInit {
     rpta : {}
   };
 
+  subeEstructuraApi2 : any =
+  {
+    respuestas :  { },
+    significado : { },
+
+  }
+
   objAPIRpta_objPacienteRespuestasCuestionarioAutonomiaPreFullInfo : any =
   {
 
+    valorSensacionDeControlPositivo: 0,
     sensacionDeControlPositiva: "No Posee Sensacion De Control Positiva",
+    valorSensacionDeControlNegativo: 0,
     sensacionDeControlNegativo: "No Posee Sensacion De Control Negativo",
+    valorDeseoDeControl: 0,
     deseoDeControl: "No Posee Deseo De Control",
+    valorControlInterno: 0,
     controlInterno: "No Posee Control Interno",
+    valorControlExterno: 0,
     controlExterno: "No Posee Control Externo"
 
   };
@@ -107,13 +133,25 @@ export class VerResumenComponent implements OnInit {
     rpta : {}
   };
 
+  subeEstructuraApi3 : any =
+  {
+    respuestas :  { },
+    significado : { },
+
+  }
+
   objAPIRpta_objPacienteRespuestasCuestionarioAutonomiaPostFullInfo : any =
   {
 
+    valorSensacionDeControlPositivo: 0,
     sensacionDeControlPositiva: "No Posee Sensacion De Control Positiva",
+    valorSensacionDeControlNegativo: 0,
     sensacionDeControlNegativo: "No Posee Sensacion De Control Negativo",
+    valorDeseoDeControl: 0,
     deseoDeControl: "No Posee Deseo De Control",
+    valorControlInterno: 0,
     controlInterno: "No Posee Control Interno",
+    valorControlExterno: 0,
     controlExterno: "No Posee Control Externo"
 
   };
@@ -124,6 +162,13 @@ export class VerResumenComponent implements OnInit {
     msnj : '',
     rpta : {}
   };
+
+  subeEstructuraApi4 : any =
+  {
+    respuestas :  { },
+    significado : { },
+
+  }
 
   objAPIRpta_objPacienteRespuestasCuestionarioAutoestimaPreFullInfo : any =
   {
@@ -142,6 +187,13 @@ export class VerResumenComponent implements OnInit {
      rpta : {}
    };
 
+   subeEstructuraApi5 : any =
+   {
+     respuestas :  { },
+     significado : { },
+
+   }
+
    objAPIRpta_objPacienteRespuestasCuestionarioAutoestimaPostFullInfo : any =
    {
 
@@ -159,6 +211,13 @@ export class VerResumenComponent implements OnInit {
     rpta : {}
   };
 
+  subeEstructuraApi6 : any =
+  {
+    respuestas :  { },
+    significado : { },
+
+  }
+
   objAPIRpta_objPacienteRespuestasCuestionarioTomaDecisionesPreFullInfo : any =
   {
 
@@ -172,6 +231,13 @@ export class VerResumenComponent implements OnInit {
      msnj : '',
      rpta : {}
    };
+
+   subeEstructuraApi7 : any =
+   {
+     respuestas :  { },
+     significado : { },
+
+   }
 
    objAPIRpta_objPacienteRespuestasCuestionarioTomaDecisionesPostFullInfo : any =
    {
@@ -223,7 +289,8 @@ export class VerResumenComponent implements OnInit {
     this.RespuestaMotivacionService.APIGet_RespuestasExamenMotivacionPre(p_PacienteId)
     .subscribe(APIRpta2 => {
       this.objAPIRpta_Full2 = APIRpta2;
-      this.objAPIRpta_objPacienteRespuestasCuestionarioMotivacionPreFullInfo = this.objAPIRpta_Full2.rpta;
+      this.subeEstructuraApi = this.objAPIRpta_Full2.rpta;
+      this.objAPIRpta_objPacienteRespuestasCuestionarioMotivacionPreFullInfo = this.subeEstructuraApi.significado;
 
     });
   }
@@ -234,8 +301,8 @@ export class VerResumenComponent implements OnInit {
     this.RespuestaMotivacionService.APIGet_RespuestasExamenMotivacionPost(p_PacienteId)
     .subscribe(APIRpta3 => {
       this.objAPIRpta_Full3 = APIRpta3;
-      this.objAPIRpta_objPacienteRespuestasCuestionarioMotivacionPostFullInfo = this.objAPIRpta_Full3.rpta;
-
+      this.subeEstructuraApi1 = this.objAPIRpta_Full3.rpta;
+      this.objAPIRpta_objPacienteRespuestasCuestionarioMotivacionPostFullInfo = this.subeEstructuraApi1.significado;
     });
   }
 
@@ -245,7 +312,8 @@ export class VerResumenComponent implements OnInit {
       this.RespuestaAutonomiaService.APIGet_RespuestasExamenAutonomiaPre(p_PacienteId)
       .subscribe(APIRpta4 => {
         this.objAPIRpta_Full4 = APIRpta4;
-        this.objAPIRpta_objPacienteRespuestasCuestionarioAutonomiaPreFullInfo = this.objAPIRpta_Full4.rpta;
+        this.subeEstructuraApi2 = this.objAPIRpta_Full4.rpta;
+        this.objAPIRpta_objPacienteRespuestasCuestionarioAutonomiaPreFullInfo = this.subeEstructuraApi2.significado;
 
       });
     }
@@ -256,7 +324,8 @@ export class VerResumenComponent implements OnInit {
        this.RespuestaAutonomiaService.APIGet_RespuestasExamenAutonomiaPost(p_PacienteId)
        .subscribe(APIRpta5 => {
          this.objAPIRpta_Full5 = APIRpta5;
-         this.objAPIRpta_objPacienteRespuestasCuestionarioAutonomiaPostFullInfo = this.objAPIRpta_Full5.rpta;
+         this.subeEstructuraApi3 = this.objAPIRpta_Full5.rpta;
+         this.objAPIRpta_objPacienteRespuestasCuestionarioAutonomiaPostFullInfo = this.subeEstructuraApi3.significado;
 
        });
      }
@@ -267,7 +336,8 @@ export class VerResumenComponent implements OnInit {
       this.RespuestaAutoestimaService.APIGet_RespuestasExamenAutoestimaPre(p_PacienteId)
       .subscribe(APIRpta6 => {
         this.objAPIRpta_Full6 = APIRpta6;
-        this.objAPIRpta_objPacienteRespuestasCuestionarioAutoestimaPreFullInfo = this.objAPIRpta_Full6.rpta;
+        this.subeEstructuraApi4 = this.objAPIRpta_Full6.rpta;
+        this.objAPIRpta_objPacienteRespuestasCuestionarioAutoestimaPreFullInfo = this.subeEstructuraApi4.significado;
 
       });
     }
@@ -278,7 +348,8 @@ export class VerResumenComponent implements OnInit {
        this.RespuestaAutoestimaService.APIGet_RespuestasExamenAutoestimaPost(p_PacienteId)
        .subscribe(APIRpta7 => {
          this.objAPIRpta_Full7 = APIRpta7;
-         this.objAPIRpta_objPacienteRespuestasCuestionarioAutoestimaPostFullInfo = this.objAPIRpta_Full7.rpta;
+         this.subeEstructuraApi5 = this.objAPIRpta_Full7.rpta;
+         this.objAPIRpta_objPacienteRespuestasCuestionarioAutoestimaPostFullInfo = this.subeEstructuraApi5.significado;
 
        });
      }
@@ -289,7 +360,9 @@ export class VerResumenComponent implements OnInit {
       this.RespuestaTomaDecionesService.APIGet_RespuestasExamenTomaDecisionesPre(p_PacienteId)
       .subscribe(APIRpta8 => {
         this.objAPIRpta_Full8 = APIRpta8;
-        this.objAPIRpta_objPacienteRespuestasCuestionarioTomaDecisionesPreFullInfo = this.objAPIRpta_Full8.rpta;
+        this.subeEstructuraApi6 = this.objAPIRpta_Full8.rpta;
+        this.objAPIRpta_objPacienteRespuestasCuestionarioTomaDecisionesPreFullInfo = this.subeEstructuraApi6.significado;
+
 
       });
     }
@@ -300,7 +373,8 @@ export class VerResumenComponent implements OnInit {
        this.RespuestaTomaDecionesService.APIGet_RespuestasExamenTomaDecisionesPost(p_PacienteId)
        .subscribe(APIRpta9 => {
          this.objAPIRpta_Full9 = APIRpta9;
-         this.objAPIRpta_objPacienteRespuestasCuestionarioAutoestimaPostFullInfo = this.objAPIRpta_Full9.rpta;
+         this.subeEstructuraApi7 = this.objAPIRpta_Full9.rpta;
+         this.objAPIRpta_objPacienteRespuestasCuestionarioTomaDecisionesPostFullInfo = this.subeEstructuraApi7.significado;
 
        });
      }

@@ -98,7 +98,7 @@ export class ResultadosAutonomiaPreComponent implements OnInit {
        });
    }
 
-   //AUTOESTIMA PRE
+   //AUTONOMIA PRE
    PintarTablasDeCuestionariosAutonomiaPreEnLaPantallaPrincipal(p_CasoPacienteId : string)
    {
      this.RespuestaAutonomiaService.APIGet_RespuestasExamenAutonomiaPre(p_CasoPacienteId)
