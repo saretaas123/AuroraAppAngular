@@ -1,7 +1,7 @@
-import { Component, OnInit} from '@angular/core';
+import { Component, OnInit,Inject} from '@angular/core';
 import { PsicologoService } from 'src/app/services/auroraapi/psicologo.service';
 import { CrearUsuarioComponent} from './crear-usuario/crear-usuario.component';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog,MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
 
 
@@ -54,6 +54,8 @@ export class UsuariosComponent implements OnInit {
   {
     this.dialog.open(CrearUsuarioComponent);
   }
+
+
 
 
 

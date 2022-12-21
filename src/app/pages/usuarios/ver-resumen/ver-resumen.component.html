@@ -1,4 +1,4 @@
-<div class="content-wrapper">
+<div class="content-wrapper" id="htmlData">
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <div class="container-fluid">
@@ -6,10 +6,8 @@
             <div class="col-sm-12">
               <div class="container mt-4">
                   <nav class="navbar navbar-light bg-light justify-content-between">
-                      <a class="navbar-brand"></a>
-                      <form class="form-inline">
+                      <a class="navbar-brand"><button type="button" class="btn btn-danger my-2 my-sm-0" (click)="downloadPDF()" >PDF</button></a>
                         <button type="button" class="btn btn-secondary my-2 my-sm-0" routerLink="#">Regresar</button>
-                      </form>
                     </nav>
                       <!-- DATOS DEL PACIENTE -->
                       <div class="card user-card-full">
@@ -205,6 +203,9 @@
                             </div>
                         </div>
                     </div>
+                    <nav class="navbar navbar-light bg-light justify-content-between">
+                        <button type="button" class="btn btn-secondary my-2 my-sm-0" routerLink="#">Enviar</button>
+                    </nav>
                 </div>
                 </div>
               </div>
