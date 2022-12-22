@@ -4,14 +4,16 @@ import { MatTableDataSource } from '@angular/material/table';
 import { Psicologo } from 'src/app/interfaces/psicologo';
 import { EditarPsicologoComponent} from '../editar-psicologo/editar-psicologo.component'
 import { MatDialog } from '@angular/material/dialog';
+import { PsicologoService } from 'src/app/services/auroraapi/psicologo.service';
+import { Router } from '@angular/router';
 
 const listUsuarios: Psicologo[] = [
   {dni:85632542,nombre: 'Jordan', apellidos: 'Peterson Bernt', zona:'Cercado de lima'},
   {dni:85632542,nombre: 'Melisa', apellidos: 'Peterson Bernt', zona:'Cercado de lima'},
   {dni:85632542,nombre: 'Julia', apellidos: 'Peterson Bernt', zona:'Cercado de lima'},
   {dni:85632542,nombre: 'Carla', apellidos: 'Peterson Bernt', zona:'Cercado de lima'},
- 
- 
+
+
 ];
 
 @Component({
@@ -20,6 +22,23 @@ const listUsuarios: Psicologo[] = [
   styleUrls: ['./tabla-lista-psicologo.component.css']
 })
 export class TablaListaPsicologoComponent implements OnInit {
+
+  public ApiRptaFullTablaPsicologos : any = {
+    mnsj: '',
+    rpta : [{
+      id: "0",
+      nombres: "",
+      apellidoPaterno: "",
+      apellidoMaterno: "",
+      dni: "",
+      telefono: "",
+      correo: "",
+      numeroDeColegiaturaDelPeru: "",
+      especialidad: "",
+      usuarioId: "0"
+    }]
+  };
+
 
   displayedColumns: string[] = ['dni','nombre', 'apellidos', 'zona','formularioPro','acciones'];
   dataSource = new MatTableDataSource(listUsuarios);
@@ -31,9 +50,11 @@ export class TablaListaPsicologoComponent implements OnInit {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
-  constructor(public dialog:MatDialog) { }
+  constructor(public dialog:MatDialog,
+    private _PsicologoService : PsicologoService,
+    private router: Router) { }
 
-  
+
  //Modal de editar paciente
  openDialog()
  {
@@ -41,11 +62,27 @@ export class TablaListaPsicologoComponent implements OnInit {
  }
 
   ngOnInit(): void {
+    this.API_TraerDatosPsicologos()
   }
 
   ngAfterViewInit() {
-    this.dataSource.paginator = this.paginator;   
+    this.dataSource.paginator = this.paginator;
   }
 
+
+  API_TraerDatosPsicologos()
+  {
+    this._PsicologoService.GetPsicologos().subscribe(APIrpta => {
+      this.ApiRptaFullTablaPsicologos = APIrpta;
+      console.log("APIrpta:",APIrpta);
+    });
+  }
+
+
+  RedireccionarALaPaginaDePacientes(PsicologoId : any)
+  {
+    this.router.navigate(['/dashboard/'+PsicologoId+'/listaPacienteXPsicologo']);
+    //redirect to dashboard/1/listaPacienteXPsicologo
+  }
 
 }

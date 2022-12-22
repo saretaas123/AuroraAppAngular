@@ -14,10 +14,10 @@ export class GraficoTipoViolenciaComponent implements OnInit {
   public barChartOptions: ChartConfiguration['options'] = {
     responsive: true,
     // We use these empty structures as placeholders for dynamic theming.
-  
+
   };
   public barChartType: ChartType = 'bar';
-  
+
 
   public barChartData: ChartData<'bar'> = {
     labels: [ 'Psicologico', 'Fisico', 'Economico', 'Sexual' ],
@@ -35,21 +35,6 @@ export class GraficoTipoViolenciaComponent implements OnInit {
   public chartHovered({ event, active }: { event?: ChartEvent, active?: {}[] }): void {
     console.log(event, active);
   }
-
-  /*
-  public randomize(): void {
-    // Only Change 3 values
-    this.barChartData.datasets[0].data = [
-      Math.round(Math.random() * 100),
-      59,
-      80,
-      Math.round(Math.random() * 100),
-      56,
-      Math.round(Math.random() * 100),
-      40 ];
-
-    this.chart?.update();
-  }*/
 
   constructor() { }
 

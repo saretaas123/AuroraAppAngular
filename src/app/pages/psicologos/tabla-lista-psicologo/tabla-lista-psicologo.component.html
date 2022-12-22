@@ -13,7 +13,7 @@
             <div class="card-body">
               <div class="mat-elevation-z8">
 
-                    <table class="table-responsive" mat-table [dataSource]="dataSource" >
+                    <table class="table-responsive" mat-table [dataSource]="ApiRptaFullTablaPsicologos.rpta" >
 
                       <!-- Position Column -->
                       <ng-container matColumnDef="dni">
@@ -24,19 +24,19 @@
                     <!-- Position Column -->
                     <ng-container matColumnDef="nombre">
                       <th class="text-center" mat-header-cell *matHeaderCellDef><b>Nombre</b></th>
-                      <td class="text-center" mat-cell *matCellDef="let element"> {{element.nombre}} </td>
+                      <td class="text-center" mat-cell *matCellDef="let element"> {{element.nombres}} </td>
                     </ng-container>
 
                     <!-- Name Column -->
                     <ng-container matColumnDef="apellidos">
                       <th class="text-center" mat-header-cell *matHeaderCellDef><b> Apellidos </b></th>
-                      <td class="text-center" mat-cell *matCellDef="let element"> {{element.apellidos}} </td>
+                      <td class="text-center" mat-cell *matCellDef="let element"> {{element.apellidoPaterno + ' ' + element.apellidoMaterno}} </td>
                     </ng-container>
 
                     <!-- Weight Column -->
                     <ng-container matColumnDef="zona">
                       <th class="anchoColumnaEdad text-center" mat-header-cell *matHeaderCellDef><b>Distrito de Intervención</b></th>
-                      <td class="text-center" mat-cell *matCellDef="let element"> {{element.zona}} </td>
+                      <td class="text-center" mat-cell *matCellDef="let element"> {{element.telefono}} </td>
                     </ng-container>
 
 
@@ -44,7 +44,7 @@
                       <ng-container matColumnDef="formularioPro">
                         <th class="text-center" mat-header-cell *matHeaderCellDef><b> Lista Usuarias </b></th>
                         <td class="text-center" mat-cell *matCellDef="let element">
-                          <button type="button" class="btn btn-warning" routerLink="/dashboard/1/listaPacienteXPsicologo" >Ver Usuarias</button>
+                          <button type="button" class="btn btn-warning" (click)="RedireccionarALaPaginaDePacientes(element.id)" >Ver Usuarias</button>
                         </td>
                       </ng-container>
 
