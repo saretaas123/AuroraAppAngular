@@ -1,4 +1,4 @@
-<mat-dialog-actions align="end">  
+<mat-dialog-actions align="end">
     <button class="btn btn-danger" mat-dialog-close>Cerrar</button>
   </mat-dialog-actions>
 
@@ -18,9 +18,9 @@
             <mat-label>Apellido Paterno</mat-label>
             <input matInput type="text">
         </mat-form-field>
-      </div>      
+      </div>
     </div>
-  </div>  
+  </div>
   <div class="container">
     <div class="row">
       <div class="col-sm">
@@ -32,11 +32,11 @@
       <div class="col-sm">
         <mat-form-field appearance="fill">
             <mat-label>Fecha de nacimiento</mat-label>
-            <input matInput type="date">            
+            <input matInput type="date">
         </mat-form-field>
-      </div>      
+      </div>
     </div>
-  </div>  
+  </div>
   <div class="container">
     <div class="row">
       <div class="col-sm">
@@ -48,11 +48,11 @@
       <div class="col-sm">
         <mat-form-field appearance="fill">
             <mat-label>Direccion</mat-label>
-            <input matInput type="text">            
+            <input matInput type="text">
         </mat-form-field>
-      </div>      
+      </div>
     </div>
-  </div>  
+  </div>
   <div class="container">
     <div class="row">
       <div class="col-sm">
@@ -64,12 +64,28 @@
       <div class="col-sm">
         <mat-form-field appearance="fill">
             <mat-label>Correo</mat-label>
-            <input matInput type="email">            
+            <input matInput type="email">
         </mat-form-field>
-      </div>      
+      </div>
     </div>
-  </div> 
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm">
+        <mat-form-field appearance="fill">
+            <mat-label>Numero Colegiatura</mat-label>
+            <input matInput type="number"  #pTelefono>
+        </mat-form-field>
+      </div>
+      <div class="col-sm">
+        <mat-form-field appearance="fill">
+            <mat-label>Especialidad</mat-label>
+            <input matInput type="text" #pCorreo>
+        </mat-form-field>
+      </div>
+    </div>
+  </div>
 </mat-dialog-content>
-<mat-dialog-actions >  
+<mat-dialog-actions >
   <button class="btn btn-primary" [mat-dialog-close]="true" cdkFocusInitial>Guardar</button>
 </mat-dialog-actions>

@@ -273,18 +273,18 @@ export class TablaAvancesProtestComponent implements OnInit {
 
   str_DatosAutoestima( Autoestima : string, AutoestimaSiMismo :string, AutoestimaSocial : string, AutestimaFamilia : string )
   {
-    return "Autoestima:"+Autoestima + ", "+
+    return "Autoestima:"+Autoestima /*+ ", "+
     "AutoestimaSiMismo:"+AutoestimaSiMismo + ", "+
     "AutoestimaSocial:"+AutoestimaSocial + ", "+
-    "AutestimaFamilia:"+AutestimaFamilia + " ";
+    "AutestimaFamilia:"+AutestimaFamilia + " ";*/
   }
 
   str_DatosAutonomiaControlshapiro( Precontemplacion : string, Contemplacion :string, Accion : string, Mantenimiento : string )
   {
-    return "Precontemplacion:"+Precontemplacion + ", "+
+    return "Precontemplacion:"+Precontemplacion /* + ", "+
     "Contemplacion:"+Contemplacion + ", "+
     "Accion:"+Accion + ", "+
-    "Mantenimiento:"+Mantenimiento + " ";
+    "Mantenimiento:"+Mantenimiento + " ";*/
   }
 
   str_DatosTomaDecision( CapacidadTomaDecisiones : string )
@@ -294,11 +294,11 @@ export class TablaAvancesProtestComponent implements OnInit {
 
   str_DatosMotivacionAlCambio( SensacionDeControlPositivo : string, SensacionDeControlNegativo : string, DeseoDeControl :string, ControlInterno : string, ControlExterno : string )
   {
-    return "CPositivo:"+SensacionDeControlPositivo + ", "+
+    return "CPositivo:"+SensacionDeControlPositivo /*+ ", "+
     "CNegativo:"+SensacionDeControlNegativo + ", "+
     "Deseo Control:"+DeseoDeControl + ", "+
     "CInterno:"+ControlInterno + ", "+
-    "CExterno:"+ControlExterno + " ";
+    "CExterno:"+ControlExterno + " ";*/
   }
 
 }
