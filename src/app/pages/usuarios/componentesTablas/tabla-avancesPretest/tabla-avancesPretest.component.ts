@@ -273,31 +273,31 @@ export class TablaAvancesPretestComponent implements OnInit, OnChanges {
 
   str_DatosAutoestima( Autoestima : any, AutoestimaSiMismo :any, AutoestimaSocial : any, AutestimaFamilia : any )
   {
-    return "Autoestima:"+String(Autoestima) + ","+
+    return "Autoestima:"+String(Autoestima)/* + ","+
     "AutoestimaSiMismo:"+String(AutoestimaSiMismo) + ""+
     "AutoestimaSocial:"+String(AutoestimaSocial) + ""+
-    "AutestimaFamilia:"+String(AutestimaFamilia) + "";
+    "AutestimaFamilia:"+String(AutestimaFamilia) + "";*/
   }
 
   str_DatosAutonomiaControlshapiro( Precontemplacion : any, Contemplacion :any, Accion : any, Mantenimiento : any )
   {
-    return "Precontemplacion:"+String(Precontemplacion) + ","+
+    return "Precontemplacion:"+String(Precontemplacion) /*+ ","+
     "Contemplacion:"+String(Contemplacion) + ","+
     "Accion:"+ String(Accion) + ","+
-    "Mantenimiento:"+ String(Mantenimiento) + "";
+    "Mantenimiento:"+ String(Mantenimiento) + "";*/
   }
 
   str_DatosTomaDecision( CapacidadTomaDecisiones : any )
   {
-    return "Autoestima:"+ String(CapacidadTomaDecisiones) + ",";
+    return "CapacidadTomaDecisiones:"+ String(CapacidadTomaDecisiones) + ",";
   }
 
   str_DatosMotivacionAlCambio( SensacionDeControlPositivo : any, SensacionDeControlNegativo : any, DeseoDeControl :any, ControlInterno : any, ControlExterno : any )
   {
-    return "Autoestima:"+ String(SensacionDeControlPositivo) + ",<br/>"+
-    "AutoestimaSiMismo:"+ String(SensacionDeControlNegativo) + ",<br/>"+
-    "AutoestimaSocial:"+ String(DeseoDeControl) + ",<br/>"+
-    "AutoestimaSocial:"+ String(ControlInterno) + ",<br/>"+
-    "AutestimaFamilia:"+ String(ControlExterno) + "<br/>";
+    return "Control Positivo:"+ String(SensacionDeControlPositivo)/* + ", "+
+   "Control Negativo:"+ String(SensacionDeControlNegativo) + ", "+
+    "Deseo De Control:"+ String(DeseoDeControl) + ", "+
+    "Control Interno:"+ String(ControlInterno) + ", "+
+    "Control Externo:"+ String(ControlExterno) + " ";*/
   }
 }
