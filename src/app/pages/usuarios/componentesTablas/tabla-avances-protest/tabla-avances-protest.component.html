@@ -45,27 +45,55 @@
                   <!-- Symbol Column -->
                   <ng-container matColumnDef="motivacionCambioE">
                     <th class="colorHead text-center" mat-header-cell *matHeaderCellDef><b> Etapa de motivacion al cambio</b></th>
-                    <td class="color text-center" mat-cell *matCellDef="let element"> {{element.motivacionCambioE}} </td>
+                    <td class="color text-center" mat-cell *matCellDef="let element">
+                      <div *ngIf="element.motivacionCambioE; else elseBlock">
+                        {{element.info_MotiCambio}}
+                      </div>
+                      <ng-template #elseBlock>
+                        Aun no completado
+                      </ng-template>
+                    </td>
                   </ng-container>
 
                     <!-- Symbol Column -->
                     <ng-container matColumnDef="copersmithE">
                       <th class="color2Head text-center"  mat-header-cell *matHeaderCellDef><b> Copersmith (Autoestima)</b> </th>
-                      <td class="color2 text-center" mat-cell *matCellDef="let element"> {{element.copersmithE}} </td>
+                      <td class="color2 text-center" mat-cell *matCellDef="let element">
+                        <div *ngIf="element.copersmithE; else elseBlock">
+                          {{element.info_CoperSmith}}
+                        </div>
+                        <ng-template #elseBlock>
+                          Aun no completado
+                        </ng-template>
+                      </td>
                     </ng-container>
 
 
                    <!-- Symbol Column -->
                    <ng-container matColumnDef="nivelTomaDecisionesE">
                     <th class="color3Head text-center"  mat-header-cell *matHeaderCellDef><b> Niveles Toma de decisiones</b> </th>
-                    <td class="color3 text-center" mat-cell *matCellDef="let element"> {{element.nivelTomaDecisionesE}} </td>
+                    <td class="color3 text-center" mat-cell *matCellDef="let element">
+                      <div *ngIf="element.nivelTomaDecisionesE; else elseBlock">
+                        {{element.info_TomaDeci}}
+                      </div>
+                      <ng-template #elseBlock>
+                        Aun no completado
+                      </ng-template>
+                    </td>
                    </ng-container>
 
 
                     <!-- Symbol Column -->
                     <ng-container matColumnDef="autonomiaE">
                     <th class="color4Head text-center"  mat-header-cell *matHeaderCellDef><b> Autonomia</b> </th>
-                    <td class="color4 text-center" mat-cell *matCellDef="let element"> {{element.autonomiaE}} </td>
+                    <td class="color4 text-center" mat-cell *matCellDef="let element">
+                      <div *ngIf="element.autonomiaE; else elseBlock">
+                        {{element.info_Autonomia}}
+                      </div>
+                      <ng-template #elseBlock>
+                        Aun no completado
+                      </ng-template>
+                    </td>
                     </ng-container>
 
 

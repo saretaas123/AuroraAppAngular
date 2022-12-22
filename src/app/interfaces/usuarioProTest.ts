@@ -3,10 +3,15 @@ export interface UsuarioProtest{
     nombre:string,
     tipoViolencia:string,
     riesgo:string,
-    motivacionCambioE:string,
-    copersmithE:string,
+    motivacionCambioE:boolean,
+    copersmithE:boolean,
 
-    nivelTomaDecisionesE:string, //incipiente de capacidad - capacidad en proceso - capacidad suficiente
+    nivelTomaDecisionesE:boolean, //incipiente de capacidad - capacidad en proceso - capacidad suficiente
 
-    autonomiaE:string, //control positiva - control negativa -deseo de control - agente de control interno - agente de control externo
-    }
+    autonomiaE:boolean, //control positiva - control negativa -deseo de control - agente de control interno - agente de control externo
+
+    info_MotiCambio : string,
+    info_CoperSmith : string,
+    info_TomaDeci : string,
+    info_Autonomia: string
+  }

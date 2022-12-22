@@ -7,10 +7,15 @@ var listUsuarios: UsuarioProtest[] = [
   {dni:'',nombre: ' ',
   tipoViolencia:' ',
   riesgo:' ',
-   motivacionCambioE:' ',
-  copersmithE:' ',
-  nivelTomaDecisionesE:' ',
-  autonomiaE:' '}
+   motivacionCambioE: false,
+  copersmithE: false,
+  nivelTomaDecisionesE: false,
+  autonomiaE: false,
+  info_MotiCambio : "",
+  info_CoperSmith : "",
+  info_TomaDeci : "",
+  info_Autonomia: ""
+  }
 ];
 
 @Component({
@@ -41,7 +46,35 @@ export class TablaAvancesProtestComponent implements OnInit {
       pacienteNombres : '',
       pacienteTipoViolencia : '',
       pacienteRiesgo : '',
-      pacienteAnoDeEvaluacion : ''
+      pacienteAnoDeEvaluacion : '',
+      postTestAccion : "0",
+      postTestAutoestima : "0",
+      postTestAutoestimaFamiliar : "0",
+      postTestAutoestimaSiMismo : "0",
+      postTestAutoestimaSocial : "0",
+      postTestCapacidadTomaDecisiones : "0",
+      postTestContemplacion : "0",
+      postTestControlExterno : "0",
+      postTestControlInterno : "0",
+      postTestDeseoDeControl : "0",
+      postTestMantenimiento : "0",
+      postTestPrecontemplacion : "0",
+      postTestSensacionDeControlNegativo : "0",
+      postTestSensacionDeControlPositivo : "0",
+      preTestAccion : "0",
+      preTestAutoestima : "0",
+      preTestAutoestimaFamiliar : "0",
+      preTestAutoestimaSiMismo : "0",
+      preTestAutoestimaSocial : "0",
+      preTestCapacidadTomaDecisiones : "0",
+      preTestContemplacion : "0",
+      preTestControlExterno : "0",
+      preTestControlInterno : "0",
+      preTestDeseoDeControl : "0",
+      preTestMantenimiento : "0",
+      preTestPrecontemplacion : "0",
+      preTestSensacionDeControlNegativo : "0",
+      preTestSensacionDeControlPositivo : "0"
     }]
   };
 
@@ -65,7 +98,35 @@ export class TablaAvancesProtestComponent implements OnInit {
       pacienteNombres : '',
       pacienteTipoViolencia : '',
       pacienteRiesgo : '',
-      pacienteAnoDeEvaluacion : ''
+      pacienteAnoDeEvaluacion : '',
+      postTestAccion : "0",
+      postTestAutoestima : "0",
+      postTestAutoestimaFamiliar : "0",
+      postTestAutoestimaSiMismo : "0",
+      postTestAutoestimaSocial : "0",
+      postTestCapacidadTomaDecisiones : "0",
+      postTestContemplacion : "0",
+      postTestControlExterno : "0",
+      postTestControlInterno : "0",
+      postTestDeseoDeControl : "0",
+      postTestMantenimiento : "0",
+      postTestPrecontemplacion : "0",
+      postTestSensacionDeControlNegativo : "0",
+      postTestSensacionDeControlPositivo : "0",
+      preTestAccion : "0",
+      preTestAutoestima : "0",
+      preTestAutoestimaFamiliar : "0",
+      preTestAutoestimaSiMismo : "0",
+      preTestAutoestimaSocial : "0",
+      preTestCapacidadTomaDecisiones : "0",
+      preTestContemplacion : "0",
+      preTestControlExterno : "0",
+      preTestControlInterno : "0",
+      preTestDeseoDeControl : "0",
+      preTestMantenimiento : "0",
+      preTestPrecontemplacion : "0",
+      preTestSensacionDeControlNegativo : "0",
+      preTestSensacionDeControlPositivo : "0"
     }]
   };
 
@@ -85,7 +146,35 @@ export class TablaAvancesProtestComponent implements OnInit {
     pacienteNombres : '',
     pacienteTipoViolencia : '',
     pacienteRiesgo : '',
-    pacienteAnoDeEvaluacion : ''
+    pacienteAnoDeEvaluacion : '',
+    postTestAccion : "0",
+    postTestAutoestima : "0",
+    postTestAutoestimaFamiliar : "0",
+    postTestAutoestimaSiMismo : "0",
+    postTestAutoestimaSocial : "0",
+    postTestCapacidadTomaDecisiones : "0",
+    postTestContemplacion : "0",
+    postTestControlExterno : "0",
+    postTestControlInterno : "0",
+    postTestDeseoDeControl : "0",
+    postTestMantenimiento : "0",
+    postTestPrecontemplacion : "0",
+    postTestSensacionDeControlNegativo : "0",
+    postTestSensacionDeControlPositivo : "0",
+    preTestAccion : "0",
+    preTestAutoestima : "0",
+    preTestAutoestimaFamiliar : "0",
+    preTestAutoestimaSiMismo : "0",
+    preTestAutoestimaSocial : "0",
+    preTestCapacidadTomaDecisiones : "0",
+    preTestContemplacion : "0",
+    preTestControlExterno : "0",
+    preTestControlInterno : "0",
+    preTestDeseoDeControl : "0",
+    preTestMantenimiento : "0",
+    preTestPrecontemplacion : "0",
+    preTestSensacionDeControlNegativo : "0",
+    preTestSensacionDeControlPositivo : "0"
   }];
 
 
@@ -136,41 +225,43 @@ export class TablaAvancesProtestComponent implements OnInit {
       element: { pacienteDni: any; pacienteNombres: any; pacienteApellidoPaterno: string; pacienteApellidoMaterno: string; pacienteFechaNacimiento: any;
         examenPreTestAutoestimaCompletado: boolean; examenPreTestAutonomiaCompletado: boolean; examenPreTestMotivacionAlCambioCompletado: boolean; examenPreTestTomaDecisionCompletado: boolean;
         examenPostTestAutoestimaCompletado: boolean; examenPostTestAutonomiaCompletado: boolean; examenPostTestMotivacionAlCambioCompletado: boolean; examenPostTestTomaDecisionCompletado: boolean;
-        pacienteTipoViolencia: any; pacienteRiesgo: any; pacienteAnoDeEvaluacion: string;           }
+        pacienteTipoViolencia: any; pacienteRiesgo: any; pacienteAnoDeEvaluacion: string;
+
+        postTestAutoestima : any;
+        postTestAutoestimaSiMismo : any;
+        postTestAutoestimaSocial : any;
+        postTestAutoestimaFamiliar : any;
+
+        postTestSensacionDeControlPositivo: any;
+        postTestSensacionDeControlNegativo: any;
+        postTestDeseoDeControl: any;
+        postTestControlInterno: any;
+        postTestControlExterno: any;
+
+        postTestPrecontemplacion : any;
+        postTestContemplacion : any;
+        postTestAccion : any;
+        postTestMantenimiento : any;
+
+        postTestCapacidadTomaDecisiones: any; }
       ) => {
         if(element.pacienteDni=== null || element.pacienteDni === ''){return;}
 
-        var temp_str_motivacionCambioE = '';
-        var temp_str_copersmithE = '';
-        var temp_str_nivelTomaDecisionesE = '';
-        var temp_str_autonomiaE = '';
-
-        if( element.examenPostTestAutoestimaCompletado === false)
-        {
-          temp_str_motivacionCambioE = 'No realizado';
-        }
-        if( element.examenPostTestAutonomiaCompletado === false)
-        {
-          temp_str_copersmithE = 'No realizado';
-        }
-        if( element.examenPostTestMotivacionAlCambioCompletado === false)
-        {
-          temp_str_nivelTomaDecisionesE = 'No realizado';
-        }
-        if( element.examenPostTestTomaDecisionCompletado === false)
-        {
-          temp_str_autonomiaE = 'No realizado';
-        }
+        console.log("element.post:",element);
 
         listUsuarios.push({
           dni: element.pacienteDni,
           nombre: element.pacienteNombres,
           tipoViolencia:  element.pacienteTipoViolencia,
           riesgo : element.pacienteRiesgo,
-          motivacionCambioE :temp_str_motivacionCambioE,
-          copersmithE : temp_str_copersmithE,
-          nivelTomaDecisionesE : temp_str_nivelTomaDecisionesE,
-          autonomiaE : temp_str_autonomiaE
+          motivacionCambioE :element.examenPostTestAutoestimaCompletado,
+          copersmithE : element.examenPostTestAutonomiaCompletado,
+          nivelTomaDecisionesE : element.examenPostTestMotivacionAlCambioCompletado,
+          autonomiaE : element.examenPostTestTomaDecisionCompletado,
+          info_MotiCambio : this.str_DatosMotivacionAlCambio(String(element.postTestSensacionDeControlNegativo),element.postTestSensacionDeControlNegativo ,element.postTestDeseoDeControl ,element.postTestControlInterno ,element.postTestControlExterno ),
+          info_CoperSmith : this.str_DatosAutoestima(element.postTestAutoestima,element.postTestAutoestimaSiMismo,element.postTestAutoestimaSocial,element.postTestAutoestimaFamiliar),
+          info_TomaDeci : this.str_DatosTomaDecision(element.postTestCapacidadTomaDecisiones),
+          info_Autonomia : this.str_DatosAutonomiaControlshapiro(element.postTestPrecontemplacion, element.postTestContemplacion, element.postTestAccion, element.postTestMantenimiento)
         });
 
       //});
@@ -178,6 +269,36 @@ export class TablaAvancesProtestComponent implements OnInit {
       this.dataSource = new MatTableDataSource(listUsuarios);
 
     });
+  }
+
+  str_DatosAutoestima( Autoestima : string, AutoestimaSiMismo :string, AutoestimaSocial : string, AutestimaFamilia : string )
+  {
+    return "Autoestima:"+Autoestima + ", "+
+    "AutoestimaSiMismo:"+AutoestimaSiMismo + ", "+
+    "AutoestimaSocial:"+AutoestimaSocial + ", "+
+    "AutestimaFamilia:"+AutestimaFamilia + " ";
+  }
+
+  str_DatosAutonomiaControlshapiro( Precontemplacion : string, Contemplacion :string, Accion : string, Mantenimiento : string )
+  {
+    return "Precontemplacion:"+Precontemplacion + ", "+
+    "Contemplacion:"+Contemplacion + ", "+
+    "Accion:"+Accion + ", "+
+    "Mantenimiento:"+Mantenimiento + " ";
+  }
+
+  str_DatosTomaDecision( CapacidadTomaDecisiones : string )
+  {
+    return "Autoestima:"+ CapacidadTomaDecisiones + " ";
+  }
+
+  str_DatosMotivacionAlCambio( SensacionDeControlPositivo : string, SensacionDeControlNegativo : string, DeseoDeControl :string, ControlInterno : string, ControlExterno : string )
+  {
+    return "Autoestima:"+SensacionDeControlPositivo + ", "+
+    "AutoestimaSiMismo:"+SensacionDeControlNegativo + ", "+
+    "AutoestimaSocial:"+DeseoDeControl + ", "+
+    "AutoestimaSocial:"+ControlInterno + ", "+
+    "AutestimaFamilia:"+ControlExterno + " ";
   }
 
 }
