@@ -1,4 +1,5 @@
  <div class="hold-transition login-page">
+
  <!--<h1>{{imprimiendo.canciones.autores[1].nombre}}</h1><br>
   <h1>{{imprimiendo.canciones.autores[1].premio.nombre}}</h1><br>
   <h1>{{imprimiendo.canciones.autores[1].premio.ano}}</h1><br>
@@ -8,18 +9,28 @@
 
     <div class="login-box">
       <!-- /.login-logo -->
-      <div class="card card-outline card-red">
+      <div class="card card-outline color">
         <div class="card-header text-center">
-
+          <img src="../../../assets/dist/img/cintillo.png" width="100%"   >
         </div>
         <div class="card-body">
-          <div class="text-center mt-5 mb-5">
-            <img src="../../../assets/dist/img/logoAurora.png"  width="100%" >
-          </div>
+          <nav class="navbar  justify-content-between">
+            <div class=" navbar-brand arribaIzquierda my-2 my-sm-0"></div>
+            <div class="arribaDerecha my-2 my-sm-0"></div>
+          </nav>
 
+          <div class="text-center mt-2 mb-2 triangulo">
+            <h2 class="h1"><b>Mujeres</b>&nbsp;Acompañando<b>&nbsp;Mujeres</b></h2>
+          </div>
           <br>
 
-          <form action="" method="post">
+          <nav class="navbar  justify-content-between">
+            <div class=" navbar-brand abajoIzquierda my-2 my-sm-0"></div>
+            <div class="abajoDerecha my-2 my-sm-0"></div>
+          </nav>
+
+          <div class="centrar" >
+          <form action="" method="post"  >
             <div class="input-group mb-3">
               <input type="email" class="form-control" placeholder="Dni" #Usuario>
               <div class="input-group-append">
@@ -38,11 +49,13 @@
             </div>
           </form>
 
-          <div class="social-auth-links text-center mt-2 mb-3">
+
+          <div class="social-auth-links text-center mt-2 mb-3 form">
             <a class="btn btn-block colorboton" (click)="Logearse(Usuario.value, Contrasena.value)">
                 Ingresar
              </a>
           </div>
+        </div>
 
 
         </div>
