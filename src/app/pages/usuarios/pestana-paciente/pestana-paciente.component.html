@@ -1,11 +1,11 @@
 <mat-tab-group mat-stretch-tabs="false" mat-align-tabs="center">
     <mat-tab label="Listado Usuarias">
-        <app-tabla-paciente [g_TablaPacienteComponent_PsicologoId]="out_p_PsicologoId"></app-tabla-paciente>
+        <app-tabla-paciente [g_TablaPacienteComponent_PsicologoId]="out_p_PsicologoId" [g_TablaPacienteComponent_TablaPaciente]="ApiRptaFullTablaPacientes"></app-tabla-paciente>
     </mat-tab>
     <mat-tab label="Avances PreTest">
-        <app-tabla-avancesPretest [g_TablaPreTest_PsicologoId]="out_p_PsicologoId"></app-tabla-avancesPretest>
+        <app-tabla-avancesPretest [g_TablaPreTest_PsicologoId]="out_p_PsicologoId" [g_TablaPreTest_TablaPaciente]="ApiRptaFullTablaPacientes"></app-tabla-avancesPretest>
     </mat-tab>
     <mat-tab label="Avances PostTest">
-        <app-tabla-avances-protest [g_TablaPostTest_PsicologoId]="out_p_PsicologoId"></app-tabla-avances-protest>
+        <app-tabla-avances-protest [g_TablaPostTest_PsicologoId]="out_p_PsicologoId" [g_TablaPostTest_TablaPaciente]="ApiRptaFullTablaPacientes"></app-tabla-avances-protest>
     </mat-tab>
   </mat-tab-group>
