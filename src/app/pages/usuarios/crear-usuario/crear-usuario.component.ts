@@ -2,7 +2,7 @@ import { Component, Input, Output, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ActivatedRoute } from "@angular/router";
 import { PacienteService } from 'src/app/services/auroraapi/paciente.service';
-
+import Swal from 'sweetalert2';
 
 
 @Component({
@@ -11,6 +11,8 @@ import { PacienteService } from 'src/app/services/auroraapi/paciente.service';
   styleUrls: ['./crear-usuario.component.css']
 })
 export class CrearUsuarioComponent implements OnInit {
+
+
 
   g_routeparam_PsicologoId: string = '0';
 
@@ -54,15 +56,32 @@ export class CrearUsuarioComponent implements OnInit {
 
       if(RegistroExitoso)
       {
-        alert('Registrado Correctamente');
+        Swal.fire(
+          'Registrado Correctamente',
+          ' ',
+          'success'
+        )
+        //alert('Registrado Correctamente');
 
         //Aca se actualize la pagina
         this.router.navigate(['/dashboard/'+this.g_routeparam_PsicologoId+'/usuarios']);
+
       }
       else{
-        alert('No se pudo registrar');
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'No se pudo registrar',
+
+        })
+        //alert('No se pudo registrar');
+
       }
+
+
     })
   }
+
+
 
 }

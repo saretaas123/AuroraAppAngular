@@ -4,6 +4,7 @@ import { CasopacienteService } from 'src/app/services/auroraapi/casopaciente.ser
 import { EstadisticaPacienteService } from 'src/app/services/auroraapi/estadisticaPaciente.service';
 import { PsicologoService } from 'src/app/services/auroraapi/psicologo.service';
 import { UsuarioService } from 'src/app/services/auroraapi/usuario.service';
+import Swal from 'sweetalert2';
 
 
 @Component({
@@ -97,11 +98,25 @@ export class LoginIComponent  implements OnInit {
       console.log(this.ApiFullobjPsicologoFullInfo.mnsj);
       if(LogeoExitoso)
       {
-        alert('Credenciales correctas');
+
+        Swal.fire(
+          'Credenciales correctas',
+          'Bienvenida ',
+          'success'
+        )
+
+        //alert('Credenciales correctas');
         this.router.navigate(['/dashboard/1']);
       }
       else{
-        alert('Credenciales incorrectas');
+
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Credenciales incorrectas',
+
+        })
+        //alert('Credenciales incorrectas');
       }
 
     })

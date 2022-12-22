@@ -1,4 +1,53 @@
+
 .colorboton{
-    background-color: red;
-    color: white;
+    background-color: rgb(120, 120, 184);
+    color: rgb(255, 255, 255);
+    font-family: Arial,Helvetica;
 }
+
+.login-box{
+  width: 900px;
+}
+
+.triangulo{
+color: #7878B8;
+}
+
+@media (max-width: 929px) {
+  .login-box{
+   width: 360px;
+  }
+}
+
+.arribaIzquierda{
+    width: 0;
+    height: 0;
+    border-top: 100px solid #7878B8;
+    border-right: 100px solid transparent;
+}
+
+.arribaDerecha{
+  margin-left: 50px;
+  width: 0;
+  height: 0;
+  border-top: 100px solid #7878B8;
+  border-left: 100px solid transparent;
+}
+
+.abajoIzquierda{
+  width: 0;
+  height: 0;
+  border-bottom: 100px solid #7878B8;
+  border-right: 100px solid transparent;
+}
+
+.abajoDerecha{
+  width: 0;
+  height: 0;
+  border-bottom: 100px solid #7878B8;
+  border-left: 100px solid transparent;
+}
+
+
+
+
