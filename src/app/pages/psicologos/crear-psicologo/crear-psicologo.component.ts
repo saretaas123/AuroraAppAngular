@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ActivatedRoute } from "@angular/router";
-import { PacienteService } from 'src/app/services/auroraapi/paciente.service';
+import { PsicologoService } from 'src/app/services/auroraapi/psicologo.service';
+import Swal from 'sweetalert2';
 
 
 @Component({
@@ -12,7 +13,7 @@ import { PacienteService } from 'src/app/services/auroraapi/paciente.service';
 export class CrearPsicologoComponent implements OnInit {
 
   g_routeparam_PsicologoId: string = '-3';
- 
+
 
   ngOnInit(): void {
     this.g_routeparam_PsicologoId = this.route.snapshot.paramMap.get("psicologoid")??'0';
@@ -23,38 +24,49 @@ export class CrearPsicologoComponent implements OnInit {
     rpta : {}
   };
 
-  public objPsicologoFullInfo : any = {
-    nombres: '',
-    apellidoMaterno:'',
-    apellidoPaterno:'',
-    cantPacientes : 0,
-    correo : '',
-    dni : '',
-    especialidad : '',
-    numeroDeColegiaturaDelPeru : '',
-    psicologoId : 0,
-    telefono : '',
-    usuarioId : 0
-  };
-
   constructor(
-    private PacienteService : PacienteService,
+    private _PsicologoService : PsicologoService,
     private router: Router,
     private route: ActivatedRoute
   ) { }
 
-  RegistrarPaciente(
+  RegistrarPsicologo(
     pNombres : string, pApellidoPaterno : string,pApellidoMaterno : string,
     pFechaNacimiento : string,pDni : string,pTelefono : string,
     pDireccioUbigeo : string,pCorreo : string)
   {
-    var RegistroExitoso = false;
-    var pPsicologoId = this.g_routeparam_PsicologoId;
 
-    console.log("pPsicologoId:"+pPsicologoId);
+    this._PsicologoService.PostAgregarPsicologos(
+      pNombres, pApellidoPaterno, pApellidoMaterno,
+      pDni ,pTelefono , pCorreo,
+      pFechaNacimiento , pDireccioUbigeo //NumeroColegiatura, Especialidad
+      )
+      .subscribe(APIrpta => {
+        var RegistroExitoso = this.ApiFullobjPsicologoFullInfo.rpta;
 
-  
 
+        if(RegistroExitoso)
+        {
+          Swal.fire(
+            'Registrado Correctamente',
+            ' ',
+            'success'
+          )
+        //Aca se actualize la pagina
+          this.router.navigate(['/dashboard/'+this.g_routeparam_PsicologoId+'/usuarios']);
+
+        }
+        else{
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'No se pudo registrar',
+
+          })
+
+      }
+
+      })
 
   }
 
