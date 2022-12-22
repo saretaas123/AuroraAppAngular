@@ -294,11 +294,11 @@ export class TablaAvancesProtestComponent implements OnInit {
 
   str_DatosMotivacionAlCambio( SensacionDeControlPositivo : string, SensacionDeControlNegativo : string, DeseoDeControl :string, ControlInterno : string, ControlExterno : string )
   {
-    return "Autoestima:"+SensacionDeControlPositivo + ", "+
-    "AutoestimaSiMismo:"+SensacionDeControlNegativo + ", "+
-    "AutoestimaSocial:"+DeseoDeControl + ", "+
-    "AutoestimaSocial:"+ControlInterno + ", "+
-    "AutestimaFamilia:"+ControlExterno + " ";
+    return "CPositivo:"+SensacionDeControlPositivo + ", "+
+    "CNegativo:"+SensacionDeControlNegativo + ", "+
+    "Deseo Control:"+DeseoDeControl + ", "+
+    "CInterno:"+ControlInterno + ", "+
+    "CExterno:"+ControlExterno + " ";
   }
 
 }
