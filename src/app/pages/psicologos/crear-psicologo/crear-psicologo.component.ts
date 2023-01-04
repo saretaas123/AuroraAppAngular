@@ -32,14 +32,14 @@ export class CrearPsicologoComponent implements OnInit {
 
   RegistrarPsicologo(
     pNombres : string, pApellidoPaterno : string,pApellidoMaterno : string,
-    pFechaNacimiento : string,pDni : string,pTelefono : string,
-    pDireccioUbigeo : string,pCorreo : string)
+    pDni : string,pTelefono : string,pCorreo : string,
+    pNumeroColegiatura : string,pEspecialidad : string)
   {
 
     this._PsicologoService.PostAgregarPsicologos(
       pNombres, pApellidoPaterno, pApellidoMaterno,
       pDni ,pTelefono , pCorreo,
-      pFechaNacimiento , pDireccioUbigeo //NumeroColegiatura, Especialidad
+      pNumeroColegiatura, pEspecialidad
       )
       .subscribe(APIrpta => {
         var RegistroExitoso = this.ApiFullobjPsicologoFullInfo.rpta;
