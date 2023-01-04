@@ -1,8 +1,10 @@
-import { Component, Input, Output, OnInit } from '@angular/core';
+import { Component, Input, Output, OnInit,Inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { ActivatedRoute } from "@angular/router";
 import { PacienteService } from 'src/app/services/auroraapi/paciente.service';
 import Swal from 'sweetalert2';
+import { MatDialogRef,MAT_DIALOG_DATA } from '@angular/material/dialog';
+
 
 
 @Component({
@@ -18,7 +20,10 @@ export class CrearUsuarioComponent implements OnInit {
 
   ngOnInit(): void {
     this.g_routeparam_PsicologoId = this.router.url.split('/')[2];
+    console.log(this.editData);
   }
+
+
 
   public ApiFullobjPsicologoFullInfo : any = {
     mnsj: '',
@@ -28,7 +33,10 @@ export class CrearUsuarioComponent implements OnInit {
   constructor(
     private PacienteService : PacienteService,
     private router: Router,
+    @Inject(MAT_DIALOG_DATA) public editData : any,
     private route: ActivatedRoute) { }
+
+
 
 
   RegistrarPaciente(

@@ -102,8 +102,13 @@
   <div class="row">
     <div class="col-sm">
       <mat-form-field appearance="fill">
+<<<<<<< HEAD
+          <mat-label>DNI/ Carné de extranjería</mat-label>
+          <input matInput type="text" #pDni>
+=======
           <mat-label>Dni</mat-label>
           <input matInput type="text" max="8" #pDni>
+>>>>>>> 8fc47175ed3dcc9348248e6ec2362554e2229825
       </mat-form-field>
     </div>
     <div class="col-sm">
@@ -172,6 +177,7 @@
     </div>
   </div>
 </div>
+
 </mat-dialog-content>
 <mat-dialog-actions >
 <button class="btn btn-primary" (click)="RegistrarPaciente(pNombres.value , pApellidoPaterno.value ,pApellidoMaterno.value ,pFechaNacimiento.value , pDni.value ,pTelefono.value ,pDireccioUbigeo.value ,pCorreo.value,pTipoViolencia.value,pRiesgo.value,pAnoDeEvaluacion.value,pEntidadProblema.value,pModalidadAdministrativo.value)" cdkFocusInitial>Guardar</button>

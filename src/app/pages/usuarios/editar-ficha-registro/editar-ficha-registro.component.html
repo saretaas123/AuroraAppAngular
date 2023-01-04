@@ -1,0 +1,315 @@
+<div class="content-wrapper">
+
+  <!-- Content Header (Page header) -->
+  <section class="content-header">
+  <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-sm-12">
+          <section class="vh-50" style="background-color: #f4f5f7;">
+            <div class="container py-5 h-100" >
+              <div class="row d-flex justify-content-center align-items-center h-100">
+                <div class="col col-lg-12 mb-4 mb-lg-0">
+                  <div class="card mb-3" style="border-radius: .5rem;">
+                    <div class="row g-0">
+                      <div class="col-md-12">
+                        <div class="card-body p-4">
+                          <h6 class="text-center">Editar Ficha de Registro&nbsp;<i class="fas fa-address-card"></i></h6>
+                          <hr class="mt-0 mb-4">
+                              <!------------------------------>
+                              <div class="form-row">
+                                <div class="form-group col-md-4">
+                                  <label for="nacionalidad">Nacionalidad</label>
+                                  <input type="text" class="form-control" id="nacionalidad">
+                                </div>
+                                <div class="form-group col-md-4">
+                                  <label for="estadoCivil">Estado civil / conyugal</label>
+                                  <select id="estadoCivil" class="form-control">
+                                    <option selected>Seleccionar</option>
+                                    <option value="1">Soltera</option>
+                                    <option value="2">Conviviente</option>
+                                    <option value="3">Casada</option>
+                                    <option value="4">Separada</option>
+                                    <option value="5">Divorciada</option>
+                                    <option value="6">Viuda</option>
+                                  </select>
+                                </div>
+                                <div class="form-group col-md-4">
+                                  <label class="texto" for="socioEconomica">¿Cuál es la clasificación socioeconómica de la usuaria?</label>
+                                  <select id="socioEconomica" class="form-control">
+                                    <option selected>Seleccionar</option>
+                                    <option value="1">No pobre</option>
+                                    <option value="2">Pobre</option>
+                                    <option value="3">Pobre Extremo</option>
+                                  </select>
+                                </div>
+                              </div><br>
+                              <!------------------------------>
+                              <h5><u>UBIGEO de Nacimiento</u></h5>
+                               <div class="form-row">
+                                <div class="form-group col-md-4">
+                                  <label for="departamentoNacimiento">Departamento</label>
+                                  <select id="departamentoNacimiento" class="form-control">
+                                    <option selected>Seleccionar</option>
+                                    <option value="1">Soltera</option>
+                                    <option value="2">Conviviente</option>
+                                    <option value="3">Casada</option>
+                                    <option value="4">Separada</option>
+                                    <option value="5">Divorciada</option>
+                                    <option value="6">Viuda</option>
+                                  </select>
+                                </div>
+                                <div class="form-group col-md-4">
+                                  <label for="provinciaNacimiento">Provincia</label>
+                                  <select id="provinciaNacimiento" class="form-control">
+                                    <option selected>Seleccionar</option>
+                                    <option value="1">Soltera</option>
+                                    <option value="2">Conviviente</option>
+                                    <option value="3">Casada</option>
+                                    <option value="4">Separada</option>
+                                    <option value="5">Divorciada</option>
+                                    <option value="6">Viuda</option>
+                                  </select>
+                                </div>
+                                <div class="form-group col-md-4">
+                                  <label for="distritoNacimiento">Distrito</label>
+                                  <select id="distritoNacimiento" class="form-control">
+                                    <option selected>Seleccionar</option>
+                                    <option value="1">No pobre</option>
+                                    <option value="2">Pobre</option>
+                                    <option value="3">Pobre Extremo</option>
+                                  </select>
+                                </div>
+                              </div><br>
+                              <!------------------------------>
+                              <h5><u>UBIGEO de Residencia</u></h5>
+                              <div class="form-row">
+                                 <div class="form-group col-md-4">
+                                   <label for="departamentoResidencia">Departamento</label>
+                                   <select id="departamentoResidencia" class="form-control">
+                                     <option selected>Seleccionar</option>
+                                     <option value="1">Soltera</option>
+                                     <option value="2">Conviviente</option>
+                                     <option value="3">Casada</option>
+                                     <option value="4">Separada</option>
+                                     <option value="5">Divorciada</option>
+                                     <option value="6">Viuda</option>
+                                   </select>
+                                 </div>
+                                 <div class="form-group col-md-4">
+                                   <label for="provinciaResidencia">Provincia</label>
+                                   <select id="provinciaResidencia" class="form-control">
+                                     <option selected>Seleccionar</option>
+                                     <option value="1">Soltera</option>
+                                     <option value="2">Conviviente</option>
+                                     <option value="3">Casada</option>
+                                     <option value="4">Separada</option>
+                                     <option value="5">Divorciada</option>
+                                     <option value="6">Viuda</option>
+                                   </select>
+                                 </div>
+                                 <div class="form-group col-md-4">
+                                   <label for="distritoResidencia">Distrito</label>
+                                   <select id="distritoResidencia" class="form-control">
+                                     <option selected>Seleccionar</option>
+                                     <option value="1">No pobre</option>
+                                     <option value="2">Pobre</option>
+                                     <option value="3">Pobre Extremo</option>
+                                   </select>
+                                 </div>
+                              </div><br>
+                              <!------------------------------>
+                               <div class="form-row">
+                                <div class="form-group col-md-4">
+                                  <label for="gestando">¿Está gestando?</label>
+                                  <select id="gestando" class="form-control">
+                                    <option selected>Seleccionar</option>
+                                    <option value="1">Si</option>
+                                    <option value="2">No</option>
+                                  </select>
+                                </div>
+                                <div class="form-group col-md-4">
+                                  <label for="cantidadHijas">N° de hijas</label>
+                                  <input type="number" class="form-control" id="cantidadHijas" >
+                                </div>
+                                <div class="form-group col-md-4">
+                                  <label for="cantidadHijos">N° de hijos</label>
+                                  <input type="number" class="form-control" id="cantidadHijos" >
+                                </div>
+                              </div><br>
+                              <!------------------------------>
+                              <div class="form-row">
+                                <div class="form-group col-md-6">
+                                  <label for="origen">Por sus costumbres y antepasados, Usted se siente o considera:</label>
+                                  <select id="origen" class="form-control">
+                                    <option selected>Seleccionar</option>
+                                    <option value="1">Quechua</option>
+                                    <option value="2">Aimara</option>
+                                    <option value="3">Indígena u originario de la amazonia</option>
+                                    <option value="4">Perteneciente o parte de otro pueblo indígena u originario</option>
+                                    <option value="5">Negro, moreno, zambo, mulato, afrodescendiente o parte del pueblo afroperuano</option>
+                                    <option value="6">Blanco</option>
+                                    <option value="7">Mestizo</option>
+                                    <option value="8">Otro</option>
+                                    <option value="9">No sabe/No responde</option>
+                                  </select>
+                                </div>
+                                <div class="form-group col-md-6">
+                                  <label for="lenguaMaterna">¿Cuál es la lengua materna con la que aprendió a hablar en su niñez?</label>
+                                  <input type="text" class="form-control" id="lenguaMaterna" >
+                                </div>
+                              </div><br>
+                              <!------------------------------>
+                              <div class="form-row">
+                                <div class="form-group col-md-6">
+                                  <label for="presentaDiscapacidad">La usuaria presenta algún tipo de discapacidad:</label>
+                                  <select id="presentaDiscapacidad" class="form-control">
+                                    <option selected>Seleccionar</option>
+                                    <option value="1">Si</option>
+                                    <option value="2">No</option>
+                                  </select>
+                                </div>
+                                <div class="form-group col-md-6">
+                                  <label for="tipoDiscapacidad">Tipo de discapacidad:</label>
+                                  <input type="text" class="form-control" id="tipoDiscapacidad" >
+                                </div>
+                              </div><br>
+                              <!------------------------------>
+                              <div class="form-row">
+                                <div class="form-group col-md-4">
+                                  <label class="mt-5" for="nivelEducativo">Nivel educativo:</label>
+                                  <select id="nivelEducativo" class="form-control">
+                                    <option selected>Seleccionar</option>
+                                    <option value="1">Sin nivel</option>
+                                    <option value="2">Inicial</option>
+                                    <option value="1">Primaria Incompleta</option>
+                                    <option value="2">Primaria Completa</option>
+                                    <option value="3">Secundaria Incompleta</option>
+                                    <option value="4">Secundaria Completa</option>
+                                    <option value="5">Superior No Universitaria Incompleta</option>
+                                    <option value="6">Superior No Universitaria Completa</option>
+                                    <option value="7">Superior Universitaria Incompleta</option>
+                                    <option value="8">Superior Universitaria Completa</option>
+                                    <option value="9">Básica Especial</option>
+                                    <option value="10">Maestría / Doctorado</option>
+                                  </select>
+                                </div>
+                                <div class="form-group col-md-4">
+                                  <label class="texto1" for="actualmenteEstudia">¿Usted actualmente estudia en una institución educativa (I.E.) / colegio, instituto superior, universidad u otro?</label>
+                                  <select id="actualmenteEstudia" class="form-control">
+                                    <option selected>Seleccionar</option>
+                                    <option value="1">Si</option>
+                                    <option value="2">No</option>
+                                  </select>
+                                </div>
+                                <div class="form-group col-md-4">
+                                  <label class="mt-5" for="lugarEstudio">¿En dónde estudia?</label>
+                                  <select id="lugarEstudio" class="form-control">
+                                    <option selected>Seleccionar</option>
+                                    <option value="1">I.E / Colegio</option>
+                                    <option value="2">Instituto Superior</option>
+                                    <option value="1">Universidad</option>
+                                    <option value="2">Otro</option>
+                                  </select>
+                                </div>
+                              </div><br>
+                              <!------------------------------>
+                              <div class="form-row">
+                                <div class="form-group col-md-6">
+                                  <label class="texto"  for="nombreInstitucion">Nombre de la institución educativa, colegio, instituto superior, universidad u otro:</label>
+                                  <input type="text" class="form-control" id="nombreInstitucion">
+                                </div>
+                                <div class="form-group col-md-6">
+                                  <label for="tipoInstitucion">Tipo de Institución:</label>
+                                  <select id="tipoInstitucion" class="form-control">
+                                    <option selected>Seleccionar</option>
+                                    <option value="1">Publica</option>
+                                    <option value="2">Privada</option>
+                                  </select>
+                                </div>
+                              </div><br>
+                              <!------------------------------>
+                              <h5><u>Lugar donde estudia</u></h5>
+                               <div class="form-row">
+                                <div class="form-group col-md-4">
+                                  <label for="departamentoEstudio">Departamento</label>
+                                  <select id="departamentoEstudio" class="form-control">
+                                    <option selected>Seleccionar</option>
+                                    <option value="1">Soltera</option>
+                                    <option value="2">Conviviente</option>
+                                    <option value="3">Casada</option>
+                                    <option value="4">Separada</option>
+                                    <option value="5">Divorciada</option>
+                                    <option value="6">Viuda</option>
+                                  </select>
+                                </div>
+                                <div class="form-group col-md-4">
+                                  <label for="provinciaEstudio">Provincia</label>
+                                  <select id="provinciaEstudio" class="form-control">
+                                    <option selected>Seleccionar</option>
+                                    <option value="1">Soltera</option>
+                                    <option value="2">Conviviente</option>
+                                    <option value="3">Casada</option>
+                                    <option value="4">Separada</option>
+                                    <option value="5">Divorciada</option>
+                                    <option value="6">Viuda</option>
+                                  </select>
+                                </div>
+                                <div class="form-group col-md-4">
+                                  <label for="distritoEstudio">Distrito</label>
+                                  <select id="distritoEstudio" class="form-control">
+                                    <option selected>Seleccionar</option>
+                                    <option value="1">No pobre</option>
+                                    <option value="2">Pobre</option>
+                                    <option value="3">Pobre Extremo</option>
+                                  </select>
+                                </div>
+                              </div><br>
+                              <!------------------------------>
+                              <div class="form-row">
+                                <div class="form-group col-md-6">
+                                  <label for="ingresos">¿Usted cuenta con un trabajo remunerado u ocupación para generar ingresos propios?</label>
+                                  <select id="ingresos" class="form-control">
+                                    <option selected>Seleccionar</option>
+                                    <option value="1">Si</option>
+                                    <option value="2">No</option>
+                                  </select>
+                                </div>
+                                <div class="form-group col-md-6">
+                                  <label class="mt-4" for="ocupacion">Ocupación:</label>
+                                  <input type="text" class="form-control" id="ocupacion">
+                                </div>
+                              </div><br>
+                              <!------------------------------>
+                              <div class="form-row">
+                                  <div class="form-group col-md-6">
+                                    <label for="denunciaInterpuesta">¿Cuenta con denuncia interpuesta?</label>
+                                    <select id="denunciaInterpuesta" class="form-control">
+                                      <option selected>Seleccionar</option>
+                                      <option value="1">Si</option>
+                                      <option value="2">No</option>
+                                    </select>
+                                  </div>
+                                  <div class="form-group col-md-6">
+                                    <label for="denunciaContinua">¿ Continúa con la denuncia?</label>
+                                    <select id="denunciaContinua" class="form-control">
+                                      <option selected>Seleccionar</option>
+                                      <option value="1">Si</option>
+                                      <option value="2">No</option>
+                                    </select>
+                                  </div>
+                              </div>
+                              <!---------------------------------->
+                            <button type="submit" class="btn btn-primary">Registrar</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+      </section>
+        </div>
+      </div>
+    </div><!-- /.container-fluid -->
+  </section>
+  </div>

@@ -289,7 +289,7 @@ export class TablaAvancesProtestComponent implements OnInit {
 
   str_DatosTomaDecision( CapacidadTomaDecisiones : string )
   {
-    return "Autoestima:"+ CapacidadTomaDecisiones + " ";
+    return "CapacidadTomaDecisiones:"+ CapacidadTomaDecisiones + " ";
   }
 
   str_DatosMotivacionAlCambio( SensacionDeControlPositivo : string, SensacionDeControlNegativo : string, DeseoDeControl :string, ControlInterno : string, ControlExterno : string )
