@@ -80,7 +80,7 @@
                         </td>
                       </ng-container>
 
-
+                      <!-- Symbol Column -->
                       <ng-container matColumnDef="resumen">
                         <th mat-header-cell *matHeaderCellDef class="text-center"> Resumen</th>
                         <td mat-cell *matCellDef="let element" class="text-center" >
@@ -92,16 +92,34 @@
 
                       <!-- Symbol Column -->
                       <ng-container matColumnDef="acciones">
-                        <th mat-header-cell *matHeaderCellDef class="text-center"><i class="fas fa-mouse-pointer"></i></th>
+                        <th mat-header-cell *matHeaderCellDef class="text-center">Editar/Eliminar</th>
                         <td mat-cell *matCellDef="let element" class="text-center">
                           <a class="pointer" style="color: #1f516f;" matTooltip="Editar usuario">
                             <mat-icon (click)="openDialog()">edit</mat-icon>
+                            <!--<mat-icon (click)="editarUsuario(element)">edit</mat-icon>-->
                           </a>
                           <a class="pointer" style="color: #e15639;" matTooltip="Eliminar usuario">
                             <mat-icon>delete</mat-icon>
                           </a>
+                         <!--<a class="pointer" style="color: #e15639;" matTooltip="Ficha de registro">
+                            <mat-icon>account_box</mat-icon>
+                          </a>-->
                         </td>
                       </ng-container>
+
+                      <!-- Symbol Column -->
+                      <ng-container matColumnDef="acciones2">
+                      <th mat-header-cell *matHeaderCellDef class="text-center">Agregar/Editar Ficha Registro</th>
+                      <td mat-cell *matCellDef="let element" class="text-center">
+                        <a routerLink="/dashboard/{{g_TablaPacienteComponent_PsicologoId}}/agregar-ficha-registro/{{element.casoPacienteId}}" class="pointer" style="color: #600074;" matTooltip="Ficha de registro">
+                          <mat-icon>account_box</mat-icon>
+                        </a>
+                        <a routerLink="/dashboard/{{g_TablaPacienteComponent_PsicologoId}}/editar-ficha-registro/{{element.casoPacienteId}}" class="pointer" style="color: #1f516f;" matTooltip="Editar Ficha Registro">
+                          <mat-icon>edit</mat-icon>
+                          <!--<mat-icon (click)="editarUsuario(element)">edit</mat-icon>-->
+                        </a>
+                      </td>
+                    </ng-container>
 
                     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
                     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>

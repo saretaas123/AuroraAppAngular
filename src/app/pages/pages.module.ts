@@ -71,6 +71,10 @@ import { MotivacionPostComponent } from './usuarios/cuestionarios/motivacion/mot
 import { AutonomiaPostComponent } from './usuarios/cuestionarios/autonomia/autonomia-post/autonomia-post.component';
 import { DecisionesPostComponent } from './usuarios/cuestionarios/decisiones/decisiones-post/decisiones-post.component';
 import { AutoestimaPostComponent } from './usuarios/cuestionarios/autoestima/autoestima-post/autoestima-post.component';
+import { ReactiveFormsModule } from '@angular/forms';
+//import { FichaRegistroComponent } from './usuarios/ficha-registro/ficha-registro.component';
+import { FichaRegistroComponent } from './usuarios/ficha-registro/ficha-registro.component';
+import { EditarFichaRegistroComponent } from './usuarios/editar-ficha-registro/editar-ficha-registro.component';
 
 
 
@@ -130,6 +134,9 @@ import { AutoestimaPostComponent } from './usuarios/cuestionarios/autoestima/aut
     AutonomiaPostComponent,
     DecisionesPostComponent,
     AutoestimaPostComponent,
+    FichaRegistroComponent,
+    EditarFichaRegistroComponent,
+
 
 
 

@@ -22,6 +22,9 @@ import { ResultadosAutoestimaProComponent } from './usuarios/protest/resultados-
 import { ResultadosMotivacionProComponent} from './usuarios/protest/resultados-motivacion-pro/resultados-motivacion-pro.component';
 import { ResultadosDecisionesProComponent} from './usuarios/protest/resultados-decisiones-pro/resultados-decisiones-pro.component';
 import { VerResumenComponent} from './usuarios/ver-resumen/ver-resumen.component';
+import { FichaRegistroComponent } from './usuarios/ficha-registro/ficha-registro.component';
+import { EditarFichaRegistroComponent } from './usuarios/editar-ficha-registro/editar-ficha-registro.component';
+//import { FichaRegistroComponent} from './usuarios/ficha-registro/ficha-registro.component'
 //Cuestionarios
 import { AutoestimaPreComponent } from './usuarios/cuestionarios/autoestima/autoestima-pre/autoestima-pre.component';
 import { AutoestimaPostComponent } from './usuarios/cuestionarios/autoestima/autoestima-post/autoestima-post.component';
@@ -72,6 +75,8 @@ const routes:Routes=[
     {path:'resultados-motivacion-pro/:casopacienteid',component:ResultadosMotivacionProComponent},
     //agregado recientemente
     {path:'ver-resultados/:casopacienteid',component:VerResumenComponent},
+    {path:'agregar-ficha-registro/:casopacienteid',component:FichaRegistroComponent},
+    {path:'editar-ficha-registro/:casopacienteid',component:EditarFichaRegistroComponent},
 
     //agregado recientemente
     {path:'listapsicologo',component:PsicologosComponent},

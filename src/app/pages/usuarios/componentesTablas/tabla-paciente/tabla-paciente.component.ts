@@ -6,6 +6,8 @@ import { CasopacienteService } from 'src/app/services/auroraapi/casopaciente.ser
 import { DatePipe } from '@angular/common';
 import { MatDialog } from '@angular/material/dialog';
 import { EditarPacienteComponent } from '../editar-paciente/editar-paciente.component';
+import { CrearUsuarioComponent } from '../../crear-usuario/crear-usuario.component';
+import { EditarFichaRegistroComponent} from '../../editar-ficha-registro/editar-ficha-registro.component';
 
 var listUsuarios: any [] = [
   {dni:'',nombre: '', apellidos: '', edad: 0, preTest: 'Incompleto',proTest: 'Incompleto', casoPacienteId: '0'}
@@ -131,7 +133,7 @@ export class TablaPacienteComponent implements OnInit, OnChanges {
 
   fechapipe = new DatePipe('en-US');
 
-  displayedColumns: string[] = ['dni','nombre', 'apellidos', 'edad', 'preTest','proTest','formularioPre','formularioPro','resumen','acciones'];
+  displayedColumns: string[] = ['dni','nombre', 'apellidos', 'edad', 'preTest','proTest','formularioPre','formularioPro','resumen','acciones','acciones2'];
   dataSource = new MatTableDataSource(listUsuarios);
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -145,11 +147,24 @@ export class TablaPacienteComponent implements OnInit, OnChanges {
   constructor(private CasopacienteService : CasopacienteService,public dialog:MatDialog ) {
    }
 
+   editarUsuario(element : any){
+    this,this.dialog.open(CrearUsuarioComponent,{
+      data:element
+    })
+   }
+
 
  //Modal de editar paciente
    openDialog()
 {
-  this.dialog.open(EditarPacienteComponent);
+  this.dialog.open(EditarPacienteComponent,{
+
+  }).afterClosed().subscribe(val=>{
+    if(val ==='Guardar'){
+      this.ngOnInit;
+    }
+
+  })
 }
 
 
