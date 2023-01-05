@@ -4,6 +4,22 @@ import { ActivatedRoute } from "@angular/router";
 import { PsicologoService } from 'src/app/services/auroraapi/psicologo.service';
 import Swal from 'sweetalert2';
 
+interface distrito {
+  value: string;
+  viewValue: string;
+}
+
+interface provincia {
+  value: string;
+  viewValue: string;
+}
+
+interface departamento {
+  value: string;
+  viewValue: string;
+}
+
+
 
 @Component({
   selector: 'app-crear-psicologo',
@@ -11,6 +27,24 @@ import Swal from 'sweetalert2';
   styleUrls: ['./crear-psicologo.component.css']
 })
 export class CrearPsicologoComponent implements OnInit {
+
+  distritos: distrito[] = [
+    {value: '0', viewValue: 'Bagua'},
+    {value: '1', viewValue: 'Chachapoyas'},
+    {value: '2', viewValue: 'Huarmey'},
+  ];
+
+  provincias: provincia[] = [
+    {value: '0', viewValue: 'Bagua'},
+    {value: '1', viewValue: 'Chachapoyas'},
+    {value: '2', viewValue: 'Huarmey'},
+  ];
+
+  departamentos: provincia[] = [
+    {value: '0', viewValue: 'Amazonas'},
+    {value: '1', viewValue: 'Amazonas'},
+    {value: '2', viewValue: 'Anchash'},
+  ];
 
   g_routeparam_PsicologoId: string = '-3';
 
@@ -29,6 +63,9 @@ export class CrearPsicologoComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute
   ) { }
+
+
+
 
   RegistrarPsicologo(
     pNombres : string, pApellidoPaterno : string,pApellidoMaterno : string,

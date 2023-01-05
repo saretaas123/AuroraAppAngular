@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EditarFichaRegistroComponent implements OnInit {
 
+  g_FromUser_PsicologoId: string = '1';
+
   constructor() { }
 
   ngOnInit(): void {

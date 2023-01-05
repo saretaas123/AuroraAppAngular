@@ -85,6 +85,44 @@
       </div>
     </div>
   </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm">
+        <mat-form-field appearance="fill">
+          <mat-label>Distrito</mat-label>
+          <mat-select>
+            <mat-option *ngFor="let distrito of distritos" [value]="distrito.value">
+              {{distrito.viewValue}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="col-sm">
+        <mat-form-field appearance="fill">
+          <mat-label>Provincia</mat-label>
+          <mat-select>
+            <mat-option *ngFor="let provincia of provincias" [value]="provincia.value">
+              {{provincia.viewValue}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm">
+        <mat-form-field appearance="fill">
+          <mat-label>Departamento</mat-label>
+          <mat-select>
+            <mat-option *ngFor="let departamento of departamentos" [value]="departamento.value">
+              {{departamento.viewValue}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </div>
+  </div>
 </mat-dialog-content>
 <mat-dialog-actions >
   <button class="btn btn-primary" [mat-dialog-close]="true" cdkFocusInitial>Guardar</button>
