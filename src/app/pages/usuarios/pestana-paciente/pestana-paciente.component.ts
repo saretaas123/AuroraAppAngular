@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { CasopacienteService } from 'src/app/services/auroraapi/casopaciente.service';
 
 @Component({
@@ -65,11 +66,16 @@ export class PestanaPacienteComponent implements OnInit {
   };
 
   ngOnInit(): void {
+    this.out_p_PsicologoId = this.router.url.split('/')[2];
+    console.log("Ajua");
+    console.log(this.out_p_PsicologoId);
     this.API_TraerDatos();
   }
 
   constructor(
-    private CasopacienteService : CasopacienteService) { }
+    private CasopacienteService : CasopacienteService,
+    private router: Router,
+    private route: ActivatedRoute) { }
 
 
   API_TraerDatos()

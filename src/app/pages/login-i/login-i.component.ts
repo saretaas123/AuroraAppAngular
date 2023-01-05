@@ -53,15 +53,16 @@ export class LoginIComponent  implements OnInit {
   ngOnInit(): void {
     var verService=this.EstadisticaPacienteService.peloncito();
 
-    console.log('ver verService:');
-    console.log(verService);
-
     this.imprimiendo=this.EstadisticaPacienteService.peloncito();
   }
 
   public ApiFullobjPsicologoFullInfo : any = {
     mnsj: '',
-    rpta : {}
+    rpta : {
+      rpta : false,
+      usuarioId : 0,
+      psicologoId : 0
+    }
   };
 
   public objPsicologoFullInfo : any = {
@@ -90,12 +91,12 @@ export class LoginIComponent  implements OnInit {
   Logearse(p_Usuario : string, p_Contrasena : string)
   {
     var LogeoExitoso = false;
-    console.log("Usuario:"+p_Usuario +" | "+ "Contrasena:"+p_Contrasena);
 
     this.UsuarioService.PostLoginInterno(p_Usuario,p_Contrasena).subscribe(APIrpta => {
       this.ApiFullobjPsicologoFullInfo = APIrpta;
-      LogeoExitoso = this.ApiFullobjPsicologoFullInfo.rpta;
-      console.log(this.ApiFullobjPsicologoFullInfo.mnsj);
+      LogeoExitoso = this.ApiFullobjPsicologoFullInfo.rpta.rpta;
+      console.log(APIrpta);
+      console.log(APIrpta);
       if(LogeoExitoso)
       {
 
@@ -106,7 +107,7 @@ export class LoginIComponent  implements OnInit {
         )
 
         //alert('Credenciales correctas');
-        this.router.navigate(['/dashboard/1']);
+        this.router.navigate(['/dashboard/'+this.ApiFullobjPsicologoFullInfo.rpta.psicologoId]);
       }
       else{
 

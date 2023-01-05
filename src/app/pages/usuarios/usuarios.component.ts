@@ -2,6 +2,7 @@ import { Component, OnInit,Inject} from '@angular/core';
 import { PsicologoService } from 'src/app/services/auroraapi/psicologo.service';
 import { CrearUsuarioComponent} from './crear-usuario/crear-usuario.component';
 import { MatDialog,MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { ActivatedRoute, Router } from '@angular/router';
 
 
 
@@ -14,7 +15,7 @@ import { MatDialog,MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialo
 export class UsuariosComponent implements OnInit {
 
 
-  g_FromUser_PsicologoId: number = 1;
+  g_FromUser_PsicologoId: any = 1;
 
   private ApiFullobjPsicologoFullInfo : any = {
     mnsj: '',
@@ -36,6 +37,8 @@ export class UsuariosComponent implements OnInit {
   };
 
   ngOnInit(): void {
+    this.g_FromUser_PsicologoId = this.router.url.split('/')[2];
+
     this.PsicologoService.GetPsicologoFullInfoByPsicologoId(this.g_FromUser_PsicologoId+"").subscribe(apiRpta => {
     this.ApiFullobjPsicologoFullInfo = apiRpta;
     console.log(this.ApiFullobjPsicologoFullInfo.mnsj);
@@ -45,7 +48,9 @@ export class UsuariosComponent implements OnInit {
 
   constructor(
     private PsicologoService: PsicologoService,
-    public dialog:MatDialog
+    private router: Router,
+    public dialog:MatDialog,
+    private route: ActivatedRoute
   ){
 
   }

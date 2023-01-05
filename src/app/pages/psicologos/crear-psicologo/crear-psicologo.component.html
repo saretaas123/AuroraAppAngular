@@ -70,24 +70,8 @@
       </div>
       <div class="col-sm">
         <mat-form-field appearance="fill">
-            <mat-label>Fecha de nacimiento</mat-label>
-            <input matInput type="date" #pFechaNacimiento>
-        </mat-form-field>
-      </div>
-    </div>
-  </div>
-  <div class="container">
-    <div class="row">
-      <div class="col-sm">
-        <mat-form-field appearance="fill">
             <mat-label>Dni</mat-label>
-            <input matInput type="text" #pDni>
-        </mat-form-field>
-      </div>
-      <div class="col-sm">
-        <mat-form-field appearance="fill">
-            <mat-label>Direccion</mat-label>
-            <input matInput type="text" #pDireccioUbigeo>
+            <input matInput type="number" [maxLength]="8"  #pDni>
         </mat-form-field>
       </div>
     </div>
@@ -113,13 +97,13 @@
       <div class="col-sm">
         <mat-form-field appearance="fill">
             <mat-label>Numero Colegiatura</mat-label>
-            <input matInput type="number"  #pTelefono>
+            <input matInput type="number"  #pNumeroColegiatura>
         </mat-form-field>
       </div>
       <div class="col-sm">
         <mat-form-field appearance="fill">
             <mat-label>Especialidad</mat-label>
-            <input matInput type="text" #pCorreo>
+            <input matInput type="text" #pEspecialidad>
         </mat-form-field>
       </div>
     </div>
@@ -164,5 +148,5 @@
   </div>
   </mat-dialog-content>
   <mat-dialog-actions >
-  <button class="btn btn-primary" (click)="RegistrarPsicologo(pNombres.value , pApellidoPaterno.value ,pApellidoMaterno.value ,pFechaNacimiento.value , pDni.value ,pTelefono.value ,pDireccioUbigeo.value ,pCorreo.value)" cdkFocusInitial>Guardar</button>
+  <button class="btn btn-primary" (click)="RegistrarPsicologo(pNombres.value , pApellidoPaterno.value ,pApellidoMaterno.value ,pDni.value ,pTelefono.value ,pCorreo.value, pNumeroColegiatura.value, pEspecialidad.value)" cdkFocusInitial>Guardar</button>
   </mat-dialog-actions>
