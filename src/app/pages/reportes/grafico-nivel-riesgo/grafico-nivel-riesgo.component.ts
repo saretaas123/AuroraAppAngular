@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ChartConfiguration, ChartData, ChartEvent, ChartType } from 'chart.js';
 import { BaseChartDirective } from 'ng2-charts';
+import { EstadisticaPacientesService } from 'src/app/services/auroraapi/estadisticaPacientes.service';
 
 @Component({
   selector: 'app-grafico-nivel-riesgo',
@@ -14,10 +15,10 @@ export class GraficoNivelRiesgoComponent implements OnInit {
   public barChartOptions: ChartConfiguration['options'] = {
     responsive: true,
     // We use these empty structures as placeholders for dynamic theming.
-  
+
   };
   public barChartType: ChartType = 'bar';
-  
+
 
   public barChartData: ChartData<'bar'> = {
     labels: [ 'Leve', 'Moderado', 'Severo' ],
@@ -36,24 +37,48 @@ export class GraficoNivelRiesgoComponent implements OnInit {
     console.log(event, active);
   }
 
-  /*public randomize(): void {
-    // Only Change 3 values
-    this.barChartData.datasets[0].data = [
-      Math.round(Math.random() * 100),
-      59,
-      80,
-      Math.round(Math.random() * 100),
-      56,
-      Math.round(Math.random() * 100),
-      40 ];
-
-    this.chart?.update();
-  }*/
-
-
-  constructor() { }
+  constructor(
+    private _EstadisticaPacientesService : EstadisticaPacientesService) { }
 
   ngOnInit(): void {
+    this.TraerDatosNivelRiesgo();
   }
+
+  TraerDatosNivelRiesgo()
+  {
+    this._EstadisticaPacientesService.PostEstadisticaNivelRiesgoTotal([],[],0,0,0,"","").subscribe(Rpta =>
+      {
+        this.apiRpta = Rpta;
+        this.listStr_NivelRiesgo = this.apiRpta.rpta.listNivelRiesgo;
+
+        console.log( this.listStr_NivelRiesgo);
+
+        this.barChartData = {
+          labels: [ 'Leve', 'Moderado', 'Severo' ],
+          datasets : [
+          { data:
+            [
+              this.listStr_NivelRiesgo.filter(x => x==="Leve").length,
+              this.listStr_NivelRiesgo.filter(x => x==="Moderado").length,
+              this.listStr_NivelRiesgo.filter(x => x==="Severo").length
+            ], label: this.apiRpta.rpta.cantidad+' Pacientes' }
+        ]
+      };
+
+        console.log( this.listStr_NivelRiesgo);
+
+      });
+  }
+
+  apiRpta : any = {
+    mnsj: "",
+    rpta: {
+      listNivelRiesgo: [
+      ],
+      cantidad: 6
+    }
+  };
+
+  listStr_NivelRiesgo : Array<string> = [];
 
 }

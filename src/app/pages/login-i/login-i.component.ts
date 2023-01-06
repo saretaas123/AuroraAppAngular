@@ -1,7 +1,6 @@
 import { Component, Injectable, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { CasopacienteService } from 'src/app/services/auroraapi/casopaciente.service';
-import { EstadisticaPacienteService } from 'src/app/services/auroraapi/estadisticaPaciente.service';
 import { PsicologoService } from 'src/app/services/auroraapi/psicologo.service';
 import { UsuarioService } from 'src/app/services/auroraapi/usuario.service';
 import Swal from 'sweetalert2';
@@ -51,9 +50,6 @@ export class LoginIComponent  implements OnInit {
 
 
   ngOnInit(): void {
-    var verService=this.EstadisticaPacienteService.peloncito();
-
-    this.imprimiendo=this.EstadisticaPacienteService.peloncito();
   }
 
   public ApiFullobjPsicologoFullInfo : any = {
@@ -81,7 +77,6 @@ export class LoginIComponent  implements OnInit {
 
   constructor(
     private UsuarioService: UsuarioService,
-    private EstadisticaPacienteService:EstadisticaPacienteService,
     private router: Router
   ) {
 

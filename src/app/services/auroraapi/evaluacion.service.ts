@@ -27,12 +27,6 @@ export class EvaluacionService {
         ,pTelefono : string,pDireccioUbigeo : string,pCorreo : string, pTipoViolencia : string,pRiesgo : string,pAnoDeEvaluacion : string,pEntidadProblema :string,pModalidadAdministrativo :string)
     {
 
-      console.log(pTipoViolencia);
-      console.log(pRiesgo);
-      console.log(pAnoDeEvaluacion);
-      console.log(pEntidadProblema);
-      console.log(pModalidadAdministrativo);
-
         let headers = new HttpHeaders().set('Type-content','aplication/json')
 
         return this.http.post(this._url + 'AgregarPaciente', {
