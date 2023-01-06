@@ -247,9 +247,6 @@ export class TablaAvancesPretestComponent implements OnInit, OnChanges {
       ) => {
         if(element.pacienteDni=== null || element.pacienteDni === ''){return;}
 
-        console.log("element:",element);
-        console.log("element.PreTestSensacionDeControlPositivo:",element.preTestSensacionDeControlPositivo);
-
         listUsuarios.push({
           dni: element.pacienteDni,
           nombre: element.pacienteNombres,

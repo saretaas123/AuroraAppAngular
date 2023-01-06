@@ -52,7 +52,13 @@ export class TablaListaPsicologoComponent implements OnInit {
 
   constructor(public dialog:MatDialog,
     private _PsicologoService : PsicologoService,
-    private router: Router) { }
+    private router: Router) {
+
+      this._PsicologoService.listen().subscribe((m:any) => {
+        this.API_TraerDatosPsicologos();
+      })
+
+    }
 
 
  //Modal de editar paciente
@@ -74,7 +80,6 @@ export class TablaListaPsicologoComponent implements OnInit {
   {
     this._PsicologoService.GetPsicologos().subscribe(APIrpta => {
       this.ApiRptaFullTablaPsicologos = APIrpta;
-      console.log("APIrpta:",APIrpta);
     });
   }
 

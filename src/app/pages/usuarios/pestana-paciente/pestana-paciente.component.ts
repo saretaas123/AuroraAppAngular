@@ -41,50 +41,69 @@ export class PestanaPacienteComponent implements OnInit {
       postTestAutoestimaSocial : "0",
       postTestCapacidadTomaDecisiones : "0",
       postTestContemplacion : "0",
-      postTestControlExterno : "3",
-      postTestControlInterno : "3",
-      postTestDeseoDeControl : "21",
+      postTestControlExterno : "0",
+      postTestControlInterno : "0",
+      postTestDeseoDeControl : "0",
       postTestMantenimiento : "0",
       postTestPrecontemplacion : "0",
-      postTestSensacionDeControlNegativo : "18",
-      postTestSensacionDeControlPositivo : "34",
-      preTestAccion : "10",
+      postTestSensacionDeControlNegativo : "0",
+      postTestSensacionDeControlPositivo : "0",
+      preTestAccion : "0",
       preTestAutoestima : "0",
       preTestAutoestimaFamiliar : "0",
       preTestAutoestimaSiMismo : "0",
       preTestAutoestimaSocial : "0",
-      preTestCapacidadTomaDecisiones : "24",
-      preTestContemplacion : "10",
-      preTestControlExterno : "4",
-      preTestControlInterno : "5",
-      preTestDeseoDeControl : "19",
-      preTestMantenimiento : "10",
-      preTestPrecontemplacion : "10",
-      preTestSensacionDeControlNegativo : "14",
-      preTestSensacionDeControlPositivo : "24"
+      preTestCapacidadTomaDecisiones : "0",
+      preTestContemplacion : "0",
+      preTestControlExterno : "0",
+      preTestControlInterno : "0",
+      preTestDeseoDeControl : "0",
+      preTestMantenimiento : "0",
+      preTestPrecontemplacion : "0",
+      preTestSensacionDeControlNegativo : "0",
+      preTestSensacionDeControlPositivo : "0"
     }]
   };
 
   ngOnInit(): void {
     this.out_p_PsicologoId = this.router.url.split('/')[2];
-    console.log("Ajua");
-    console.log(this.out_p_PsicologoId);
     this.API_TraerDatos();
   }
 
   constructor(
     private CasopacienteService : CasopacienteService,
     private router: Router,
-    private route: ActivatedRoute) { }
-
+    private route: ActivatedRoute)
+    {
+      this.CasopacienteService.listen().subscribe((m:any) => {
+        this.API_TraerDatos();
+      })
+    }
 
   API_TraerDatos()
   {
     this.CasopacienteService.GetCasoPacienteByPsicologoId(this.out_p_PsicologoId).subscribe(APIrpta => {
-      this.ApiRptaFullTablaPacientes = APIrpta;
-      console.log("APIrpta:",APIrpta);
+
+      this.ApiRptaValidadorDeVacios = APIrpta;
+      if(this.ApiRptaValidadorDeVacios.rpta.length === 0)
+      {
+        this.ApiRptaFullTablaPacientes= {
+          mnsj: 'No posee Pacientes',
+          rpta : null
+        };
+
+      }else{
+        this.ApiRptaFullTablaPacientes = APIrpta;
+      }
+
+
     });
   }
 
 
+  public ApiRptaValidadorDeVacios : any = {
+    mnsj: '',
+    rpta : [{
+
+    }]}
 }

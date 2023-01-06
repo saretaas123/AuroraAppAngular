@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { PsicologoService } from 'src/app/services/auroraapi/psicologo.service';
 
 @Component({
@@ -8,7 +9,7 @@ import { PsicologoService } from 'src/app/services/auroraapi/psicologo.service';
 })
 export class VerPacienteXPsicologoComponent implements OnInit {
 
-  g_FromUser_PsicologoId: number = 1;
+  g_FromUser_PsicologoId: string = "-1";
 
   private ApiFullobjPsicologoFullInfo : any = {
     mnsj: '',
@@ -30,16 +31,22 @@ export class VerPacienteXPsicologoComponent implements OnInit {
   };
 
   ngOnInit(): void {
+
+
+    this.g_FromUser_PsicologoId = this.router.url.split('/')[2];
+
     this.PsicologoService.GetPsicologoFullInfoByPsicologoId(this.g_FromUser_PsicologoId+"")
     .subscribe(apiRpta => {
+
       this.ApiFullobjPsicologoFullInfo = apiRpta;
-      console.log(this.ApiFullobjPsicologoFullInfo.mnsj);
       this.objPsicologoFullInfo = this.ApiFullobjPsicologoFullInfo.rpta;
+
     })
   }
 
   constructor(
-    private PsicologoService: PsicologoService
+    private PsicologoService: PsicologoService,
+    private router: Router,
     ) {
 
     }

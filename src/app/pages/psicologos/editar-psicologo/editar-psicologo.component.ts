@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { PsicologoService } from 'src/app/services/auroraapi/psicologo.service';
+import Swal from 'sweetalert2';
 
 interface distrito {
   value: string;
@@ -40,9 +43,25 @@ export class EditarPsicologoComponent implements OnInit {
     {value: '2', viewValue: 'Anchash'},
   ];
 
-  constructor() { }
+  constructor(
+    private _PsicologoService : PsicologoService,
+    public dialog:MatDialog) { }
 
   ngOnInit(): void {
+  }
+
+  EditarPsicologo()
+  {
+
+    Swal.fire(
+      'Registrado Correctamente',
+      ' ',
+      'success'
+    )
+
+    this._PsicologoService.filter("AddPsicologo");
+    this.dialog.closeAll();
+
   }
 
 }

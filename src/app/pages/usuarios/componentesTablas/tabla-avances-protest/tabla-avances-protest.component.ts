@@ -247,8 +247,6 @@ export class TablaAvancesProtestComponent implements OnInit {
       ) => {
         if(element.pacienteDni=== null || element.pacienteDni === ''){return;}
 
-        console.log("element.post:",element);
-
         listUsuarios.push({
           dni: element.pacienteDni,
           nombre: element.pacienteNombres,

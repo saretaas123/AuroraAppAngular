@@ -10,13 +10,13 @@
       <div class="col-sm">
         <mat-form-field appearance="fill">
             <mat-label>Nombre</mat-label>
-            <input matInput type="text">
+            <input matInput type="text" #pNombre>
         </mat-form-field>
       </div>
       <div class="col-sm">
         <mat-form-field appearance="fill">
             <mat-label>Apellido Paterno</mat-label>
-            <input matInput type="text">
+            <input matInput type="text" #pApePaterno>
         </mat-form-field>
       </div>
     </div>
@@ -26,13 +26,13 @@
       <div class="col-sm">
         <mat-form-field appearance="fill">
             <mat-label>Apellido Materno</mat-label>
-            <input matInput type="text">
+            <input matInput type="text" #pApeMaterno>
         </mat-form-field>
       </div>
       <div class="col-sm">
         <mat-form-field appearance="fill">
             <mat-label>Fecha de nacimiento</mat-label>
-            <input matInput type="date">
+            <input matInput type="date" #pFechaNacimiento>
         </mat-form-field>
       </div>
     </div>
@@ -42,13 +42,13 @@
       <div class="col-sm">
         <mat-form-field appearance="fill">
             <mat-label>Dni</mat-label>
-            <input matInput type="text">
+            <input matInput type="text" #pDni>
         </mat-form-field>
       </div>
       <div class="col-sm">
         <mat-form-field appearance="fill">
             <mat-label>Direccion</mat-label>
-            <input matInput type="text">
+            <input matInput type="text" #pDireccion>
         </mat-form-field>
       </div>
     </div>
@@ -58,13 +58,13 @@
       <div class="col-sm">
         <mat-form-field appearance="fill">
             <mat-label>Telefono</mat-label>
-            <input matInput type="text">
+            <input matInput type="text" #pTelefono>
         </mat-form-field>
       </div>
       <div class="col-sm">
         <mat-form-field appearance="fill">
             <mat-label>Correo</mat-label>
-            <input matInput type="email">
+            <input matInput type="email" #pCorreo>
         </mat-form-field>
       </div>
     </div>
@@ -74,13 +74,13 @@
       <div class="col-sm">
         <mat-form-field appearance="fill">
             <mat-label>Numero Colegiatura</mat-label>
-            <input matInput type="number"  #pTelefono>
+            <input matInput type="number"  #pNumeroColegiatura>
         </mat-form-field>
       </div>
       <div class="col-sm">
         <mat-form-field appearance="fill">
             <mat-label>Especialidad</mat-label>
-            <input matInput type="text" #pCorreo>
+            <input matInput type="text" #pEspecialidad>
         </mat-form-field>
       </div>
     </div>
@@ -90,7 +90,7 @@
       <div class="col-sm">
         <mat-form-field appearance="fill">
           <mat-label>Distrito</mat-label>
-          <mat-select>
+          <mat-select #pDistrito>
             <mat-option *ngFor="let distrito of distritos" [value]="distrito.value">
               {{distrito.viewValue}}
             </mat-option>
@@ -100,7 +100,7 @@
       <div class="col-sm">
         <mat-form-field appearance="fill">
           <mat-label>Provincia</mat-label>
-          <mat-select>
+          <mat-select #pProvincia>
             <mat-option *ngFor="let provincia of provincias" [value]="provincia.value">
               {{provincia.viewValue}}
             </mat-option>
@@ -114,7 +114,7 @@
       <div class="col-sm">
         <mat-form-field appearance="fill">
           <mat-label>Departamento</mat-label>
-          <mat-select>
+          <mat-select #pDepartamento>
             <mat-option *ngFor="let departamento of departamentos" [value]="departamento.value">
               {{departamento.viewValue}}
             </mat-option>
@@ -125,5 +125,5 @@
   </div>
 </mat-dialog-content>
 <mat-dialog-actions >
-  <button class="btn btn-primary" [mat-dialog-close]="true" cdkFocusInitial>Guardar</button>
+  <button class="btn btn-primary" [mat-dialog-close]="true" cdkFocusInitial (click)="EditarPsicologo()">Guardar</button>
 </mat-dialog-actions>

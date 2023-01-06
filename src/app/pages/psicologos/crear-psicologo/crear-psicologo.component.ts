@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { ActivatedRoute } from "@angular/router";
 import { PsicologoService } from 'src/app/services/auroraapi/psicologo.service';
@@ -70,6 +71,7 @@ export class CrearPsicologoComponent implements OnInit {
   };
 
   constructor(
+    public dialog:MatDialog,
     private _PsicologoService : PsicologoService,
     private router: Router,
     private route: ActivatedRoute
@@ -100,8 +102,9 @@ export class CrearPsicologoComponent implements OnInit {
             ' ',
             'success'
           )
-        //Aca se actualize la pagina
-          this.router.navigate(['/dashboard/'+this.g_routeparam_PsicologoId+'/usuarios']);
+
+          this._PsicologoService.filter("AddPsicologo");
+          this.dialog.closeAll();
 
         }
         else{

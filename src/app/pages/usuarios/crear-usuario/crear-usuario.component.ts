@@ -3,7 +3,8 @@ import { Router } from '@angular/router';
 import { ActivatedRoute } from "@angular/router";
 import { PacienteService } from 'src/app/services/auroraapi/paciente.service';
 import Swal from 'sweetalert2';
-import { MatDialogRef,MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialog, MatDialogRef,MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { CasopacienteService } from 'src/app/services/auroraapi/casopaciente.service';
 
 interface tipoViolencia {
   value: string;
@@ -51,7 +52,6 @@ export class CrearUsuarioComponent implements OnInit {
 
   ngOnInit(): void {
     this.g_routeparam_PsicologoId = this.router.url.split('/')[2];
-    console.log(this.editData);
   }
 
 
@@ -62,7 +62,9 @@ export class CrearUsuarioComponent implements OnInit {
   };
 
   constructor(
+    public dialog:MatDialog,
     private PacienteService : PacienteService,
+    private _casopacienteService : CasopacienteService,
     private router: Router,
     @Inject(MAT_DIALOG_DATA) public editData : any,
     private route: ActivatedRoute) { }
@@ -99,10 +101,11 @@ export class CrearUsuarioComponent implements OnInit {
           'Registrado Correctamente',
           ' ',
           'success'
-        )
+        );
         //alert('Registrado Correctamente');
 
         //Aca se actualize la pagina
+        this._casopacienteService.filter("AddUsuario");
         this.router.navigate(['/dashboard/'+this.g_routeparam_PsicologoId+'/usuarios']);
 
       }
