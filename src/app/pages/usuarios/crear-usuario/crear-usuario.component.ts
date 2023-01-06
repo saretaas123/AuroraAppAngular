@@ -5,6 +5,21 @@ import { PacienteService } from 'src/app/services/auroraapi/paciente.service';
 import Swal from 'sweetalert2';
 import { MatDialogRef,MAT_DIALOG_DATA } from '@angular/material/dialog';
 
+interface tipoViolencia {
+  value: string;
+  viewValue: string;
+}
+
+interface riesgo {
+  value: string;
+  viewValue: string;
+}
+
+interface modalidad {
+  value: string;
+  viewValue: string;
+}
+
 
 
 @Component({
@@ -14,7 +29,23 @@ import { MatDialogRef,MAT_DIALOG_DATA } from '@angular/material/dialog';
 })
 export class CrearUsuarioComponent implements OnInit {
 
+  tiposViolencia: tipoViolencia[] = [
+    {value: '0', viewValue: 'Psicológico'},
+    {value: '1', viewValue: 'Físico'},
+    {value: '2', viewValue: 'Económico'},
+    {value: '2', viewValue: 'Sexual'},
+  ];
 
+  riesgos: riesgo[] = [
+    {value: '0', viewValue: 'Leve'},
+    {value: '1', viewValue: 'Moderado'},
+    {value: '2', viewValue: 'Severo'},
+  ];
+
+  modalidades: modalidad[] = [
+    {value: '0', viewValue: 'AUTOADMINISTRADO'},
+    {value: '1', viewValue: 'ADMINISTRADO POR EL PERSONAL'},
+  ];
 
   g_routeparam_PsicologoId: string = '0';
 

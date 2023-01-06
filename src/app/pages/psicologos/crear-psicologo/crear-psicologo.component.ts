@@ -19,6 +19,11 @@ interface departamento {
   viewValue: string;
 }
 
+interface cargo {
+  value: string;
+  viewValue: string;
+}
+
 
 
 @Component({
@@ -45,6 +50,12 @@ export class CrearPsicologoComponent implements OnInit {
     {value: '1', viewValue: 'Amazonas'},
     {value: '2', viewValue: 'Anchash'},
   ];
+
+  cargos: cargo[] = [
+    {value: '0', viewValue: 'PSICÓLOGA COMUNITARIA'},
+    {value: '1', viewValue: 'ESPECIALISTAS SEDE CENTRAL'},
+  ];
+
 
   g_routeparam_PsicologoId: string = '-3';
 
