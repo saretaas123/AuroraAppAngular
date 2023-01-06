@@ -5,6 +5,21 @@ import { PsicologoService } from 'src/app/services/auroraapi/psicologo.service';
 import { jsPDF } from "jspdf";
 import html2canvas from 'html2canvas';
 
+interface distrito {
+  value: string;
+  viewValue: string;
+}
+
+interface departamento {
+  value: string;
+  viewValue: string;
+}
+
+interface provincia {
+  value: string;
+  viewValue: string;
+}
+
 
 @Component({
   selector: 'app-reportes',
@@ -12,6 +27,92 @@ import html2canvas from 'html2canvas';
   styleUrls: ['./reportes.component.css']
 })
 export class ReportesComponent implements OnInit {
+
+  distritos: distrito[] = [
+    {value: '0', viewValue: 'Bagua'},
+    {value: '1', viewValue: 'Chachapoyas'},
+    {value: '2', viewValue: 'Huarmey'},
+    {value: '3', viewValue: 'Casma'},
+    {value: '4', viewValue: 'Nuevo Chimbote'},
+    {value: '5', viewValue: 'Ate'},
+    {value: '6', viewValue: 'Carabayllo'},
+    {value: '7', viewValue: 'Comas'},
+    {value: '8', viewValue: 'Chaclacayo'},
+    {value: '9', viewValue: 'San juan de Lurigancho'},
+    {value: '10', viewValue: 'Independencia'},
+    {value: '11', viewValue: 'La victoria'},
+    {value: '12', viewValue: 'Lince'},
+    {value: '13', viewValue: 'Breña'},
+    {value: '14', viewValue: 'Los olivos'},
+    {value: '15', viewValue: 'Ancon'},
+    {value: '16', viewValue: 'Rimac'},
+    {value: '17', viewValue: 'San juan de Miraflores'},
+    {value: '18', viewValue: 'San martin de porres'},
+    {value: '19', viewValue: 'San Luis'},
+    {value: '20', viewValue: 'Villa el salvador'},
+    {value: '21', viewValue: 'Huaral'},
+    {value: '22', viewValue: 'Huacho'},
+    {value: '23', viewValue: 'Barranca'},
+    {value: '24', viewValue: 'Imperial'},
+    {value: '25', viewValue: 'Santa Maria'},
+    {value: '26', viewValue: 'Huaraz'},
+    {value: '27', viewValue: 'Carhuaz'},
+    {value: '28', viewValue: 'Yungay'},
+
+  ];
+
+  provincias: provincia[] = [
+    {value: '0', viewValue: 'Bagua'},
+    {value: '1', viewValue: 'Chachapoyas'},
+    {value: '2', viewValue: 'Huarmey'},
+    {value: '3', viewValue: 'Casma'},
+    {value: '4', viewValue: 'Santa'},
+    {value: '5', viewValue: 'Lima'},
+    {value: '6', viewValue: 'Huaral'},
+    {value: '8', viewValue: 'Huaura'},
+    {value: '9', viewValue: 'Barranca'},
+    {value: '10', viewValue: 'Cañete'},
+    {value: '11', viewValue: 'Huaraz'},
+    {value: '12', viewValue: 'Carhuaz'},
+    {value: '13', viewValue: 'Yungay'},
+    {value: '14', viewValue: 'Abancay'},
+    {value: '15', viewValue: 'Andahuaylas'},
+    {value: '16', viewValue: 'Arequipa'},
+    {value: '17', viewValue: 'Ascope'},
+  ];
+
+  departamentos: departamento[] = [
+    {value: '0', viewValue: 'Bagua'},
+    {value: '1', viewValue: 'Chachapoyas'},
+    {value: '2', viewValue: 'Huarmey'},
+    {value: '3', viewValue: 'Anchash'},
+    {value: '4', viewValue: 'Lima Metropolitana'},
+    {value: '5', viewValue: 'Amazonas'},
+    {value: '6', viewValue: 'Apurimac'},
+    {value: '7', viewValue: 'Arequipa'},
+    {value: '8', viewValue: 'Ayacucho'},
+    {value: '9', viewValue: 'Cajamarca'},
+    {value: '10', viewValue: 'Callao'},
+    {value: '11', viewValue: 'Cusco'},
+    {value: '12', viewValue: 'Huancavelica'},
+    {value: '13', viewValue: 'Huanuco'},
+    {value: '14', viewValue: 'Ica'},
+    {value: '15', viewValue: 'Junin'},
+    {value: '16', viewValue: 'La libertad'},
+    {value: '17', viewValue: 'Lambayeque'},
+    {value: '18', viewValue: 'Amazonas'},
+    {value: '19', viewValue: 'Lima Provincia'},
+    {value: '20', viewValue: 'Loreto'},
+    {value: '21', viewValue: 'Madre de dios'},
+    {value: '22', viewValue: 'Moquegua'},
+    {value: '23', viewValue: 'Pasco'},
+    {value: '24', viewValue: 'Piura'},
+    {value: '25', viewValue: 'Puno'},
+    {value: '26', viewValue: 'San Martin'},
+    {value: '27', viewValue: 'Tacna'},
+    {value: '28', viewValue: 'Tumbes'},
+    {value: '29', viewValue: 'Ucayali'},
+  ];
 
    // CREACION DE PDF
    downloadPDF() {

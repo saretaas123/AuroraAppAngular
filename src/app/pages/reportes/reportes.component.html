@@ -55,30 +55,45 @@
           <div class="row">
             <div class="col-sm">
               <mat-form-field appearance="fill">
-                <mat-label>Region</mat-label>
-                <mat-select>
-                  <mat-option value="one">La libertad</mat-option>
-                  <mat-option value="two">Lambayeque</mat-option>
-                </mat-select>
-              </mat-form-field>
-            </div>
-            <div class="col-sm">
-              <mat-form-field appearance="fill">
                 <mat-label>Distrito</mat-label>
                 <mat-select>
-                  <mat-option value="one">Magdalena del mar</mat-option>
-                  <mat-option value="two">Cercado</mat-option>
+                  <mat-option *ngFor="let distrito of distritos" [value]="distrito.value">
+                    {{distrito.viewValue}}
+                  </mat-option>
                 </mat-select>
               </mat-form-field>
             </div>
             <div class="col-sm">
               <mat-form-field appearance="fill">
-                <mat-label>Edad</mat-label>
+                <mat-label>Departamento</mat-label>
                 <mat-select>
-                  <mat-option value="one">20</mat-option>
-                  <mat-option value="two">21</mat-option>
+                  <mat-option *ngFor="let departamento of departamentos" [value]="departamento.value">
+                    {{departamento.viewValue}}
+                  </mat-option>
                 </mat-select>
               </mat-form-field>
+            </div>
+            <div class="col-sm">
+              <mat-form-field appearance="fill">
+                <mat-label>Provincia</mat-label>
+                <mat-select>
+                  <mat-option *ngFor="let provincia of provincias" [value]="provincia.value">
+                    {{provincia.viewValue}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+            <div class="col-sm">
+              <mat-form-field appearance="fill">
+                <mat-label>Desde [Edad]:</mat-label>
+                <input matInput type="number" #pDesdeEdad>
+            </mat-form-field>
+            </div>
+            <div class="col-sm">
+              <mat-form-field appearance="fill">
+                <mat-label>Hasta [Edad]:</mat-label>
+                <input matInput type="number" #pHastaEdad>
+            </mat-form-field>
             </div>
             <div class="col-sm">
               <mat-form-field appearance="fill">
