@@ -10,13 +10,13 @@
       <div class="col-sm">
         <mat-form-field appearance="fill">
             <mat-label>Nombre</mat-label>
-            <input matInput type="text">
+            <input matInput type="text" #pNombres [value]="ApiFullobjPacienteInfo.rpta.nombres">
         </mat-form-field>
       </div>
       <div class="col-sm">
         <mat-form-field appearance="fill">
             <mat-label>Apellido Paterno</mat-label>
-            <input matInput type="text">
+            <input matInput type="text" #pApellidoPaterno [value]="ApiFullobjPacienteInfo.rpta.apellidoPaterno">
         </mat-form-field>
       </div>
     </div>
@@ -26,13 +26,13 @@
       <div class="col-sm">
         <mat-form-field appearance="fill">
             <mat-label>Apellido Materno</mat-label>
-            <input matInput type="text">
+            <input matInput type="text" #pApellidoMaterno [value]="ApiFullobjPacienteInfo.rpta.apellidoMaterno">
         </mat-form-field>
       </div>
       <div class="col-sm">
         <mat-form-field appearance="fill">
             <mat-label>Fecha de nacimiento</mat-label>
-            <input matInput type="date">
+            <input matInput type="date" #pFechaNacimiento [value]="ApiFullobjPacienteInfo.rpta.fechaNacimiento">
         </mat-form-field>
       </div>
     </div>
@@ -42,13 +42,13 @@
       <div class="col-sm">
         <mat-form-field appearance="fill">
             <mat-label>Dni</mat-label>
-            <input matInput type="text">
+            <input matInput type="text" #pDni [value]="ApiFullobjPacienteInfo.rpta.dni">
         </mat-form-field>
       </div>
       <div class="col-sm">
         <mat-form-field appearance="fill">
             <mat-label>Direccion</mat-label>
-            <input matInput type="text">
+            <input matInput type="text" #pDireccioUbigeo [value]="ApiFullobjPacienteInfo.rpta.direccionUbigeo">
         </mat-form-field>
       </div>
     </div>
@@ -58,13 +58,13 @@
       <div class="col-sm">
         <mat-form-field appearance="fill">
             <mat-label>Telefono</mat-label>
-            <input matInput type="text">
+            <input matInput type="text" #pTelefono [value]="ApiFullobjPacienteInfo.rpta.telefono">
         </mat-form-field>
       </div>
       <div class="col-sm">
         <mat-form-field appearance="fill">
             <mat-label>Correo</mat-label>
-            <input matInput type="email">
+            <input matInput type="email" #pCorreo [value]="ApiFullobjPacienteInfo.rpta.correo">
         </mat-form-field>
       </div>
     </div>
@@ -74,13 +74,13 @@
       <div class="col-sm">
         <mat-form-field appearance="fill">
             <mat-label>Tipo de Violencia</mat-label>
-            <input matInput type="text">
+            <input matInput type="text" #pTipoViolencia [value]="ApiFullobjPacienteInfo.rpta.nombres">
         </mat-form-field>
       </div>
       <div class="col-sm">
         <mat-form-field appearance="fill">
             <mat-label>Riesgo</mat-label>
-            <input matInput type="text">
+            <input matInput type="text" #pRiesgo [value]="ApiFullobjPacienteInfo.rpta.nombres">
         </mat-form-field>
       </div>
     </div>
@@ -89,14 +89,14 @@
     <div class="row">
       <div class="col-sm">
         <mat-form-field appearance="fill">
-            <mat-label>Año de Evaluacion</mat-label>
-            <input matInput type="number">
+            <mat-label>Fecha de Evaluacion</mat-label>
+            <input matInput type="date" #pFechaDeEvaluacion [value]="ApiFullobjPacienteInfo.rpta.nombres">
         </mat-form-field>
       </div>
       <div class="col-sm">
       <mat-form-field appearance="fill">
           <mat-label>Actualmente tiene problemas con</mat-label>
-          <input matInput type="text" #pEntidadProblema>
+          <input matInput type="text" #pEntidadProblema [value]="ApiFullobjPacienteInfo.rpta.nombres">
       </mat-form-field>
     </div>
     </div>
@@ -106,12 +106,12 @@
     <div class="col-sm">
       <mat-form-field appearance="fill">
           <mat-label>Modalidad:</mat-label>
-          <input matInput type="text" #pModalidadAdministrativo>
+          <input matInput type="text" #pModalidadAdministrativo [value]="ApiFullobjPacienteInfo.rpta.nombres">
       </mat-form-field>
     </div>
   </div>
 </div>
 </mat-dialog-content>
 <mat-dialog-actions >
-  <button class="btn btn-primary" [mat-dialog-close]="true" cdkFocusInitial>Guardar</button>
+  <button class="btn btn-primary" cdkFocusInitial (click)="EditarPaciente(pNombres.value , pApellidoPaterno.value ,pApellidoMaterno.value ,pFechaNacimiento.value , pDni.value ,pTelefono.value ,pDireccioUbigeo.value ,pCorreo.value,pTipoViolencia.value,pRiesgo.value,pFechaDeEvaluacion.value,pEntidadProblema.value,pModalidadAdministrativo.value)">Guardar</button>
 </mat-dialog-actions>

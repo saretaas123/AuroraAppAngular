@@ -31,21 +31,21 @@ interface modalidad {
 export class CrearUsuarioComponent implements OnInit {
 
   tiposViolencia: tipoViolencia[] = [
-    {value: '0', viewValue: 'Psicológico'},
-    {value: '1', viewValue: 'Físico'},
-    {value: '2', viewValue: 'Económico'},
-    {value: '2', viewValue: 'Sexual'},
+    {value: 'Psicológico', viewValue: 'Psicológico'},
+    {value: 'Físico', viewValue: 'Físico'},
+    {value: 'Económico', viewValue: 'Económico'},
+    {value: 'Sexual', viewValue: 'Sexual'},
   ];
 
   riesgos: riesgo[] = [
-    {value: '0', viewValue: 'Leve'},
-    {value: '1', viewValue: 'Moderado'},
-    {value: '2', viewValue: 'Severo'},
+    {value: 'Leve', viewValue: 'Leve'},
+    {value: 'Moderado', viewValue: 'Moderado'},
+    {value: 'Severo', viewValue: 'Severo'},
   ];
 
   modalidades: modalidad[] = [
-    {value: '0', viewValue: 'AUTOADMINISTRADO'},
-    {value: '1', viewValue: 'ADMINISTRADO POR EL PERSONAL'},
+    {value: 'AUTOADMINISTRADO', viewValue: 'AUTOADMINISTRADO'},
+    {value: 'ADMINISTRADO POR EL PERSONAL', viewValue: 'ADMINISTRADO POR EL PERSONAL'},
   ];
 
   g_routeparam_PsicologoId: string = '0';
@@ -75,7 +75,7 @@ export class CrearUsuarioComponent implements OnInit {
   RegistrarPaciente(
     pNombres : string, pApellidoPaterno : string,pApellidoMaterno : string,
     pFechaNacimiento : string,pDni : string,pTelefono : string,
-    pDireccioUbigeo : string,pCorreo : string,pTipoViolencia : string,pRiesgo : string,pAnoDeEvaluacion : string,pEntidadProblema :string,pModalidadAdministrativo :string)
+    pDireccioUbigeo : string,pCorreo : string,pTipoViolencia : string,pRiesgo : string,pFechaDeEvaluacion : any,pEntidadProblema :string,pModalidadAdministrativo :string)
   {
     var RegistroExitoso = false;
     var pPsicologoId = this.g_routeparam_PsicologoId;
@@ -84,7 +84,7 @@ export class CrearUsuarioComponent implements OnInit {
       Number(pPsicologoId),
       pNombres, pApellidoPaterno, pApellidoMaterno,
       pFechaNacimiento ,pDni ,pTelefono ,
-      pDireccioUbigeo ,pCorreo,pTipoViolencia,pRiesgo,pAnoDeEvaluacion,pEntidadProblema,
+      Number(pDireccioUbigeo) ,pCorreo,pTipoViolencia,pRiesgo,pFechaDeEvaluacion,pEntidadProblema,
       pModalidadAdministrativo
       )
       .subscribe(APIrpta => {
@@ -105,8 +105,8 @@ export class CrearUsuarioComponent implements OnInit {
         //alert('Registrado Correctamente');
 
         //Aca se actualize la pagina
-        this._casopacienteService.filter("AddUsuario");
-        this.router.navigate(['/dashboard/'+this.g_routeparam_PsicologoId+'/usuarios']);
+        this._casopacienteService.filter("AddPaciente");
+        this.dialog.closeAll();
 
       }
       else{

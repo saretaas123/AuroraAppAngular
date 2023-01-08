@@ -24,6 +24,14 @@ export class PacienteService {
 
     }
 
+    GetPacienteByCasoPacienteId(CasoPacienteId : string)
+    {
+        let headers = new HttpHeaders().set('Type-content','aplication/json')
+
+        return this.http.get(this._url + 'ObtenerPacienteByCasoPacienteId/' +CasoPacienteId, { headers : headers});
+
+    }
+
     GetPacienteFullInfoById(PacienteId : string)
     {
         let headers = new HttpHeaders().set('Type-content','aplication/json')
@@ -41,14 +49,8 @@ export class PacienteService {
     }
 
     PostRegistrarPaciente(pPsicologoId: number, pNombres : string, pApellidoPaterno : string,pApellidoMaterno : string,pFechaNacimiento : string,pDni : string
-        ,pTelefono : string,pDireccioUbigeo : string,pCorreo : string, pTipoViolencia : string,pRiesgo : string,pAnoDeEvaluacion : string,pEntidadProblema :string,pModalidadAdministrativo :string)
+        ,pTelefono : string,pDireccioUbigeo : number,pCorreo : string, pTipoViolencia : string,pRiesgo : string,pFechaDeEvaluacion : string,pEntidadProblema :string,pModalidadAdministrativo :string)
     {
-
-      console.log(pTipoViolencia);
-      console.log(pRiesgo);
-      console.log(pAnoDeEvaluacion);
-      console.log(pEntidadProblema);
-      console.log(pModalidadAdministrativo);
 
         let headers = new HttpHeaders().set('Type-content','aplication/json')
 
@@ -60,11 +62,36 @@ export class PacienteService {
             "FechaNacimiento": pFechaNacimiento,
             "Dni": pDni,
             "Telefono": pTelefono,
+            "DireccioUbigeo": 1, //pDireccioUbigeo,
+            "Correo": pCorreo,
+            "TipoViolencia":pTipoViolencia,
+            "Riesgo":pRiesgo,
+            "FechaDeEvaluacion":pFechaDeEvaluacion,
+            "EntidadProblema":pEntidadProblema,
+            "modalidadAdministrativo":pModalidadAdministrativo
+          } , { headers : headers});
+
+    }
+
+    PostEditarPaciente(pCasoPacienteId: number, pNombres : string, pApellidoPaterno : string,pApellidoMaterno : string,pFechaNacimiento : string,pDni : string
+        ,pTelefono : string,pDireccioUbigeo : number,pCorreo : string, pTipoViolencia : string,pRiesgo : string,pFechaDeEvaluacion : string,pEntidadProblema :string,pModalidadAdministrativo :string)
+    {
+
+        let headers = new HttpHeaders().set('Type-content','aplication/json')
+
+        return this.http.post(this._url + 'AgregarPaciente', {
+            "CasoPacienteId" : pCasoPacienteId,
+            "Nombres": pNombres,
+            "ApellidoPaterno": pApellidoPaterno,
+            "ApellidoMaterno": pApellidoMaterno,
+            "FechaNacimiento": pFechaNacimiento,
+            "Dni": pDni,
+            "Telefono": pTelefono,
             "DireccioUbigeo": pDireccioUbigeo,
             "Correo": pCorreo,
             "TipoViolencia":pTipoViolencia,
             "Riesgo":pRiesgo,
-            "AnoDeEvaluacion":pAnoDeEvaluacion,
+            "FechaDeEvaluacion":pFechaDeEvaluacion,
             "EntidadProblema":pEntidadProblema,
             "modalidadAdministrativo":pModalidadAdministrativo
           } , { headers : headers});

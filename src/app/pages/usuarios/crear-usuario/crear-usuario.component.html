@@ -159,7 +159,7 @@
     <div class="col-sm">
       <mat-form-field appearance="fill">
           <mat-label>Año de Evaluacion</mat-label>
-          <input matInput type="number" #pAnoDeEvaluacion>
+          <input matInput type="date" #pFechaDeEvaluacion>
       </mat-form-field>
     </div>
     <div class="col-sm">
@@ -191,5 +191,5 @@
 
 </mat-dialog-content>
 <mat-dialog-actions >
-<button class="btn btn-primary" (click)="RegistrarPaciente(pNombres.value , pApellidoPaterno.value ,pApellidoMaterno.value ,pFechaNacimiento.value , pDni.value ,pTelefono.value ,pDireccioUbigeo.value ,pCorreo.value,pTipoViolencia.value,pRiesgo.value,pAnoDeEvaluacion.value,pEntidadProblema.value,pModalidadAdministrativo.value)" cdkFocusInitial>Guardar</button>
+<button class="btn btn-primary" (click)="RegistrarPaciente(pNombres.value , pApellidoPaterno.value ,pApellidoMaterno.value ,pFechaNacimiento.value , pDni.value ,pTelefono.value ,pDireccioUbigeo.value ,pCorreo.value,pTipoViolencia.value,pRiesgo.value,pFechaDeEvaluacion.value,pEntidadProblema.value,pModalidadAdministrativo.value)" cdkFocusInitial>Guardar</button>
 </mat-dialog-actions>
