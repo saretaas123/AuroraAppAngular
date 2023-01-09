@@ -4,12 +4,45 @@ import { PacienteService } from 'src/app/services/auroraapi/paciente.service';
 import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import Swal from 'sweetalert2';
 
+interface tipoViolencia {
+  value: string;
+  viewValue: string;
+}
+
+interface riesgo {
+  value: string;
+  viewValue: string;
+}
+
+interface modalidad {
+  value: string;
+  viewValue: string;
+}
+
 @Component({
   selector: 'app-editar-paciente',
   templateUrl: './editar-paciente.component.html',
   styleUrls: ['./editar-paciente.component.css']
 })
 export class EditarPacienteComponent implements OnInit {
+
+  tiposViolencia: tipoViolencia[] = [
+    {value: 'Psicológico', viewValue: 'Psicológico'},
+    {value: 'Físico', viewValue: 'Físico'},
+    {value: 'Económico', viewValue: 'Económico'},
+    {value: 'Sexual', viewValue: 'Sexual'},
+  ];
+
+  riesgos: riesgo[] = [
+    {value: 'Leve', viewValue: 'Leve'},
+    {value: 'Moderado', viewValue: 'Moderado'},
+    {value: 'Severo', viewValue: 'Severo'},
+  ];
+
+  modalidades: modalidad[] = [
+    {value: 'AUTOADMINISTRADO', viewValue: 'AUTOADMINISTRADO'},
+    {value: 'ADMINISTRADO POR EL PERSONAL', viewValue: 'ADMINISTRADO POR EL PERSONAL'},
+  ];
 
   g_PacienteId : any;
 

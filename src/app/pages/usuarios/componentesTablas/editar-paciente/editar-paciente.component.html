@@ -71,17 +71,35 @@
   </div>
   <div class="container">
     <div class="row">
-      <div class="col-sm">
+      <!--<div class="col-sm">
+        <mat-form-field appearance="fill">
+          <mat-label>Tipo de Violencia</mat-label>
+          <mat-select #pTipoViolencia>
+            <mat-option *ngFor="let tipoViolencia of tiposViolencia" [value]="tipoViolencia.value">
+              {{tipoViolencia.viewValue}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>-->
+     <div class="col-sm">
         <mat-form-field appearance="fill">
             <mat-label>Tipo de Violencia</mat-label>
-            <input matInput type="text" #pTipoViolencia [value]="ApiFullobjPacienteInfo.rpta.nombres">
+            <input matInput type="text" #pTipoViolencia [value]="ApiFullobjPacienteInfo.rpta.tiposViolencia">
         </mat-form-field>
       </div>
       <div class="col-sm">
         <mat-form-field appearance="fill">
+          <mat-label>Riesgo</mat-label>
+          <mat-select #pRiesgo>
+            <mat-option *ngFor="let riesgo of riesgos" [value]="riesgo.value">
+              {{riesgo.viewValue}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+       <!-- <mat-form-field appearance="fill">
             <mat-label>Riesgo</mat-label>
             <input matInput type="text" #pRiesgo [value]="ApiFullobjPacienteInfo.rpta.nombres">
-        </mat-form-field>
+        </mat-form-field>-->
       </div>
     </div>
   </div>
@@ -105,9 +123,17 @@
   <div class="row">
     <div class="col-sm">
       <mat-form-field appearance="fill">
+        <mat-label>Modalidad</mat-label>
+        <mat-select #pModalidadAdministrativo>
+          <mat-option *ngFor="let modalidad of modalidades" [value]="modalidad.value">
+            {{modalidad.viewValue}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+     <!-- <mat-form-field appearance="fill">
           <mat-label>Modalidad:</mat-label>
           <input matInput type="text" #pModalidadAdministrativo [value]="ApiFullobjPacienteInfo.rpta.nombres">
-      </mat-form-field>
+      </mat-form-field>-->
     </div>
   </div>
 </div>

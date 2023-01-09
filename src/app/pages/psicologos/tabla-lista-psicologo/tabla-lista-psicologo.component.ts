@@ -40,7 +40,7 @@ export class TablaListaPsicologoComponent implements OnInit {
   };
 
 
-  displayedColumns: string[] = ['dni','nombre', 'apellidos', 'zona','formularioPro','acciones'];
+  displayedColumns: string[] = ['dni','nombre', 'apellidos', 'zona','formularioPro','acciones','acciones2'];
   dataSource = new MatTableDataSource(listUsuarios);
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;

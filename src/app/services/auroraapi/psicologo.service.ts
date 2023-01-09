@@ -31,8 +31,8 @@ export class PsicologoService {
     }
 
     PostAgregarPsicologos(p_Nombres:string, p_ApellidoPaterno:string, p_ApellidoMaterno:string,
-      p_Dni:string, p_Telefono:string, p_Correo:string, p_NumeroDeColegiaturaDelPeru:string,
-      p_Especialidad:string)
+      p_Dni:string, p_Correo:string
+      )
     {
         let headers = new HttpHeaders().set('Type-content','aplication/json')
 
@@ -41,10 +41,7 @@ export class PsicologoService {
           "apellidoPaterno": p_ApellidoPaterno,
           "apellidoMaterno": p_ApellidoMaterno,
           "dni": p_Dni,
-          "telefono": p_Telefono,
           "correo": p_Correo,
-          "numeroDeColegiaturaDelPeru": p_NumeroDeColegiaturaDelPeru,
-          "especialidad": p_Especialidad
         }, { headers : headers});
     }
 

@@ -61,6 +61,15 @@
                         </td>
                       </ng-container>
 
+                      <ng-container matColumnDef="acciones2">
+                        <th mat-header-cell class="text-center" *matHeaderCellDef><b>Ver Usuario/Contraseña</b></th>
+                        <td class="text-center" mat-cell *matCellDef="let element">
+                          <a class="pointer" style="color: #286f1f;" matTooltip="Ver datos de acceso a la aplicacion">
+                            <mat-icon >visibility</mat-icon>
+                          </a>
+                        </td>
+                      </ng-container>
+
                     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
                     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 

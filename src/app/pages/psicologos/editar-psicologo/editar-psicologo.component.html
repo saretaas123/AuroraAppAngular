@@ -31,8 +31,8 @@
       </div>
       <div class="col-sm">
         <mat-form-field appearance="fill">
-            <mat-label>Fecha de nacimiento</mat-label>
-            <input matInput type="date" #pFechaNacimiento>
+          <mat-label>Dni</mat-label>
+          <input matInput type="text" #pDni>
         </mat-form-field>
       </div>
     </div>
@@ -41,46 +41,18 @@
     <div class="row">
       <div class="col-sm">
         <mat-form-field appearance="fill">
-            <mat-label>Dni</mat-label>
-            <input matInput type="text" #pDni>
+          <mat-label>Cargo</mat-label>
+          <mat-select>
+            <mat-option *ngFor="let cargo of cargos" [value]="cargo.value">
+              {{cargo.viewValue}}
+            </mat-option>
+          </mat-select>
         </mat-form-field>
       </div>
       <div class="col-sm">
         <mat-form-field appearance="fill">
-            <mat-label>Direccion</mat-label>
-            <input matInput type="text" #pDireccion>
-        </mat-form-field>
-      </div>
-    </div>
-  </div>
-  <div class="container">
-    <div class="row">
-      <div class="col-sm">
-        <mat-form-field appearance="fill">
-            <mat-label>Telefono</mat-label>
-            <input matInput type="text" #pTelefono>
-        </mat-form-field>
-      </div>
-      <div class="col-sm">
-        <mat-form-field appearance="fill">
-            <mat-label>Correo</mat-label>
-            <input matInput type="email" #pCorreo>
-        </mat-form-field>
-      </div>
-    </div>
-  </div>
-  <div class="container">
-    <div class="row">
-      <div class="col-sm">
-        <mat-form-field appearance="fill">
-            <mat-label>Numero Colegiatura</mat-label>
-            <input matInput type="number"  #pNumeroColegiatura>
-        </mat-form-field>
-      </div>
-      <div class="col-sm">
-        <mat-form-field appearance="fill">
-            <mat-label>Especialidad</mat-label>
-            <input matInput type="text" #pEspecialidad>
+          <mat-label>Correo</mat-label>
+          <input matInput type="email" #pCorreo>
         </mat-form-field>
       </div>
     </div>

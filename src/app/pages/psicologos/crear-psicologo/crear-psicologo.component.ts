@@ -46,7 +46,7 @@ export class CrearPsicologoComponent implements OnInit {
     {value: '2', viewValue: 'Huarmey'},
   ];
 
-  departamentos: provincia[] = [
+  departamentos: departamento[] = [
     {value: '0', viewValue: 'Amazonas'},
     {value: '1', viewValue: 'Amazonas'},
     {value: '2', viewValue: 'Anchash'},
@@ -82,14 +82,12 @@ export class CrearPsicologoComponent implements OnInit {
 
   RegistrarPsicologo(
     pNombres : string, pApellidoPaterno : string,pApellidoMaterno : string,
-    pDni : string,pTelefono : string,pCorreo : string,
-    pNumeroColegiatura : string,pEspecialidad : string)
+    pDni : string,pCorreo : string)
   {
 
     this._PsicologoService.PostAgregarPsicologos(
       pNombres, pApellidoPaterno, pApellidoMaterno,
-      pDni ,pTelefono , pCorreo,
-      pNumeroColegiatura, pEspecialidad
+      pDni , pCorreo,
       )
       .subscribe(APIrpta => {
         var RegistroExitoso = this.ApiFullobjPsicologoFullInfo.rpta;

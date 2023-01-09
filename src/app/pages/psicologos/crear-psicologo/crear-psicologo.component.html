@@ -80,22 +80,6 @@
     <div class="row">
       <div class="col-sm">
         <mat-form-field appearance="fill">
-            <mat-label>Telefono</mat-label>
-            <input matInput type="text"  #pTelefono>
-        </mat-form-field>
-      </div>
-      <div class="col-sm">
-        <mat-form-field appearance="fill">
-            <mat-label>Correo</mat-label>
-            <input matInput type="email" #pCorreo>
-        </mat-form-field>
-      </div>
-    </div>
-  </div>
-  <div class="container">
-    <div class="row">
-      <div class="col-sm">
-        <mat-form-field appearance="fill">
           <mat-label>Cargo</mat-label>
           <mat-select>
             <mat-option *ngFor="let cargo of cargos" [value]="cargo.value">
@@ -106,8 +90,8 @@
       </div>
       <div class="col-sm">
         <mat-form-field appearance="fill">
-            <mat-label>Especialidad</mat-label>
-            <input matInput type="text" #pEspecialidad>
+            <mat-label>Correo</mat-label>
+            <input matInput type="email" #pCorreo>
         </mat-form-field>
       </div>
     </div>
@@ -148,15 +132,9 @@
           </mat-select>
         </mat-form-field>
       </div>
-      <div class="col-sm">
-        <mat-form-field appearance="fill">
-          <mat-label>Numero Colegiatura</mat-label>
-          <input matInput type="number"  #pNumeroColegiatura>
-      </mat-form-field>
-      </div>
     </div>
   </div>
   </mat-dialog-content>
   <mat-dialog-actions >
-  <button class="btn btn-primary" (click)="RegistrarPsicologo(pNombres.value , pApellidoPaterno.value ,pApellidoMaterno.value ,pDni.value ,pTelefono.value ,pCorreo.value, pNumeroColegiatura.value, pEspecialidad.value)" cdkFocusInitial>Guardar</button>
+  <button class="btn btn-primary" (click)="RegistrarPsicologo(pNombres.value , pApellidoPaterno.value ,pApellidoMaterno.value ,pDni.value  ,pCorreo.value)" cdkFocusInitial>Guardar</button>
   </mat-dialog-actions>

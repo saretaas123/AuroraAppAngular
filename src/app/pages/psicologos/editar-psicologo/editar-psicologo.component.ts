@@ -3,6 +3,11 @@ import { MatDialog } from '@angular/material/dialog';
 import { PsicologoService } from 'src/app/services/auroraapi/psicologo.service';
 import Swal from 'sweetalert2';
 
+interface cargo {
+  value: string;
+  viewValue: string;
+}
+
 interface distrito {
   value: string;
   viewValue: string;
@@ -25,6 +30,11 @@ interface departamento {
 })
 export class EditarPsicologoComponent implements OnInit {
 
+  cargos: cargo[] = [
+    {value: '0', viewValue: 'PSICÓLOGA COMUNITARIA'},
+    {value: '1', viewValue: 'ESPECIALISTAS SEDE CENTRAL'},
+  ];
+
   distritos: distrito[] = [
     {value: '0', viewValue: 'Bagua'},
     {value: '1', viewValue: 'Chachapoyas'},
@@ -37,7 +47,7 @@ export class EditarPsicologoComponent implements OnInit {
     {value: '2', viewValue: 'Huarmey'},
   ];
 
-  departamentos: provincia[] = [
+  departamentos: departamento[] = [
     {value: '0', viewValue: 'Amazonas'},
     {value: '1', viewValue: 'Amazonas'},
     {value: '2', viewValue: 'Anchash'},
