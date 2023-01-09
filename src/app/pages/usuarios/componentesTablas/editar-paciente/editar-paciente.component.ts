@@ -61,7 +61,6 @@ export class EditarPacienteComponent implements OnInit {
     this.p_modal_InfoPaciente = this.vc_InfoPaciente;
     this.PacienteService.GetPacienteByCasoPacienteId(this.p_modal_InfoPaciente.CasoPacienteId).subscribe(Rpta =>
       {
-        console.log("this.p_modal_InfoPaciente",this.p_modal_InfoPaciente);
         this.ApiFullobjPacienteInfo = Rpta;
         this.ApiFullobjPacienteInfo.rpta.tipoViolencia = this.p_modal_InfoPaciente.pacienteTipoViolencia;
         this.ApiFullobjPacienteInfo.rpta.riesgo = this.p_modal_InfoPaciente.pacienteRiesgo;
@@ -87,11 +86,8 @@ export class EditarPacienteComponent implements OnInit {
       )
       .subscribe(APIrpta => {
 
-        console.log(APIrpta);
-
       this.ApiFullobjPsicologoFullInfo = APIrpta;
       RegistroExitoso = this.ApiFullobjPsicologoFullInfo.rpta;
-      console.log(this.ApiFullobjPsicologoFullInfo.mnsj);
 
       if(RegistroExitoso)
       {

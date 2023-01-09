@@ -14,16 +14,16 @@ export class GraficoDecisionesComponent implements OnInit {
   public barChartOptions: ChartConfiguration['options'] = {
     responsive: true,
     // We use these empty structures as placeholders for dynamic theming.
-  
+
   };
   public barChartType: ChartType = 'bar';
-  
+
 
   public barChartData: ChartData<'bar'> = {
     labels: [ 'Incipiente', 'En Proceso', 'Capacidad suficiente'],
     datasets: [
       { data: [ 65, 59, 80 ], label: 'PreTest' },
-      { data: [ 28, 48, 40 ], label: 'ProTest' }
+      { data: [ 28, 48, 40 ], label: 'PostTest' }
     ]
   };
 

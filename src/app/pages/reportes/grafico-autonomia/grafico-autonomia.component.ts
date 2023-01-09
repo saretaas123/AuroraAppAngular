@@ -14,16 +14,16 @@ export class GraficoAutonomiaComponent implements OnInit {
   public barChartOptions: ChartConfiguration['options'] = {
     responsive: true,
     // We use these empty structures as placeholders for dynamic theming.
-  
+
   };
   public barChartType: ChartType = 'bar';
-  
+
 
   public barChartData: ChartData<'bar'> = {
     labels: [ 'Control positiva', 'Control negativa', 'Deseo de control', 'Control interno', 'Control externo'],
     datasets: [
       { data: [ 70, 30, 60, 50, 50 ], label: 'PreTest' },
-      { data: [ 100, 0, 80, 100, 0 ], label: 'ProTest' }
+      { data: [ 100, 0, 80, 100, 0 ], label: 'PostTest' }
     ]
   };
 
