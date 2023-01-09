@@ -11,8 +11,6 @@ import Swal from 'sweetalert2';
 })
 export class EditarPacienteComponent implements OnInit {
 
-  g_PacienteId : any;
-
   public ApiFullobjPsicologoFullInfo : any = {
     mnsj: '',
     rpta : {}
@@ -27,10 +25,12 @@ export class EditarPacienteComponent implements OnInit {
       fechaNacimiento: "",
       dni: "",
       telefono: "",
-      direccionUbigeo: -1,
+      direccionUbigeo: "",
       correo: "",
       siendoAtentido: false,
-      id: 0,
+      id: "",
+      tipoViolencia : "",
+      riesgo : "",
       creadoEn: null,
       creadoPor: null,
       editadoEn: null,
@@ -38,10 +38,17 @@ export class EditarPacienteComponent implements OnInit {
       estaEliminado: false
     }
   };
+
+  public p_modal_InfoPaciente : any = {
+    CasoPacienteId : "",
+    pacienteTipoViolencia : "",
+    pacienteRiesgo :""
+  };
+
   constructor(
     public dialog:MatDialog,
     private PacienteService : PacienteService,
-    @Inject(MAT_DIALOG_DATA) public vc_CasoPaciente : any,
+    @Inject(MAT_DIALOG_DATA) public vc_InfoPaciente : any,
     private _casopacienteService : CasopacienteService,
     ) { }
 
@@ -51,9 +58,13 @@ export class EditarPacienteComponent implements OnInit {
 
   TraerDatosPaciente()
   {
-    this.PacienteService.GetPacienteByCasoPacienteId(this.vc_CasoPaciente).subscribe(Rpta =>
+    this.p_modal_InfoPaciente = this.vc_InfoPaciente;
+    this.PacienteService.GetPacienteByCasoPacienteId(this.p_modal_InfoPaciente.CasoPacienteId).subscribe(Rpta =>
       {
+        console.log("this.p_modal_InfoPaciente",this.p_modal_InfoPaciente);
         this.ApiFullobjPacienteInfo = Rpta;
+        this.ApiFullobjPacienteInfo.rpta.tipoViolencia = this.p_modal_InfoPaciente.pacienteTipoViolencia;
+        this.ApiFullobjPacienteInfo.rpta.riesgo = this.p_modal_InfoPaciente.pacienteRiesgo;
       });
   }
 
@@ -64,7 +75,8 @@ export class EditarPacienteComponent implements OnInit {
   {
 
     var RegistroExitoso = false;
-    var pCasoPacienteId = this.vc_CasoPaciente;
+    this.p_modal_InfoPaciente = this.vc_InfoPaciente;
+    var pCasoPacienteId = this.p_modal_InfoPaciente.CasoPacienteId;
 
     this.PacienteService.PostEditarPaciente(
       Number(pCasoPacienteId),
@@ -108,5 +120,7 @@ export class EditarPacienteComponent implements OnInit {
 
 
     })
+
+
   }
 }

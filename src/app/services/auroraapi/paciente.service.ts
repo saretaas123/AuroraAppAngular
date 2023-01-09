@@ -79,7 +79,7 @@ export class PacienteService {
 
         let headers = new HttpHeaders().set('Type-content','aplication/json')
 
-        return this.http.post(this._url + 'AgregarPaciente', {
+        return this.http.put(this._url + 'EditarPaciente', {
             "CasoPacienteId" : pCasoPacienteId,
             "Nombres": pNombres,
             "ApellidoPaterno": pApellidoPaterno,
