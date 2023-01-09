@@ -10,7 +10,7 @@ import { CrearUsuarioComponent } from '../../crear-usuario/crear-usuario.compone
 import { EditarFichaRegistroComponent} from '../../editar-ficha-registro/editar-ficha-registro.component';
 
 var listUsuarios: any [] = [
-  {dni:'',nombre: '', apellidos: '', edad: 0, preTest: 'Incompleto',proTest: 'Incompleto', casoPacienteId: '0'}
+  {dni:'',nombre: '', apellidos: '', edad: 0, preTest: 'Incompleto',proTest: 'Incompleto', casoPacienteId: '0',pacienteTipoViolencia:'',pacienteRiesgo:''}
 ];
 
 @Component({
@@ -147,18 +147,18 @@ export class TablaPacienteComponent implements OnInit, OnChanges {
   constructor(private CasopacienteService : CasopacienteService,public dialog:MatDialog ) {
    }
 
-   editarUsuario(element : any){
+   editarUsuario(){
     this,this.dialog.open(CrearUsuarioComponent,{
-      data:element
+
     })
    }
 
 
  //Modal de editar paciente
-   openDialog(CasoPaciente : any)
+   openDialog(CasoPacienteId : any,pacienteTipoViolencia:any,pacienteRiesgo:any)
 {
   this.dialog.open(EditarPacienteComponent,{
-    data : CasoPaciente
+    data : {CasoPacienteId,pacienteTipoViolencia,pacienteRiesgo }
   }).afterClosed().subscribe(val=>{
     if(val ==='Guardar'){
       this.ngOnInit;
@@ -231,7 +231,8 @@ export class TablaPacienteComponent implements OnInit, OnChanges {
       (
         element: { pacienteDni: any; pacienteNombres: any; pacienteApellidoPaterno: string; pacienteApellidoMaterno: string; pacienteFechaNacimiento: any; casoPacienteId: any;
           examenPreTestAutoestimaCompletado: boolean; examenPreTestAutonomiaCompletado: boolean; examenPreTestMotivacionAlCambioCompletado: boolean; examenPreTestTomaDecisionCompletado: boolean;
-          examenPostTestAutoestimaCompletado: boolean; examenPostTestAutonomiaCompletado: boolean; examenPostTestMotivacionAlCambioCompletado: boolean; examenPostTestTomaDecisionCompletado: boolean;           }
+          examenPostTestAutoestimaCompletado: boolean; examenPostTestAutonomiaCompletado: boolean; examenPostTestMotivacionAlCambioCompletado: boolean; examenPostTestTomaDecisionCompletado: boolean;
+          pacienteTipoViolencia : string, pacienteRiesgo :string           }
         ) => {
 
           if(element.pacienteDni=== null || element.pacienteDni === ''){return;}
@@ -262,7 +263,9 @@ export class TablaPacienteComponent implements OnInit, OnChanges {
             edad : temp_diferenciaDeEdad,
             preTest : temp_preTestStr,
             proTest : temp_postTestStr,
-            casoPacienteId : element.casoPacienteId});
+            casoPacienteId : element.casoPacienteId,
+            pacienteTipoViolencia : element.pacienteTipoViolencia,
+            pacienteRiesgo : element.pacienteRiesgo});
 
     this.dataSource = new MatTableDataSource(listUsuarios);
   });

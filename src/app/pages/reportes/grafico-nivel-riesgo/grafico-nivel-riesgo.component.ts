@@ -24,7 +24,7 @@ export class GraficoNivelRiesgoComponent implements OnInit {
     labels: [ 'Leve', 'Moderado', 'Severo' ],
     datasets: [
       { data: [ 65, 59, 80 ], label: 'PreTest' },
-      { data: [ 28, 48, 40 ], label: 'ProTest' }
+      { data: [ 28, 48, 40 ], label: 'PostTest' }
     ]
   };
 

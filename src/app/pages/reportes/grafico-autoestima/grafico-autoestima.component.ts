@@ -25,7 +25,7 @@ export class GraficoAutoestimaComponent implements OnInit {
     labels: [ 'Bajo', 'Medio Bajo', 'Medio Alto', 'Alto'],
     datasets: [
       { data: [ 65, 59, 80, 81 ], label: 'PreTest' },
-      { data: [ 28, 48, 40, 19 ], label: 'ProTest' }
+      { data: [ 28, 48, 40, 19 ], label: 'PostTest' }
     ]
   };
 
