@@ -81,7 +81,7 @@
       <div class="col-sm">
         <mat-form-field appearance="fill">
           <mat-label>Cargo</mat-label>
-          <mat-select>
+          <mat-select #pCargo>
             <mat-option *ngFor="let cargo of cargos" [value]="cargo.value">
               {{cargo.viewValue}}
             </mat-option>
@@ -132,9 +132,15 @@
           </mat-select>
         </mat-form-field>
       </div>
+      <div class="col-sm">
+        <mat-form-field appearance="fill">
+          <mat-label>Ubigeo</mat-label>
+          <input matInput type="text" #pUbigeo>
+       </mat-form-field>
+      </div>
     </div>
   </div>
   </mat-dialog-content>
   <mat-dialog-actions >
-  <button class="btn btn-primary" (click)="RegistrarPsicologo(pNombres.value , pApellidoPaterno.value ,pApellidoMaterno.value ,pDni.value  ,pCorreo.value)" cdkFocusInitial>Guardar</button>
+  <button class="btn btn-primary" (click)="RegistrarPsicologo(pNombres.value , pApellidoPaterno.value ,pApellidoMaterno.value ,pDni.value  ,pCorreo.value,pCargo.value,pUbigeo.value)" cdkFocusInitial>Guardar</button>
   </mat-dialog-actions>

@@ -82,24 +82,17 @@
         </mat-form-field>
       </div>-->
      <div class="col-sm">
+      <label></label>
         <mat-form-field appearance="fill">
             <mat-label>Tipo de Violencia</mat-label>
-            <input matInput type="text" #pTipoViolencia [value]="ApiFullobjPacienteInfo.rpta.tiposViolencia">
+            <input matInput type="text" #pTipoViolencia [value]="ApiFullobjPacienteInfo.rpta.tipoViolencia" readonly>
         </mat-form-field>
       </div>
       <div class="col-sm">
-        <mat-form-field appearance="fill">
-          <mat-label>Riesgo</mat-label>
-          <mat-select #pRiesgo>
-            <mat-option *ngFor="let riesgo of riesgos" [value]="riesgo.value">
-              {{riesgo.viewValue}}
-            </mat-option>
-          </mat-select>
-        </mat-form-field>
-       <!-- <mat-form-field appearance="fill">
+       <mat-form-field appearance="fill">
             <mat-label>Riesgo</mat-label>
-            <input matInput type="text" #pRiesgo [value]="ApiFullobjPacienteInfo.rpta.nombres">
-        </mat-form-field>-->
+            <input matInput type="text" #pRiesgo [value]="ApiFullobjPacienteInfo.rpta.riesgo" readonly>
+        </mat-form-field>
       </div>
     </div>
   </div>
@@ -108,13 +101,17 @@
       <div class="col-sm">
         <mat-form-field appearance="fill">
             <mat-label>Fecha de Evaluacion</mat-label>
-            <input matInput type="date" #pFechaDeEvaluacion [value]="ApiFullobjPacienteInfo.rpta.nombres">
+            <input matInput type="date" #pFechaDeEvaluacion [value]="ApiFullobjPacienteInfo.rpta.fechaDeEvaluacion" >
         </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Fecha de evaluacion</mat-label>
+          <input matInput type="text" #pRiesgo [value]="ApiFullobjPacienteInfo.rpta.fechaDeEvaluacion" readonly>
+      </mat-form-field>
       </div>
       <div class="col-sm">
       <mat-form-field appearance="fill">
           <mat-label>Actualmente tiene problemas con</mat-label>
-          <input matInput type="text" #pEntidadProblema [value]="ApiFullobjPacienteInfo.rpta.nombres">
+          <input matInput type="text" #pEntidadProblema [value]="ApiFullobjPacienteInfo.rpta.entidadProblema">
       </mat-form-field>
     </div>
     </div>
@@ -124,7 +121,7 @@
     <div class="col-sm">
       <mat-form-field appearance="fill">
         <mat-label>Modalidad</mat-label>
-        <mat-select #pModalidadAdministrativo>
+        <mat-select #pModalidadAdministrativo [value]="ApiFullobjPacienteInfo.rpta.modalidadAdministrativo">
           <mat-option *ngFor="let modalidad of modalidades" [value]="modalidad.value">
             {{modalidad.viewValue}}
           </mat-option>

@@ -82,12 +82,12 @@ export class CrearPsicologoComponent implements OnInit {
 
   RegistrarPsicologo(
     pNombres : string, pApellidoPaterno : string,pApellidoMaterno : string,
-    pDni : string,pCorreo : string)
+    pDni : string,pCorreo : string,pCargo:number,pUbigeo:string,)
   {
 
     this._PsicologoService.PostAgregarPsicologos(
       pNombres, pApellidoPaterno, pApellidoMaterno,
-      pDni , pCorreo,
+      pDni , pCorreo,pCargo,pUbigeo
       )
       .subscribe(APIrpta => {
         var RegistroExitoso = this.ApiFullobjPsicologoFullInfo.rpta;

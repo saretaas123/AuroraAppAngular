@@ -31,7 +31,7 @@ export class PsicologoService {
     }
 
     PostAgregarPsicologos(p_Nombres:string, p_ApellidoPaterno:string, p_ApellidoMaterno:string,
-      p_Dni:string, p_Correo:string
+      p_Dni:string, p_Correo:string,p_Cargo:number,p_Ubigeo:string
       )
     {
         let headers = new HttpHeaders().set('Type-content','aplication/json')
@@ -42,8 +42,31 @@ export class PsicologoService {
           "apellidoMaterno": p_ApellidoMaterno,
           "dni": p_Dni,
           "correo": p_Correo,
+          "cargoId": p_Cargo,
+          "ubigeoId": p_Ubigeo
         }, { headers : headers});
     }
+
+    PostEditarPsicologos(p_id:number,p_Nombres:string, p_ApellidoPaterno:string, p_ApellidoMaterno:string,
+      p_Dni:string, p_Correo:string,p_Cargo:number,p_Ubigeo:string
+      )
+    {
+        let headers = new HttpHeaders().set('Type-content','aplication/json')
+
+        return this.http.post(this._url + 'EditarPsicologo' , {
+          "id": p_id,
+          "nombres": p_Nombres,
+          "apellidoPaterno": p_ApellidoPaterno,
+          "apellidoMaterno": p_ApellidoMaterno,
+          "dni": p_Dni,
+          "correo": p_Correo,
+          "cargoId": p_Cargo,
+          "ubigeoId": p_Ubigeo
+        }, { headers : headers});
+    }
+
+
+
 
     private _listeners = new Subject<any>();
     listen(): Observable<any>{

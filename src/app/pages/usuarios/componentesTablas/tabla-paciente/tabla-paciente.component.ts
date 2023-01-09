@@ -155,10 +155,10 @@ export class TablaPacienteComponent implements OnInit, OnChanges {
 
 
  //Modal de editar paciente
-   openDialog(CasoPacienteId : any,pacienteTipoViolencia:any,pacienteRiesgo:any)
+   openDialog(CasoPacienteId : any)
 {
   this.dialog.open(EditarPacienteComponent,{
-    data : {CasoPacienteId,pacienteTipoViolencia,pacienteRiesgo }
+    data : {CasoPacienteId }
   }).afterClosed().subscribe(val=>{
     if(val ==='Guardar'){
       this.ngOnInit;

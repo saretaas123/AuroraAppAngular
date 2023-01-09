@@ -3,6 +3,7 @@ import { CasopacienteService } from 'src/app/services/auroraapi/casopaciente.ser
 import { PacienteService } from 'src/app/services/auroraapi/paciente.service';
 import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import Swal from 'sweetalert2';
+import { transform } from 'html2canvas/dist/types/css/property-descriptors/transform';
 
 interface tipoViolencia {
   value: string;
@@ -48,7 +49,7 @@ export class EditarPacienteComponent implements OnInit {
   g_PacienteId : any;
 
 
-  public ApiFullobjPsicologoFullInfo : any = {
+  public ApiEditarRespuestaModel : any = {
     mnsj: '',
     rpta : {}
   };
@@ -65,21 +66,16 @@ export class EditarPacienteComponent implements OnInit {
       direccionUbigeo: "",
       correo: "",
       siendoAtentido: false,
-      id: "",
       tipoViolencia : "",
       riesgo : "",
-      creadoEn: null,
-      creadoPor: null,
-      editadoEn: null,
-      editadoPor: null,
-      estaEliminado: false
+      fechaDeEvaluacion: "",
+      entidadProblema: "",
+      modalidadAdministrativo: "",
     }
   };
 
   public p_modal_InfoPaciente : any = {
     CasoPacienteId : "",
-    pacienteTipoViolencia : "",
-    pacienteRiesgo :""
   };
 
   constructor(
@@ -96,11 +92,10 @@ export class EditarPacienteComponent implements OnInit {
   TraerDatosPaciente()
   {
     this.p_modal_InfoPaciente = this.vc_InfoPaciente;
-    this.PacienteService.GetPacienteByCasoPacienteId(this.p_modal_InfoPaciente.CasoPacienteId).subscribe(Rpta =>
+    this.PacienteService.GetPacienteFullInfoByCasoPacienteId(this.p_modal_InfoPaciente.CasoPacienteId).subscribe(Rpta =>
       {
         this.ApiFullobjPacienteInfo = Rpta;
-        this.ApiFullobjPacienteInfo.rpta.tipoViolencia = this.p_modal_InfoPaciente.pacienteTipoViolencia;
-        this.ApiFullobjPacienteInfo.rpta.riesgo = this.p_modal_InfoPaciente.pacienteRiesgo;
+        //this.ApiFullobjPacienteInfo.fechaDeEvaluacion =
       });
   }
 
@@ -123,8 +118,8 @@ export class EditarPacienteComponent implements OnInit {
       )
       .subscribe(APIrpta => {
 
-      this.ApiFullobjPsicologoFullInfo = APIrpta;
-      RegistroExitoso = this.ApiFullobjPsicologoFullInfo.rpta;
+      this.ApiEditarRespuestaModel = APIrpta;
+      RegistroExitoso = this.ApiEditarRespuestaModel.rpta;
 
       if(RegistroExitoso)
       {

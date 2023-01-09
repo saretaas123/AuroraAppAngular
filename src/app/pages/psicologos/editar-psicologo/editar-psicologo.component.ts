@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
+import { Component, OnInit,Inject } from '@angular/core';
+import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { PsicologoService } from 'src/app/services/auroraapi/psicologo.service';
 import Swal from 'sweetalert2';
 
@@ -53,11 +53,50 @@ export class EditarPsicologoComponent implements OnInit {
     {value: '2', viewValue: 'Anchash'},
   ];
 
+
+  g_PsicologoId : any;
+
+  public ApiEditarRespuestaModel : any = {
+    mnsj: '',
+    rpta : {}
+  };
+
+  public ApiFullobjPsicologoInfo : any = {
+    mnsj: "",
+    rpta: {
+      id: "",
+      nombres: "",
+      apellidoPaterno: "",
+      apellidoMaterno: "",
+      dni: "",
+      correo: "",
+      cargoId: "",
+      ubigeoId: ""
+    }
+  };
+
+  public p_modal_InfoPsicologo : any = {
+    Id : "",
+  };
+
   constructor(
+    public dialog:MatDialog,
     private _PsicologoService : PsicologoService,
-    public dialog:MatDialog) { }
+    @Inject(MAT_DIALOG_DATA) public vc_InfoPsicologo : any,
+    ) { }
 
   ngOnInit(): void {
+    this.TraerDatosPsicologo();
+  }
+
+  TraerDatosPsicologo()
+  {
+    this.p_modal_InfoPsicologo = this.vc_InfoPsicologo;
+    this._PsicologoService.GetPsicologoFullInfoByPsicologoId(this.p_modal_InfoPsicologo.Id).subscribe(Rpta =>
+      {
+        this.ApiFullobjPsicologoInfo = Rpta;
+        console.log("ApiFullobjPsicologoInfo.Id")
+      });
   }
 
   EditarPsicologo()
