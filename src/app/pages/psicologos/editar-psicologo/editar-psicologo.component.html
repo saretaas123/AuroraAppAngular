@@ -16,7 +16,7 @@
       <div class="col-sm">
         <mat-form-field appearance="fill">
             <mat-label>Apellido Paterno</mat-label>
-            <input matInput type="text" #pApePaterno>
+            <input matInput type="text" #pApePaterno [value]="ApiFullobjPsicologoInfo.rpta.apellidoPaterno">
         </mat-form-field>
       </div>
     </div>
@@ -26,13 +26,13 @@
       <div class="col-sm">
         <mat-form-field appearance="fill">
             <mat-label>Apellido Materno</mat-label>
-            <input matInput type="text" #pApeMaterno>
+            <input matInput type="text" #pApeMaterno [value]="ApiFullobjPsicologoInfo.rpta.apellidoMaterno">
         </mat-form-field>
       </div>
       <div class="col-sm">
         <mat-form-field appearance="fill">
           <mat-label>Dni</mat-label>
-          <input matInput type="text" #pDni>
+          <input matInput type="text" #pDni [value]="ApiFullobjPsicologoInfo.rpta.dni">
         </mat-form-field>
       </div>
     </div>
@@ -42,7 +42,7 @@
       <div class="col-sm">
         <mat-form-field appearance="fill">
           <mat-label>Cargo</mat-label>
-          <mat-select>
+          <mat-select #pCargo [value]="ApiFullobjPsicologoInfo.rpta.cargoId">
             <mat-option *ngFor="let cargo of cargos" [value]="cargo.value">
               {{cargo.viewValue}}
             </mat-option>
@@ -52,7 +52,7 @@
       <div class="col-sm">
         <mat-form-field appearance="fill">
           <mat-label>Correo</mat-label>
-          <input matInput type="email" #pCorreo>
+          <input matInput type="email" #pCorreo [value]="ApiFullobjPsicologoInfo.rpta.correo">
         </mat-form-field>
       </div>
     </div>

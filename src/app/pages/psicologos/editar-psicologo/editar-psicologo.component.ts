@@ -31,8 +31,8 @@ interface departamento {
 export class EditarPsicologoComponent implements OnInit {
 
   cargos: cargo[] = [
-    {value: '0', viewValue: 'PSICÓLOGA COMUNITARIA'},
-    {value: '1', viewValue: 'ESPECIALISTAS SEDE CENTRAL'},
+    {value: '1', viewValue: 'PSICÓLOGA COMUNITARIA'},
+    {value: '2', viewValue: 'ESPECIALISTAS SEDE CENTRAL'},
   ];
 
   distritos: distrito[] = [
@@ -95,7 +95,8 @@ export class EditarPsicologoComponent implements OnInit {
     this._PsicologoService.GetPsicologoFullInfoByPsicologoId(this.p_modal_InfoPsicologo.PsicologoId).subscribe(Rpta =>
       {
         this.ApiFullobjPsicologoInfo = Rpta;
-        console.log("ApiFullobjPsicologoInfo.Id")
+        console.log("ApiFullobjPsicologoInfo")
+        console.log(this.ApiFullobjPsicologoInfo)
       });
   }
 
