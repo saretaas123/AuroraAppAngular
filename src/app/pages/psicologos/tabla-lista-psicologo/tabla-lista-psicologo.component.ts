@@ -62,9 +62,12 @@ export class TablaListaPsicologoComponent implements OnInit {
 
 
  //Modal de editar paciente
- openDialog()
+ openDialog(PsicologoId : string)
  {
-   this.dialog.open(EditarPsicologoComponent);
+   this.dialog.open(EditarPsicologoComponent,
+    {
+      data : { PsicologoId }
+    });
  }
 
   ngOnInit(): void {

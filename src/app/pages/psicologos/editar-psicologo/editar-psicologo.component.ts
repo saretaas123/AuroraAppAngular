@@ -76,7 +76,7 @@ export class EditarPsicologoComponent implements OnInit {
   };
 
   public p_modal_InfoPsicologo : any = {
-    Id : "",
+    PsicologoId : "",
   };
 
   constructor(
@@ -92,7 +92,7 @@ export class EditarPsicologoComponent implements OnInit {
   TraerDatosPsicologo()
   {
     this.p_modal_InfoPsicologo = this.vc_InfoPsicologo;
-    this._PsicologoService.GetPsicologoFullInfoByPsicologoId(this.p_modal_InfoPsicologo.Id).subscribe(Rpta =>
+    this._PsicologoService.GetPsicologoFullInfoByPsicologoId(this.p_modal_InfoPsicologo.PsicologoId).subscribe(Rpta =>
       {
         this.ApiFullobjPsicologoInfo = Rpta;
         console.log("ApiFullobjPsicologoInfo.Id")
