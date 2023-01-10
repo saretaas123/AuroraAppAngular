@@ -4,7 +4,7 @@ import { PsicologoService } from 'src/app/services/auroraapi/psicologo.service';
 import Swal from 'sweetalert2';
 
 interface cargo {
-  value: string;
+  value: number;
   viewValue: string;
 }
 
@@ -31,8 +31,8 @@ interface departamento {
 export class EditarPsicologoComponent implements OnInit {
 
   cargos: cargo[] = [
-    {value: '1', viewValue: 'PSICÓLOGA COMUNITARIA'},
-    {value: '2', viewValue: 'ESPECIALISTAS SEDE CENTRAL'},
+    {value: 1, viewValue: 'PSICÓLOGA COMUNITARIA'},
+    {value: 2, viewValue: 'ESPECIALISTAS SEDE CENTRAL'},
   ];
 
   distritos: distrito[] = [
