@@ -5,6 +5,7 @@ import { PsicologoService } from 'src/app/services/auroraapi/psicologo.service';
 import { jsPDF } from "jspdf";
 import html2canvas from 'html2canvas';
 import { EstadisticaPacientesService } from 'src/app/services/auroraapi/estadisticaPacientes.service';
+import { UbigeoService} from 'src/app/services/auroraapi/ubigeo.service'
 
 interface distrito {
   value: string;
@@ -115,6 +116,8 @@ export class ReportesComponent implements OnInit {
     {value: '29', viewValue: 'Ucayali'},
   ];
 
+  DepartamentList: any;
+
    // CREACION DE PDF
    downloadPDF() {
     // Extraemos el
@@ -177,13 +180,23 @@ export class ReportesComponent implements OnInit {
 
   constructor(
     private PsicologoService: PsicologoService,
-    private _EstadisticaPacientesService : EstadisticaPacientesService) { }
+    private _EstadisticaPacientesService : EstadisticaPacientesService,
+    private _UbigeoService:UbigeoService) { }
 
   ngOnInit(): void {
     this.PsicologoService.GetPsicologoFullInfoByPsicologoId(this.g_FromUser_PsicologoId+"").subscribe(apiRpta => {
     this.ApiFullobjPsicologoFullInfo = apiRpta;
     console.log(this.ApiFullobjPsicologoFullInfo.mnsj);
     this.objPsicologoFullInfo = this.ApiFullobjPsicologoFullInfo.rpta;
+  });
+
+
+    this._UbigeoService.GetDepListar().subscribe((data:any)=>{
+    this.DepartamentList=data;
+    console.log(this.DepartamentList)
   })
   }
+
+
+
 }

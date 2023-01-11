@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { ActivatedRoute } from "@angular/router";
 import { PsicologoService } from 'src/app/services/auroraapi/psicologo.service';
+import { CargoService} from 'src/app/services/auroraapi/cargo.service'
 import Swal from 'sweetalert2';
 
 interface distrito {
@@ -59,10 +60,23 @@ export class CrearPsicologoComponent implements OnInit {
 
 
   g_routeparam_PsicologoId: string = '-3';
+  DepartamentList: any;
+
+  ApiFullobjListarCargo : any ={
+    mnsj: "",
+    rpta: [
+      {
+        nombre: "",
+        id: 0,
+      },
+    ]
+  };
 
 
   ngOnInit(): void {
     this.g_routeparam_PsicologoId = this.route.snapshot.paramMap.get("psicologoid")??'0';
+    this.ObtenerCargosPsicologo();
+
   }
 
   public ApiFullobjPsicologoFullInfo : any = {
@@ -73,11 +87,17 @@ export class CrearPsicologoComponent implements OnInit {
   constructor(
     public dialog:MatDialog,
     private _PsicologoService : PsicologoService,
+    private _CargoService : CargoService,
     private router: Router,
     private route: ActivatedRoute
   ) { }
 
 
+  ObtenerCargosPsicologo(){
+    this._CargoService.GetDepListar().subscribe(apiRpta => {
+    this.ApiFullobjListarCargo = apiRpta;
+    })
+  };
 
 
   RegistrarPsicologo(

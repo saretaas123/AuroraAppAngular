@@ -82,8 +82,8 @@
         <mat-form-field appearance="fill">
           <mat-label>Cargo</mat-label>
           <mat-select #pCargo>
-            <mat-option *ngFor="let cargo of cargos" [value]="cargo.value">
-              {{cargo.viewValue}}
+            <mat-option *ngFor="let cargo of ApiFullobjListarCargo.rpta" [value]="cargo.id">
+              {{cargo.nombre}}
             </mat-option>
           </mat-select>
         </mat-form-field>
