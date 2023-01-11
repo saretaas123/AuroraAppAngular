@@ -191,7 +191,7 @@ export class ReportesComponent implements OnInit {
   });
 
 
-    this._UbigeoService.GetDepListar().subscribe((data:any)=>{
+    this._UbigeoService.GetDepartamentoListar().subscribe((data:any)=>{
     this.DepartamentList=data;
     console.log(this.DepartamentList)
   })

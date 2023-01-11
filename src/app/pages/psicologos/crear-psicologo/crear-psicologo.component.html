@@ -126,8 +126,8 @@
         <mat-form-field appearance="fill">
           <mat-label>Departamento</mat-label>
           <mat-select>
-            <mat-option *ngFor="let departamento of departamentos" [value]="departamento.value">
-              {{departamento.viewValue}}
+            <mat-option *ngFor="let departamento of ApiFullobjListarDepartamento.rpta" [value]="departamento.depaId">
+              {{departamento.nombreDepa}}
             </mat-option>
           </mat-select>
         </mat-form-field>

@@ -15,7 +15,7 @@ export class CargoService {
     console.log('Cargo Service Working')
   }
 
-  GetDepListar()
+  GetCargoListar()
   {
       let headers = new HttpHeaders().set('Type-content','aplication/json')
 

@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { ActivatedRoute } from "@angular/router";
 import { PsicologoService } from 'src/app/services/auroraapi/psicologo.service';
 import { CargoService} from 'src/app/services/auroraapi/cargo.service'
+import { UbigeoService} from 'src/app/services/auroraapi/ubigeo.service'
 import Swal from 'sweetalert2';
 
 interface distrito {
@@ -16,15 +17,15 @@ interface provincia {
   viewValue: string;
 }
 
-interface departamento {
+/*interface departamento {
   value: string;
   viewValue: string;
-}
+}*/
 
-interface cargo {
+/*interface cargo {
   value: string;
   viewValue: string;
-}
+}*/
 
 
 
@@ -47,20 +48,20 @@ export class CrearPsicologoComponent implements OnInit {
     {value: '2', viewValue: 'Huarmey'},
   ];
 
-  departamentos: departamento[] = [
+ /* departamentos: departamento[] = [
     {value: '0', viewValue: 'Amazonas'},
     {value: '1', viewValue: 'Amazonas'},
     {value: '2', viewValue: 'Anchash'},
-  ];
+  ];*/
 
-  cargos: cargo[] = [
+ /* cargos: cargo[] = [
     {value: '0', viewValue: 'PSICÓLOGA COMUNITARIA'},
     {value: '1', viewValue: 'ESPECIALISTAS SEDE CENTRAL'},
-  ];
+  ];*/
 
 
   g_routeparam_PsicologoId: string = '-3';
-  DepartamentList: any;
+
 
   ApiFullobjListarCargo : any ={
     mnsj: "",
@@ -72,10 +73,32 @@ export class CrearPsicologoComponent implements OnInit {
     ]
   };
 
+  ApiFullobjListarDepartamento : any ={
+    mnsj: "",
+    rpta: [
+      {
+      depaId: 0,
+      nombreDepa: ""
+      },
+    ]
+  };
+
+  ApiFullobjListarProvincia : any ={
+    mnsj: "",
+    rpta: [
+      {
+        provId: 0,
+        nombreProv: "",
+        depaId: 0
+      },
+    ]
+  };
+
 
   ngOnInit(): void {
     this.g_routeparam_PsicologoId = this.route.snapshot.paramMap.get("psicologoid")??'0';
     this.ObtenerCargosPsicologo();
+    this.ObtenerDepartamentos();
 
   }
 
@@ -88,16 +111,23 @@ export class CrearPsicologoComponent implements OnInit {
     public dialog:MatDialog,
     private _PsicologoService : PsicologoService,
     private _CargoService : CargoService,
+    private _UbigeoService : UbigeoService,
     private router: Router,
     private route: ActivatedRoute
   ) { }
 
 
   ObtenerCargosPsicologo(){
-    this._CargoService.GetDepListar().subscribe(apiRpta => {
+    this._CargoService.GetCargoListar().subscribe(apiRpta => {
     this.ApiFullobjListarCargo = apiRpta;
     })
   };
+
+  ObtenerDepartamentos(){
+    this._UbigeoService.GetDepartamentoListar().subscribe(apiRpta1 => {
+      this.ApiFullobjListarDepartamento = apiRpta1
+    })
+  }
 
 
   RegistrarPsicologo(

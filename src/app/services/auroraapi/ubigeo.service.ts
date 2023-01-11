@@ -15,11 +15,20 @@ export class UbigeoService {
     console.log('Ubigeo Service Working')
   }
 
-  GetDepListar()
+  GetDepartamentoListar()
   {
       let headers = new HttpHeaders().set('Type-content','aplication/json')
 
       return this.http.get<any>(this._url + 'ObtenerUbigeoDepartamentos/');
 
   }
+
+  GetProvinciaListar()
+  {
+      let headers = new HttpHeaders().set('Type-content','aplication/json')
+
+      return this.http.get<any>(this._url + 'ObtenerUbigeoDepartamentos/');
+
+  }
+
 }
