@@ -84,36 +84,7 @@ export class ReportesComponent implements OnInit {
   ];
 
   departamentos: departamento[] = [
-    {value: '0', viewValue: 'Bagua'},
-    {value: '1', viewValue: 'Chachapoyas'},
-    {value: '2', viewValue: 'Huarmey'},
-    {value: '3', viewValue: 'Anchash'},
-    {value: '4', viewValue: 'Lima Metropolitana'},
-    {value: '5', viewValue: 'Amazonas'},
-    {value: '6', viewValue: 'Apurimac'},
-    {value: '7', viewValue: 'Arequipa'},
-    {value: '8', viewValue: 'Ayacucho'},
-    {value: '9', viewValue: 'Cajamarca'},
-    {value: '10', viewValue: 'Callao'},
-    {value: '11', viewValue: 'Cusco'},
-    {value: '12', viewValue: 'Huancavelica'},
-    {value: '13', viewValue: 'Huanuco'},
-    {value: '14', viewValue: 'Ica'},
-    {value: '15', viewValue: 'Junin'},
-    {value: '16', viewValue: 'La libertad'},
-    {value: '17', viewValue: 'Lambayeque'},
-    {value: '18', viewValue: 'Amazonas'},
-    {value: '19', viewValue: 'Lima Provincia'},
-    {value: '20', viewValue: 'Loreto'},
-    {value: '21', viewValue: 'Madre de dios'},
-    {value: '22', viewValue: 'Moquegua'},
-    {value: '23', viewValue: 'Pasco'},
-    {value: '24', viewValue: 'Piura'},
-    {value: '25', viewValue: 'Puno'},
-    {value: '26', viewValue: 'San Martin'},
-    {value: '27', viewValue: 'Tacna'},
-    {value: '28', viewValue: 'Tumbes'},
-    {value: '29', viewValue: 'Ucayali'},
+    {value: '-1', viewValue: '...Cargando'}
   ];
 
   DepartamentList: any;
@@ -184,19 +155,24 @@ export class ReportesComponent implements OnInit {
     private _UbigeoService:UbigeoService) { }
 
   ngOnInit(): void {
-    this.PsicologoService.GetPsicologoFullInfoByPsicologoId(this.g_FromUser_PsicologoId+"").subscribe(apiRpta => {
-    this.ApiFullobjPsicologoFullInfo = apiRpta;
-    console.log(this.ApiFullobjPsicologoFullInfo.mnsj);
-    this.objPsicologoFullInfo = this.ApiFullobjPsicologoFullInfo.rpta;
-  });
-
-
-    this._UbigeoService.GetDepartamentoListar().subscribe((data:any)=>{
-    this.DepartamentList=data;
-    console.log(this.DepartamentList)
-  })
+    this.ObtenerPsicologoInfo();
+    this.ObtenerDepartamentosCBO();
   }
 
+  ObtenerPsicologoInfo()
+  {
+    this.PsicologoService.GetPsicologoFullInfoByPsicologoId(this.g_FromUser_PsicologoId+"").subscribe(apiRpta => {
+      this.ApiFullobjPsicologoFullInfo = apiRpta;
+      this.objPsicologoFullInfo = this.ApiFullobjPsicologoFullInfo.rpta;
+    });
+  }
+
+  ObtenerDepartamentosCBO()
+  {
+    this._UbigeoService.GetDepartamentoListar().subscribe((data:any)=>{
+      this.DepartamentList=data;
+    })
+  }
 
 
 }

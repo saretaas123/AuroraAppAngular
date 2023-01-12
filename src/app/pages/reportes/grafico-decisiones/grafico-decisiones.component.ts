@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ChartConfiguration, ChartData, ChartEvent, ChartType } from 'chart.js';
 import { BaseChartDirective } from 'ng2-charts';
+import { EstadisticaPacientesService } from 'src/app/services/auroraapi/estadisticaPacientes.service';
 
 @Component({
   selector: 'app-grafico-decisiones',
@@ -22,37 +23,67 @@ export class GraficoDecisionesComponent implements OnInit {
   public barChartData: ChartData<'bar'> = {
     labels: [ 'Incipiente', 'En Proceso', 'Capacidad suficiente'],
     datasets: [
-      { data: [ 65, 59, 80 ], label: 'PreTest' },
-      { data: [ 28, 48, 40 ], label: 'PostTest' }
+      { data: [ 0 ], label: 'PreTest ...Cargando' },
+      { data: [ 0 ], label: 'PostTest ...Cargando' }
     ]
   };
 
   // events
   public chartClicked({ event, active }: { event?: ChartEvent, active?: {}[] }): void {
-    console.log(event, active);
   }
 
   public chartHovered({ event, active }: { event?: ChartEvent, active?: {}[] }): void {
-    console.log(event, active);
   }
 
-  /*public randomize(): void {
-    // Only Change 3 values
-    this.barChartData.datasets[0].data = [
-      Math.round(Math.random() * 100),
-      59,
-      80,
-      Math.round(Math.random() * 100),
-      56,
-      Math.round(Math.random() * 100),
-      40 ];
-
-    this.chart?.update();
-  }*/
-
-  constructor() { }
+  constructor(
+    private _EstadisticaPacientesService : EstadisticaPacientesService) { }
 
   ngOnInit(): void {
+    this.TraerDatosTomaDecisiones();
   }
+
+  TraerDatosTomaDecisiones()
+  {
+    this._EstadisticaPacientesService.PostEstadisticaTomaDeDecisionesTotal([],[],0,0,0,"","").subscribe(Rpta =>
+      {
+        this.apiRpta = Rpta;
+
+        this.listTomaDecisionPreTest_CapacidadTomaDecision = this.apiRpta.rpta.listTomaDecisionPreTest_CapacidadTomaDecision;
+        this.listTomaDecisionPostTest_CapacidadTomaDecision = this.apiRpta.rpta.listTomaDecisionPostTest_CapacidadTomaDecision;
+
+        this.barChartData = {
+          labels: [ 'Incipiente', 'En Proceso', 'Capacidad suficiente' ],
+          datasets : [
+          { data:
+            [
+              this.listTomaDecisionPreTest_CapacidadTomaDecision.filter(x => Number(x)<=17 && Number(x)<=0).length,
+              this.listTomaDecisionPreTest_CapacidadTomaDecision.filter(x => Number(x)<=29 && Number(x)>=18).length,
+              this.listTomaDecisionPreTest_CapacidadTomaDecision.filter(x => Number(x)<=33 && Number(x)>=30).length,
+            ], label: 'PreTest (Cant Total Pacientes: '+this.apiRpta.rpta.cantidad+')' },
+            { data:
+              [
+                this.listTomaDecisionPostTest_CapacidadTomaDecision.filter(x => Number(x)<=17 && Number(x)<=0).length,
+                this.listTomaDecisionPostTest_CapacidadTomaDecision.filter(x => Number(x)<=29 && Number(x)>=18).length,
+                this.listTomaDecisionPostTest_CapacidadTomaDecision.filter(x => Number(x)<=33 && Number(x)>=30).length,
+              ], label: 'PostTest (Cant Total Pacientes: '+this.apiRpta.rpta.cantidad+')' }
+        ]
+      };
+
+      });
+  }
+
+  apiRpta : any = {
+    mnsj: "",
+    rpta: {
+      listTomaDecisionPreTest_CapacidadTomaDecision: [
+      ],
+      listTomaDecisionPostTest_CapacidadTomaDecision: [
+      ],
+      cantidad: 0
+    }
+  };
+
+  listTomaDecisionPreTest_CapacidadTomaDecision : Array<string> = [];
+  listTomaDecisionPostTest_CapacidadTomaDecision : Array<string> = [];
 
 }

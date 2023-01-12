@@ -47,8 +47,78 @@ export class EstadisticaPacientesService {
             "tipoViolencia": pTipoViolencia,
             "riesgo": pRiesgo
           } , { headers : headers});
-
     }
+
+    PostEstadisticaAutoestimaTotal(pRegionsId: Array<number>, pDistritosId: Array<number>, pAno : number, pEdadMinima : number,
+      pEdadMaxima : number, pTipoViolencia : string, pRiesgo : string)
+    {
+        let headers = new HttpHeaders().set('Type-content','aplication/json')
+
+        return this.http.post(this._url + 'ObtenerEstadisticaAutoestimaTotal', {
+            "regionsId" : pRegionsId,
+            "distritosId": pDistritosId,
+            "ano": pAno,
+            "edadMinima": pEdadMinima,
+            "edadMaxima": pEdadMaxima,
+            "tipoViolencia": pTipoViolencia,
+            "riesgo": pRiesgo
+          } , { headers : headers});
+    }
+
+    PostEstadisticaTomaDeDecisionesTotal(pRegionsId: Array<number>, pDistritosId: Array<number>, pAno : number, pEdadMinima : number,
+      pEdadMaxima : number, pTipoViolencia : string, pRiesgo : string)
+    {
+        let headers = new HttpHeaders().set('Type-content','aplication/json')
+
+        return this.http.post(this._url + 'ObtenerEstadisticaTomaDeDecisionesTotal', {
+            "regionsId" : pRegionsId,
+            "distritosId": pDistritosId,
+            "ano": pAno,
+            "edadMinima": pEdadMinima,
+            "edadMaxima": pEdadMaxima,
+            "tipoViolencia": pTipoViolencia,
+            "riesgo": pRiesgo
+          } , { headers : headers});
+    }
+
+    PostEstadisticaMotivacionAlCambioTotal(pRegionsId: Array<number>, pDistritosId: Array<number>, pAno : number, pEdadMinima : number,
+      pEdadMaxima : number, pTipoViolencia : string, pRiesgo : string)
+    {
+        let headers = new HttpHeaders().set('Type-content','aplication/json')
+
+        return this.http.post(this._url + 'ObtenerEstadisticaMotivacionAlCambioTotal', {
+            "regionsId" : pRegionsId,
+            "distritosId": pDistritosId,
+            "ano": pAno,
+            "edadMinima": pEdadMinima,
+            "edadMaxima": pEdadMaxima,
+            "tipoViolencia": pTipoViolencia,
+            "riesgo": pRiesgo
+          } , { headers : headers});
+    }
+
+    PostEstadisticaAutonomiaPersonaTotal(pRegionsId: Array<number>, pDistritosId: Array<number>, pAno : number, pEdadMinima : number,
+      pEdadMaxima : number, pTipoViolencia : string, pRiesgo : string)
+    {
+        let headers = new HttpHeaders().set('Type-content','aplication/json')
+
+        return this.http.post(this._url + 'ObtenerEstadisticaAutonomiaPersonaTotal', {
+            "regionsId" : pRegionsId,
+            "distritosId": pDistritosId,
+            "ano": pAno,
+            "edadMinima": pEdadMinima,
+            "edadMaxima": pEdadMaxima,
+            "tipoViolencia": pTipoViolencia,
+            "riesgo": pRiesgo
+          } , { headers : headers});
+    }
+
+
+
+
+
+
+
 
 
     private _listeners = new Subject<any>();
@@ -58,7 +128,5 @@ export class EstadisticaPacientesService {
     filter(filterBy : string){
       this._listeners.next(filterBy)
     }
-
-
 
 }

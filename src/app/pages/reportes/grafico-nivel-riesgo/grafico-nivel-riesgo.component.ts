@@ -21,20 +21,17 @@ export class GraficoNivelRiesgoComponent implements OnInit {
 
 
   public barChartData: ChartData<'bar'> = {
-    labels: [ 'Leve', 'Moderado', 'Severo' ],
+    labels: [ '...Cargando' ],
     datasets: [
-      { data: [ 65, 59, 80 ], label: 'PreTest' },
-      { data: [ 28, 48, 40 ], label: 'PostTest' }
+      { data: [ 0 ], label: '...Cargando' }
     ]
   };
 
   // events
   public chartClicked({ event, active }: { event?: ChartEvent, active?: {}[] }): void {
-    console.log(event, active);
   }
 
   public chartHovered({ event, active }: { event?: ChartEvent, active?: {}[] }): void {
-    console.log(event, active);
   }
 
   constructor(
@@ -51,8 +48,6 @@ export class GraficoNivelRiesgoComponent implements OnInit {
         this.apiRpta = Rpta;
         this.listStr_NivelRiesgo = this.apiRpta.rpta.listNivelRiesgo;
 
-        console.log( this.listStr_NivelRiesgo);
-
         this.barChartData = {
           labels: [ 'Leve', 'Moderado', 'Severo' ],
           datasets : [
@@ -64,8 +59,6 @@ export class GraficoNivelRiesgoComponent implements OnInit {
             ], label: this.apiRpta.rpta.cantidad+' Pacientes' }
         ]
       };
-
-        console.log( this.listStr_NivelRiesgo);
 
       });
   }

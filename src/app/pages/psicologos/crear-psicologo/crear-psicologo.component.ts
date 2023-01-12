@@ -129,6 +129,12 @@ export class CrearPsicologoComponent implements OnInit {
     })
   }
 
+  ObtenerProvincia(){
+    this._UbigeoService.GetProvinciaListar().subscribe(apiRpta2 => {
+      this.ApiFullobjListarDepartamento = apiRpta2
+    })
+  }
+
 
   RegistrarPsicologo(
     pNombres : string, pApellidoPaterno : string,pApellidoMaterno : string,

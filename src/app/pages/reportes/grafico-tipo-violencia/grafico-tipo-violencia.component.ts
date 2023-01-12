@@ -29,11 +29,9 @@ export class GraficoTipoViolenciaComponent implements OnInit {
 
   // events
   public chartClicked({ event, active }: { event?: ChartEvent, active?: {}[] }): void {
-    console.log(event, active);
   }
 
   public chartHovered({ event, active }: { event?: ChartEvent, active?: {}[] }): void {
-    console.log(event, active);
   }
 
   constructor(
@@ -50,8 +48,6 @@ export class GraficoTipoViolenciaComponent implements OnInit {
         this.apiRpta = Rpta;
         this.listStr_TipoViolencia = this.apiRpta.rpta.listTipoViolencia;
 
-        console.log( this.listStr_TipoViolencia);
-
         this.barChartData = {
           labels: [ 'Psicológico', 'Físico', 'Económico', 'Sexual' ],
           datasets : [
@@ -65,8 +61,6 @@ export class GraficoTipoViolenciaComponent implements OnInit {
         ]
       };
 
-        console.log( this.listStr_TipoViolencia);
-
       });
   }
 
@@ -75,7 +69,7 @@ export class GraficoTipoViolenciaComponent implements OnInit {
     rpta: {
       listTipoViolencia: [
       ],
-      cantidad: 6
+      cantidad: 0
     }
   };
 
