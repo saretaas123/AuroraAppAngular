@@ -27,7 +27,15 @@ export class UbigeoService {
   {
       let headers = new HttpHeaders().set('Type-content','aplication/json')
 
-      return this.http.get<any>(this._url + 'ObtenerUbigeoDepartamentos/');
+      return this.http.get<any>(this._url + 'ObtenerUbigeoProvincias/');
+
+  }
+
+  GetDistritoListar()
+  {
+      let headers = new HttpHeaders().set('Type-content','aplication/json')
+
+      return this.http.get<any>(this._url + 'ObtenerUbigeoDistritos/');
 
   }
 
