@@ -1,27 +1,14 @@
 import { Component, OnInit,Inject } from '@angular/core';
 import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { PsicologoService } from 'src/app/services/auroraapi/psicologo.service';
+import { CargoService} from 'src/app/services/auroraapi/cargo.service'
+import { UbigeoService} from 'src/app/services/auroraapi/ubigeo.service'
 import Swal from 'sweetalert2';
 
-interface cargo {
+/*interface cargo {
   value: number;
   viewValue: string;
-}
-
-interface distrito {
-  value: string;
-  viewValue: string;
-}
-
-interface provincia {
-  value: string;
-  viewValue: string;
-}
-
-interface departamento {
-  value: string;
-  viewValue: string;
-}
+}*/
 
 @Component({
   selector: 'app-editar-psicologo',
@@ -30,28 +17,10 @@ interface departamento {
 })
 export class EditarPsicologoComponent implements OnInit {
 
-  cargos: cargo[] = [
+ /* cargos: cargo[] = [
     {value: 1, viewValue: 'PSICÓLOGA COMUNITARIA'},
     {value: 2, viewValue: 'ESPECIALISTAS SEDE CENTRAL'},
-  ];
-
-  distritos: distrito[] = [
-    {value: '0', viewValue: 'Bagua'},
-    {value: '1', viewValue: 'Chachapoyas'},
-    {value: '2', viewValue: 'Huarmey'},
-  ];
-
-  provincias: provincia[] = [
-    {value: '0', viewValue: 'Bagua'},
-    {value: '1', viewValue: 'Chachapoyas'},
-    {value: '2', viewValue: 'Huarmey'},
-  ];
-
-  departamentos: departamento[] = [
-    {value: '0', viewValue: 'Amazonas'},
-    {value: '1', viewValue: 'Amazonas'},
-    {value: '2', viewValue: 'Anchash'},
-  ];
+  ];*/
 
 
   g_PsicologoId : any;
@@ -75,6 +44,48 @@ export class EditarPsicologoComponent implements OnInit {
     }
   };
 
+  ApiFullobjListarCargo : any ={
+    mnsj: "",
+    rpta: [
+      {
+        nombre: "",
+        id: 0,
+      },
+    ]
+  };
+
+  ApiFullobjListarDepartamento : any ={
+    mnsj: "",
+    rpta: [
+      {
+      depaId: 0,
+      nombreDepa: ""
+      },
+    ]
+  };
+
+  ApiFullobjListarProvincia : any ={
+    mnsj: "",
+    rpta: [
+      {
+        provId: 0,
+        nombreProv: "",
+        depaId: 0
+      },
+    ]
+  };
+
+  ApiFullobjListarDistrito : any ={
+    mnsj: "",
+    rpta: [
+      {
+        distId: 0,
+        nombreDist: "",
+        provId: 0
+      },
+    ]
+  };
+
   public p_modal_InfoPsicologo : any = {
     PsicologoId : "",
   };
@@ -82,11 +93,17 @@ export class EditarPsicologoComponent implements OnInit {
   constructor(
     public dialog:MatDialog,
     private _PsicologoService : PsicologoService,
+    private _CargoService : CargoService,
+    private _UbigeoService : UbigeoService,
     @Inject(MAT_DIALOG_DATA) public vc_InfoPsicologo : any,
     ) { }
 
   ngOnInit(): void {
     this.TraerDatosPsicologo();
+    this.ObtenerCargosPsicologo();
+    this.ObtenerDepartamentos();
+    this.ObtenerProvincia();
+    this.ObtenerDistrito();
   }
 
   TraerDatosPsicologo()
@@ -98,6 +115,30 @@ export class EditarPsicologoComponent implements OnInit {
         console.log("ApiFullobjPsicologoInfo")
         console.log(this.ApiFullobjPsicologoInfo)
       });
+  }
+
+  ObtenerCargosPsicologo(){
+    this._CargoService.GetCargoListar().subscribe(apiRpta => {
+    this.ApiFullobjListarCargo = apiRpta;
+    })
+  };
+
+  ObtenerDepartamentos(){
+    this._UbigeoService.GetDepartamentoListar().subscribe(apiRpta1 => {
+      this.ApiFullobjListarDepartamento = apiRpta1
+    })
+  }
+
+  ObtenerProvincia(){
+    this._UbigeoService.GetProvinciaListar().subscribe(apiRpta2 => {
+      this.ApiFullobjListarProvincia = apiRpta2
+    })
+  }
+
+  ObtenerDistrito(){
+    this._UbigeoService.GetDistritoListar().subscribe(apiRpta3 => {
+      this.ApiFullobjListarDistrito = apiRpta3
+    })
   }
 
   EditarPsicologo()

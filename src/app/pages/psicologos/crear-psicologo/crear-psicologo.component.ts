@@ -7,27 +7,6 @@ import { CargoService} from 'src/app/services/auroraapi/cargo.service'
 import { UbigeoService} from 'src/app/services/auroraapi/ubigeo.service'
 import Swal from 'sweetalert2';
 
-interface distrito {
-  value: string;
-  viewValue: string;
-}
-
-interface provincia {
-  value: string;
-  viewValue: string;
-}
-
-/*interface departamento {
-  value: string;
-  viewValue: string;
-}*/
-
-/*interface cargo {
-  value: string;
-  viewValue: string;
-}*/
-
-
 
 @Component({
   selector: 'app-crear-psicologo',
@@ -35,30 +14,6 @@ interface provincia {
   styleUrls: ['./crear-psicologo.component.css']
 })
 export class CrearPsicologoComponent implements OnInit {
-
-  distritos: distrito[] = [
-    {value: '0', viewValue: 'Bagua'},
-    {value: '1', viewValue: 'Chachapoyas'},
-    {value: '2', viewValue: 'Huarmey'},
-  ];
-
-  provincias: provincia[] = [
-    {value: '0', viewValue: 'Bagua'},
-    {value: '1', viewValue: 'Chachapoyas'},
-    {value: '2', viewValue: 'Huarmey'},
-  ];
-
- /* departamentos: departamento[] = [
-    {value: '0', viewValue: 'Amazonas'},
-    {value: '1', viewValue: 'Amazonas'},
-    {value: '2', viewValue: 'Anchash'},
-  ];*/
-
- /* cargos: cargo[] = [
-    {value: '0', viewValue: 'PSICÓLOGA COMUNITARIA'},
-    {value: '1', viewValue: 'ESPECIALISTAS SEDE CENTRAL'},
-  ];*/
-
 
   g_routeparam_PsicologoId: string = '-3';
 
@@ -94,11 +49,24 @@ export class CrearPsicologoComponent implements OnInit {
     ]
   };
 
+  ApiFullobjListarDistrito : any ={
+    mnsj: "",
+    rpta: [
+      {
+        distId: 0,
+        nombreDist: "",
+        provId: 0
+      },
+    ]
+  };
+
 
   ngOnInit(): void {
     this.g_routeparam_PsicologoId = this.route.snapshot.paramMap.get("psicologoid")??'0';
     this.ObtenerCargosPsicologo();
     this.ObtenerDepartamentos();
+    this.ObtenerProvincia();
+    this.ObtenerDistrito();
 
   }
 
@@ -131,7 +99,13 @@ export class CrearPsicologoComponent implements OnInit {
 
   ObtenerProvincia(){
     this._UbigeoService.GetProvinciaListar().subscribe(apiRpta2 => {
-      this.ApiFullobjListarDepartamento = apiRpta2
+      this.ApiFullobjListarProvincia = apiRpta2
+    })
+  }
+
+  ObtenerDistrito(){
+    this._UbigeoService.GetDistritoListar().subscribe(apiRpta3 => {
+      this.ApiFullobjListarDistrito = apiRpta3
     })
   }
 

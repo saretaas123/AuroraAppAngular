@@ -7,20 +7,7 @@ import html2canvas from 'html2canvas';
 import { EstadisticaPacientesService } from 'src/app/services/auroraapi/estadisticaPacientes.service';
 import { UbigeoService} from 'src/app/services/auroraapi/ubigeo.service'
 
-interface distrito {
-  value: string;
-  viewValue: string;
-}
 
-interface departamento {
-  value: string;
-  viewValue: string;
-}
-
-interface provincia {
-  value: string;
-  viewValue: string;
-}
 
 
 @Component({
@@ -29,63 +16,6 @@ interface provincia {
   styleUrls: ['./reportes.component.css']
 })
 export class ReportesComponent implements OnInit {
-
-  distritos: distrito[] = [
-    {value: '0', viewValue: 'Bagua'},
-    {value: '1', viewValue: 'Chachapoyas'},
-    {value: '2', viewValue: 'Huarmey'},
-    {value: '3', viewValue: 'Casma'},
-    {value: '4', viewValue: 'Nuevo Chimbote'},
-    {value: '5', viewValue: 'Ate'},
-    {value: '6', viewValue: 'Carabayllo'},
-    {value: '7', viewValue: 'Comas'},
-    {value: '8', viewValue: 'Chaclacayo'},
-    {value: '9', viewValue: 'San juan de Lurigancho'},
-    {value: '10', viewValue: 'Independencia'},
-    {value: '11', viewValue: 'La victoria'},
-    {value: '12', viewValue: 'Lince'},
-    {value: '13', viewValue: 'Breña'},
-    {value: '14', viewValue: 'Los olivos'},
-    {value: '15', viewValue: 'Ancon'},
-    {value: '16', viewValue: 'Rimac'},
-    {value: '17', viewValue: 'San juan de Miraflores'},
-    {value: '18', viewValue: 'San martin de porres'},
-    {value: '19', viewValue: 'San Luis'},
-    {value: '20', viewValue: 'Villa el salvador'},
-    {value: '21', viewValue: 'Huaral'},
-    {value: '22', viewValue: 'Huacho'},
-    {value: '23', viewValue: 'Barranca'},
-    {value: '24', viewValue: 'Imperial'},
-    {value: '25', viewValue: 'Santa Maria'},
-    {value: '26', viewValue: 'Huaraz'},
-    {value: '27', viewValue: 'Carhuaz'},
-    {value: '28', viewValue: 'Yungay'},
-
-  ];
-
-  provincias: provincia[] = [
-    {value: '0', viewValue: 'Bagua'},
-    {value: '1', viewValue: 'Chachapoyas'},
-    {value: '2', viewValue: 'Huarmey'},
-    {value: '3', viewValue: 'Casma'},
-    {value: '4', viewValue: 'Santa'},
-    {value: '5', viewValue: 'Lima'},
-    {value: '6', viewValue: 'Huaral'},
-    {value: '8', viewValue: 'Huaura'},
-    {value: '9', viewValue: 'Barranca'},
-    {value: '10', viewValue: 'Cañete'},
-    {value: '11', viewValue: 'Huaraz'},
-    {value: '12', viewValue: 'Carhuaz'},
-    {value: '13', viewValue: 'Yungay'},
-    {value: '14', viewValue: 'Abancay'},
-    {value: '15', viewValue: 'Andahuaylas'},
-    {value: '16', viewValue: 'Arequipa'},
-    {value: '17', viewValue: 'Ascope'},
-  ];
-
-  departamentos: departamento[] = [
-    {value: '-1', viewValue: '...Cargando'}
-  ];
 
   DepartamentList: any;
 
@@ -146,6 +76,40 @@ export class ReportesComponent implements OnInit {
     usuarioId : 0
   };
 
+  ApiFullobjListarDepartamento : any ={
+    mnsj: "",
+    rpta: [
+      {
+      depaId: 0,
+      nombreDepa: ""
+      },
+    ]
+  };
+
+  ApiFullobjListarProvincia : any ={
+    mnsj: "",
+    rpta: [
+      {
+        provId: 0,
+        nombreProv: "",
+        depaId: 0
+      },
+    ]
+  };
+
+  ApiFullobjListarDistrito : any ={
+    mnsj: "",
+    rpta: [
+      {
+        distId: 0,
+        nombreDist: "",
+        provId: 0
+      },
+    ]
+  };
+
+
+
   @ViewChild(BaseChartDirective) chart: BaseChartDirective | undefined;
 
 
@@ -156,23 +120,36 @@ export class ReportesComponent implements OnInit {
 
   ngOnInit(): void {
     this.ObtenerPsicologoInfo();
-    this.ObtenerDepartamentosCBO();
+    this.ObtenerDepartamentos();
+    this.ObtenerProvincia();
+    this.ObtenerDistrito();
   }
 
   ObtenerPsicologoInfo()
   {
     this.PsicologoService.GetPsicologoFullInfoByPsicologoId(this.g_FromUser_PsicologoId+"").subscribe(apiRpta => {
       this.ApiFullobjPsicologoFullInfo = apiRpta;
+      console.log(this.ApiFullobjPsicologoFullInfo.mnsj);
       this.objPsicologoFullInfo = this.ApiFullobjPsicologoFullInfo.rpta;
     });
   }
 
-  ObtenerDepartamentosCBO()
-  {
-    this._UbigeoService.GetDepartamentoListar().subscribe((data:any)=>{
-      this.DepartamentList=data;
+  ObtenerDepartamentos(){
+    this._UbigeoService.GetDepartamentoListar().subscribe(apiRpta1 => {
+      this.ApiFullobjListarDepartamento = apiRpta1
     })
   }
 
+  ObtenerProvincia(){
+    this._UbigeoService.GetProvinciaListar().subscribe(apiRpta2 => {
+      this.ApiFullobjListarProvincia = apiRpta2
+    })
+  }
+
+  ObtenerDistrito(){
+    this._UbigeoService.GetDistritoListar().subscribe(apiRpta3 => {
+      this.ApiFullobjListarDistrito = apiRpta3
+    })
+  }
 
 }
