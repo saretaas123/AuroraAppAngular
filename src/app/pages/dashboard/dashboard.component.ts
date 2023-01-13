@@ -17,17 +17,16 @@ export class DashboardComponent implements OnInit {
   };
 
   public objPsicologoFullInfo : any = {
-    nombres: '',
-    apellidoMaterno:'',
-    apellidoPaterno:'',
-    cantPacientes : 0,
-    correo : '',
-    dni : '',
-    especialidad : '',
-    numeroDeColegiaturaDelPeru : '',
-    psicologoId : 0,
-    telefono : '',
-    usuarioId : 0
+    psicologoId: 0,
+    nombres: "",
+    apellidoPaterno: "",
+    apellidoMaterno: "",
+    dni: "",
+    correo: "",
+    cargoId: 0,
+    ubigeoId: 0,
+    usuarioId: 0,
+    cantPacientes: 0
   };
 
   ngOnInit(): void {

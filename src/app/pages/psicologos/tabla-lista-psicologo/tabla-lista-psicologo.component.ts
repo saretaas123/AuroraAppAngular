@@ -3,6 +3,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { Psicologo } from 'src/app/interfaces/psicologo';
 import { EditarPsicologoComponent} from '../editar-psicologo/editar-psicologo.component'
+import { VerUsuarioContrasenaPsicoComponent} from '../ver-usuario-contrasena-psico/ver-usuario-contrasena-psico.component'
 import { MatDialog } from '@angular/material/dialog';
 import { PsicologoService } from 'src/app/services/auroraapi/psicologo.service';
 import { Router } from '@angular/router';
@@ -65,6 +66,14 @@ export class TablaListaPsicologoComponent implements OnInit {
  openDialog(PsicologoId : string)
  {
    this.dialog.open(EditarPsicologoComponent,
+    {
+      data : { PsicologoId }
+    });
+ }
+
+ openDialogVerUsuarioContrasena(PsicologoId : string)
+ {
+   this.dialog.open(VerUsuarioContrasenaPsicoComponent,
     {
       data : { PsicologoId }
     });

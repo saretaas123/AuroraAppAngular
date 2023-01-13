@@ -56,7 +56,7 @@ export class VerResumenComponent implements OnInit {
   g_routeparam_PacienteId: string = '0';
   g_FromUser_PsicologoId: string = '1';
 
-  //DATOS PACIENTES
+  //DATOS PACIENTES CON TODA SUS EVALUCACIONES
   objAPIRpta_Full : any =
   {
     msnj : '',

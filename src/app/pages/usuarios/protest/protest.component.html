@@ -107,7 +107,13 @@
                                       <h6 class="mb-0">Cuestionario</h6>
                                   </div>
                               </div>
-                              <div class="badge"> <span>PreContemplativo</span> </div>
+                              <!--<div class="badge"> <span>PreContemplativo</span> </div>-->
+                              <div *ngIf="objAPIRpta_objPacienteFullInfo.examenPostTestMotivacionAlCambioCompletado; else elseBlock">
+                                <h6 class="cajaResultadoResuelto" >{{objAPIRpta_objPacienteRespuestasCuestionarioMotivacionPostFullInfo.resultadoPrecontemplacion}}</h6>
+                              </div>
+                              <ng-template #elseBlock>
+                                <h6 class="cajaResultadoIncompleto">Incompleto</h6>
+                              </ng-template>
                           </div>
                           <div class="mt-5">
                               <h3 class="heading">Escala de Motivación <br> para el Cambio</h3>
@@ -127,7 +133,13 @@
                                       <h6 class="mb-0">Cuestionario</h6>
                                   </div>
                               </div>
-                              <div class="badge"> <span >Bajo</span> </div>
+                              <!--<div class="badge"> <span >Bajo</span> </div>-->
+                              <div *ngIf="objAPIRpta_objPacienteFullInfo.examenPostTestAutoestimaCompletado; else elseBlock">
+                                <h6 class="cajaResultadoResuelto" >{{objAPIRpta_objPacienteRespuestasCuestionarioAutoestimaPostFullInfo.nivelDeAutoestima}}</h6>
+                              </div>
+                              <ng-template #elseBlock>
+                                <h6 class="cajaResultadoIncompleto">Incompleto</h6>
+                              </ng-template>
                           </div>
                           <div class="mt-5">
                               <h3 class="heading">Inventario de <br> Autoestima</h3>
@@ -148,12 +160,17 @@
                                       <h6 class="mb-0">Cuestionario</h6>
                                   </div>
                               </div>
-                              <div class="badge"> <span>Positivo</span> </div>
+                              <!--<div class="badge"> <span>Positivo</span> </div>-->
+                              <div  *ngIf="objAPIRpta_objPacienteFullInfo.examenPostTestAutonomiaCompletado; else elseBlock">
+                                <h6 class="cajaResultadoResuelto" >{{objAPIRpta_objPacienteRespuestasCuestionarioAutonomiaPostFullInfo.sensacionDeControlPositiva}}</h6>
+                              </div>
+                              <ng-template #elseBlock>
+                                <h6 class="cajaResultadoIncompleto">Incompleto</h6>
+                              </ng-template>
                           </div>
                           <div class="mt-5">
                               <h3 class="heading">Inventario de <br> Autonomia </h3>
                               <div class="mt-5">
-
                                   <button type="button" class="btn btn-secondary mr-5" routerLink="/dashboard/{{g_FromUser_PsicologoId}}/autonomia-post/{{g_FromUser_PacienteId}}">Ir a cuestionario</button>
                                   <button type="button" class="btn btn-secondary botonresul" routerLink="/dashboard/{{g_FromUser_PsicologoId}}/resultados-autonomia-post/{{g_FromUser_PacienteId}}">Ver resultados</button>
                               </div>
@@ -169,7 +186,13 @@
                                     <h6 class="mb-0">Cuestionario</h6>
                                 </div>
                             </div>
-                            <div class="badge"> <span>En proceso</span> </div>
+                            <!--<div class="badge"> <span>En proceso</span> </div>-->
+                            <div *ngIf="objAPIRpta_objPacienteFullInfo.examenPostTestTomaDecisionCompletado; else elseBlock">
+                              <h6 class="cajaResultadoResuelto" >{{objAPIRpta_objPacienteRespuestasCuestionarioTomaDecisionesPostFullInfo.nivelTomaDeDecisiones}}</h6>
+                            </div>
+                            <ng-template #elseBlock>
+                              <h6 class="cajaResultadoIncompleto">Incompleto</h6>
+                            </ng-template>
                         </div>
                         <div class="mt-5">
                             <h3 class="heading">Test de toma<br> De decisiones</h3>

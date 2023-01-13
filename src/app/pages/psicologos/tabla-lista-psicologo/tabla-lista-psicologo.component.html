@@ -65,7 +65,7 @@
                         <th mat-header-cell class="text-center" *matHeaderCellDef><b>Ver Usuario/Contraseña</b></th>
                         <td class="text-center" mat-cell *matCellDef="let element">
                           <a class="pointer" style="color: #286f1f;" matTooltip="Ver datos de acceso a la aplicacion">
-                            <mat-icon >visibility</mat-icon>
+                            <mat-icon (click)="openDialogVerUsuarioContrasena(element.id)" >visibility</mat-icon>
                           </a>
                         </td>
                       </ng-container>

@@ -107,7 +107,13 @@
                                       <h6 class="mb-0">Cuestionario</h6>
                                   </div>
                               </div>
-                              <div class="badge"> <span>PreContemplativo</span> </div>
+                             <!-- <div class="badge"> <span>PreContemplativo</span> </div>-->
+                              <div  *ngIf="objAPIRpta_objPacienteFullInfo.examenPreTestMotivacionAlCambioCompletado; else elseBlock">
+                                <h6 class="cajaResultadoResuelto">{{objAPIRpta_objPacienteRespuestasCuestionarioMotivacionPreFullInfo.resultadoPrecontemplacion}}</h6>
+                              </div>
+                              <ng-template #elseBlock>
+                                <h6 class="cajaResultadoIncompleto">Incompleto</h6>
+                              </ng-template>
                           </div>
                           <div class="mt-5">
                               <h3 class="heading">Escala de Motivación <br> para el Cambio</h3>
@@ -127,7 +133,13 @@
                                       <h6 class="mb-0">Cuestionario</h6>
                                   </div>
                               </div>
-                              <div class="badge"> <span>Bajo</span> </div>
+                              <!--<div class="badge"> <span>Bajo</span> </div>-->
+                              <div *ngIf="objAPIRpta_objPacienteFullInfo.examenPreTestAutoestimaCompletado; else elseBlock">
+                               <h6 class="cajaResultadoResuelto"> {{objAPIRpta_objPacienteRespuestasCuestionarioAutoestimaPreFullInfo.nivelDeAutoestima}}</h6>
+                              </div>
+                              <ng-template #elseBlock>
+                                <h6 class="cajaResultadoIncompleto">Incompleto</h6>
+                              </ng-template>
                           </div>
                           <div class="mt-5">
                               <h3 class="heading">Inventario de <br> Autoestima</h3>
@@ -147,7 +159,13 @@
                                       <h6 class="mb-0">Cuestionario</h6>
                                   </div>
                               </div>
-                              <div class="badge"> <span>Positivo</span> </div>
+                              <!--<div class="badge"> <span>Positivo</span> </div>-->
+                              <div *ngIf="objAPIRpta_objPacienteFullInfo.examenPreTestAutonomiaCompletado; else elseBlock">
+                                <h6 class="cajaResultadoResuelto">{{objAPIRpta_objPacienteRespuestasCuestionarioAutonomiaPreFullInfo.sensacionDeControlPositiva}}</h6>
+                              </div>
+                              <ng-template #elseBlock>
+                                <h6 class="cajaResultadoIncompleto">Incompleto</h6>
+                              </ng-template>
                           </div>
                           <div class="mt-5">
                               <h3 class="heading">Inventiario de <br> Autonomia </h3>
@@ -167,7 +185,13 @@
                                     <h6 class="mb-0">Cuestionario</h6>
                                 </div>
                             </div>
-                            <div class="badge"> <span>En proceso</span> </div>
+                            <!--<div class="badge"> <span>En proceso</span> </div>-->
+                            <div *ngIf="objAPIRpta_objPacienteFullInfo.examenPreTestTomaDecisionCompletado; else elseBlock">
+                              <h6 class="cajaResultadoResuelto">{{objAPIRpta_objPacienteRespuestasCuestionarioTomaDecisionesPreFullInfo.nivelTomaDeDecisiones}}</h6>
+                            </div>
+                            <ng-template #elseBlock>
+                              <h6 class="cajaResultadoIncompleto">Incompleto</h6>
+                            </ng-template>
                         </div>
                         <div class="mt-5">
                             <h3 class="heading">Test de toma<br> De decisiones</h3>

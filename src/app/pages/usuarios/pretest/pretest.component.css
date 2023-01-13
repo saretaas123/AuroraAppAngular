@@ -10,7 +10,7 @@ body {
 .c-details span {
     font-weight: 300;
     font-size: 13px;
-  
+
 }
 
 .icon {
@@ -24,16 +24,28 @@ body {
     font-size: 39px
 }
 
-.badge span {
-    background-color:  #26537c;
-    width: 100px;
-    height: 25px;
-    padding-bottom: 3px;
-    border-radius: 5px;
-    display: flex;
-    color: #f7f7f7;
-    justify-content: center;
-    align-items: center
+.cajaResultadoResuelto{
+  background-color: #26537c;
+  border-radius: 4px;
+  color: #f7f7f7;
+  width: 100px;
+  text-align: center;
+  padding-bottom: 5px;
+  padding-top: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+.cajaResultadoIncompleto{
+  background-color: #912121;
+  border-radius: 4px;
+  color: #f7f7f7;
+  width: 100px;
+  text-align: center;
+  padding-bottom: 5px;
+  padding-top: 12px;
+  padding-left: 5px;
+  padding-right: 5px;
 }
 
 .progress {
@@ -84,7 +96,7 @@ body {
 
 
 .bg-c-lite-green {
-    
+
     background: linear-gradient(to right, #343A40, #555b61);
 }
 
@@ -105,7 +117,7 @@ body {
 }
 
 
- 
+
 h6 {
     font-size: 14px;
 }
@@ -121,9 +133,9 @@ p {
 }
 
 @media only screen and (max-width: 382px){
-   .botonresul{  
-    margin: 0;  
-   
+   .botonresul{
+    margin: 0;
+
    }
 }
 
@@ -194,4 +206,4 @@ p {
 
 
 
-  
+
