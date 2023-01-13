@@ -1,0 +1,21 @@
+<mat-dialog-actions align="end">
+  <button class="btn btn-danger" mat-dialog-close>Cerrar</button>
+</mat-dialog-actions>
+
+
+<mat-dialog-content class="mat-typography mt-5">
+<h2 mat-dialog-title class="text-center">Editar Contraseña</h2>
+<div class="container">
+  <div class="row">
+    <div class="col-sm">
+      <mat-form-field appearance="fill">
+          <mat-label>Contraseña</mat-label>
+          <input matInput type="text" #pContrasena [value]="ApiFullobjContrasenaUsuarioInfo.rpta.contrasena">
+      </mat-form-field>
+    </div>
+  </div>
+</div>
+</mat-dialog-content>
+<mat-dialog-actions >
+  <button class="btn btn-primary" [mat-dialog-close]="true" cdkFocusInitial (click)="EditarContrasena()">Guardar</button>
+</mat-dialog-actions>

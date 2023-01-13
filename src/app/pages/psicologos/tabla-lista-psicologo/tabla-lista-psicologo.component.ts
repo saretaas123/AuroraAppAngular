@@ -2,7 +2,8 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { Psicologo } from 'src/app/interfaces/psicologo';
-import { EditarPsicologoComponent} from '../editar-psicologo/editar-psicologo.component'
+import { EditarPsicologoComponent} from '../editar-psicologo/editar-psicologo.component';
+import { EditarContrasenaComponent} from '../editar-contrasena/editar-contrasena.component';
 import { VerUsuarioContrasenaPsicoComponent} from '../ver-usuario-contrasena-psico/ver-usuario-contrasena-psico.component'
 import { MatDialog } from '@angular/material/dialog';
 import { PsicologoService } from 'src/app/services/auroraapi/psicologo.service';
@@ -41,7 +42,7 @@ export class TablaListaPsicologoComponent implements OnInit {
   };
 
 
-  displayedColumns: string[] = ['dni','nombre', 'apellidos', 'zona','formularioPro','acciones','acciones2'];
+  displayedColumns: string[] = ['dni','nombre', 'apellidos', 'zona','formularioPro','acciones','acciones2','acciones3'];
   dataSource = new MatTableDataSource(listUsuarios);
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -74,6 +75,14 @@ export class TablaListaPsicologoComponent implements OnInit {
  openDialogVerUsuarioContrasena(PsicologoId : string)
  {
    this.dialog.open(VerUsuarioContrasenaPsicoComponent,
+    {
+      data : { PsicologoId }
+    });
+ }
+
+ openDialogEditarContrasena(PsicologoId : string)
+ {
+   this.dialog.open(EditarContrasenaComponent,
     {
       data : { PsicologoId }
     });

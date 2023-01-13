@@ -50,7 +50,7 @@
 
                       <!-- Symbol Column -->
                       <ng-container matColumnDef="acciones">
-                        <th mat-header-cell class="text-center" *matHeaderCellDef><b>Editar</b></th>
+                        <th mat-header-cell class="text-center" *matHeaderCellDef><b>Editar Psicologa</b></th>
                         <td class="text-center" mat-cell *matCellDef="let element">
                           <a class="pointer" style="color: #1f516f;" matTooltip="Editar psicologo">
                             <mat-icon (click)="openDialog(element.id)">edit</mat-icon>
@@ -66,6 +66,15 @@
                         <td class="text-center" mat-cell *matCellDef="let element">
                           <a class="pointer" style="color: #286f1f;" matTooltip="Ver datos de acceso a la aplicacion">
                             <mat-icon (click)="openDialogVerUsuarioContrasena(element.id)" >visibility</mat-icon>
+                          </a>
+                        </td>
+                      </ng-container>
+
+                      <ng-container matColumnDef="acciones3">
+                        <th mat-header-cell class="text-center" *matHeaderCellDef><b>Editar Contraseña</b></th>
+                        <td class="text-center" mat-cell *matCellDef="let element">
+                          <a class="pointer" style="color: #1f516f;" matTooltip="Ver datos de acceso a la aplicacion">
+                            <mat-icon (click)="openDialogEditarContrasena(element.id)">edit</mat-icon>
                           </a>
                         </td>
                       </ng-container>

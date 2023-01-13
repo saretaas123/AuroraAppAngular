@@ -76,6 +76,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { FichaRegistroComponent } from './usuarios/ficha-registro/ficha-registro.component';
 import { EditarFichaRegistroComponent } from './usuarios/editar-ficha-registro/editar-ficha-registro.component';
 import { VerUsuarioContrasenaPsicoComponent } from './psicologos/ver-usuario-contrasena-psico/ver-usuario-contrasena-psico.component';
+import { EditarContrasenaComponent } from './psicologos/editar-contrasena/editar-contrasena.component';
 
 
 
@@ -138,6 +139,7 @@ import { VerUsuarioContrasenaPsicoComponent } from './psicologos/ver-usuario-con
     FichaRegistroComponent,
     EditarFichaRegistroComponent,
     VerUsuarioContrasenaPsicoComponent,
+    EditarContrasenaComponent,
 
 
 
