@@ -1,69 +1,8 @@
-<!--
-
-<div class="content-wrapper">
-  <form>
-    <h1>Registar Usuario</h1>
-
-    <fieldset>
-      <legend><span class="number">1</span>Informacion Basica</legend>
-      <label>Nombre:</label>
-      <input type="text" #pNombres>
-
-      <label>Apellido Paterno:</label>
-      <input type="text" #pApellidoPaterno>
-
-      <label>Apellido Materno:</label>
-      <input type="text" #pApellidoMaterno>
-
-      <label>Fecha de nacimiento:</label>
-      <input type="date" #pFechaNacimiento>
-
-      <label>Dni:</label>
-      <input type="text" #pDni>
-
-      <legend><span class="number">2</span>Datos secundarios</legend>
-
-      <label>Direccion:</label>
-      <input type="text" #pDireccioUbigeo>
-
-      <label>Telefono:</label>
-      <input type="text" #pTelefono>
-
-      <label>Correo:</label>
-      <input type="email" #pCorreo>
-
-      <label>Tipo de Violencia:</label>
-      <input type="text" #pTipoViolencia >
-
-      <label>Riesgo:</label>
-      <input type="text" #pRiesgo>
-
-      <label>Año de evalucion:</label>
-      <input type="number" #pAnoDeEvaluacion>
-
-      <label>Atualmente tiene problemas con:</label>
-      <input type="text" #pEntidadProblema>
-
-      <label>Modalidad:</label>
-      <input type="text" #pModalidadAdministrativo>
-
-      <!--<label>Tipo de Violencia:</label>
-      <input type="radio" id="under_13" value="under_13" name="user_age"><label for="under_13" class="light">Under 13</label><br>
-      <input type="radio" id="over_13" value="over_13" name="user_age"><label for="over_13" class="light">13 or older</label><br>
-      <input type="radio" id="over_13" value="over_13" name="user_age"><label for="over_13" class="light">13 or older</label>
-
-    </fieldset>
-  </form>
-  <button (click)="RegistrarPaciente(pNombres.value , pApellidoPaterno.value ,pApellidoMaterno.value ,pFechaNacimiento.value , pDni.value ,pTelefono.value ,pDireccioUbigeo.value ,pCorreo.value,pTipoViolencia.value,pRiesgo.value,pAnoDeEvaluacion.value,pEntidadProblema.value,pModalidadAdministrativo.value)">Registrar</button>
-</div>
-
--->
-
 <mat-dialog-actions align="end">
   <button class="btn btn-danger" mat-dialog-close>Cerrar</button>
 </mat-dialog-actions>
 
-
+<!--<form [formGroup]="myForm">-->
 <mat-dialog-content class="mat-typography">
 <h2 mat-dialog-title class="text-center">Agregar Usuaria</h2>
 <div class="container">
@@ -71,7 +10,8 @@
     <div class="col-sm">
       <mat-form-field appearance="fill">
           <mat-label>Nombre</mat-label>
-          <input matInput type="text" #pNombres>
+          <input matInput type="text" #pNombres >
+          <!--<mat-error *ngIf="myError('myName', 'required')">Name is required</mat-error>-->
       </mat-form-field>
     </div>
     <div class="col-sm">
@@ -188,8 +128,8 @@
     </div>
   </div>
 </div>
-
 </mat-dialog-content>
+<!--</form>-->
 <mat-dialog-actions >
 <button class="btn btn-primary" (click)="RegistrarPaciente(pNombres.value , pApellidoPaterno.value ,pApellidoMaterno.value ,pFechaNacimiento.value , pDni.value ,pTelefono.value ,pDireccioUbigeo.value ,pCorreo.value,pTipoViolencia.value,pRiesgo.value,pFechaDeEvaluacion.value,pEntidadProblema.value,pModalidadAdministrativo.value)" cdkFocusInitial>Guardar</button>
 </mat-dialog-actions>

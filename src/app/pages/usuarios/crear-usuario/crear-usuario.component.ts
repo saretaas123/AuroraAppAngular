@@ -5,6 +5,7 @@ import { PacienteService } from 'src/app/services/auroraapi/paciente.service';
 import Swal from 'sweetalert2';
 import { MatDialog, MatDialogRef,MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { CasopacienteService } from 'src/app/services/auroraapi/casopaciente.service';
+import { FormControl,FormGroup, Validators } from '@angular/forms';
 
 interface tipoViolencia {
   value: string;
@@ -30,6 +31,8 @@ interface modalidad {
 })
 export class CrearUsuarioComponent implements OnInit {
 
+
+
   tiposViolencia: tipoViolencia[] = [
     {value: 'Psicológico', viewValue: 'Psicológico'},
     {value: 'Físico', viewValue: 'Físico'},
@@ -50,10 +53,20 @@ export class CrearUsuarioComponent implements OnInit {
 
   g_routeparam_PsicologoId: string = '0';
 
+
+
   ngOnInit(): void {
     this.g_routeparam_PsicologoId = this.router.url.split('/')[2];
+    /*this.myForm = new FormGroup({
+      myName: new FormControl('', [Validators.required]),
+      myAddress: new FormControl('', [Validators.required]),
+      mycity: new FormControl('', [Validators.required])
+      });*/
   }
 
+   /* public myError = (controlName: string, errorName: string) =>{
+    return this.myForm.controls[controlName].hasError(errorName);
+  }*/
 
 
   public ApiFullobjPsicologoFullInfo : any = {
@@ -61,15 +74,18 @@ export class CrearUsuarioComponent implements OnInit {
     rpta : {}
   };
 
+
+
   constructor(
     public dialog:MatDialog,
     private PacienteService : PacienteService,
     private _casopacienteService : CasopacienteService,
     private router: Router,
+    /*public myForm: FormGroup,*/
     @Inject(MAT_DIALOG_DATA) public editData : any,
-    private route: ActivatedRoute) { }
+    private route: ActivatedRoute) {
 
-
+    }
 
 
   RegistrarPaciente(

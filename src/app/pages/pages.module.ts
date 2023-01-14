@@ -77,7 +77,7 @@ import { FichaRegistroComponent } from './usuarios/ficha-registro/ficha-registro
 import { EditarFichaRegistroComponent } from './usuarios/editar-ficha-registro/editar-ficha-registro.component';
 import { VerUsuarioContrasenaPsicoComponent } from './psicologos/ver-usuario-contrasena-psico/ver-usuario-contrasena-psico.component';
 import { EditarContrasenaComponent } from './psicologos/editar-contrasena/editar-contrasena.component';
-
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -140,13 +140,6 @@ import { EditarContrasenaComponent } from './psicologos/editar-contrasena/editar
     EditarFichaRegistroComponent,
     VerUsuarioContrasenaPsicoComponent,
     EditarContrasenaComponent,
-
-
-
-
-
-
-
   ],
   entryComponents:[EditarPacienteComponent],
   imports: [
@@ -162,7 +155,9 @@ import { EditarContrasenaComponent } from './psicologos/editar-contrasena/editar
     NgChartsModule,
     HttpClientModule,
     MatDialogModule,
-    MatSelectModule
+    MatSelectModule,
+    ReactiveFormsModule,
+    FormsModule
 
 
 
