@@ -23,27 +23,24 @@
                               <div class="form-row">
                                 <div class="form-group col-md-4">
                                   <label for="nacionalidad">Nacionalidad</label>
-                                  <input type="text" class="form-control" id="nacionalidad">
+                                  <input type="text" class="form-control" id="nacionalidad" #pNacionalidad>
                                 </div>
                                 <div class="form-group col-md-4">
                                   <label for="estadoCivil">Estado civil / conyugal</label>
-                                  <select id="estadoCivil" class="form-control">
+                                  <select id="estadoCivil" class="form-control"  #pEstadoCivil>
                                     <option selected>Seleccionar</option>
-                                    <option value="1">Soltera</option>
-                                    <option value="2">Conviviente</option>
-                                    <option value="3">Casada</option>
-                                    <option value="4">Separada</option>
-                                    <option value="5">Divorciada</option>
-                                    <option value="6">Viuda</option>
+                                    <option *ngFor="let tipoViolencia of tiposViolencia" [value]="tipoViolencia.value">
+                                      {{tipoViolencia.viewValue}}
+                                    </option>
                                   </select>
                                 </div>
                                 <div class="form-group col-md-4">
                                   <label class="texto" for="socioEconomica">¿Cuál es la clasificación socioeconómica de la usuaria?</label>
-                                  <select id="socioEconomica" class="form-control">
+                                  <select id="clasificacion" class="form-control"  #pClasificacion>
                                     <option selected>Seleccionar</option>
-                                    <option value="1">No pobre</option>
-                                    <option value="2">Pobre</option>
-                                    <option value="3">Pobre Extremo</option>
+                                    <option *ngFor="let clasificacion of clasificaciones" [value]="clasificacion.value">
+                                      {{clasificacion.viewValue}}
+                                    </option>
                                   </select>
                                 </div>
                               </div><br>
@@ -52,35 +49,29 @@
                                <div class="form-row">
                                 <div class="form-group col-md-4">
                                   <label for="departamentoNacimiento">Departamento</label>
-                                  <select id="departamentoNacimiento" class="form-control">
+                                  <select id="departamentoNacimiento" class="form-control" #pDepartamentoNacimiento>
                                     <option selected>Seleccionar</option>
-                                    <option value="1">Soltera</option>
-                                    <option value="2">Conviviente</option>
-                                    <option value="3">Casada</option>
-                                    <option value="4">Separada</option>
-                                    <option value="5">Divorciada</option>
-                                    <option value="6">Viuda</option>
+                                    <option *ngFor="let departamento of ApiFullobjListarDepartamento.rpta" [value]="departamento.depaId">
+                                      {{departamento.nombreDepa}}
+                                    </option>
                                   </select>
                                 </div>
                                 <div class="form-group col-md-4">
                                   <label for="provinciaNacimiento">Provincia</label>
-                                  <select id="provinciaNacimiento" class="form-control">
+                                  <select id="provinciaNacimiento" class="form-control" #pProvinciaNacimiento>
                                     <option selected>Seleccionar</option>
-                                    <option value="1">Soltera</option>
-                                    <option value="2">Conviviente</option>
-                                    <option value="3">Casada</option>
-                                    <option value="4">Separada</option>
-                                    <option value="5">Divorciada</option>
-                                    <option value="6">Viuda</option>
+                                    <option *ngFor="let provincia of ApiFullobjListarProvincia.rpta" [value]="provincia.provId">
+                                      {{provincia.nombreProv}}
+                                    </option>
                                   </select>
                                 </div>
                                 <div class="form-group col-md-4">
                                   <label for="distritoNacimiento">Distrito</label>
-                                  <select id="distritoNacimiento" class="form-control">
+                                  <select id="distritoNacimiento" class="form-control" #pDistritoNacimiento>
                                     <option selected>Seleccionar</option>
-                                    <option value="1">No pobre</option>
-                                    <option value="2">Pobre</option>
-                                    <option value="3">Pobre Extremo</option>
+                                    <option *ngFor="let distrito of ApiFullobjListarDistrito.rpta" [value]="distrito.distId">
+                                      {{distrito.nombreDist}}
+                                    </option>
                                   </select>
                                 </div>
                               </div><br>
@@ -89,43 +80,37 @@
                               <div class="form-row">
                                  <div class="form-group col-md-4">
                                    <label for="departamentoResidencia">Departamento</label>
-                                   <select id="departamentoResidencia" class="form-control">
-                                     <option selected>Seleccionar</option>
-                                     <option value="1">Soltera</option>
-                                     <option value="2">Conviviente</option>
-                                     <option value="3">Casada</option>
-                                     <option value="4">Separada</option>
-                                     <option value="5">Divorciada</option>
-                                     <option value="6">Viuda</option>
-                                   </select>
+                                   <select id="departamentoNacimiento" class="form-control" #pDepartamentoResidencia>
+                                    <option selected>Seleccionar</option>
+                                    <option *ngFor="let departamento of ApiFullobjListarDepartamento.rpta" [value]="departamento.depaId">
+                                      {{departamento.nombreDepa}}
+                                    </option>
+                                  </select>
                                  </div>
                                  <div class="form-group col-md-4">
                                    <label for="provinciaResidencia">Provincia</label>
-                                   <select id="provinciaResidencia" class="form-control">
-                                     <option selected>Seleccionar</option>
-                                     <option value="1">Soltera</option>
-                                     <option value="2">Conviviente</option>
-                                     <option value="3">Casada</option>
-                                     <option value="4">Separada</option>
-                                     <option value="5">Divorciada</option>
-                                     <option value="6">Viuda</option>
-                                   </select>
+                                   <select id="provinciaNacimiento" class="form-control" #pProvinciaResidencia>
+                                    <option selected>Seleccionar</option>
+                                    <option *ngFor="let provincia of ApiFullobjListarProvincia.rpta" [value]="provincia.provId">
+                                      {{provincia.nombreProv}}
+                                    </option>
+                                  </select>
                                  </div>
                                  <div class="form-group col-md-4">
                                    <label for="distritoResidencia">Distrito</label>
-                                   <select id="distritoResidencia" class="form-control">
-                                     <option selected>Seleccionar</option>
-                                     <option value="1">No pobre</option>
-                                     <option value="2">Pobre</option>
-                                     <option value="3">Pobre Extremo</option>
-                                   </select>
+                                   <select id="distritoNacimiento" class="form-control" #pDistritoResidencia>
+                                    <option selected>Seleccionar</option>
+                                    <option *ngFor="let distrito of ApiFullobjListarDistrito.rpta" [value]="distrito.distId">
+                                      {{distrito.nombreDist}}
+                                    </option>
+                                  </select>
                                  </div>
                               </div><br>
                               <!------------------------------>
                                <div class="form-row">
                                 <div class="form-group col-md-4">
                                   <label for="gestando">¿Está gestando?</label>
-                                  <select id="gestando" class="form-control">
+                                  <select id="gestando" class="form-control" #pGestante>
                                     <option selected>Seleccionar</option>
                                     <option value="1">Si</option>
                                     <option value="2">No</option>
@@ -133,18 +118,18 @@
                                 </div>
                                 <div class="form-group col-md-4">
                                   <label for="cantidadHijas">N° de hijas</label>
-                                  <input type="number" class="form-control" id="cantidadHijas" >
+                                  <input type="number" class="form-control" id="cantidadHijas" #pCantidadHijas>
                                 </div>
                                 <div class="form-group col-md-4">
                                   <label for="cantidadHijos">N° de hijos</label>
-                                  <input type="number" class="form-control" id="cantidadHijos" >
+                                  <input type="number" class="form-control" id="cantidadHijos" #pCantidadHijos>
                                 </div>
                               </div><br>
                               <!------------------------------>
                               <div class="form-row">
                                 <div class="form-group col-md-6">
                                   <label for="origen">Por sus costumbres y antepasados, Usted se siente o considera:</label>
-                                  <select id="origen" class="form-control">
+                                  <select id="origen" class="form-control" #pComoseConsidera>
                                     <option selected>Seleccionar</option>
                                     <option value="1">Quechua</option>
                                     <option value="2">Aimara</option>
@@ -159,14 +144,14 @@
                                 </div>
                                 <div class="form-group col-md-6">
                                   <label for="lenguaMaterna">¿Cuál es la lengua materna con la que aprendió a hablar en su niñez?</label>
-                                  <input type="text" class="form-control" id="lenguaMaterna" >
+                                  <input type="text" class="form-control" id="lenguaMaterna" #pLenguaMaterna>
                                 </div>
                               </div><br>
                               <!------------------------------>
                               <div class="form-row">
                                 <div class="form-group col-md-6">
                                   <label for="presentaDiscapacidad">La usuaria presenta algún tipo de discapacidad:</label>
-                                  <select id="presentaDiscapacidad" class="form-control">
+                                  <select id="presentaDiscapacidad" class="form-control" #pDiscapacidad>
                                     <option selected>Seleccionar</option>
                                     <option value="1">Si</option>
                                     <option value="2">No</option>
@@ -174,14 +159,14 @@
                                 </div>
                                 <div class="form-group col-md-6">
                                   <label for="tipoDiscapacidad">Tipo de discapacidad:</label>
-                                  <input type="text" class="form-control" id="tipoDiscapacidad" >
+                                  <input type="text" class="form-control" id="tipoDiscapacidad" #pTipoDiscapacidad>
                                 </div>
                               </div><br>
                               <!------------------------------>
                               <div class="form-row">
                                 <div class="form-group col-md-4">
                                   <label class="mt-5" for="nivelEducativo">Nivel educativo:</label>
-                                  <select id="nivelEducativo" class="form-control">
+                                  <select id="nivelEducativo" class="form-control" #pNivelEducativo>
                                     <option selected>Seleccionar</option>
                                     <option value="1">Sin nivel</option>
                                     <option value="2">Inicial</option>
@@ -199,7 +184,7 @@
                                 </div>
                                 <div class="form-group col-md-4">
                                   <label class="texto1" for="actualmenteEstudia">¿Usted actualmente estudia en una institución educativa (I.E.) / colegio, instituto superior, universidad u otro?</label>
-                                  <select id="actualmenteEstudia" class="form-control">
+                                  <select id="actualmenteEstudia" class="form-control" #pActualmenteEstudia>
                                     <option selected>Seleccionar</option>
                                     <option value="1">Si</option>
                                     <option value="2">No</option>
@@ -207,7 +192,7 @@
                                 </div>
                                 <div class="form-group col-md-4">
                                   <label class="mt-5" for="lugarEstudio">¿En dónde estudia?</label>
-                                  <select id="lugarEstudio" class="form-control">
+                                  <select id="lugarEstudio" class="form-control" #pDondeEstudia>
                                     <option selected>Seleccionar</option>
                                     <option value="1">I.E / Colegio</option>
                                     <option value="2">Instituto Superior</option>
@@ -220,11 +205,11 @@
                               <div class="form-row">
                                 <div class="form-group col-md-6">
                                   <label class="texto"  for="nombreInstitucion">Nombre de la institución educativa, colegio, instituto superior, universidad u otro:</label>
-                                  <input type="text" class="form-control" id="nombreInstitucion">
+                                  <input type="text" class="form-control" id="nombreInstitucion" #pNombreInstitucion>
                                 </div>
                                 <div class="form-group col-md-6">
                                   <label for="tipoInstitucion">Tipo de Institución:</label>
-                                  <select id="tipoInstitucion" class="form-control">
+                                  <select id="tipoInstitucion" class="form-control" #pTipoInstitucion>
                                     <option selected>Seleccionar</option>
                                     <option value="1">Publica</option>
                                     <option value="2">Privada</option>
@@ -236,35 +221,29 @@
                                <div class="form-row">
                                 <div class="form-group col-md-4">
                                   <label for="departamentoEstudio">Departamento</label>
-                                  <select id="departamentoEstudio" class="form-control">
+                                  <select id="departamentoNacimiento" class="form-control" #pDepartamentoLugarEstudio>
                                     <option selected>Seleccionar</option>
-                                    <option value="1">Soltera</option>
-                                    <option value="2">Conviviente</option>
-                                    <option value="3">Casada</option>
-                                    <option value="4">Separada</option>
-                                    <option value="5">Divorciada</option>
-                                    <option value="6">Viuda</option>
+                                    <option *ngFor="let departamento of ApiFullobjListarDepartamento.rpta" [value]="departamento.depaId">
+                                      {{departamento.nombreDepa}}
+                                    </option>
                                   </select>
                                 </div>
                                 <div class="form-group col-md-4">
                                   <label for="provinciaEstudio">Provincia</label>
-                                  <select id="provinciaEstudio" class="form-control">
+                                  <select id="provinciaNacimiento" class="form-control" #pProvinciaLugarEstudio>
                                     <option selected>Seleccionar</option>
-                                    <option value="1">Soltera</option>
-                                    <option value="2">Conviviente</option>
-                                    <option value="3">Casada</option>
-                                    <option value="4">Separada</option>
-                                    <option value="5">Divorciada</option>
-                                    <option value="6">Viuda</option>
+                                    <option *ngFor="let provincia of ApiFullobjListarProvincia.rpta" [value]="provincia.provId">
+                                      {{provincia.nombreProv}}
+                                    </option>
                                   </select>
                                 </div>
                                 <div class="form-group col-md-4">
                                   <label for="distritoEstudio">Distrito</label>
-                                  <select id="distritoEstudio" class="form-control">
+                                  <select id="distritoNacimiento" class="form-control" #pDistritoLugarEstudio>
                                     <option selected>Seleccionar</option>
-                                    <option value="1">No pobre</option>
-                                    <option value="2">Pobre</option>
-                                    <option value="3">Pobre Extremo</option>
+                                    <option *ngFor="let distrito of ApiFullobjListarDistrito.rpta" [value]="distrito.distId">
+                                      {{distrito.nombreDist}}
+                                    </option>
                                   </select>
                                 </div>
                               </div><br>
@@ -272,7 +251,7 @@
                               <div class="form-row">
                                 <div class="form-group col-md-6">
                                   <label for="ingresos">¿Usted cuenta con un trabajo remunerado u ocupación para generar ingresos propios?</label>
-                                  <select id="ingresos" class="form-control">
+                                  <select id="ingresos" class="form-control" #pIngresos>
                                     <option selected>Seleccionar</option>
                                     <option value="1">Si</option>
                                     <option value="2">No</option>
@@ -280,14 +259,14 @@
                                 </div>
                                 <div class="form-group col-md-6">
                                   <label class="mt-4" for="ocupacion">Ocupación:</label>
-                                  <input type="text" class="form-control" id="ocupacion">
+                                  <input type="text" class="form-control" id="ocupacion" #pOcupacion>
                                 </div>
                               </div><br>
                               <!------------------------------>
                               <div class="form-row">
                                   <div class="form-group col-md-6">
                                     <label for="denunciaInterpuesta">¿Cuenta con denuncia interpuesta?</label>
-                                    <select id="denunciaInterpuesta" class="form-control">
+                                    <select id="denunciaInterpuesta" class="form-control" #pDenunciaInterpestua>
                                       <option selected>Seleccionar</option>
                                       <option value="1">Si</option>
                                       <option value="2">No</option>
@@ -295,7 +274,7 @@
                                   </div>
                                   <div class="form-group col-md-6">
                                     <label for="denunciaContinua">¿ Continúa con la denuncia?</label>
-                                    <select id="denunciaContinua" class="form-control">
+                                    <select id="denunciaContinua" class="form-control" #pContinuaDenuncia>
                                       <option selected>Seleccionar</option>
                                       <option value="1">Si</option>
                                       <option value="2">No</option>
