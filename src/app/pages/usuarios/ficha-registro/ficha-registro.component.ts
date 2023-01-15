@@ -111,10 +111,11 @@ export class FichaRegistroComponent implements OnInit {
   }
 
   RegistrarFichaRegistro(
-    pEstadoCivil : number, pClasificacion : number,pDepartamentoNacimiento : number,
-    pProvinciaNacimiento : number,pDistritoNacimiento : number,pDepartamentoResidencia : number,
-    pProvinciaResidencia : number,pDistritoResidencia : number,pGestante : boolean,pCantidadHijas : number,pCantidadHijos : number,pComoseConsidera :number,pLenguaMaterna :string
-    ,pDiscapacidad : boolean,pTipoDiscapacidad : string,pNivelEducativo: string,pActualmenteEstudia:boolean,  )
+    pNacionalidad : number, pEstadoCivilId : number,pClasificacionSocioEconomicaId : number,pUbigeoNacimientoDepartamentoId : number,pUbigeoNacimientoProvinciaId : number
+    ,pUbigeoNacimientoDistritoId : number,pUbigeoResidenciaDepartamentoId : number,pUbigeoResidenciaProvinciaId : Number, pUbigeoResidenciaDistritoId : Number,pEstaGestando : boolean,pNumeroHijas : number,pNumeroHijos:number,pComoseConsideraId :number
+    ,pLenguaMaterno : string, pPoseeDiscapacidad : boolean, pTipoDiscapacidad : string,pNivelEducativoId : number,pActualmenteEstudia : boolean, pNivelInstitucionEducativaId : number,pNombreInstitucionEducativa : string
+    ,pTipoInstitucionEducativaId : boolean, pUbigeoLugarDondeEstudiaDepartamentoId : number,pUbigeoLugarDondeEstudiaProvinciaId : number, pUbigeoLugarDondeEstudiaDistritoId : number,pPoseeIngresosEconomicosPropios : boolean
+    ,pNombreOcupacionLaboralPropia : string,pCuentaConDenunciaInterpuesta :boolean,pContinuaConDenunciaInterpuesta : boolean )
   {/*
     var RegistroExitoso = false;
     var pPacienteId = this.g_FromUser_PacienteId;

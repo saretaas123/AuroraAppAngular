@@ -27,7 +27,9 @@ export class FichaRegistroService {
 
   PostRegistrarFichaRegistro(pPacienteId: number, pNacionalidad : number, pEstadoCivilId : number,pClasificacionSocioEconomicaId : number,pUbigeoNacimientoDepartamentoId : number,pUbigeoNacimientoProvinciaId : number
     ,pUbigeoNacimientoDistritoId : number,pUbigeoResidenciaDepartamentoId : number,pUbigeoResidenciaProvinciaId : Number, pUbigeoResidenciaDistritoId : Number,pEstaGestando : boolean,pNumeroHijas : number,pNumeroHijos:number,pComoseConsideraId :number
-    ,pLenguaMaterno : string, pPoseeDiscapacidad : boolean, pTipoDiscapacidad : string,pNivelEducativoId : string)
+    ,pLenguaMaterno : string, pPoseeDiscapacidad : boolean, pTipoDiscapacidad : string,pNivelEducativoId : number,pActualmenteEstudia : boolean, pNivelInstitucionEducativaId : number,pNombreInstitucionEducativa : string
+    ,pTipoInstitucionEducativaId : boolean, pUbigeoLugarDondeEstudiaDepartamentoId : number,pUbigeoLugarDondeEstudiaProvinciaId : number, pUbigeoLugarDondeEstudiaDistritoId : number,pPoseeIngresosEconomicosPropios : boolean
+    ,pNombreOcupacionLaboralPropia : string,pCuentaConDenunciaInterpuesta :boolean,pContinuaConDenunciaInterpuesta : boolean )
   {
 
     let headers = new HttpHeaders().set('Type-content','aplication/json')
@@ -50,14 +52,26 @@ export class FichaRegistroService {
       "lenguaMaterno": pLenguaMaterno,
       "poseeDiscapacidad": pPoseeDiscapacidad,
       "tipoDiscapacidad": pTipoDiscapacidad,
-      "nivelEducativoId": "string",
-      "estudiaEnUnInstituto": pNivelEducativoId
+      "nivelEducativoId": pNivelEducativoId,
+      "actualmenteEstudia": pActualmenteEstudia,
+      "nivelInstitucionEducativaId": pNivelInstitucionEducativaId,
+      "nombreInstitucionEducativa": pNombreInstitucionEducativa,
+      "tipoInstitucionEducativaId": pTipoInstitucionEducativaId,
+      "ubigeoLugarDondeEstudiaDepartamentoId": pUbigeoLugarDondeEstudiaDepartamentoId,
+      "ubigeoLugarDondeEstudiaProvinciaId": pUbigeoLugarDondeEstudiaProvinciaId,
+      "ubigeoLugarDondeEstudiaDistritoId": pUbigeoLugarDondeEstudiaDistritoId,
+      "poseeIngresosEconomicosPropios": pPoseeIngresosEconomicosPropios,
+      "nombreOcupacionLaboralPropia": pNombreOcupacionLaboralPropia,
+      "cuentaConDenunciaInterpuesta": pCuentaConDenunciaInterpuesta,
+      "continuaConDenunciaInterpuesta": pContinuaConDenunciaInterpuesta
       } , { headers : headers});
   }
 
   PostEditarFichaRegistro(pPacienteId: number, pNacionalidad : number, pEstadoCivilId : number,pClasificacionSocioEconomicaId : number,pUbigeoNacimientoDepartamentoId : number,pUbigeoNacimientoProvinciaId : number
     ,pUbigeoNacimientoDistritoId : number,pUbigeoResidenciaDepartamentoId : number,pUbigeoResidenciaProvinciaId : Number, pUbigeoResidenciaDistritoId : Number,pEstaGestando : boolean,pNumeroHijas : number,pNumeroHijos:number,pComoseConsideraId :number
-    ,pLenguaMaterno : string, pPoseeDiscapacidad : boolean, pTipoDiscapacidad : string,pNivelEducativoId : string)
+    ,pLenguaMaterno : string, pPoseeDiscapacidad : boolean, pTipoDiscapacidad : string,pNivelEducativoId : number,pActualmenteEstudia : boolean, pNivelInstitucionEducativaId : number,pNombreInstitucionEducativa : string
+    ,pTipoInstitucionEducativaId : boolean, pUbigeoLugarDondeEstudiaDepartamentoId : number,pUbigeoLugarDondeEstudiaProvinciaId : number, pUbigeoLugarDondeEstudiaDistritoId : number,pPoseeIngresosEconomicosPropios : boolean
+    ,pNombreOcupacionLaboralPropia : string,pCuentaConDenunciaInterpuesta :boolean,pContinuaConDenunciaInterpuesta : boolean)
   {
 
     let headers = new HttpHeaders().set('Type-content','aplication/json')
@@ -80,8 +94,18 @@ export class FichaRegistroService {
       "lenguaMaterno": pLenguaMaterno,
       "poseeDiscapacidad": pPoseeDiscapacidad,
       "tipoDiscapacidad": pTipoDiscapacidad,
-      "nivelEducativoId": "string",
-      "estudiaEnUnInstituto": pNivelEducativoId
+      "nivelEducativoId": pNivelEducativoId,
+      "actualmenteEstudia": pActualmenteEstudia,
+      "nivelInstitucionEducativaId": pNivelInstitucionEducativaId,
+      "nombreInstitucionEducativa": pNombreInstitucionEducativa,
+      "tipoInstitucionEducativaId": pTipoInstitucionEducativaId,
+      "ubigeoLugarDondeEstudiaDepartamentoId": pUbigeoLugarDondeEstudiaDepartamentoId,
+      "ubigeoLugarDondeEstudiaProvinciaId": pUbigeoLugarDondeEstudiaProvinciaId,
+      "ubigeoLugarDondeEstudiaDistritoId": pUbigeoLugarDondeEstudiaDistritoId,
+      "poseeIngresosEconomicosPropios": pPoseeIngresosEconomicosPropios,
+      "nombreOcupacionLaboralPropia": pNombreOcupacionLaboralPropia,
+      "cuentaConDenunciaInterpuesta": pCuentaConDenunciaInterpuesta,
+      "continuaConDenunciaInterpuesta": pContinuaConDenunciaInterpuesta
       } , { headers : headers});
   }
 
