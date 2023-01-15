@@ -55,7 +55,7 @@
             <div class="col-sm">
               <mat-form-field appearance="fill">
                 <mat-label>Departamento</mat-label>
-                <mat-select>
+                <mat-select [value]="cbo_DepartamentoSelected">
                   <mat-option *ngFor="let departamento of listDepartamentosForFilter" [value]="departamento.depaId"  (onSelectionChange)="onChange_DepartamentoSeleccionado(departamento.depaId)">
                     {{departamento.nombreDepa}}
                   </mat-option>
@@ -65,7 +65,7 @@
             <div class="col-sm">
               <mat-form-field appearance="fill">
                 <mat-label>Provincia</mat-label>
-                <mat-select>
+                <mat-select [disabled]="CBOPrinvinciaEstaDesactivado" [value]="cbo_ProvinciaSelected">
                   <mat-option *ngFor="let provincia of listProvinciasForFilter" [value]="provincia.provId" (onSelectionChange)="onChange_ProvinciaSeleccionado(provincia.provId)">
                     {{provincia.nombreProv}}
                   </mat-option>
@@ -75,7 +75,7 @@
             <div class="col-sm">
               <mat-form-field appearance="fill">
                 <mat-label>Distrito</mat-label>
-                <mat-select>
+                <mat-select [disabled]="CBODistritoEstaDesactivado" [value]="cbo_DistritoSelected">
                   <mat-option *ngFor="let distrito of listDistritosForFilter" [value]="distrito.distId">
                     {{distrito.nombreDist}}
                   </mat-option>

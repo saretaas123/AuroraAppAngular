@@ -48,7 +48,6 @@ export class GraficoMotivacionComponent implements OnInit {
     this._EstadisticaPacientesService.PostEstadisticaMotivacionAlCambioTotal([],[],0,0,0,"","").subscribe(Rpta =>
       {
         this.apiRpta = Rpta;
-        console.log("apiRpta > Rpta:", this.apiRpta);
 
         this.listPreTestPrecontemplacion = this.apiRpta.rpta.listPreTestPrecontemplacion;
         this.listPreTestContemplacion = this.apiRpta.rpta.listPreTestContemplacion;

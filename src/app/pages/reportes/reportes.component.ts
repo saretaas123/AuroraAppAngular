@@ -125,6 +125,10 @@ export class ReportesComponent implements OnInit {
     this.ObtenerDistrito();
   }
 
+  cbo_DepartamentoSelected = null;
+  cbo_ProvinciaSelected = null;
+  cbo_DistritoSelected = null;
+
   listDepartamentosForFilter :
     [{
       depaId: 0,
@@ -149,7 +153,6 @@ export class ReportesComponent implements OnInit {
   {
     this.PsicologoService.GetPsicologoFullInfoByPsicologoId(this.g_FromUser_PsicologoId+"").subscribe(apiRpta => {
       this.ApiFullobjPsicologoFullInfo = apiRpta;
-      console.log(this.ApiFullobjPsicologoFullInfo.mnsj);
       this.objPsicologoFullInfo = this.ApiFullobjPsicologoFullInfo.rpta;
     });
   }
@@ -179,19 +182,25 @@ export class ReportesComponent implements OnInit {
   }
 
   Departamento_isChanged : number = -1;
-
+  CBOPrinvinciaEstaDesactivado : boolean = true;
   onChange_DepartamentoSeleccionado(idDepartamentoSeleccionado : any){
 
     if(this.Departamento_isChanged===-1){
       this.Departamento_isChanged = 0;
 
+      this.CBOPrinvinciaEstaDesactivado = false;
+      this.CBODistritoEstaDesactivado = true;
+
       this.FiltrarResultados_Departamento_a_Provincia(idDepartamentoSeleccionado);
-      console.log("listProvinciasForFilter:",this.listProvinciasForFilter);
+      this.listDistritosForFilter = [{distId: 0,nombreDist: "",provId: 0}];
     }else if(this.Departamento_isChanged===0){
       this.Departamento_isChanged = 1;
 
+      this.CBOPrinvinciaEstaDesactivado = false;
+      this.CBODistritoEstaDesactivado = true;
+
       this.FiltrarResultados_Departamento_a_Provincia(idDepartamentoSeleccionado);
-      console.log("listProvinciasForFilter:",this.listProvinciasForFilter);
+      this.listDistritosForFilter = [{distId: 0,nombreDist: "",provId: 0}];
     }else if(this.Departamento_isChanged===1){
       //Sirve para corregir la seleccion ciclica > NO ELIMINAR
       this.Departamento_isChanged = 0;
@@ -199,18 +208,21 @@ export class ReportesComponent implements OnInit {
   }
 
   Provincia_isChanged : number = -1;
+  CBODistritoEstaDesactivado : boolean = true;
   onChange_ProvinciaSeleccionado(idProvinciaSeleccionado : any){
 
     if(this.Provincia_isChanged===-1){
       this.Provincia_isChanged = 0;
 
+      this.CBODistritoEstaDesactivado = false;
       this.FiltrarResultados_Provincia_a_Distrito(idProvinciaSeleccionado);
-      console.log("listDistritosForFilter:",this.listDistritosForFilter);
+      this.cbo_DistritoSelected = null;
     }else if(this.Provincia_isChanged===0){
       this.Provincia_isChanged = 1;
 
+      this.CBODistritoEstaDesactivado = false;
       this.FiltrarResultados_Provincia_a_Distrito(idProvinciaSeleccionado);
-      console.log("listDistritosForFilter:",this.listDistritosForFilter);
+      this.cbo_DistritoSelected = null;
     }else if(this.Provincia_isChanged===1){
       //Sirve para corregir la seleccion ciclica > NO ELIMINAR
       this.Provincia_isChanged = 0;
