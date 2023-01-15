@@ -125,6 +125,26 @@ export class ReportesComponent implements OnInit {
     this.ObtenerDistrito();
   }
 
+  listDepartamentosForFilter :
+    [{
+      depaId: 0,
+      nombreDepa: ""
+    }] = [{ depaId: 0, nombreDepa: "" }];
+
+  listProvinciasForFilter :
+    [{
+      provId: 0,
+      nombreProv: "",
+      depaId: 0
+    }] = [{ provId: 0, nombreProv: "", depaId: 0 }];
+
+  listDistritosForFilter :
+    [{
+      distId: 0,
+      nombreDist: "",
+      provId: 0
+    }] = [{ distId: 0, nombreDist: "", provId: 0 }];
+
   ObtenerPsicologoInfo()
   {
     this.PsicologoService.GetPsicologoFullInfoByPsicologoId(this.g_FromUser_PsicologoId+"").subscribe(apiRpta => {
@@ -136,20 +156,87 @@ export class ReportesComponent implements OnInit {
 
   ObtenerDepartamentos(){
     this._UbigeoService.GetDepartamentoListar().subscribe(apiRpta1 => {
-      this.ApiFullobjListarDepartamento = apiRpta1
+      this.ApiFullobjListarDepartamento = apiRpta1;
+
+      this.listDepartamentosForFilter = this.ApiFullobjListarDepartamento.rpta;
     })
   }
 
   ObtenerProvincia(){
     this._UbigeoService.GetProvinciaListar().subscribe(apiRpta2 => {
-      this.ApiFullobjListarProvincia = apiRpta2
+      this.ApiFullobjListarProvincia = apiRpta2;
+
+      this.listProvinciasForFilter = this.ApiFullobjListarProvincia.rpta;
     })
   }
 
   ObtenerDistrito(){
     this._UbigeoService.GetDistritoListar().subscribe(apiRpta3 => {
-      this.ApiFullobjListarDistrito = apiRpta3
+      this.ApiFullobjListarDistrito = apiRpta3;
+
+      this.listDistritosForFilter = this.ApiFullobjListarDistrito.rpta;
     })
+  }
+
+  Departamento_isChanged : number = -1;
+
+  onChange_DepartamentoSeleccionado(idDepartamentoSeleccionado : any){
+
+    if(this.Departamento_isChanged===-1){
+      this.Departamento_isChanged = 0;
+
+      this.FiltrarResultados_Departamento_a_Provincia(idDepartamentoSeleccionado);
+      console.log("listProvinciasForFilter:",this.listProvinciasForFilter);
+    }else if(this.Departamento_isChanged===0){
+      this.Departamento_isChanged = 1;
+
+      this.FiltrarResultados_Departamento_a_Provincia(idDepartamentoSeleccionado);
+      console.log("listProvinciasForFilter:",this.listProvinciasForFilter);
+    }else if(this.Departamento_isChanged===1){
+      //Sirve para corregir la seleccion ciclica > NO ELIMINAR
+      this.Departamento_isChanged = 0;
+    }
+  }
+
+  Provincia_isChanged : number = -1;
+  onChange_ProvinciaSeleccionado(idProvinciaSeleccionado : any){
+
+    if(this.Provincia_isChanged===-1){
+      this.Provincia_isChanged = 0;
+
+      this.FiltrarResultados_Provincia_a_Distrito(idProvinciaSeleccionado);
+      console.log("listDistritosForFilter:",this.listDistritosForFilter);
+    }else if(this.Provincia_isChanged===0){
+      this.Provincia_isChanged = 1;
+
+      this.FiltrarResultados_Provincia_a_Distrito(idProvinciaSeleccionado);
+      console.log("listDistritosForFilter:",this.listDistritosForFilter);
+    }else if(this.Provincia_isChanged===1){
+      //Sirve para corregir la seleccion ciclica > NO ELIMINAR
+      this.Provincia_isChanged = 0;
+    }
+  }
+
+  FiltrarResultados_Departamento_a_Provincia(idDepartamentoSeleccionado : any)
+  {
+    this.listProvinciasForFilter = this.ApiFullobjListarProvincia.rpta.filter(
+        (x:
+          {
+            provId: 0,
+            nombreProv: "",
+            depaId: 0
+          }) => x.depaId === idDepartamentoSeleccionado);
+  }
+
+  FiltrarResultados_Provincia_a_Distrito(idProvinciaSeleccionado : any)
+  {
+    this.listDistritosForFilter = this.ApiFullobjListarDistrito.rpta.filter(
+        (x:
+          {
+            distId: 0,
+            nombreDist: "",
+            provId: 0
+          }) => x.provId === idProvinciaSeleccionado);
   }
 
 }
