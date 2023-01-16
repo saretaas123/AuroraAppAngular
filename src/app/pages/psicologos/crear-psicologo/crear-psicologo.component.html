@@ -1,42 +1,3 @@
-<!--<div class="content-wrapper">
-    <form>
-      <h1>Registar Psicologo</h1>
-
-      <fieldset>
-        <legend><span class="number">1</span>Informacion Basica</legend>
-        <label>Nombre:</label>
-        <input type="text" #pNombres>
-
-        <label>Apellido Paterno:</label>
-        <input type="text" #pApellidoPaterno>
-
-        <label>Apellido Materno:</label>
-        <input type="text" #pApellidoMaterno>
-
-        <label>Fecha de nacimiento:</label>
-        <input type="date" #pFechaNacimiento>
-
-        <label>Dni:</label>
-        <input type="text" #pDni>
-
-        <legend><span class="number">2</span>Datos secundarios</legend>
-
-        <label>Direccion:</label>
-        <input type="text" #pDireccioUbigeo>
-
-        <label>Telefono:</label>
-        <input type="text" #pTelefono>
-
-        <label>Correo:</label>
-        <input type="email" #pCorreo>
-
-
-      </fieldset>
-      <button (click)="RegistrarPaciente(pNombres.value , pApellidoPaterno.value ,pApellidoMaterno.value ,pFechaNacimiento.value ,pDni.value ,pTelefono.value ,pDireccioUbigeo.value ,pCorreo.value)">Registrar</button>
-    </form>
-  </div>-->
-
-
   <mat-dialog-actions align="end">
     <button class="btn btn-danger" mat-dialog-close>Cerrar</button>
   </mat-dialog-actions>
@@ -100,19 +61,27 @@
     <div class="row">
       <div class="col-sm">
         <mat-form-field appearance="fill">
+          <mat-label>Departamento</mat-label>
+          <mat-select [value]="cbo_DepartamentoSelected">
+            <mat-option *ngFor="let departamento of listDepartamentosForFilter" [value]="departamento.depaId"  (onSelectionChange)="onChange_DepartamentoSeleccionado(departamento.depaId)">
+              {{departamento.nombreDepa}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <!--<mat-form-field appearance="fill">
           <mat-label>Distrito</mat-label>
-          <mat-select>
+          <mat-select #pUbigeo>
             <mat-option *ngFor="let distrito of ApiFullobjListarDistrito.rpta" [value]="distrito.distId">
               {{distrito.nombreDist}}
             </mat-option>
           </mat-select>
-        </mat-form-field>
+        </mat-form-field>-->
       </div>
       <div class="col-sm">
         <mat-form-field appearance="fill">
           <mat-label>Provincia</mat-label>
-          <mat-select>
-            <mat-option *ngFor="let provincia of ApiFullobjListarProvincia.rpta" [value]="provincia.provId">
+          <mat-select [disabled]="CBOPrinvinciaEstaDesactivado" [value]="cbo_ProvinciaSelected">
+            <mat-option *ngFor="let provincia of listProvinciasForFilter" [value]="provincia.provId" (onSelectionChange)="onChange_ProvinciaSeleccionado(provincia.provId)">
               {{provincia.nombreProv}}
             </mat-option>
           </mat-select>
@@ -124,20 +93,20 @@
     <div class="row">
       <div class="col-sm">
         <mat-form-field appearance="fill">
-          <mat-label>Departamento</mat-label>
-          <mat-select>
-            <mat-option *ngFor="let departamento of ApiFullobjListarDepartamento.rpta" [value]="departamento.depaId">
-              {{departamento.nombreDepa}}
+          <mat-label>Distrito</mat-label>
+          <mat-select [disabled]="CBODistritoEstaDesactivado" [value]="cbo_DistritoSelected" #pUbigeo>
+            <mat-option *ngFor="let distrito of listDistritosForFilter" [value]="distrito.distId">
+              {{distrito.nombreDist}}
             </mat-option>
           </mat-select>
         </mat-form-field>
       </div>
-      <div class="col-sm">
+     <!--<div class="col-sm">
         <mat-form-field appearance="fill">
           <mat-label>Ubigeo</mat-label>
           <input matInput type="text" #pUbigeo>
        </mat-form-field>
-      </div>
+      </div>-->
     </div>
   </div>
   </mat-dialog-content>
