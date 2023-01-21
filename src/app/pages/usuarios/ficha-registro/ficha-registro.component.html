@@ -23,20 +23,25 @@
                               <div class="form-row">
                                 <div class="form-group col-md-4">
                                   <label for="nacionalidad">Nacionalidad</label>
-                                  <input type="text" class="form-control" id="nacionalidad" #pNacionalidad>
+                                  <select id="nacionalidad" class="form-control"  #pNacionalidad>
+                                    <option selected>Seleccionar</option>
+                                    <option *ngFor="let nacionalidad of nacionalidades" [value]="nacionalidad.value">
+                                      {{nacionalidad.viewValue}}
+                                    </option>
+                                  </select>
                                 </div>
                                 <div class="form-group col-md-4">
                                   <label for="estadoCivil">Estado civil / conyugal</label>
                                   <select id="estadoCivil" class="form-control"  #pEstadoCivil>
                                     <option selected>Seleccionar</option>
-                                    <option *ngFor="let tipoViolencia of tiposViolencia" [value]="tipoViolencia.value">
-                                      {{tipoViolencia.viewValue}}
+                                    <option *ngFor="let estadoCivil of estadosCiviles" [value]="estadoCivil.value">
+                                      {{estadoCivil.viewValue}}
                                     </option>
                                   </select>
                                 </div>
                                 <div class="form-group col-md-4">
-                                  <label class="texto" for="socioEconomica">¿Cuál es la clasificación socioeconómica de la usuaria?</label>
-                                  <select id="clasificacion" class="form-control"  #pClasificacion>
+                                  <label hidden class="texto" for="socioEconomica">¿Cuál es la clasificación socioeconómica de la usuaria?</label>
+                                  <select style="visibility:hidden" id="clasificacion" class="form-control"  #pClasificacionSocioEconomicaId>
                                     <option selected>Seleccionar</option>
                                     <option *ngFor="let clasificacion of clasificaciones" [value]="clasificacion.value">
                                       {{clasificacion.viewValue}}
@@ -49,27 +54,27 @@
                                <div class="form-row">
                                 <div class="form-group col-md-4">
                                   <label for="departamentoNacimiento">Departamento</label>
-                                  <select id="departamentoNacimiento" class="form-control" #pDepartamentoNacimiento>
+                                  <select id="departamentoNacimiento" class="form-control" [value]="cbo_DepartamentoSelected" #pDepartamentoNacimiento>
                                     <option selected>Seleccionar</option>
-                                    <option *ngFor="let departamento of ApiFullobjListarDepartamento.rpta" [value]="departamento.depaId">
+                                    <option *ngFor="let departamento of listDepartamentosForFilter" [value]="departamento.depaId" (onSelectionChange)="onChange_DepartamentoSeleccionado(departamento.depaId)">
                                       {{departamento.nombreDepa}}
                                     </option>
                                   </select>
                                 </div>
                                 <div class="form-group col-md-4">
                                   <label for="provinciaNacimiento">Provincia</label>
-                                  <select id="provinciaNacimiento" class="form-control" #pProvinciaNacimiento>
+                                  <select id="provinciaNacimiento" class="form-control" [disabled]="CBOPrinvinciaEstaDesactivado" [value]="cbo_ProvinciaSelected" #pProvinciaNacimiento>
                                     <option selected>Seleccionar</option>
-                                    <option *ngFor="let provincia of ApiFullobjListarProvincia.rpta" [value]="provincia.provId">
+                                    <option *ngFor="let provincia of listProvinciasForFilter" [value]="provincia.provId" (onSelectionChange)="onChange_ProvinciaSeleccionado(provincia.provId)">
                                       {{provincia.nombreProv}}
                                     </option>
                                   </select>
                                 </div>
                                 <div class="form-group col-md-4">
                                   <label for="distritoNacimiento">Distrito</label>
-                                  <select id="distritoNacimiento" class="form-control" #pDistritoNacimiento>
+                                  <select id="distritoNacimiento" class="form-control" [disabled]="CBODistritoEstaDesactivado" [value]="cbo_DistritoSelected" #pDistritoNacimiento>
                                     <option selected>Seleccionar</option>
-                                    <option *ngFor="let distrito of ApiFullobjListarDistrito.rpta" [value]="distrito.distId">
+                                    <option *ngFor="let distrito of listDistritosForFilter" [value]="distrito.distId">
                                       {{distrito.nombreDist}}
                                     </option>
                                   </select>
@@ -282,7 +287,9 @@
                                   </div>
                               </div>
                               <!---------------------------------->
-                            <button type="submit" class="btn btn-primary">Registrar</button>
+                            <!--<button  class="btn btn-primary" (click)="RegistrarFichaRegistro(pNacionalidad.value , pEstadoCivil.value  ,pDepartamentoNacimiento.value , pProvinciaNacimiento.value ,pDistritoNacimiento.value ,
+                            pDepartamentoResidencia.value ,pProvinciaResidencia.value,pDistritoResidencia.value,pGestante.value,pCantidadHijas.value,pCantidadHijos.value,pComoseConsidera.value,pLenguaMaterna.value,pDiscapacidad.value,pTipoDiscapacidad.value,pNivelEducativo.value,pActualmenteEstudia.value,
+                            pDondeEstudia.value,pNombreInstitucion.value,pTipoInstitucion.value,pDepartamentoLugarEstudio.value,pProvinciaLugarEstudio.value,pDistritoLugarEstudio.value,pIngresos.value,pOcupacion.value,pDenunciaInterpestua.value,pContinuaDenuncia.value)" cdkFocusInitial>Registrar</button>-->
                         </div>
                       </div>
                     </div>

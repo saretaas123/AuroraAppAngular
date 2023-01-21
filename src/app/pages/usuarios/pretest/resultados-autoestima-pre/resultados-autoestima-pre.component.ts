@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { CasopacienteService } from 'src/app/services/auroraapi/casopaciente.service';
 import { RespuestaAutoestimaService} from 'src/app/services/auroraapi/RespuestasPsicologicas/autoestima.service'
+import { Router } from '@angular/router';
 
 
 
@@ -13,6 +14,7 @@ import { RespuestaAutoestimaService} from 'src/app/services/auroraapi/Respuestas
 })
 export class ResultadosAutoestimaPreComponent implements OnInit {
 
+  g_routeparam_PsicologoId: string = '-2';
   g_routeparam_CasoPacienteId: string = '0';
 
   //DATOS PACIENTES
@@ -107,6 +109,10 @@ export class ResultadosAutoestimaPreComponent implements OnInit {
 
 
   ngOnInit(): void {
+    this.g_routeparam_PsicologoId = this.router.url.split('/')[2];
+    this.g_routeparam_CasoPacienteId = this.router.url.split('/')[4];
+    console.log(this.router.url);
+    console.log(this.router.url.split('/')[4]);
     this.g_routeparam_CasoPacienteId = this.route.snapshot.paramMap.get("casopacienteid")??'0';
     this.PintarLosDatosDelPacienteEnLaPantallaPrincipal(this.g_routeparam_CasoPacienteId);
     this.PintarTablasDeCuestionariosAutoestimaPreEnLaPantallaPrincipal(this.g_routeparam_CasoPacienteId);
@@ -114,6 +120,7 @@ export class ResultadosAutoestimaPreComponent implements OnInit {
 
 
   constructor(
+    private router:Router,
     private CasoPacienteService : CasopacienteService,
     private RespuestaAutoestimaService : RespuestaAutoestimaService,
     private route: ActivatedRoute

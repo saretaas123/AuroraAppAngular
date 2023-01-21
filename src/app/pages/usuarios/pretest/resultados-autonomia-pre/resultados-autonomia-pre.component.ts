@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { CasopacienteService } from 'src/app/services/auroraapi/casopaciente.service';
 import { RespuestaAutonomiaService} from 'src/app/services/auroraapi/RespuestasPsicologicas/autonomia.service'
-
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-resultados-autonomia-pre',
@@ -11,6 +11,7 @@ import { RespuestaAutonomiaService} from 'src/app/services/auroraapi/RespuestasP
 })
 export class ResultadosAutonomiaPreComponent implements OnInit {
 
+  g_routeparam_PsicologoId: string = '-2';
   g_routeparam_CasoPacienteId: string = '0';
 
   //DATOS PACIENTES
@@ -77,12 +78,15 @@ export class ResultadosAutonomiaPreComponent implements OnInit {
 
 
   ngOnInit(): void {
+    this.g_routeparam_PsicologoId = this.router.url.split('/')[2];
+    this.g_routeparam_CasoPacienteId = this.router.url.split('/')[4];
     this.g_routeparam_CasoPacienteId = this.route.snapshot.paramMap.get("casopacienteid")??'0';
     this.PintarLosDatosDelPacienteEnLaPantallaPrincipal(this.g_routeparam_CasoPacienteId);
     this.PintarTablasDeCuestionariosAutonomiaPreEnLaPantallaPrincipal(this.g_routeparam_CasoPacienteId);
   }
 
   constructor(
+    private router:Router,
     private CasoPacienteService : CasopacienteService,
     private RespuestaAutonomiaService : RespuestaAutonomiaService,
     private route: ActivatedRoute
