@@ -125,7 +125,7 @@ export class FichaRegistroService {
 
     let headers = new HttpHeaders().set('Type-content','aplication/json')
 
-    return this.http.post(this._url + 'EditarFichaRegistroByPacienteId', {
+    return this.http.put(this._url + 'EditarFichaRegistroByPacienteId', {
       "pacienteId": pPacienteId,
       "nacionalidadId": pNacionalidad,
       "estadoCivilId": pEstadoCivilId,
