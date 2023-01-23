@@ -25,11 +25,36 @@ export class FichaRegistroService {
 
   }
 
-  PostRegistrarFichaRegistro(pPacienteId: number, pNacionalidad : number, pEstadoCivilId : number,pClasificacionSocioEconomicaId : number,pUbigeoNacimientoDepartamentoId : number,pUbigeoNacimientoProvinciaId : number
-    ,pUbigeoNacimientoDistritoId : number,pUbigeoResidenciaDepartamentoId : number,pUbigeoResidenciaProvinciaId : Number, pUbigeoResidenciaDistritoId : Number,pEstaGestando : boolean,pNumeroHijas : number,pNumeroHijos:number,pComoseConsideraId :number
-    ,pLenguaMaterno : string, pPoseeDiscapacidad : boolean, pTipoDiscapacidad : string,pNivelEducativoId : number,pActualmenteEstudia : boolean, pNivelInstitucionEducativaId : number,pNombreInstitucionEducativa : string
-    ,pTipoInstitucionEducativaId : boolean, pUbigeoLugarDondeEstudiaDepartamentoId : number,pUbigeoLugarDondeEstudiaProvinciaId : number, pUbigeoLugarDondeEstudiaDistritoId : number,pPoseeIngresosEconomicosPropios : boolean
-    ,pNombreOcupacionLaboralPropia : string,pCuentaConDenunciaInterpuesta :boolean,pContinuaConDenunciaInterpuesta : boolean )
+  PostRegistrarFichaRegistro(
+    pPacienteId: number,
+    pNacionalidad : number,
+    pEstadoCivilId : number,
+    pClasificacionSocioEconomicaId : number,
+    pUbigeoNacimientoDepartamentoId : number,
+    pUbigeoNacimientoProvinciaId : number,
+    pUbigeoNacimientoDistritoId : number,
+    pUbigeoResidenciaDepartamentoId : number,
+    pUbigeoResidenciaProvinciaId : Number,
+    pUbigeoResidenciaDistritoId : Number,
+    pEstaGestando : boolean,
+    pNumeroHijas : number,
+    pNumeroHijos:number,
+    pComoseConsideraId :number,
+    pLenguaMaterno : string,
+    pPoseeDiscapacidad : boolean,
+    pTipoDiscapacidad : string,
+    pNivelEducativoId : number,
+    pActualmenteEstudia : boolean,
+    pNivelInstitucionEducativaId : number,
+    pNombreInstitucionEducativa : string,
+    pTipoInstitucionEducativaId : boolean,
+    pUbigeoLugarDondeEstudiaDepartamentoId : number,
+    pUbigeoLugarDondeEstudiaProvinciaId : number,
+    pUbigeoLugarDondeEstudiaDistritoId : number,
+    pPoseeIngresosEconomicosPropios : boolean,
+    pNombreOcupacionLaboralPropia : string,
+    pCuentaConDenunciaInterpuesta :boolean,
+    pContinuaConDenunciaInterpuesta : boolean )
   {
 
     let headers = new HttpHeaders().set('Type-content','aplication/json')
@@ -51,7 +76,7 @@ export class FichaRegistroService {
       "comoseConsideraId": pComoseConsideraId,
       "lenguaMaterno": pLenguaMaterno,
       "poseeDiscapacidad": pPoseeDiscapacidad,
-      "tipoDiscapacidad": pTipoDiscapacidad,
+      "tipoDiscapacidadNombre": pTipoDiscapacidad,
       "nivelEducativoId": pNivelEducativoId,
       "actualmenteEstudia": pActualmenteEstudia,
       "nivelInstitucionEducativaId": pNivelInstitucionEducativaId,
@@ -93,7 +118,7 @@ export class FichaRegistroService {
       "comoseConsideraId": pComoseConsideraId,
       "lenguaMaterno": pLenguaMaterno,
       "poseeDiscapacidad": pPoseeDiscapacidad,
-      "tipoDiscapacidad": pTipoDiscapacidad,
+      "tipoDiscapacidadNombre": pTipoDiscapacidad,
       "nivelEducativoId": pNivelEducativoId,
       "actualmenteEstudia": pActualmenteEstudia,
       "nivelInstitucionEducativaId": pNivelInstitucionEducativaId,
