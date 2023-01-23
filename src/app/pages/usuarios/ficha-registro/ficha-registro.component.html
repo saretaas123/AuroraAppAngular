@@ -162,13 +162,13 @@
                               <div class="form-row">
                                 <div class="form-group col-md-6">
                                   <label for="presentaDiscapacidad">La usuaria presenta algún tipo de discapacidad:</label>
-                                  <select id="presentaDiscapacidad" class="form-control" #pDiscapacidad>
-                                    <option selected>Seleccionar</option>
+                                  <select id="presentaDiscapacidad" class="form-control" #pDiscapacidad (change)="Cbo_TieneDiscapacidad_Change(pDiscapacidad.value)">
+                                    <option value="0" selected>Seleccionar</option>
                                     <option value="1">Si</option>
                                     <option value="0">No</option>
                                   </select>
                                 </div>
-                                <div class="form-group col-md-6">
+                                <div class="form-group col-md-6" [hidden]="formDiscapacidad_SeEstaOcultando">
                                   <label for="tipoDiscapacidad">Tipo de discapacidad:</label>
                                   <input type="text" class="form-control" id="tipoDiscapacidad" #pTipoDiscapacidad>
                                 </div>

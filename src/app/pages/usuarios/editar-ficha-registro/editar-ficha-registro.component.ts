@@ -32,6 +32,10 @@ export class EditarFichaRegistroComponent implements OnInit {
   cbo_DistritoSelected = null;
   //#endregion
 
+//#region FormDiscapacidad
+  formDiscapacidad_SeEstaOcultando = true;
+  //#endregion
+
 //#region ESTRUCTURA DE UBIGEO
   ApiFullobjListarDepartamento : any ={
     mnsj: "",
@@ -519,6 +523,8 @@ EditarFichaRegistro(
     pContinuaConDenunciaInterpuesta : string )
 {
 
+  console.log("pPoseeDiscapacidad:",pPoseeDiscapacidad);
+  console.log("pPoseeDiscapacidad ===1?true:false:",pPoseeDiscapacidad ==="1"?true:false);
   var RegistroExitoso = false;
   var pPacienteId = this.g_routeparam_PacienteId;
 
@@ -583,6 +589,19 @@ EditarFichaRegistro(
     }
   })
 }
+
+  Cbo_TieneDiscapacidad_Change(valorCBO : any)
+  {
+    console.log("valorCBO:",valorCBO);
+    if(valorCBO==="1")
+    {
+      this.formDiscapacidad_SeEstaOcultando = false;
+    }
+    else
+    {
+      this.formDiscapacidad_SeEstaOcultando = true;
+    }
+  }
 
 
 }
