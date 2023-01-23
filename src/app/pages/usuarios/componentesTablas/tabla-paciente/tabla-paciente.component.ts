@@ -279,7 +279,7 @@ export class TablaPacienteComponent implements OnInit, OnChanges {
     var FileName = "PacienteData.xlsx";
 
     let element = document.getElementById('excel-PacienteTable');
-    const ws:XLSX.WorkSheet = XLSX.utils.table_to_sheet(element);
+    const ws:XLSX.WorkSheet = XLSX.utils.json_to_sheet(this.g_TablaPacienteComponent_TablaPaciente.rpta);
 
     const wb:XLSX.WorkBook = XLSX.utils.book_new();
     XLSX.utils.book_append_sheet(wb, ws, Title);
