@@ -8,6 +8,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { EditarPacienteComponent } from '../editar-paciente/editar-paciente.component';
 import { CrearUsuarioComponent } from '../../crear-usuario/crear-usuario.component';
 import { EditarFichaRegistroComponent} from '../../editar-ficha-registro/editar-ficha-registro.component';
+import * as XLSX from 'xlsx';
 
 var listUsuarios: any [] = [
   {dni:'',nombre: '', apellidos: '', edad: 0, preTest: 'Incompleto',proTest: 'Incompleto', casoPacienteId: '0',pacienteTipoViolencia:'',pacienteRiesgo:''}
@@ -271,5 +272,20 @@ export class TablaPacienteComponent implements OnInit, OnChanges {
   });
 
   }
+
+  DescargarExcel_PacientesOfPsicologo()
+  {
+    var Title = "PacienteData";
+    var FileName = "PacienteData.xlsx";
+
+    let element = document.getElementById('excel-PacienteTable');
+    const ws:XLSX.WorkSheet = XLSX.utils.table_to_sheet(element);
+
+    const wb:XLSX.WorkBook = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(wb, ws, Title);
+
+    XLSX.writeFile(wb, FileName);
+  }
+
 
 }

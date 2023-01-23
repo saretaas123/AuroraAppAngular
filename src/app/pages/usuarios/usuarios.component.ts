@@ -60,8 +60,4 @@ export class UsuariosComponent implements OnInit {
     this.dialog.open(CrearUsuarioComponent);
   }
 
-
-
-
-
 }

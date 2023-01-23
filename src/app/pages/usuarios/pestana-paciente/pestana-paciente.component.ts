@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CasopacienteService } from 'src/app/services/auroraapi/casopaciente.service';
+import * as XLSX from 'xlsx';
 
 @Component({
   selector: 'app-pestana-paciente',
