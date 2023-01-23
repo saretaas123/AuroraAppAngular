@@ -110,7 +110,7 @@ export class FichaRegistroComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.g_routeparam_PacienteId = this.router.url.split('/')[2];
+    this.g_routeparam_PacienteId = this.router.url.split('/')[4];
     this.ObtenerDepartamentos();
     this.ObtenerProvincia();
     this.ObtenerDistrito();

@@ -79,6 +79,7 @@ export class EditarPacienteComponent implements OnInit {
     CasoPacienteId : "",
   };
 
+  //#region FILTAR DEPARTAMENTOS
   ApiFullobjListarDepartamento : any ={
     mnsj: "",
     rpta: [
@@ -110,6 +111,8 @@ export class EditarPacienteComponent implements OnInit {
       },
     ]
   };
+//#endregion
+
 
   constructor(
     public dialog:MatDialog,
@@ -126,6 +129,7 @@ export class EditarPacienteComponent implements OnInit {
     this.ObtenerDistrito();
   }
 
+//#region FILTRAR DEPARTAMENTOS
   cbo_DepartamentoSelected = null;
   cbo_ProvinciaSelected = null;
   cbo_DistritoSelected = null;
@@ -173,6 +177,9 @@ listDistritosForFilter :
       this.listDistritosForFilter = this.ApiFullobjListarDistrito.rpta;
     })
   }
+//#endregion
+
+
 
   TraerDatosPaciente()
   {
@@ -232,6 +239,7 @@ listDistritosForFilter :
     })
   }
 
+  //#region FILTRAR DEPARTAMENTOS
   Departamento_isChanged : number = -1;
   CBOPrinvinciaEstaDesactivado : boolean = true;
   onChange_DepartamentoSeleccionado(idDepartamentoSeleccionado : any){
@@ -301,6 +309,6 @@ listDistritosForFilter :
             provId: 0
           }) => x.provId === idProvinciaSeleccionado);
   }
-
+//#endregion
 
 }

@@ -3,8 +3,8 @@ import { UbigeoService} from 'src/app/services/auroraapi/ubigeo.service';
 import { FichaRegistroService} from 'src/app/services/auroraapi/ficha-registro.service';
 import { PacienteService } from 'src/app/services/auroraapi/paciente.service';
 import { Router } from '@angular/router';
-import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ActivatedRoute } from "@angular/router";
+import Swal from 'sweetalert2';
 
 interface tipoViolencia {
   value: string;
@@ -16,6 +16,7 @@ interface clasificacion {
   viewValue: string;
 }
 
+
 @Component({
   selector: 'app-editar-ficha-registro',
   templateUrl: './editar-ficha-registro.component.html',
@@ -23,7 +24,15 @@ interface clasificacion {
 })
 export class EditarFichaRegistroComponent implements OnInit {
 
+  g_routeparam_PacienteId: string = '0';
 
+//#region FILTRO UBIGEO
+  cbo_DepartamentoSelected = null;
+  cbo_ProvinciaSelected = null;
+  cbo_DistritoSelected = null;
+  //#endregion
+
+//#region ESTRUCTURA DE UBIGEO
   ApiFullobjListarDepartamento : any ={
     mnsj: "",
     rpta: [
@@ -55,8 +64,51 @@ export class EditarFichaRegistroComponent implements OnInit {
       },
     ]
   };
+//#endregion
 
 
+   //DATOS FICHA REGISTRO
+
+  public objAPIRpta_objFichaRegistroFullInfo : any = {
+    mnsj: '',
+    rpta : {
+      pacienteId: 0,
+      nacionalidadId: 0,
+      estadoCivilId: 0,
+      clasificacionSocioEconomicaId: 0,
+      ubigeoNacimientoDepartamentoId: 0,
+      ubigeoNacimientoProvinciaId: 0,
+      ubigeoNacimientoDistritoId: 0,
+      ubigeoResidenciaDepartamentoId: 0,
+      ubigeoResidenciaProvinciaId: 0,
+      ubigeoResidenciaDistritoId: 0,
+      estaGestando: false,
+      numeroHijas: 0,
+      numeroHijos: 0,
+      comoseConsideraId: 0,
+      lenguaMaterno: "",
+      poseeDiscapacidad: false,
+      tipoDiscapacidadNombre: "",
+      nivelEducativoId: 0,
+      actualmenteEstudia: false,
+      nivelInstitucionEducativaId: 0,
+      nombreInstitucionEducativa: "",
+      tipoInstitucionEducativaId: false,
+      ubigeoLugarDondeEstudiaDepartamentoId: 0,
+      ubigeoLugarDondeEstudiaProvinciaId: 0,
+      ubigeoLugarDondeEstudiaDistritoId: 0,
+      poseeIngresosEconomicosPropios: false,
+      nombreOcupacionLaboralPropia: "",
+      cuentaConDenunciaInterpuesta: false,
+      continuaConDenunciaInterpuesta: false
+    }
+  };
+
+
+  public ApiEditarFichaRegistro : any = {
+    mnsj: '',
+    rpta : {}
+  };
 
   tiposViolencia: tipoViolencia[] = [
     {value: '0', viewValue: 'Soltera'},
@@ -73,38 +125,8 @@ export class EditarFichaRegistroComponent implements OnInit {
     {value: '2', viewValue: 'pobre Extremo'},
   ];
 
-  public ApiEditarRespuestaModel : any = {
-    mnsj: '',
-    rpta : {}
-  };
-
-  public ApiFullobjPacienteInfo : any = {
-    mnsj: "",
-    rpta: {
-      nombres: "",
-      apellidoPaterno: "",
-      apellidoMaterno: "",
-      fechaNacimiento: "",
-      dni: "",
-      telefono: "",
-      direccionUbigeo: "",
-      correo: "",
-      siendoAtentido: false,
-      tipoViolencia : "",
-      riesgo : "",
-      fechaDeEvaluacion: "",
-      entidadProblema: "",
-      modalidadAdministrativo: "",
-    }
-  };
-
-  public p_modal_InfoPaciente : any = {
-    CasoPacienteId : "",
-  };
-
   g_FromUser_PsicologoId: string = '1';
-  g_FromUser_PacienteId: string = '1';
-  g_PacienteId : any;
+
 
   public ApiFullobjPacienteFullInfo : any = {
     mnsj: '',
@@ -112,97 +134,455 @@ export class EditarFichaRegistroComponent implements OnInit {
   };
 
   constructor(
-    public dialog:MatDialog,
+
     private _UbigeoService:UbigeoService,
     private _FichaRegistroService:FichaRegistroService,
     private _PacienteService : PacienteService,
-    @Inject(MAT_DIALOG_DATA) public vc_InfoPaciente : any,
     private router: Router,
+    private route: ActivatedRoute
   ) { }
 
   ngOnInit(): void {
-    this.TraerDatosPaciente();
+    this.g_routeparam_PacienteId = this.router.url.split('/')[4];
+    this.PintarLosDatosDelFichaRegistroEnLaPantallaPrincipal(this.g_routeparam_PacienteId);
     this.ObtenerDepartamentos();
     this.ObtenerProvincia();
     this.ObtenerDistrito();
   }
 
-  TraerDatosPaciente()
+//#region MOSTRAR DATOS EN PANTALLA DE LA FICHA DE REGISTRO
+  PintarLosDatosDelFichaRegistroEnLaPantallaPrincipal(p_PacienteId : string)
   {
-    this.p_modal_InfoPaciente = this.vc_InfoPaciente;
-    this._PacienteService.GetPacienteFullInfoByCasoPacienteId(this.p_modal_InfoPaciente.CasoPacienteId).subscribe(Rpta =>
-      {
-        this.ApiFullobjPacienteInfo = Rpta;
-        //this.ApiFullobjPacienteInfo.fechaDeEvaluacion =
+      this._FichaRegistroService.GetFichaRegistroByPacienteId(p_PacienteId)
+      .subscribe( Rpta =>  {
+        this.objAPIRpta_objFichaRegistroFullInfo = Rpta;
+        console.log(this.g_routeparam_PacienteId)
+
       });
   }
+//#endregion
 
-  EditarFicheroRegistro(
-    pPacienteId: number, pNacionalidad : number, pEstadoCivilId : number,pClasificacionSocioEconomicaId : number,pUbigeoNacimientoDepartamentoId : number,pUbigeoNacimientoProvinciaId : number
-    ,pUbigeoNacimientoDistritoId : number,pUbigeoResidenciaDepartamentoId : number,pUbigeoResidenciaProvinciaId : Number, pUbigeoResidenciaDistritoId : Number,pEstaGestando : boolean,pNumeroHijas : number,pNumeroHijos:number,pComoseConsideraId :number
-    ,pLenguaMaterno : string, pPoseeDiscapacidad : boolean, pTipoDiscapacidad : string,pNivelEducativoId : number,pActualmenteEstudia : boolean, pNivelInstitucionEducativaId : number,pNombreInstitucionEducativa : string
-    ,pTipoInstitucionEducativaId : boolean, pUbigeoLugarDondeEstudiaDepartamentoId : number,pUbigeoLugarDondeEstudiaProvinciaId : number, pUbigeoLugarDondeEstudiaDistritoId : number,pPoseeIngresosEconomicosPropios : boolean
-    ,pNombreOcupacionLaboralPropia : string,pCuentaConDenunciaInterpuesta :boolean,pContinuaConDenunciaInterpuesta : boolean)
-  {
+//#region NACIMIENTO
+  listDepartamentosNacimientoForFilter :
+  [{
+    depaId: 0,
+    nombreDepa: ""
+  }] = [{ depaId: 0, nombreDepa: "" }];
 
-   /* var RegistroExitoso = false;
-    this.p_modal_InfoPaciente = this.vc_InfoPaciente;
-    var pCasoPacienteId = this.p_modal_InfoPaciente.CasoPacienteId;
+listProvinciasNacimientoForFilter :
+  [{
+    provId: 0,
+    nombreProv: "",
+    depaId: 0
+  }] = [{ provId: 0, nombreProv: "", depaId: 0 }];
 
-    this._FichaRegistroService.PostEditarFichaRegistro(
-      Number(pCasoPacienteId),
-      pNombres, pApellidoPaterno, pApellidoMaterno,
-      pFechaNacimiento ,pDni ,pTelefono ,
-      Number(pDireccioUbigeo) ,pCorreo,pTipoViolencia,pRiesgo,pFechaDeEvaluacion,pEntidadProblema,
-      pModalidadAdministrativo
-      )
-      .subscribe(APIrpta => {
+listDistritosNacimientoForFilter :
+  [{
+    distId: 0,
+    nombreDist: "",
+    provId: 0
+  }] = [{ distId: 0, nombreDist: "", provId: 0 }];
+  //#endregion
 
-      this.ApiEditarRespuestaModel = APIrpta;
-      RegistroExitoso = this.ApiEditarRespuestaModel.rpta;
+//#region RESIDENCIA
+listDepartamentosResidenciaForFilter :
+[{
+  depaId: 0,
+  nombreDepa: ""
+}] = [{ depaId: 0, nombreDepa: "" }];
 
-      if(RegistroExitoso)
-      {
-        Swal.fire(
-          'Registrado Correctamente',
-          ' ',
-          'success'
-        );
-        //alert('Registrado Correctamente');
+listProvinciasResidenciaForFilter :
+[{
+  provId: 0,
+  nombreProv: "",
+  depaId: 0
+}] = [{ provId: 0, nombreProv: "", depaId: 0 }];
 
-        //Aca se actualize la pagina
-        this._casopacienteService.filter("EditPaciente");
-        this.dialog.closeAll();
-      }
-      else{
-        Swal.fire({
-          icon: 'error',
-          title: 'Oops...',
-          text: 'No se pudo registrar',
+listDistritosResidenciaForFilter :
+[{
+  distId: 0,
+  nombreDist: "",
+  provId: 0
+}] = [{ distId: 0, nombreDist: "", provId: 0 }];
+//#endregion
 
-        })
-        //alert('No se pudo registrar');
-      }
-    })*/
+//#region ESTUDIO
+listDepartamentosEstudioForFilter :
+[{
+  depaId: 0,
+  nombreDepa: ""
+}] = [{ depaId: 0, nombreDepa: "" }];
 
+listProvinciasEstudioForFilter :
+[{
+  provId: 0,
+  nombreProv: "",
+  depaId: 0
+}] = [{ provId: 0, nombreProv: "", depaId: 0 }];
+
+listDistritosEstudioForFilter :
+[{
+  distId: 0,
+  nombreDist: "",
+  provId: 0
+}] = [{ distId: 0, nombreDist: "", provId: 0 }];
+//#endregion
+
+
+//#region OBTENER UBIGEO
+ObtenerDepartamentos(){
+  this._UbigeoService.GetDepartamentoListar().subscribe(apiRpta1 => {
+    this.ApiFullobjListarDepartamento = apiRpta1;
+
+    this.listDepartamentosNacimientoForFilter = this.ApiFullobjListarDepartamento.rpta;
+    this.listDepartamentosResidenciaForFilter = this.ApiFullobjListarDepartamento.rpta;
+    this.listDepartamentosEstudioForFilter = this.ApiFullobjListarDepartamento.rpta;
+  })
+}
+
+ObtenerProvincia(){
+  this._UbigeoService.GetProvinciaListar().subscribe(apiRpta2 => {
+    this.ApiFullobjListarProvincia = apiRpta2;
+
+    this.listProvinciasNacimientoForFilter = this.ApiFullobjListarProvincia.rpta;
+    this.listProvinciasResidenciaForFilter = this.ApiFullobjListarProvincia.rpta;
+    this.listProvinciasEstudioForFilter = this.ApiFullobjListarProvincia.rpta;
+  })
+}
+
+ObtenerDistrito(){
+  this._UbigeoService.GetDistritoListar().subscribe(apiRpta3 => {
+    this.ApiFullobjListarDistrito = apiRpta3;
+
+    this.listDistritosNacimientoForFilter = this.ApiFullobjListarDistrito.rpta;
+    this.listDistritosResidenciaForFilter = this.ApiFullobjListarDistrito.rpta;
+    this.listDistritosEstudioForFilter = this.ApiFullobjListarDistrito.rpta;
+  })
+}
+//#endregion
+
+
+//#region Ubigeo nacimiento
+Departamento_isChanged : number = -1;
+CBOPrinvinciaNacimientoEstaDesactivado : boolean = true;
+onChange_DepartamentoNacimientoSeleccionado(idDepartamentoSeleccionado : any){
+
+  console.log("hola");
+
+  if(this.Departamento_isChanged===-1){
+    this.Departamento_isChanged = 0;
+
+    this.CBOPrinvinciaNacimientoEstaDesactivado = false;
+    this.CBODistritoNacimientoEstaDesactivado = true;
+
+    this.FiltrarResultados_Departamento_a_ProvinciaNacimiento(idDepartamentoSeleccionado);
+    this.listDistritosNacimientoForFilter = [{distId: 0,nombreDist: "",provId: 0}];
+  }else if(this.Departamento_isChanged===0){
+    this.Departamento_isChanged = 1;
+
+    this.CBOPrinvinciaNacimientoEstaDesactivado = false;
+    this.CBODistritoNacimientoEstaDesactivado = true;
+
+    this.FiltrarResultados_Departamento_a_ProvinciaNacimiento(idDepartamentoSeleccionado);
+    this.listDistritosNacimientoForFilter = [{distId: 0,nombreDist: "",provId: 0}];
+  }else if(this.Departamento_isChanged===1){
+    //Sirve para corregir la seleccion ciclica > NO ELIMINAR
+    this.Departamento_isChanged = 0;
   }
+}
 
-  ObtenerDepartamentos(){
-    this._UbigeoService.GetDepartamentoListar().subscribe(apiRpta1 => {
-      this.ApiFullobjListarDepartamento = apiRpta1
-    })
-  }
+Provincia_isChanged : number = -1;
+CBODistritoNacimientoEstaDesactivado : boolean = true;
+onChange_ProvinciaNacimientoSeleccionado(idProvinciaSeleccionado : any){
 
-  ObtenerProvincia(){
-    this._UbigeoService.GetProvinciaListar().subscribe(apiRpta2 => {
-      this.ApiFullobjListarProvincia = apiRpta2
-    })
-  }
+  if(this.Provincia_isChanged===-1){
+    this.Provincia_isChanged = 0;
 
-  ObtenerDistrito(){
-    this._UbigeoService.GetDistritoListar().subscribe(apiRpta3 => {
-      this.ApiFullobjListarDistrito = apiRpta3
-    })
+    this.CBODistritoNacimientoEstaDesactivado = false;
+    this.FiltrarResultados_Provincia_a_DistritoNacimiento(idProvinciaSeleccionado);
+    this.cbo_DistritoSelected = null;
+  }else if(this.Provincia_isChanged===0){
+    this.Provincia_isChanged = 1;
+
+    this.CBODistritoNacimientoEstaDesactivado = false;
+    this.FiltrarResultados_Provincia_a_DistritoNacimiento(idProvinciaSeleccionado);
+    this.cbo_DistritoSelected = null;
+  }else if(this.Provincia_isChanged===1){
+    //Sirve para corregir la seleccion ciclica > NO ELIMINAR
+    this.Provincia_isChanged = 0;
   }
+}
+//#endregion
+
+//#region Ubigeo Residencia
+CBOPrinvinciaResidenciaEstaDesactivado : boolean = true;
+onChange_DepartamentoResidenciaSeleccionado(idDepartamentoSeleccionado : any){
+
+  console.log("hola");
+
+  if(this.Departamento_isChanged===-1){
+    this.Departamento_isChanged = 0;
+
+    this.CBOPrinvinciaResidenciaEstaDesactivado = false;
+    this.CBODistritoResidenciaEstaDesactivado = true;
+
+    this.FiltrarResultados_Departamento_a_ProvinciaResidencia(idDepartamentoSeleccionado);
+    this.listDistritosResidenciaForFilter = [{distId: 0,nombreDist: "",provId: 0}];
+  }else if(this.Departamento_isChanged===0){
+    this.Departamento_isChanged = 1;
+
+    this.CBOPrinvinciaResidenciaEstaDesactivado = false;
+    this.CBODistritoResidenciaEstaDesactivado = true;
+
+    this.FiltrarResultados_Departamento_a_ProvinciaResidencia(idDepartamentoSeleccionado);
+    this.listDistritosResidenciaForFilter = [{distId: 0,nombreDist: "",provId: 0}];
+  }else if(this.Departamento_isChanged===1){
+    //Sirve para corregir la seleccion ciclica > NO ELIMINAR
+    this.Departamento_isChanged = 0;
+  }
+}
+
+CBODistritoResidenciaEstaDesactivado : boolean = true;
+onChange_ProvinciaResidenciaSeleccionado(idProvinciaSeleccionado : any){
+
+  if(this.Provincia_isChanged===-1){
+    this.Provincia_isChanged = 0;
+
+    this.CBODistritoResidenciaEstaDesactivado = false;
+    this.FiltrarResultados_Provincia_a_DistritoResidencia(idProvinciaSeleccionado);
+    this.cbo_DistritoSelected = null;
+  }else if(this.Provincia_isChanged===0){
+    this.Provincia_isChanged = 1;
+
+    this.CBODistritoResidenciaEstaDesactivado = false;
+    this.FiltrarResultados_Provincia_a_DistritoResidencia(idProvinciaSeleccionado);
+    this.cbo_DistritoSelected = null;
+  }else if(this.Provincia_isChanged===1){
+    //Sirve para corregir la seleccion ciclica > NO ELIMINAR
+    this.Provincia_isChanged = 0;
+  }
+}
+//#endregion
+
+
+//#region Ubigeo Estudio
+CBOPrinvinciaEstudioEstaDesactivado : boolean = true;
+onChange_DepartamentoEstudioSeleccionado(idDepartamentoSeleccionado : any){
+
+  console.log("hola");
+
+  if(this.Departamento_isChanged===-1){
+    this.Departamento_isChanged = 0;
+
+    this.CBOPrinvinciaEstudioEstaDesactivado = false;
+    this.CBODistritoEstudioEstaDesactivado = true;
+
+    this.FiltrarResultados_Departamento_a_ProvinciaEstudio(idDepartamentoSeleccionado);
+    this.listDistritosEstudioForFilter = [{distId: 0,nombreDist: "",provId: 0}];
+  }else if(this.Departamento_isChanged===0){
+    this.Departamento_isChanged = 1;
+
+    this.CBOPrinvinciaEstudioEstaDesactivado = false;
+    this.CBODistritoEstudioEstaDesactivado = true;
+
+    this.FiltrarResultados_Departamento_a_ProvinciaEstudio(idDepartamentoSeleccionado);
+    this.listDistritosEstudioForFilter = [{distId: 0,nombreDist: "",provId: 0}];
+  }else if(this.Departamento_isChanged===1){
+    //Sirve para corregir la seleccion ciclica > NO ELIMINAR
+    this.Departamento_isChanged = 0;
+  }
+}
+
+CBODistritoEstudioEstaDesactivado : boolean = true;
+onChange_ProvinciaEstudioSeleccionado(idProvinciaSeleccionado : any){
+
+  if(this.Provincia_isChanged===-1){
+    this.Provincia_isChanged = 0;
+
+    this.CBODistritoEstudioEstaDesactivado = false;
+    this.FiltrarResultados_Provincia_a_DistritoEstudio(idProvinciaSeleccionado);
+    this.cbo_DistritoSelected = null;
+  }else if(this.Provincia_isChanged===0){
+    this.Provincia_isChanged = 1;
+
+    this.CBODistritoEstudioEstaDesactivado = false;
+    this.FiltrarResultados_Provincia_a_DistritoEstudio(idProvinciaSeleccionado);
+    this.cbo_DistritoSelected = null;
+  }else if(this.Provincia_isChanged===1){
+    //Sirve para corregir la seleccion ciclica > NO ELIMINAR
+    this.Provincia_isChanged = 0;
+  }
+}
+//#endregion
+
+
+//#region NACIMIENTO
+FiltrarResultados_Departamento_a_ProvinciaNacimiento(idDepartamentoSeleccionado : any)
+{
+  this.listProvinciasNacimientoForFilter = this.ApiFullobjListarProvincia.rpta.filter(
+      (x:
+        {
+          provId: 0,
+          nombreProv: "",
+          depaId: 0
+        }) => x.depaId === idDepartamentoSeleccionado);
+}
+
+FiltrarResultados_Provincia_a_DistritoNacimiento(idProvinciaSeleccionado : any)
+{
+  this.listDistritosNacimientoForFilter = this.ApiFullobjListarDistrito.rpta.filter(
+      (x:
+        {
+          distId: 0,
+          nombreDist: "",
+          provId: 0
+        }) => x.provId === idProvinciaSeleccionado);
+}
+//#endregion
+
+//#region RESIDENCIA
+FiltrarResultados_Departamento_a_ProvinciaResidencia(idDepartamentoSeleccionado : any)
+{
+  this.listProvinciasResidenciaForFilter = this.ApiFullobjListarProvincia.rpta.filter(
+      (x:
+        {
+          provId: 0,
+          nombreProv: "",
+          depaId: 0
+        }) => x.depaId === idDepartamentoSeleccionado);
+}
+
+FiltrarResultados_Provincia_a_DistritoResidencia(idProvinciaSeleccionado : any)
+{
+  this.listDistritosResidenciaForFilter = this.ApiFullobjListarDistrito.rpta.filter(
+      (x:
+        {
+          distId: 0,
+          nombreDist: "",
+          provId: 0
+        }) => x.provId === idProvinciaSeleccionado);
+}
+//#endregion
+
+//#region ESTUDIO
+FiltrarResultados_Departamento_a_ProvinciaEstudio(idDepartamentoSeleccionado : any)
+{
+  this.listProvinciasEstudioForFilter = this.ApiFullobjListarProvincia.rpta.filter(
+      (x:
+        {
+          provId: 0,
+          nombreProv: "",
+          depaId: 0
+        }) => x.depaId === idDepartamentoSeleccionado);
+}
+
+FiltrarResultados_Provincia_a_DistritoEstudio(idProvinciaSeleccionado : any)
+{
+  this.listDistritosEstudioForFilter = this.ApiFullobjListarDistrito.rpta.filter(
+      (x:
+        {
+          distId: 0,
+          nombreDist: "",
+          provId: 0
+        }) => x.provId === idProvinciaSeleccionado);
+}
+//#endregion
+
+
+EditarFichaRegistro(
+  pNacionalidad : string,
+    pEstadoCivilId : string,
+    pUbigeoNacimientoDepartamentoId : number,
+    pUbigeoNacimientoProvinciaId : number,
+    pUbigeoNacimientoDistritoId : number,
+    pUbigeoResidenciaDepartamentoId : number,
+    pUbigeoResidenciaProvinciaId : Number,
+    pUbigeoResidenciaDistritoId : Number,
+    pEstaGestando : string,
+    pNumeroHijas : string,
+    pNumeroHijos:string,
+    pComoseConsideraId :string,
+    pLenguaMaterno : string,
+    pPoseeDiscapacidad : string,
+    pTipoDiscapacidad : string,
+    pNivelEducativoId : string,
+    pActualmenteEstudia : string,
+    pNivelInstitucionEducativaId : string,
+    pNombreInstitucionEducativa : string,
+    pTipoInstitucionEducativaId : string,
+    pUbigeoLugarDondeEstudiaDepartamentoId : number,
+    pUbigeoLugarDondeEstudiaProvinciaId : number,
+    pUbigeoLugarDondeEstudiaDistritoId : number,
+    pPoseeIngresosEconomicosPropios : string,
+    pNombreOcupacionLaboralPropia : string,
+    pCuentaConDenunciaInterpuesta :string,
+    pContinuaConDenunciaInterpuesta : string )
+{
+
+  var RegistroExitoso = false;
+  var pPacienteId = this.g_routeparam_PacienteId;
+
+  this._FichaRegistroService.PostEditarFichaRegistro(
+    Number(pPacienteId),
+    Number(pNacionalidad),
+    Number(pEstadoCivilId),
+    -1,
+    pUbigeoNacimientoDepartamentoId ,
+    pUbigeoNacimientoProvinciaId ,
+    pUbigeoNacimientoDistritoId,
+    pUbigeoResidenciaDepartamentoId ,
+    pUbigeoResidenciaProvinciaId,
+    pUbigeoResidenciaDistritoId,
+    pEstaGestando ==="1"?true:false,
+    Number(pNumeroHijas),
+    Number(pNumeroHijos),
+    Number(pComoseConsideraId),
+    pLenguaMaterno,
+    pPoseeDiscapacidad ==="1"?true:false,
+    pTipoDiscapacidad,
+    Number(pNivelEducativoId),
+    pActualmenteEstudia ==="1"?true:false,
+    Number(pNivelInstitucionEducativaId),
+    pNombreInstitucionEducativa,
+    pTipoInstitucionEducativaId ==="1"?true:false,
+    pUbigeoLugarDondeEstudiaDepartamentoId,
+    pUbigeoLugarDondeEstudiaProvinciaId,
+    pUbigeoLugarDondeEstudiaDistritoId,
+    pPoseeIngresosEconomicosPropios ==="1"?true:false,
+    pNombreOcupacionLaboralPropia,
+    pCuentaConDenunciaInterpuesta  ==="1"?true:false,
+    pContinuaConDenunciaInterpuesta ==="1"?true:false
+    )
+    .subscribe(APIrpta => {
+
+    this.ApiEditarFichaRegistro = APIrpta;
+    RegistroExitoso = this.ApiEditarFichaRegistro.rpta;
+
+    if(RegistroExitoso)
+    {
+      Swal.fire(
+        'Registrado Correctamente',
+        ' ',
+        'success'
+      );
+      //alert('Registrado Correctamente');
+
+      //Aca se actualize la pagina
+
+
+
+    }
+    else{
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'No se pudo registrar',
+
+      })
+      //alert('No se pudo registrar');
+    }
+  })
+}
+
 
 }

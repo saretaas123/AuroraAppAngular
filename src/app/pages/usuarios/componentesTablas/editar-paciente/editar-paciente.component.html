@@ -46,13 +46,9 @@
         </mat-form-field>
       </div>
       <div class="col-sm">
-       <!--<mat-form-field appearance="fill">
-            <mat-label>Direccion</mat-label>
-            <input matInput type="text" #pDireccioUbigeo [value]="ApiFullobjPacienteInfo.rpta.direccionUbigeo">
-        </mat-form-field>-->
         <mat-form-field appearance="fill">
           <mat-label>Departamento</mat-label>
-          <mat-select [value]="cbo_DepartamentoSelected">
+          <mat-select [value]="cbo_DepartamentoSelected" [value]="ApiFullobjListarDepartamento.rpta.depaId">
             <mat-option *ngFor="let departamento of listDepartamentosForFilter" [value]="departamento.depaId"  (onSelectionChange)="onChange_DepartamentoSeleccionado(departamento.depaId)">
               {{departamento.nombreDepa}}
             </mat-option>
@@ -66,7 +62,7 @@
       <div class="col-sm">
         <mat-form-field appearance="fill">
           <mat-label>Provincia</mat-label>
-          <mat-select [disabled]="CBOPrinvinciaEstaDesactivado" [value]="cbo_ProvinciaSelected">
+          <mat-select [disabled]="CBOPrinvinciaEstaDesactivado" [value]="cbo_ProvinciaSelected" [value]="ApiFullobjListarProvincia.rpta.provId">
             <mat-option *ngFor="let provincia of listProvinciasForFilter" [value]="provincia.provId" (onSelectionChange)="onChange_ProvinciaSeleccionado(provincia.provId)">
               {{provincia.nombreProv}}
             </mat-option>
@@ -103,16 +99,6 @@
   </div>
   <div class="container">
     <div class="row">
-      <!--<div class="col-sm">
-        <mat-form-field appearance="fill">
-          <mat-label>Tipo de Violencia</mat-label>
-          <mat-select #pTipoViolencia>
-            <mat-option *ngFor="let tipoViolencia of tiposViolencia" [value]="tipoViolencia.value">
-              {{tipoViolencia.viewValue}}
-            </mat-option>
-          </mat-select>
-        </mat-form-field>
-      </div>-->
      <div class="col-sm">
       <label></label>
         <mat-form-field appearance="fill">
@@ -135,10 +121,6 @@
             <mat-label>Fecha de Evaluacion</mat-label>
             <input matInput type="date" #pFechaDeEvaluacion [value]="ApiFullobjPacienteInfo.rpta.fechaDeEvaluacion" >
         </mat-form-field>
-       <!-- <mat-form-field appearance="fill">
-          <mat-label>Fecha de evaluacion</mat-label>
-          <input matInput type="text" #pFechaDeEvaluacion [value]="ApiFullobjPacienteInfo.rpta.fechaDeEvaluacion" readonly>
-      </mat-form-field>-->
       </div>
       <div class="col-sm">
       <mat-form-field appearance="fill">

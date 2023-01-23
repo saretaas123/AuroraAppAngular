@@ -22,21 +22,28 @@
                               <!------------------------------>
                               <div class="form-row">
                                 <div class="form-group col-md-4">
-                                  <label for="nacionalidad">Nacionalidad</label>
-                                  <input type="text" class="form-control" id="nacionalidad" #pNacionalidad>
-                                </div>
-                                <div class="form-group col-md-4">
-                                  <label for="estadoCivil">Estado civil / conyugal</label>
-                                  <select id="estadoCivil" class="form-control"  #pEstadoCivil>
+                                  <label for="gestando">Nacionalidad</label>
+                                  <select id="gestando" class="form-control" #pNacionalidad [value]="objAPIRpta_objFichaRegistroFullInfo.rpta.nacionalidadId">
                                     <option selected>Seleccionar</option>
-                                    <option *ngFor="let tipoViolencia of tiposViolencia" [value]="tipoViolencia.value">
-                                      {{tipoViolencia.viewValue}}
-                                    </option>
+                                    <option value="0">Peruana</option>
+                                    <option value="1">Extranjera</option>
                                   </select>
                                 </div>
                                 <div class="form-group col-md-4">
-                                  <label class="texto" for="socioEconomica">¿Cuál es la clasificación socioeconómica de la usuaria?</label>
-                                  <select id="clasificacion" class="form-control"  #pClasificacion>
+                                  <label for="gestando">Estado civil / conyugal</label>
+                                  <select id="gestando" class="form-control" #pEstadoCivil [value]="objAPIRpta_objFichaRegistroFullInfo.rpta.estadoCivilId">
+                                    <option selected>Seleccionar</option>
+                                    <option value="0">Soltera</option>
+                                    <option value="1">Conviviente</option>
+                                    <option value="2">Casada</option>
+                                    <option value="3">Separada</option>
+                                    <option value="4">Divorciada</option>
+                                    <option value="5">viuda</option>
+                                  </select>
+                                </div>
+                                <div class="form-group col-md-4">
+                                  <label hidden class="texto" for="socioEconomica">¿Cuál es la clasificación socioeconómica de la usuaria?</label>
+                                  <select style="visibility:hidden" id="clasificacion" class="form-control"  #pClasificacion>
                                     <option selected>Seleccionar</option>
                                     <option *ngFor="let clasificacion of clasificaciones" [value]="clasificacion.value">
                                       {{clasificacion.viewValue}}
@@ -48,88 +55,94 @@
                               <h5 style="color: rgb(235, 30, 35);"><u>UBIGEO de Nacimiento</u></h5>
                                <div class="form-row">
                                 <div class="form-group col-md-4">
-                                  <label for="departamentoNacimiento">Departamento</label>
-                                  <select id="departamentoNacimiento" class="form-control" #pDepartamentoNacimiento>
-                                    <option selected>Seleccionar</option>
-                                    <option *ngFor="let departamento of ApiFullobjListarDepartamento.rpta" [value]="departamento.depaId">
-                                      {{departamento.nombreDepa}}
-                                    </option>
-                                  </select>
+                                  <mat-form-field appearance="fill">
+                                    <mat-label>Departamento</mat-label>
+                                    <mat-select  [value]="cbo_DepartamentoSelected" #pDepartamentoNacimiento [value]="objAPIRpta_objFichaRegistroFullInfo.rpta.ubigeoNacimientoDepartamentoId">
+                                      <mat-option *ngFor="let departamento of listDepartamentosNacimientoForFilter" [value]="departamento.depaId"  (onSelectionChange)="onChange_DepartamentoNacimientoSeleccionado(departamento.depaId)">
+                                        {{departamento.nombreDepa}}
+                                      </mat-option>
+                                    </mat-select>
+                                  </mat-form-field>
                                 </div>
                                 <div class="form-group col-md-4">
-                                  <label for="provinciaNacimiento">Provincia</label>
-                                  <select id="provinciaNacimiento" class="form-control" #pProvinciaNacimiento>
-                                    <option selected>Seleccionar</option>
-                                    <option *ngFor="let provincia of ApiFullobjListarProvincia.rpta" [value]="provincia.provId">
-                                      {{provincia.nombreProv}}
-                                    </option>
-                                  </select>
+                                  <mat-form-field appearance="fill">
+                                    <mat-label>Provincia</mat-label>
+                                    <mat-select [disabled]="CBOPrinvinciaNacimientoEstaDesactivado" [value]="cbo_ProvinciaSelected" #pProvinciaNacimiento [value]="objAPIRpta_objFichaRegistroFullInfo.rpta.ubigeoNacimientoProvinciaId">
+                                      <mat-option *ngFor="let provincia of listProvinciasNacimientoForFilter" [value]="provincia.provId" (onSelectionChange)="onChange_ProvinciaNacimientoSeleccionado(provincia.provId)">
+                                        {{provincia.nombreProv}}
+                                      </mat-option>
+                                    </mat-select>
+                                  </mat-form-field>
                                 </div>
                                 <div class="form-group col-md-4">
-                                  <label for="distritoNacimiento">Distrito</label>
-                                  <select id="distritoNacimiento" class="form-control" #pDistritoNacimiento>
-                                    <option selected>Seleccionar</option>
-                                    <option *ngFor="let distrito of ApiFullobjListarDistrito.rpta" [value]="distrito.distId">
-                                      {{distrito.nombreDist}}
-                                    </option>
-                                  </select>
+                                  <mat-form-field appearance="fill">
+                                    <mat-label>Distrito</mat-label>
+                                    <mat-select [disabled]="CBODistritoNacimientoEstaDesactivado" [value]="cbo_DistritoSelected" #pDistritoNacimiento [value]="objAPIRpta_objFichaRegistroFullInfo.rpta.ubigeoNacimientoDistritoId">
+                                      <mat-option *ngFor="let distrito of listDistritosNacimientoForFilter" [value]="distrito.distId">
+                                        {{distrito.nombreDist}}
+                                      </mat-option>
+                                    </mat-select>
+                                  </mat-form-field>
                                 </div>
                               </div><br>
                               <!------------------------------>
                               <h5 style="color: rgb(235, 30, 35);"><u>UBIGEO de Residencia</u></h5>
                               <div class="form-row">
                                  <div class="form-group col-md-4">
-                                   <label for="departamentoResidencia">Departamento</label>
-                                   <select id="departamentoNacimiento" class="form-control" #pDepartamentoResidencia>
-                                    <option selected>Seleccionar</option>
-                                    <option *ngFor="let departamento of ApiFullobjListarDepartamento.rpta" [value]="departamento.depaId">
-                                      {{departamento.nombreDepa}}
-                                    </option>
-                                  </select>
+                                  <mat-form-field appearance="fill">
+                                    <mat-label>Departamento</mat-label>
+                                    <mat-select  [value]="cbo_DepartamentoSelected" #pDepartamentoResidencia [value]="objAPIRpta_objFichaRegistroFullInfo.rpta.ubigeoResidenciaDepartamentoId">
+                                      <mat-option *ngFor="let departamento of listDepartamentosResidenciaForFilter" [value]="departamento.depaId"  (onSelectionChange)="onChange_DepartamentoResidenciaSeleccionado(departamento.depaId)">
+                                        {{departamento.nombreDepa}}
+                                      </mat-option>
+                                    </mat-select>
+                                  </mat-form-field>
                                  </div>
                                  <div class="form-group col-md-4">
-                                   <label for="provinciaResidencia">Provincia</label>
-                                   <select id="provinciaNacimiento" class="form-control" #pProvinciaResidencia>
-                                    <option selected>Seleccionar</option>
-                                    <option *ngFor="let provincia of ApiFullobjListarProvincia.rpta" [value]="provincia.provId">
-                                      {{provincia.nombreProv}}
-                                    </option>
-                                  </select>
+                                  <mat-form-field appearance="fill">
+                                    <mat-label>Provincia</mat-label>
+                                    <mat-select [disabled]="CBOPrinvinciaResidenciaEstaDesactivado" [value]="cbo_ProvinciaSelected" #pProvinciaResidencia [value]="objAPIRpta_objFichaRegistroFullInfo.rpta.ubigeoResidenciaProvinciaId">
+                                      <mat-option *ngFor="let provincia of listProvinciasResidenciaForFilter" [value]="provincia.provId" (onSelectionChange)="onChange_ProvinciaResidenciaSeleccionado(provincia.provId)">
+                                        {{provincia.nombreProv}}
+                                      </mat-option>
+                                    </mat-select>
+                                  </mat-form-field>
                                  </div>
                                  <div class="form-group col-md-4">
-                                   <label for="distritoResidencia">Distrito</label>
-                                   <select id="distritoNacimiento" class="form-control" #pDistritoResidencia>
-                                    <option selected>Seleccionar</option>
-                                    <option *ngFor="let distrito of ApiFullobjListarDistrito.rpta" [value]="distrito.distId">
-                                      {{distrito.nombreDist}}
-                                    </option>
-                                  </select>
+                                  <mat-form-field appearance="fill">
+                                    <mat-label>Distrito</mat-label>
+                                    <mat-select [disabled]="CBODistritoResidenciaEstaDesactivado" [value]="cbo_DistritoSelected" #pDistritoResidencia [value]="objAPIRpta_objFichaRegistroFullInfo.rpta.ubigeoResidenciaDistritoId">
+                                      <mat-option *ngFor="let distrito of listDistritosResidenciaForFilter" [value]="distrito.distId">
+                                        {{distrito.nombreDist}}
+                                      </mat-option>
+                                    </mat-select>
+                                  </mat-form-field>
                                  </div>
                               </div><br>
                               <!------------------------------>
                                <div class="form-row">
                                 <div class="form-group col-md-4">
                                   <label for="gestando">¿Está gestando?</label>
-                                  <select id="gestando" class="form-control"  #pGestante>
+                                  <select id="gestando" class="form-control" #pGestante [value]="objAPIRpta_objFichaRegistroFullInfo.rpta.estaGestando">
                                     <option selected>Seleccionar</option>
-                                    <option value="1">Si</option>
-                                    <option value="2">No</option>
+                                    <option value=true>Si</option>
+                                    <option value=false>No</option>
                                   </select>
                                 </div>
                                 <div class="form-group col-md-4">
                                   <label for="cantidadHijas">N° de hijas</label>
-                                  <input type="number" class="form-control" id="cantidadHijas" #pCantidadHijas >
+                                  <input type="number" class="form-control" id="cantidadHijas" #pCantidadHijas [value]="objAPIRpta_objFichaRegistroFullInfo.rpta.numeroHijas" >
                                 </div>
                                 <div class="form-group col-md-4">
                                   <label for="cantidadHijos">N° de hijos</label>
-                                  <input type="number" class="form-control" id="cantidadHijos" #pCantidadHijos>
+                                  <input type="number" class="form-control" id="cantidadHijos" #pCantidadHijos [value]="objAPIRpta_objFichaRegistroFullInfo.rpta.numeroHijos">
                                 </div>
                               </div><br>
                               <!------------------------------>
                               <div class="form-row">
                                 <div class="form-group col-md-6">
                                   <label for="origen">Por sus costumbres y antepasados, Usted se siente o considera:</label>
-                                  <select id="origen" class="form-control"  #pComoseConsidera>
+                                  <select id="origen" class="form-control"  #pComoseConsidera [value]="objAPIRpta_objFichaRegistroFullInfo.rpta.comoseConsideraId">
                                     <option selected>Seleccionar</option>
                                     <option value="1">Quechua</option>
                                     <option value="2">Aimara</option>
@@ -144,29 +157,29 @@
                                 </div>
                                 <div class="form-group col-md-6">
                                   <label for="lenguaMaterna">¿Cuál es la lengua materna con la que aprendió a hablar en su niñez?</label>
-                                  <input type="text" class="form-control" id="lenguaMaterna" #pLenguaMaterna>
+                                  <input type="text" class="form-control" id="lenguaMaterna" #pLenguaMaterna [value]="objAPIRpta_objFichaRegistroFullInfo.rpta.lenguaMaterno">
                                 </div>
                               </div><br>
                               <!------------------------------>
                               <div class="form-row">
                                 <div class="form-group col-md-6">
                                   <label for="presentaDiscapacidad">La usuaria presenta algún tipo de discapacidad:</label>
-                                  <select id="presentaDiscapacidad" class="form-control" #pDiscapacidad>
+                                  <select id="presentaDiscapacidad" class="form-control" #pDiscapacidad [value]="objAPIRpta_objFichaRegistroFullInfo.rpta.poseeDiscapacidad">
                                     <option selected>Seleccionar</option>
-                                    <option value="1">Si</option>
-                                    <option value="2">No</option>
+                                    <option value=true>Si</option>
+                                    <option value=false>No</option>
                                   </select>
                                 </div>
                                 <div class="form-group col-md-6">
                                   <label for="tipoDiscapacidad">Tipo de discapacidad:</label>
-                                  <input type="text" class="form-control" id="tipoDiscapacidad" #pTipoDiscapacidad>
+                                  <input type="text" class="form-control" id="tipoDiscapacidad" #pTipoDiscapacidad [value]="objAPIRpta_objFichaRegistroFullInfo.rpta.tipoDiscapacidadNombre">
                                 </div>
                               </div><br>
                               <!------------------------------>
                               <div class="form-row">
                                 <div class="form-group col-md-4">
                                   <label class="mt-5" for="nivelEducativo">Nivel educativo:</label>
-                                  <select id="nivelEducativo" class="form-control" #pNivelEducativo>
+                                  <select id="nivelEducativo" class="form-control" #pNivelEducativo [value]="objAPIRpta_objFichaRegistroFullInfo.rpta.nivelEducativoId">
                                     <option selected>Seleccionar</option>
                                     <option value="1">Sin nivel</option>
                                     <option value="2">Inicial</option>
@@ -184,20 +197,20 @@
                                 </div>
                                 <div class="form-group col-md-4">
                                   <label class="texto1" for="actualmenteEstudia">¿Usted actualmente estudia en una institución educativa (I.E.) / colegio, instituto superior, universidad u otro?</label>
-                                  <select id="actualmenteEstudia" class="form-control" #pActualmenteEstudia>
+                                  <select id="actualmenteEstudia" class="form-control" #pActualmenteEstudia [value]="objAPIRpta_objFichaRegistroFullInfo.rpta.actualmenteEstudia">
                                     <option selected>Seleccionar</option>
-                                    <option value="1">Si</option>
-                                    <option value="2">No</option>
+                                    <option value=true>Si</option>
+                                    <option value=false>No</option>
                                   </select>
                                 </div>
                                 <div class="form-group col-md-4">
                                   <label class="mt-5" for="lugarEstudio">¿En dónde estudia?</label>
-                                  <select id="lugarEstudio" class="form-control" #pDondeEstudia>
+                                  <select id="lugarEstudio" class="form-control" #pDondeEstudia [value]="objAPIRpta_objFichaRegistroFullInfo.rpta.nivelInstitucionEducativaId">
                                     <option selected>Seleccionar</option>
                                     <option value="1">I.E / Colegio</option>
                                     <option value="2">Instituto Superior</option>
-                                    <option value="1">Universidad</option>
-                                    <option value="2">Otro</option>
+                                    <option value="3">Universidad</option>
+                                    <option value="4">Otro</option>
                                   </select>
                                 </div>
                               </div><br>
@@ -205,14 +218,14 @@
                               <div class="form-row">
                                 <div class="form-group col-md-6">
                                   <label class="texto"  for="nombreInstitucion">Nombre de la institución educativa, colegio, instituto superior, universidad u otro:</label>
-                                  <input type="text" class="form-control" id="nombreInstitucion" #pNombreInstitucion>
+                                  <input type="text" class="form-control" id="nombreInstitucion" #pNombreInstitucion [value]="objAPIRpta_objFichaRegistroFullInfo.rpta.nombreInstitucionEducativa">
                                 </div>
                                 <div class="form-group col-md-6">
                                   <label for="tipoInstitucion">Tipo de Institución:</label>
-                                  <select id="tipoInstitucion" class="form-control" #pTipoInstitucion>
+                                  <select id="tipoInstitucion" class="form-control" #pTipoInstitucion [value]="objAPIRpta_objFichaRegistroFullInfo.rpta.tipoInstitucionEducativaId">
                                     <option selected>Seleccionar</option>
-                                    <option value="1">Publica</option>
-                                    <option value="2">Privada</option>
+                                    <option value=true>Publica</option>
+                                    <option value=false>Privada</option>
                                   </select>
                                 </div>
                               </div><br>
@@ -220,69 +233,74 @@
                               <h5 style="color: rgb(235, 30, 35);"><u>Lugar donde estudia</u></h5>
                                <div class="form-row">
                                 <div class="form-group col-md-4">
-                                  <label for="departamentoEstudio">Departamento</label>
-                                  <select id="departamentoNacimiento" class="form-control" #pDepartamentoLugarEstudio>
-                                    <option selected>Seleccionar</option>
-                                    <option *ngFor="let departamento of ApiFullobjListarDepartamento.rpta" [value]="departamento.depaId">
-                                      {{departamento.nombreDepa}}
-                                    </option>
-                                  </select>
+                                  <mat-form-field appearance="fill">
+                                    <mat-label>Departamento</mat-label>
+                                    <mat-select  [value]="cbo_DepartamentoSelected" #pDepartamentoLugarEstudio [value]="objAPIRpta_objFichaRegistroFullInfo.rpta.ubigeoLugarDondeEstudiaDepartamentoId">
+                                      <mat-option *ngFor="let departamento of listDepartamentosEstudioForFilter" [value]="departamento.depaId"  (onSelectionChange)="onChange_DepartamentoEstudioSeleccionado(departamento.depaId)">
+                                        {{departamento.nombreDepa}}
+                                      </mat-option>
+                                    </mat-select>
+                                  </mat-form-field>
                                 </div>
                                 <div class="form-group col-md-4">
-                                  <label for="provinciaEstudio">Provincia</label>
-                                  <select id="provinciaNacimiento" class="form-control" #pProvinciaLugarEstudio>
-                                    <option selected>Seleccionar</option>
-                                    <option *ngFor="let provincia of ApiFullobjListarProvincia.rpta" [value]="provincia.provId">
-                                      {{provincia.nombreProv}}
-                                    </option>
-                                  </select>
+                                  <mat-form-field appearance="fill">
+                                    <mat-label>Provincia</mat-label>
+                                    <mat-select [disabled]="CBOPrinvinciaEstudioEstaDesactivado" [value]="cbo_ProvinciaSelected" #pProvinciaLugarEstudio [value]="objAPIRpta_objFichaRegistroFullInfo.rpta.ubigeoLugarDondeEstudiaProvinciaId">
+                                      <mat-option *ngFor="let provincia of listProvinciasEstudioForFilter" [value]="provincia.provId" (onSelectionChange)="onChange_ProvinciaEstudioSeleccionado(provincia.provId)">
+                                        {{provincia.nombreProv}}
+                                      </mat-option>
+                                    </mat-select>
+                                  </mat-form-field>
                                 </div>
                                 <div class="form-group col-md-4">
-                                  <label for="distritoEstudio">Distrito</label>
-                                  <select id="distritoNacimiento" class="form-control" #pDistritoLugarEstudio>
-                                    <option selected>Seleccionar</option>
-                                    <option *ngFor="let distrito of ApiFullobjListarDistrito.rpta" [value]="distrito.distId">
-                                      {{distrito.nombreDist}}
-                                    </option>
-                                  </select>
+                                  <mat-form-field appearance="fill">
+                                    <mat-label>Distrito</mat-label>
+                                    <mat-select [disabled]="CBODistritoEstudioEstaDesactivado" [value]="cbo_DistritoSelected" #pDistritoLugarEstudio [value]="objAPIRpta_objFichaRegistroFullInfo.rpta.ubigeoLugarDondeEstudiaDistritoId">
+                                      <mat-option *ngFor="let distrito of listDistritosEstudioForFilter" [value]="distrito.distId">
+                                        {{distrito.nombreDist}}
+                                      </mat-option>
+                                    </mat-select>
+                                  </mat-form-field>
                                 </div>
                               </div><br>
                               <!------------------------------>
                               <div class="form-row">
                                 <div class="form-group col-md-6">
                                   <label for="ingresos">¿Usted cuenta con un trabajo remunerado u ocupación para generar ingresos propios?</label>
-                                  <select id="ingresos" class="form-control" #pIngresos>
+                                  <select id="ingresos" class="form-control" #pIngresos [value]="objAPIRpta_objFichaRegistroFullInfo.rpta.poseeIngresosEconomicosPropios">
                                     <option selected>Seleccionar</option>
-                                    <option value="1">Si</option>
-                                    <option value="2">No</option>
+                                    <option value=true>Si</option>
+                                    <option value=false>No</option>
                                   </select>
                                 </div>
                                 <div class="form-group col-md-6">
                                   <label class="mt-4" for="ocupacion">Ocupación:</label>
-                                  <input type="text" class="form-control" id="ocupacion" #pOcupacion>
+                                  <input type="text" class="form-control" id="ocupacion" #pOcupacion [value]="objAPIRpta_objFichaRegistroFullInfo.rpta.nombreOcupacionLaboralPropia">
                                 </div>
                               </div><br>
                               <!------------------------------>
                               <div class="form-row">
                                   <div class="form-group col-md-6">
                                     <label for="denunciaInterpuesta">¿Cuenta con denuncia interpuesta?</label>
-                                    <select id="denunciaInterpuesta" class="form-control" #pDenunciaInterpestua>
+                                    <select id="denunciaInterpuesta" class="form-control" #pDenunciaInterpestua [value]="objAPIRpta_objFichaRegistroFullInfo.rpta.cuentaConDenunciaInterpuesta">
                                       <option selected>Seleccionar</option>
-                                      <option value="1">Si</option>
-                                      <option value="2">No</option>
+                                      <option value=true>Si</option>
+                                      <option value=false>No</option>
                                     </select>
                                   </div>
                                   <div class="form-group col-md-6">
                                     <label for="denunciaContinua">¿ Continúa con la denuncia?</label>
-                                    <select id="denunciaContinua" class="form-control" #pContinuaDenuncia>
+                                    <select id="denunciaContinua" class="form-control" #pContinuaDenuncia [value]="objAPIRpta_objFichaRegistroFullInfo.rpta.continuaConDenunciaInterpuesta">
                                       <option selected>Seleccionar</option>
-                                      <option value="1">Si</option>
-                                      <option value="2">No</option>
+                                      <option value=true>Si</option>
+                                      <option value=false>No</option>
                                     </select>
                                   </div>
                               </div>
                               <!---------------------------------->
-                            <button type="submit" class="btn btn-primary">Registrar</button>
+                              <button  class="btn btn-primary" cdkFocusInitial (click)="EditarFichaRegistro(pNacionalidad.value , pEstadoCivil.value  ,pDepartamentoNacimiento.value , pProvinciaNacimiento.value ,pDistritoNacimiento.value ,
+                              pDepartamentoResidencia.value ,pProvinciaResidencia.value,pDistritoResidencia.value,pGestante.value,pCantidadHijas.value,pCantidadHijos.value,pComoseConsidera.value,pLenguaMaterna.value,pDiscapacidad.value,pTipoDiscapacidad.value,pNivelEducativo.value,pActualmenteEstudia.value,
+                              pDondeEstudia.value,pNombreInstitucion.value,pTipoInstitucion.value,pDepartamentoLugarEstudio.value,pProvinciaLugarEstudio.value,pDistritoLugarEstudio.value,pIngresos.value,pOcupacion.value,pDenunciaInterpestua.value,pContinuaDenuncia.value)">Guardar</button>
                         </div>
                       </div>
                     </div>
