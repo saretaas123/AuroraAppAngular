@@ -38,6 +38,10 @@ export class FichaRegistroComponent implements OnInit {
   cbo_DistritoSelected = null;
 //#endregion
 
+//#region FormDiscapacidad
+  formDiscapacidad_SeEstaOcultando = true;
+//#endregion
+
   public ApiFullobjPacienteFullInfo : any = {
     mnsj: '',
     rpta : {}
@@ -544,5 +548,16 @@ FiltrarResultados_Provincia_a_DistritoEstudio(idProvinciaSeleccionado : any)
   //#endregion
 
 
+  Cbo_TieneDiscapacidad_Change(valorCBO : any)
+  {
+    if(valorCBO==="1")
+    {
+      this.formDiscapacidad_SeEstaOcultando = false;
+    }
+    else
+    {
+      this.formDiscapacidad_SeEstaOcultando = true;
+    }
+  }
 
 }
