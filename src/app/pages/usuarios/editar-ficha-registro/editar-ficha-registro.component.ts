@@ -34,7 +34,15 @@ export class EditarFichaRegistroComponent implements OnInit {
 
 //#region FormDiscapacidad
   formDiscapacidad_SeEstaOcultando = true;
-  //#endregion
+//#endregion
+
+//#region OCULTAR LUGAR DE ESTUDIO SI NO TIENE
+formEstudio_SeEstaOcultando = true;
+//#endregion
+
+//#region OCULTAR SI TIENE DENUNCIA
+formDenuncia_SeEstaOcultando = true;
+//#endregion
 
 //#region ESTRUCTURA DE UBIGEO
   ApiFullobjListarDepartamento : any ={
@@ -160,7 +168,7 @@ export class EditarFichaRegistroComponent implements OnInit {
       this._FichaRegistroService.GetFichaRegistroByPacienteId(p_PacienteId)
       .subscribe( Rpta =>  {
         this.objAPIRpta_objFichaRegistroFullInfo = Rpta;
-        console.log(this.g_routeparam_PacienteId)
+        console.log(Rpta)
 
       });
   }
@@ -492,7 +500,7 @@ FiltrarResultados_Provincia_a_DistritoEstudio(idProvinciaSeleccionado : any)
 }
 //#endregion
 
-
+//#region FUNCION PARA EDITAR
 EditarFichaRegistro(
   pNacionalidad : string,
     pEstadoCivilId : string,
@@ -539,25 +547,25 @@ EditarFichaRegistro(
     pUbigeoResidenciaDepartamentoId ,
     pUbigeoResidenciaProvinciaId,
     pUbigeoResidenciaDistritoId,
-    pEstaGestando ==="1"?true:false,
+    pEstaGestando ==="true"?true:false,
     Number(pNumeroHijas),
     Number(pNumeroHijos),
     Number(pComoseConsideraId),
     pLenguaMaterno,
-    pPoseeDiscapacidad ==="1"?true:false,
+    pPoseeDiscapacidad ==="true"?true:false,
     pTipoDiscapacidad,
     Number(pNivelEducativoId),
-    pActualmenteEstudia ==="1"?true:false,
+    pActualmenteEstudia ==="true"?true:false,
     Number(pNivelInstitucionEducativaId),
     pNombreInstitucionEducativa,
-    pTipoInstitucionEducativaId ==="1"?true:false,
+    pTipoInstitucionEducativaId ==="true"?true:false,
     pUbigeoLugarDondeEstudiaDepartamentoId,
     pUbigeoLugarDondeEstudiaProvinciaId,
     pUbigeoLugarDondeEstudiaDistritoId,
-    pPoseeIngresosEconomicosPropios ==="1"?true:false,
+    pPoseeIngresosEconomicosPropios ==="true"?true:false,
     pNombreOcupacionLaboralPropia,
-    pCuentaConDenunciaInterpuesta  ==="1"?true:false,
-    pContinuaConDenunciaInterpuesta ==="1"?true:false
+    pCuentaConDenunciaInterpuesta  ==="true"?true:false,
+    pContinuaConDenunciaInterpuesta ==="true"?true:false
     )
     .subscribe(APIrpta => {
 
@@ -567,7 +575,7 @@ EditarFichaRegistro(
     if(RegistroExitoso)
     {
       Swal.fire(
-        'Registrado Correctamente',
+        'Editado Correctamente',
         ' ',
         'success'
       );
@@ -589,11 +597,14 @@ EditarFichaRegistro(
     }
   })
 }
+//#endregion
 
+
+//#region OCULTAR PREGUNTA DISCAPACIDAD
   Cbo_TieneDiscapacidad_Change(valorCBO : any)
   {
     console.log("valorCBO:",valorCBO);
-    if(valorCBO==="1")
+    if(valorCBO==="true")
     {
       this.formDiscapacidad_SeEstaOcultando = false;
     }
@@ -602,6 +613,38 @@ EditarFichaRegistro(
       this.formDiscapacidad_SeEstaOcultando = true;
     }
   }
+  //#endregion
+
+  //#region OCULTAR ESTUDIO
+  Cbo_Estudio_Change(valorCBO1 : any)
+  {
+    console.log("valorCBO:",valorCBO1);
+    if(valorCBO1==="true")
+    {
+      this.formEstudio_SeEstaOcultando = false;
+    }
+    else
+    {
+      this.formEstudio_SeEstaOcultando = true;
+    }
+  }
+  //#endregion
+
+   //#region OCULTAR DENUNCIA
+   Cbo_Denuncia_Change(valorCBO2 : any)
+   {
+     console.log("valorCBO:",valorCBO2);
+     if(valorCBO2==="true")
+     {
+       this.formDenuncia_SeEstaOcultando = false;
+     }
+     else
+     {
+       this.formDenuncia_SeEstaOcultando = true;
+     }
+   }
+   //#endregion
+
 
 
 }
