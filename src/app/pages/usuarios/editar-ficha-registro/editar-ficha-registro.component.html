@@ -166,8 +166,8 @@
                                   <label for="presentaDiscapacidad">La usuaria presenta algún tipo de discapacidad:</label>
                                   <select id="presentaDiscapacidad" class="form-control" #pDiscapacidad [value]="objAPIRpta_objFichaRegistroFullInfo.rpta.poseeDiscapacidad" (change)="Cbo_TieneDiscapacidad_Change(pDiscapacidad.value)">
                                     <option selected>Seleccionar</option>
-                                    <option value="1">Si</option>
-                                    <option value="0">No</option>
+                                    <option value=true>Si</option>
+                                    <option value=false>No</option>
                                   </select>
                                 </div>
                                 <div class="form-group col-md-6" [hidden]="formDiscapacidad_SeEstaOcultando">
@@ -195,15 +195,15 @@
                                     <option value="10">Maestría / Doctorado</option>
                                   </select>
                                 </div>
-                                <div class="form-group col-md-4">
+                                <div class="form-group col-md-4" >
                                   <label class="texto1" for="actualmenteEstudia">¿Usted actualmente estudia en una institución educativa (I.E.) / colegio, instituto superior, universidad u otro?</label>
-                                  <select id="actualmenteEstudia" class="form-control" #pActualmenteEstudia [value]="objAPIRpta_objFichaRegistroFullInfo.rpta.actualmenteEstudia">
+                                  <select id="actualmenteEstudia" class="form-control" #pActualmenteEstudia [value]="objAPIRpta_objFichaRegistroFullInfo.rpta.actualmenteEstudia" (change)="Cbo_Estudio_Change(pActualmenteEstudia.value)">
                                     <option selected>Seleccionar</option>
                                     <option value=true>Si</option>
                                     <option value=false>No</option>
                                   </select>
                                 </div>
-                                <div class="form-group col-md-4">
+                                <div class="form-group col-md-4" [hidden]="formEstudio_SeEstaOcultando">
                                   <label class="mt-5" for="lugarEstudio">¿En dónde estudia?</label>
                                   <select id="lugarEstudio" class="form-control" #pDondeEstudia [value]="objAPIRpta_objFichaRegistroFullInfo.rpta.nivelInstitucionEducativaId">
                                     <option selected>Seleccionar</option>
@@ -216,11 +216,11 @@
                               </div><br>
                               <!------------------------------>
                               <div class="form-row">
-                                <div class="form-group col-md-6">
+                                <div class="form-group col-md-6" [hidden]="formEstudio_SeEstaOcultando">
                                   <label class="texto"  for="nombreInstitucion">Nombre de la institución educativa, colegio, instituto superior, universidad u otro:</label>
                                   <input type="text" class="form-control" id="nombreInstitucion" #pNombreInstitucion [value]="objAPIRpta_objFichaRegistroFullInfo.rpta.nombreInstitucionEducativa">
                                 </div>
-                                <div class="form-group col-md-6">
+                                <div class="form-group col-md-6" [hidden]="formEstudio_SeEstaOcultando">
                                   <label for="tipoInstitucion">Tipo de Institución:</label>
                                   <select id="tipoInstitucion" class="form-control" #pTipoInstitucion [value]="objAPIRpta_objFichaRegistroFullInfo.rpta.tipoInstitucionEducativaId">
                                     <option selected>Seleccionar</option>
@@ -232,7 +232,7 @@
                               <!------------------------------>
                               <h5 style="color: rgb(235, 30, 35);"><u>Lugar donde estudia</u></h5>
                                <div class="form-row">
-                                <div class="form-group col-md-4">
+                                <div class="form-group col-md-4" [hidden]="formEstudio_SeEstaOcultando">
                                   <mat-form-field appearance="fill">
                                     <mat-label>Departamento</mat-label>
                                     <mat-select  [value]="cbo_DepartamentoSelected" #pDepartamentoLugarEstudio [value]="objAPIRpta_objFichaRegistroFullInfo.rpta.ubigeoLugarDondeEstudiaDepartamentoId">
@@ -242,7 +242,7 @@
                                     </mat-select>
                                   </mat-form-field>
                                 </div>
-                                <div class="form-group col-md-4">
+                                <div class="form-group col-md-4" [hidden]="formEstudio_SeEstaOcultando">
                                   <mat-form-field appearance="fill">
                                     <mat-label>Provincia</mat-label>
                                     <mat-select [disabled]="CBOPrinvinciaEstudioEstaDesactivado" [value]="cbo_ProvinciaSelected" #pProvinciaLugarEstudio [value]="objAPIRpta_objFichaRegistroFullInfo.rpta.ubigeoLugarDondeEstudiaProvinciaId">
@@ -252,7 +252,7 @@
                                     </mat-select>
                                   </mat-form-field>
                                 </div>
-                                <div class="form-group col-md-4">
+                                <div class="form-group col-md-4" [hidden]="formEstudio_SeEstaOcultando">
                                   <mat-form-field appearance="fill">
                                     <mat-label>Distrito</mat-label>
                                     <mat-select [disabled]="CBODistritoEstudioEstaDesactivado" [value]="cbo_DistritoSelected" #pDistritoLugarEstudio [value]="objAPIRpta_objFichaRegistroFullInfo.rpta.ubigeoLugarDondeEstudiaDistritoId">
@@ -282,18 +282,18 @@
                               <div class="form-row">
                                   <div class="form-group col-md-6">
                                     <label for="denunciaInterpuesta">¿Cuenta con denuncia interpuesta?</label>
-                                    <select id="denunciaInterpuesta" class="form-control" #pDenunciaInterpestua [value]="objAPIRpta_objFichaRegistroFullInfo.rpta.cuentaConDenunciaInterpuesta">
+                                    <select id="denunciaInterpuesta" class="form-control" #pDenunciaInterpestua [value]="objAPIRpta_objFichaRegistroFullInfo.rpta.cuentaConDenunciaInterpuesta" (change)="Cbo_Denuncia_Change(pDenunciaInterpestua.value)">
                                       <option selected>Seleccionar</option>
                                       <option value=true>Si</option>
                                       <option value=false>No</option>
                                     </select>
                                   </div>
-                                  <div class="form-group col-md-6">
+                                  <div class="form-group col-md-6" [hidden]="formDenuncia_SeEstaOcultando">
                                     <label for="denunciaContinua">¿ Continúa con la denuncia?</label>
                                     <select id="denunciaContinua" class="form-control" #pContinuaDenuncia [value]="objAPIRpta_objFichaRegistroFullInfo.rpta.continuaConDenunciaInterpuesta">
                                       <option selected>Seleccionar</option>
-                                      <option value="1">Si</option>
-                                      <option value="0">No</option>
+                                      <option value=true>Si</option>
+                                      <option value=false>No</option>
                                     </select>
                                   </div>
                               </div>

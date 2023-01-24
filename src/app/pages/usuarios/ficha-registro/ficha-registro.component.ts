@@ -42,6 +42,15 @@ export class FichaRegistroComponent implements OnInit {
   formDiscapacidad_SeEstaOcultando = true;
 //#endregion
 
+//#region OCULTAR LUGAR DE ESTUDIO SI NO TIENE
+formEstudio_SeEstaOcultando = true;
+//#endregion
+
+//#region OCULTAR SI TIENE DENUNCIA
+formDenuncia_SeEstaOcultando = true;
+//#endregion
+
+
   public ApiFullobjPacienteFullInfo : any = {
     mnsj: '',
     rpta : {}
@@ -559,5 +568,35 @@ FiltrarResultados_Provincia_a_DistritoEstudio(idProvinciaSeleccionado : any)
       this.formDiscapacidad_SeEstaOcultando = true;
     }
   }
+
+    //#region OCULTAR ESTUDIO
+    Cbo_Estudio_Change(valorCBO1 : any)
+    {
+      console.log("valorCBO:",valorCBO1);
+      if(valorCBO1==="1")
+      {
+        this.formEstudio_SeEstaOcultando = false;
+      }
+      else
+      {
+        this.formEstudio_SeEstaOcultando = true;
+      }
+    }
+    //#endregion
+
+     //#region OCULTAR DENUNCIA
+     Cbo_Denuncia_Change(valorCBO2 : any)
+     {
+       console.log("valorCBO:",valorCBO2);
+       if(valorCBO2==="1")
+       {
+         this.formDenuncia_SeEstaOcultando = false;
+       }
+       else
+       {
+         this.formDenuncia_SeEstaOcultando = true;
+       }
+     }
+     //#endregion
 
 }

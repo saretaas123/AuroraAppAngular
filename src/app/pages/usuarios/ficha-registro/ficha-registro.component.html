@@ -195,13 +195,13 @@
                                 </div>
                                 <div class="form-group col-md-4">
                                   <label class="texto1" for="actualmenteEstudia">¿Usted actualmente estudia en una institución educativa (I.E.) / colegio, instituto superior, universidad u otro?</label>
-                                  <select id="actualmenteEstudia" class="form-control" #pActualmenteEstudia>
+                                  <select id="actualmenteEstudia" class="form-control" #pActualmenteEstudia (change)="Cbo_Estudio_Change(pActualmenteEstudia.value)">
                                     <option selected>Seleccionar</option>
                                     <option value="1">Si</option>
                                     <option value="0">No</option>
                                   </select>
                                 </div>
-                                <div class="form-group col-md-4">
+                                <div class="form-group col-md-4" [hidden]="formEstudio_SeEstaOcultando">
                                   <label class="mt-5" for="lugarEstudio">¿En dónde estudia?</label>
                                   <select id="lugarEstudio" class="form-control" #pDondeEstudia>
                                     <option selected>Seleccionar</option>
@@ -214,11 +214,11 @@
                               </div><br>
                               <!------------------------------>
                               <div class="form-row">
-                                <div class="form-group col-md-6">
+                                <div class="form-group col-md-6" [hidden]="formEstudio_SeEstaOcultando">
                                   <label class="texto"  for="nombreInstitucion">Nombre de la institución educativa, colegio, instituto superior, universidad u otro:</label>
                                   <input type="text" class="form-control" id="nombreInstitucion" #pNombreInstitucion>
                                 </div>
-                                <div class="form-group col-md-6">
+                                <div class="form-group col-md-6" [hidden]="formEstudio_SeEstaOcultando">
                                   <label for="tipoInstitucion">Tipo de Institución:</label>
                                   <select id="tipoInstitucion" class="form-control" #pTipoInstitucion>
                                     <option selected>Seleccionar</option>
@@ -228,8 +228,8 @@
                                 </div>
                               </div><br>
                               <!------------------------------>
-                              <h5 style="color: rgb(235, 30, 35);"><u>Lugar donde Estudia</u></h5>
-                               <div class="form-row">
+                              <h5 [hidden]="formEstudio_SeEstaOcultando" style="color: rgb(235, 30, 35);"><u>Lugar donde Estudia</u></h5>
+                               <div class="form-row" [hidden]="formEstudio_SeEstaOcultando">
                                 <div class="form-group col-md-4">
                                   <mat-form-field appearance="fill">
                                     <mat-label>Departamento</mat-label>
@@ -280,13 +280,13 @@
                               <div class="form-row">
                                   <div class="form-group col-md-6">
                                     <label for="denunciaInterpuesta">¿Cuenta con denuncia interpuesta?</label>
-                                    <select id="denunciaInterpuesta" class="form-control" #pDenunciaInterpestua>
+                                    <select id="denunciaInterpuesta" class="form-control" #pDenunciaInterpestua (change)="Cbo_Denuncia_Change(pDenunciaInterpestua.value)">
                                       <option selected>Seleccionar</option>
                                       <option value="1">Si</option>
                                       <option value="0">No</option>
                                     </select>
                                   </div>
-                                  <div class="form-group col-md-6">
+                                  <div class="form-group col-md-6" [hidden]="formDenuncia_SeEstaOcultando">
                                     <label for="denunciaContinua">¿ Continúa con la denuncia?</label>
                                     <select id="denunciaContinua" class="form-control" #pContinuaDenuncia>
                                       <option selected>Seleccionar</option>
