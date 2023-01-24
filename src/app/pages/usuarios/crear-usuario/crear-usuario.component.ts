@@ -289,6 +289,30 @@ listDistritosForFilter :
     })
   }
 
+  //#region Validaciones
 
+  formvalidation_string_EsNecesario_Activado = false;
+  formvalidation_string_EsNecesario(strValue : string, EsNecesario : boolean)
+  {
+    if(EsNecesario)
+    {
+      if(strValue.length > 0)
+        this.formvalidation_string_EsNecesario_Activado = true;
 
+      if(strValue.length === 0 && this.formvalidation_string_EsNecesario_Activado ===true)
+       return true;
+    }
+
+    return false;
+  }
+
+  formvalidation_string_TamanoMax(strValue : string, tamañoMaximo : number)
+  {
+    if(strValue.length > tamañoMaximo)
+      return true;
+
+    return false;
+  }
+
+  //#endregion
 }

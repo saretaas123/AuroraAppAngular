@@ -8,11 +8,12 @@
 <div class="container">
   <div class="row">
     <div class="col-sm">
-      <mat-form-field appearance="fill">
+      <mat-form-field appearance="fill" class="mb-0">
           <mat-label>Nombre</mat-label>
           <input matInput type="text" #pNombres >
-          <!--<mat-error *ngIf="myError('myName', 'required')">Name is required</mat-error>-->
       </mat-form-field>
+      <mat-error class="mt-0" *ngIf="formvalidation_string_EsNecesario(pNombres.value, true)">Nombre es requerido</mat-error>
+      <mat-error class="mt-0" *ngIf="formvalidation_string_TamanoMax(pNombres.value, 31)">Tamaño Excedido (Max. 31)</mat-error>
     </div>
     <div class="col-sm">
       <mat-form-field appearance="fill">
