@@ -55,6 +55,14 @@ export class ReportesComponent implements OnInit {
   }
   //FIN CREACION DE PDF
 
+  form_array_ListDepartamento : Array<any> = [
+    {
+      DistritoId:0,
+      RutaNombre : "",
+      DistritoNombre:""
+    }
+  ];
+
   g_FromUser_PsicologoId: number = 1;
 
   private ApiFullobjPsicologoFullInfo : any = {
@@ -119,6 +127,8 @@ export class ReportesComponent implements OnInit {
     private _UbigeoService:UbigeoService) { }
 
   ngOnInit(): void {
+    this.form_array_ListDepartamento = [];
+
     this.ObtenerPsicologoInfo();
     this.ObtenerDepartamentos();
     this.ObtenerProvincia();
@@ -227,6 +237,56 @@ export class ReportesComponent implements OnInit {
       //Sirve para corregir la seleccion ciclica > NO ELIMINAR
       this.Provincia_isChanged = 0;
     }
+  }
+
+  temp_array_ListDepartamento : Array<any> = [];
+  onChange_DistritoSeleccionado(DistritoIdSeleccionado : any, DistritoNombreSeleccionado : any){
+
+    let distritoSelected = this.listDistritosForFilter.filter(
+      (x:
+        {
+          distId: 0,
+          nombreDist: "",
+          provId: 0
+        }) => x.distId === DistritoIdSeleccionado)[0];
+
+    let provinciaSelected = this.listProvinciasForFilter.filter(
+      (x:
+        {
+          provId: 0,
+          nombreProv: "",
+          depaId: 0
+        }) => x.provId === distritoSelected.provId)[0];
+
+    let departamentoSelected = this.listDepartamentosForFilter.filter(
+      (x:
+        {
+          depaId: 0,
+          nombreDepa: ""
+        }) => x.depaId === provinciaSelected.depaId)[0];
+
+
+    this.temp_array_ListDepartamento = this.form_array_ListDepartamento;
+    if(this.temp_array_ListDepartamento.filter(x => x.DistritoId === DistritoIdSeleccionado).length <= 0)
+    {
+      this.temp_array_ListDepartamento.push(
+        {
+          DistritoId: DistritoIdSeleccionado,
+          RutaNombre: departamentoSelected.nombreDepa+"/"+provinciaSelected.nombreProv+"/",
+          DistritoNombre: distritoSelected.nombreDist
+        }
+      );
+      this.form_array_ListDepartamento = this.temp_array_ListDepartamento;
+    }
+  }
+
+  OnClick_QuitarElementoListToFiltro(DistritoId : any)
+  {
+    this.temp_array_ListDepartamento = this.form_array_ListDepartamento;
+
+    this.temp_array_ListDepartamento = this.temp_array_ListDepartamento.filter(x => x.DistritoId != DistritoId);
+
+    this.form_array_ListDepartamento = this.temp_array_ListDepartamento;
   }
 
   FiltrarResultados_Departamento_a_Provincia(idDepartamentoSeleccionado : any)

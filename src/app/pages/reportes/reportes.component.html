@@ -53,6 +53,11 @@
         <div class="container">
           <div class="row">
             <div class="col-sm">
+              <button *ngFor="let itemDepartamentoSelected of form_array_ListDepartamento;" (click)="OnClick_QuitarElementoListToFiltro(itemDepartamentoSelected.DistritoId)" class="btn btn-primary m-1 bg-transparent text-primary"><span class="text-primary"><b>Distrito:</b></span><span class="text-muted">{{itemDepartamentoSelected.RutaNombre}}</span><span>{{itemDepartamentoSelected.DistritoNombre}}</span></button>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm">
               <mat-form-field appearance="fill">
                 <mat-label>Departamento</mat-label>
                 <mat-select [value]="cbo_DepartamentoSelected">
@@ -76,12 +81,16 @@
               <mat-form-field appearance="fill">
                 <mat-label>Distrito</mat-label>
                 <mat-select [disabled]="CBODistritoEstaDesactivado" [value]="cbo_DistritoSelected">
-                  <mat-option *ngFor="let distrito of listDistritosForFilter" [value]="distrito.distId">
+                  <mat-option *ngFor="let distrito of listDistritosForFilter" [value]="distrito.distId" (onSelectionChange)="onChange_DistritoSeleccionado(distrito.distId,distrito.nombreDist)">
                     {{distrito.nombreDist}}
                   </mat-option>
                 </mat-select>
               </mat-form-field>
             </div>
+            <div class="col-sm"></div>
+            <div class="col-sm"></div>
+          </div>
+          <div class="row">
             <div class="col-sm">
               <mat-form-field appearance="fill">
                 <mat-label>Tipo de violencia</mat-label>
@@ -103,7 +112,6 @@
                 </mat-select>
               </mat-form-field>
             </div>
-
           </div>
         </div>
         <div class="container">
