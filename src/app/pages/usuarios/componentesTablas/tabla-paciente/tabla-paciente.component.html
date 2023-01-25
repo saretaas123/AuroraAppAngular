@@ -116,7 +116,7 @@
                       <td mat-cell *matCellDef="let element" class="text-center">
                         <div *ngIf="element.poseeFichaRegistro === 0 ; then thenBlock else elseBlock"></div>
                         <ng-template #thenBlock>
-                          <a routerLink="/dashboard/{{g_TablaPacienteComponent_PsicologoId}}/agregar-ficha-registro/{{element.casoPacienteId}}" class="pointer" style="color: #00aa0e;" matTooltip="Ficha de registro">
+                          <a routerLink="/dashboard/{{g_TablaPacienteComponent_PsicologoId}}/agregar-ficha-registro/{{element.casoPacienteId}}" class="pointer" style="color: #00aa0e;" matTooltip=" Ficha de registro">
                             <mat-icon>account_box</mat-icon>
                           </a>
                         </ng-template>

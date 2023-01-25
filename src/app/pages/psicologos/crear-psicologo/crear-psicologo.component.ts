@@ -216,9 +216,21 @@ listDistritosForFilter :
     pDni : string,pCorreo : string,pCargo:number,pUbigeo:string,)
   {
 
+
+    this.html_formAgregarPsicologo_Validaciones_Esvalido(pNombres, pApellidoPaterno,pApellidoMaterno,pDni,pCorreo,pCargo,pUbigeo);
+    if(this.AgregarPsicologo_Validacion_EsValido === false)
+    {
+      Swal.fire(
+        'Datos incompletos',
+        'Complete porfavor los datos requeridos',
+        'error'
+      );
+      return;
+    }
+
     this._PsicologoService.PostAgregarPsicologos(
       pNombres, pApellidoPaterno, pApellidoMaterno,
-      pDni , pCorreo,pCargo,pUbigeo
+      pDni , pCorreo,pCargo,Number(pUbigeo)
       )
       .subscribe(APIrpta => {
         var RegistroExitoso = this.ApiFullobjPsicologoFullInfo.rpta;
@@ -313,4 +325,56 @@ listDistritosForFilter :
 
   //#endregion
 
+  //#region VALIDACIONES 2
+AgregarPsicologo_Validacion_EsValido = false;
+html_formAgregarPsicologo_Validaciones_Esvalido(v_Nombre : any,v_Apellido : any, v_ApellidoMaterno : any,v_Dni : any,
+  v_Correo : any,v_Cargo : any,v_Ubigeo : any)
+{
+
+  if(v_Nombre === null || v_Nombre === "")
+  {
+    this.AgregarPsicologo_Validacion_EsValido =  false;
+    return;
+  }
+
+  if(v_Apellido === null || v_Apellido === "")
+  {
+    this.AgregarPsicologo_Validacion_EsValido =  false;
+    return;
+  }
+
+  if(v_ApellidoMaterno === null || v_ApellidoMaterno === "")
+  {
+    this.AgregarPsicologo_Validacion_EsValido =  false;
+    return;
+  }
+
+  if(v_Dni === null || v_Dni === "")
+  {
+    this.AgregarPsicologo_Validacion_EsValido =  false;
+    return;
+  }
+
+  if(v_Correo === null || v_Correo === "")
+  {
+    this.AgregarPsicologo_Validacion_EsValido =  false;
+    return;
+  }
+
+  if(v_Cargo===null)
+  {
+    this.AgregarPsicologo_Validacion_EsValido =  false;
+    return;
+  }
+
+  if(v_Ubigeo===null)
+  {
+    this.AgregarPsicologo_Validacion_EsValido =  false;
+    return;
+  }
+
+  this.AgregarPsicologo_Validacion_EsValido = true;
+}
+
+//#endregion
 }

@@ -31,7 +31,7 @@ export class PsicologoService {
     }
 
     PostAgregarPsicologos(p_Nombres:string, p_ApellidoPaterno:string, p_ApellidoMaterno:string,
-      p_Dni:string, p_Correo:string,p_Cargo:number,p_Ubigeo:string
+      p_Dni:string, p_Correo:string,p_Cargo:number,p_Ubigeo:number
       )
     {
         let headers = new HttpHeaders().set('Type-content','aplication/json')
@@ -48,12 +48,12 @@ export class PsicologoService {
     }
 
     PostEditarPsicologos(p_id:number,p_Nombres:string, p_ApellidoPaterno:string, p_ApellidoMaterno:string,
-      p_Dni:string, p_Correo:string,p_Cargo:number,p_Ubigeo:string
+      p_Dni:string, p_Correo:string,p_Cargo:number,p_Ubigeo:Number
       )
     {
         let headers = new HttpHeaders().set('Type-content','aplication/json')
 
-        return this.http.post(this._url + 'EditarPsicologo' , {
+        return this.http.put(this._url + 'EditarPsicologo' , {
           "id": p_id,
           "nombres": p_Nombres,
           "apellidoPaterno": p_ApellidoPaterno,

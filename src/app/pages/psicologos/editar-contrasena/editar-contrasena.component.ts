@@ -12,6 +12,10 @@ import Swal from 'sweetalert2';
 export class EditarContrasenaComponent implements OnInit {
   g_PsicologoId : any;
 
+  public ApiEditarRespuestaModel : any = {
+    mnsj: '',
+    rpta : {}
+  };
 
   public ApiFullobjPsicologoInfo : any = {
     mnsj: "",
@@ -74,18 +78,50 @@ export class EditarContrasenaComponent implements OnInit {
       });
   }
 
-  EditarContrasena()
+  EditarContrasena(pContrasena : string)
   {
 
-    Swal.fire(
-      'Registrado Correctamente',
-      ' ',
-      'success'
-    )
+    var RegistroExitoso = false;
+    this.p_modal_InfoPsicologo = this.vc_InfoPsicologo;
+    var pPsicologoId = this.p_modal_InfoPsicologo.PsicologoId;
 
-    this._PsicologoService.filter("AddPsicologo");
-    this.dialog.closeAll();
+    this._Usuario.PostEditarContrasena(
+      Number(pPsicologoId),pContrasena
+      )
+      .subscribe(APIrpta => {
 
+      this.ApiEditarRespuestaModel = APIrpta;
+      RegistroExitoso = this.ApiEditarRespuestaModel.rpta;
+
+      if(RegistroExitoso)
+      {
+        Swal.fire(
+          'Registrado Correctamente',
+          ' ',
+          'success'
+        );
+        //alert('Registrado Correctamente');
+
+        //Aca se actualize la pagina
+        this._Usuario.filter("EditContrasena");
+        this.dialog.closeAll();
+
+      }
+      else{
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'No se pudo registrar',
+
+        })
+        //alert('No se pudo registrar');
+      }
+    })
   }
+
+
+
+
+
 
 }

@@ -487,6 +487,22 @@ FiltrarResultados_Provincia_a_DistritoEstudio(idProvinciaSeleccionado : any)
     pCuentaConDenunciaInterpuesta :string,
     pContinuaConDenunciaInterpuesta : string )
   {
+
+
+    this.html_formAgregarFichaRegistro_Validaciones_Esvalido(pNacionalidad, pEstadoCivilId,pUbigeoNacimientoDepartamentoId,pUbigeoNacimientoProvinciaId,pUbigeoNacimientoDistritoId,
+      pUbigeoResidenciaDepartamentoId,pUbigeoResidenciaProvinciaId,pUbigeoResidenciaDistritoId,pEstaGestando,pNumeroHijas,pNumeroHijos,pComoseConsideraId,pLenguaMaterno,pPoseeDiscapacidad,
+      pNivelEducativoId,pActualmenteEstudia,pPoseeIngresosEconomicosPropios,pNombreOcupacionLaboralPropia,pCuentaConDenunciaInterpuesta);
+    if(this.AgregarFichaRegistro_Validacion_EsValido === false)
+    {
+      Swal.fire(
+        'Datos incompletos',
+        'Complete porfavor los datos requeridos',
+        'error'
+      );
+      return;
+    }
+
+
     var RegistroExitoso = false;
     var pPacienteId = this.g_routeparam_PacienteId;
 
@@ -599,4 +615,131 @@ FiltrarResultados_Provincia_a_DistritoEstudio(idProvinciaSeleccionado : any)
      }
      //#endregion
 
+     //#region VALIDACIONES
+
+     AgregarFichaRegistro_Validacion_EsValido = false;
+  html_formAgregarFichaRegistro_Validaciones_Esvalido(v_Nacionalidad : any, v_EstadoCivilId : any,v_UbigeoNacimientoDepartamentoId : any,v_UbigeoNacimientoProvinciaId : any,v_UbigeoNacimientoDistritoId : any,
+    v_UbigeoResidenciaDepartamentoId : any,v_UbigeoResidenciaProvinciaId : any,v_UbigeoResidenciaDistritoId : any,v_EstaGestando : any,v_NumeroHijas : any,v_NumeroHijos : any,v_ComoseConsideraId : any,
+    v_LenguaMaterno : any,v_PoseeDiscapacidad : any,
+    v_NivelEducativoId : any,v_ActualmenteEstudia : any,v_PoseeIngresosEconomicosPropios : any,v_NombreOcupacionLaboralPropia : any,v_CuentaConDenunciaInterpuesta : any)
+  {
+
+    if(v_Nacionalidad===null)
+    {
+      this.AgregarFichaRegistro_Validacion_EsValido =  false;
+      return;
+    }
+
+    if(v_EstadoCivilId===null)
+    {
+      this.AgregarFichaRegistro_Validacion_EsValido =  false;
+      return;
+    }
+
+    if(v_UbigeoNacimientoDepartamentoId===null)
+    {
+      this.AgregarFichaRegistro_Validacion_EsValido =  false;
+      return;
+    }
+
+    if(v_UbigeoNacimientoProvinciaId===null)
+    {
+      this.AgregarFichaRegistro_Validacion_EsValido =  false;
+      return;
+    }
+
+    if(v_UbigeoNacimientoDistritoId===null)
+    {
+      this.AgregarFichaRegistro_Validacion_EsValido =  false;
+      return;
+    }
+
+    if(v_UbigeoResidenciaDepartamentoId===null)
+    {
+      this.AgregarFichaRegistro_Validacion_EsValido =  false;
+      return;
+    }
+
+    if(v_UbigeoResidenciaProvinciaId===null)
+    {
+      this.AgregarFichaRegistro_Validacion_EsValido =  false;
+      return;
+    }
+
+    if(v_UbigeoResidenciaDistritoId===null)
+    {
+      this.AgregarFichaRegistro_Validacion_EsValido =  false;
+      return;
+    }
+
+    if(v_EstaGestando===null)
+    {
+      this.AgregarFichaRegistro_Validacion_EsValido =  false;
+      return;
+    }
+
+    if(v_NumeroHijas === null || v_NumeroHijas === "")
+    {
+      this.AgregarFichaRegistro_Validacion_EsValido =  false;
+      return;
+    }
+
+    if(v_NumeroHijos === null || v_NumeroHijos === "")
+    {
+      this.AgregarFichaRegistro_Validacion_EsValido =  false;
+      return;
+    }
+
+    if(v_ComoseConsideraId===null)
+    {
+      this.AgregarFichaRegistro_Validacion_EsValido =  false;
+      return;
+    }
+
+    if(v_LenguaMaterno === null || v_LenguaMaterno === "")
+    {
+      this.AgregarFichaRegistro_Validacion_EsValido =  false;
+      return;
+    }
+
+    if(v_PoseeDiscapacidad===null)
+    {
+      this.AgregarFichaRegistro_Validacion_EsValido =  false;
+      return;
+    }
+
+    if(v_NivelEducativoId===null)
+    {
+      this.AgregarFichaRegistro_Validacion_EsValido =  false;
+      return;
+    }
+
+    if(v_ActualmenteEstudia===null)
+    {
+      this.AgregarFichaRegistro_Validacion_EsValido =  false;
+      return;
+    }
+
+    if(v_PoseeIngresosEconomicosPropios===null)
+    {
+      this.AgregarFichaRegistro_Validacion_EsValido =  false;
+      return;
+    }
+
+    if(v_NombreOcupacionLaboralPropia === null || v_NombreOcupacionLaboralPropia === "")
+    {
+      this.AgregarFichaRegistro_Validacion_EsValido =  false;
+      return;
+    }
+
+    if(v_CuentaConDenunciaInterpuesta===null)
+    {
+      this.AgregarFichaRegistro_Validacion_EsValido =  false;
+      return;
+    }
+
+    this.AgregarFichaRegistro_Validacion_EsValido = true;
+  }
+
+     //#endregion
 }

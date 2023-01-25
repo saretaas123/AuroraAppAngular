@@ -10,12 +10,6 @@ import { PsicologoService } from 'src/app/services/auroraapi/psicologo.service';
 import { Router } from '@angular/router';
 
 const listUsuarios: Psicologo[] = [
-  {dni:85632542,nombre: 'Jordan', apellidos: 'Peterson Bernt', zona:'Cercado de lima'},
-  {dni:85632542,nombre: 'Melisa', apellidos: 'Peterson Bernt', zona:'Cercado de lima'},
-  {dni:85632542,nombre: 'Julia', apellidos: 'Peterson Bernt', zona:'Cercado de lima'},
-  {dni:85632542,nombre: 'Carla', apellidos: 'Peterson Bernt', zona:'Cercado de lima'},
-
-
 ];
 
 @Component({
@@ -28,7 +22,7 @@ export class TablaListaPsicologoComponent implements OnInit, OnChanges {
   public ApiRptaFullTablaPsicologos : any = {
     mnsj: '',
     rpta : [{
-      id: "0",
+      /*id: "0",
       nombres: "",
       apellidoPaterno: "",
       apellidoMaterno: "",
@@ -37,7 +31,17 @@ export class TablaListaPsicologoComponent implements OnInit, OnChanges {
       correo: "",
       numeroDeColegiaturaDelPeru: "",
       especialidad: "",
-      usuarioId: "0"
+      usuarioId: "0",*/
+      psicologoId: 0,
+      nombres: "",
+      apellidoPaterno: "",
+      apellidoMaterno: "",
+      dni: "",
+      correo: "",
+      cargoId: 0,
+      ubigeoId: 0,
+      usuarioId: 0,
+      cantPacientes: 0
     }]
   };
 

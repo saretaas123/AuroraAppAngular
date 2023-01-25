@@ -241,18 +241,104 @@ export class EditarPsicologoComponent implements OnInit {
           }) => x.provId === idProvinciaSeleccionado);
   }
 
-  EditarPsicologo()
+  EditarPsicologo(pNombre : string,pApePaterno : string,pApeMaterno : string, pDni : string,
+    pCorreo : string,pCargo:number,pUbigeo:string,)
   {
 
-    Swal.fire(
-      'Registrado Correctamente',
-      ' ',
-      'success'
-    )
 
-    this._PsicologoService.filter("EditPsicologo");
+    this.html_formEditarPsicologo_Validaciones_Esvalido(pNombre, pApePaterno,pApeMaterno,pDni,pCorreo,pCargo,pUbigeo);
+    if(this.EditarPsicologo_Validacion_EsValido === false)
+    {
+      Swal.fire(
+        'Datos incompletos',
+        'Complete porfavor los datos requeridos',
+        'error'
+      );
+      return;
+    }
+
+    var RegistroExitoso = false;
+    this.p_modal_InfoPsicologo = this.vc_InfoPsicologo;
+    var pPsicologoId = this.p_modal_InfoPsicologo.PsicologoId;
+
+    this._PsicologoService.PostEditarPsicologos(Number(pPsicologoId),
+      pNombre, pApePaterno, pApeMaterno,
+      pDni , pCorreo,Number(pCargo),Number(pUbigeo)
+      )
+      .subscribe(APIrpta => {
+
+      this.ApiEditarRespuestaModel = APIrpta;
+      RegistroExitoso = this.ApiEditarRespuestaModel.rpta;
+
+      if(RegistroExitoso)
+      {
+        Swal.fire(
+          'Registrado Correctamente',
+          ' ',
+          'success'
+        );
+        //alert('Registrado Correctamente');
+
+        //Aca se actualize la pagina
+        this._PsicologoService.filter("EditPsicologo");
     this.dialog.closeAll();
 
+      }
+      else{
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'No se pudo registrar',
+
+        })
+        //alert('No se pudo registrar');
+      }
+    })
   }
+
+//#endregion
+EditarPsicologo_Validacion_EsValido = false;
+html_formEditarPsicologo_Validaciones_Esvalido(v_Nombre : any,v_Apellido : any, v_ApellidoMaterno : any,v_Dni : any,v_Correo : any, v_Cargo : any,v_Ubigeo : any)
+{
+
+  if(v_Nombre === null || v_Nombre === "")
+  {
+    this.EditarPsicologo_Validacion_EsValido =  false;
+    return;
+  }
+
+  if(v_Apellido === null || v_Apellido === "")
+  {
+    this.EditarPsicologo_Validacion_EsValido =  false;
+    return;
+  }
+
+  if(v_Dni === null || v_Dni === "")
+  {
+    this.EditarPsicologo_Validacion_EsValido =  false;
+    return;
+  }
+
+  if(v_Cargo===null)
+  {
+    this.EditarPsicologo_Validacion_EsValido =  false;
+    return;
+  }
+
+  if(v_Ubigeo===null)
+  {
+    this.EditarPsicologo_Validacion_EsValido =  false;
+    return;
+  }
+
+  this.EditarPsicologo_Validacion_EsValido = true;
+}
+
+
+
+
+
+
+
 
 }

@@ -104,16 +104,9 @@ export class CrearUsuarioComponent implements OnInit {
     this.ObtenerDepartamentos();
     this.ObtenerProvincia();
     this.ObtenerDistrito();
-    /*this.myForm = new FormGroup({
-      myName: new FormControl('', [Validators.required]),
-      myAddress: new FormControl('', [Validators.required]),
-      mycity: new FormControl('', [Validators.required])
-      });*/
+
   }
 
-   /* public myError = (controlName: string, errorName: string) =>{
-    return this.myForm.controls[controlName].hasError(errorName);
-  }*/
 
   cbo_DepartamentoSelected = null;
   cbo_ProvinciaSelected = null;
@@ -244,6 +237,22 @@ listDistritosForFilter :
     pFechaNacimiento : string,pDni : string,pTelefono : string,
     pDireccioUbigeo : string,pCorreo : string,pTipoViolencia : string,pRiesgo : string,pFechaDeEvaluacion : any,pEntidadProblema :string,pModalidadAdministrativo :string)
   {
+
+    console.log("Valor de distrito cuando no esta seleccionado:",pDireccioUbigeo)
+    this.html_formAgregarPaciente_Validaciones_Esvalido(pNombres, pApellidoPaterno,pApellidoMaterno,pFechaNacimiento,pDni,pDireccioUbigeo,pTelefono,pCorreo,pTipoViolencia,pRiesgo,pFechaDeEvaluacion,pEntidadProblema,pModalidadAdministrativo);
+    if(this.AgregarPaciente_Validacion_EsValido === false)
+    {
+      Swal.fire(
+        'Datos incompletos',
+        'Complete porfavor los datos requeridos',
+        'error'
+      );
+      return;
+    }
+
+
+
+
     var RegistroExitoso = false;
     var pPsicologoId = this.g_routeparam_PsicologoId;
 
@@ -408,8 +417,96 @@ listDistritosForFilter :
     return this.Modalidad.hasError('required') ? 'Modalidad requerido' :
         '';
   }
-
-
-
 //#endregion
+
+//#region VALIDACIONES 2
+AgregarPaciente_Validacion_EsValido = false;
+  html_formAgregarPaciente_Validaciones_Esvalido(v_Nombre : any,v_Apellido : any, v_ApellidoMaterno : any,v_FechaNacimiento : any,v_Dni : any, v_direccionUbigeo : any,v_Telefono : any,
+    v_Correo : any,v_TipoViolencia : any,v_Riesgo : any, v_FechaEvaluacion : any,v_EntidadProblema : any,v_Modalidad : any)
+  {
+
+    if(v_Nombre === null || v_Nombre === "")
+    {
+      this.AgregarPaciente_Validacion_EsValido =  false;
+      return;
+    }
+
+    if(v_Apellido === null || v_Apellido === "")
+    {
+      this.AgregarPaciente_Validacion_EsValido =  false;
+      return;
+    }
+
+    if(v_direccionUbigeo===null)
+    {
+      this.AgregarPaciente_Validacion_EsValido =  false;
+      return;
+    }
+
+    if(v_ApellidoMaterno === null || v_ApellidoMaterno === "")
+    {
+      this.AgregarPaciente_Validacion_EsValido =  false;
+      return;
+    }
+
+    if(v_FechaNacimiento===null)
+    {
+      this.AgregarPaciente_Validacion_EsValido =  false;
+      return;
+    }
+
+    if(v_Dni === null || v_Dni === "")
+    {
+      this.AgregarPaciente_Validacion_EsValido =  false;
+      return;
+    }
+
+    if(v_Telefono === null || v_Telefono === "")
+    {
+      this.AgregarPaciente_Validacion_EsValido =  false;
+      return;
+    }
+
+    if(v_Correo === null || v_Correo === "")
+    {
+      this.AgregarPaciente_Validacion_EsValido =  false;
+      return;
+    }
+
+    if(v_TipoViolencia===null)
+    {
+      this.AgregarPaciente_Validacion_EsValido =  false;
+      return;
+    }
+
+    if(v_Riesgo===null)
+    {
+      this.AgregarPaciente_Validacion_EsValido =  false;
+      return;
+    }
+
+    if(v_FechaEvaluacion===null)
+    {
+      this.AgregarPaciente_Validacion_EsValido =  false;
+      return;
+    }
+
+    if(v_EntidadProblema === null || v_EntidadProblema === "")
+    {
+      this.AgregarPaciente_Validacion_EsValido =  false;
+      return;
+    }
+
+    if(v_Modalidad===null)
+    {
+      this.AgregarPaciente_Validacion_EsValido =  false;
+      return;
+    }
+
+    this.AgregarPaciente_Validacion_EsValido = true;
+  }
+
+  //#endregion
+
+
 }

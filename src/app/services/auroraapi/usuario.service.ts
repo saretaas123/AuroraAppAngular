@@ -33,6 +33,17 @@ export class UsuarioService {
         return this.http.get(this._url + 'ObtenerInformacionUsuarioByPsicologoId/' +PsicologoId, { headers : headers});
     }
 
+    PostEditarContrasena(pPsicologoId:number,pContrasena : string
+      )
+    {
+        let headers = new HttpHeaders().set('Type-content','aplication/json')
+
+        return this.http.post(this._url + 'EditarContrasenaByPsicologoId' , {
+          "psicologoId": pPsicologoId,
+          "contrasena": pContrasena
+        }, { headers : headers});
+    }
+
 
 
 

@@ -200,7 +200,7 @@ listDistritosForFilter :
     pDireccioUbigeo : string,pCorreo : string,pTipoViolencia : string,pRiesgo : string,pFechaDeEvaluacion : any,pEntidadProblema :string,pModalidadAdministrativo :string)
   {
     console.log("Valor de distrito cuando no esta seleccionado:",pDireccioUbigeo)
-    this.html_formEditarPaciente_Validaciones_Esvalido(pNombres, pApellidoPaterno, pDireccioUbigeo);
+    this.html_formEditarPaciente_Validaciones_Esvalido(pNombres, pApellidoPaterno,pApellidoMaterno,pFechaNacimiento,pDni,pDireccioUbigeo,pTelefono,pCorreo,pFechaDeEvaluacion,pEntidadProblema,pModalidadAdministrativo);
     if(this.EditarPaciente_Validacion_EsValido === false)
     {
       Swal.fire(
@@ -217,7 +217,7 @@ listDistritosForFilter :
     this.p_modal_InfoPaciente = this.vc_InfoPaciente;
     var pCasoPacienteId = this.p_modal_InfoPaciente.CasoPacienteId;
 
-    alert("llamara a la api");
+    //alert("llamara a la api");
 
     this.PacienteService.PostEditarPaciente(
       Number(pCasoPacienteId),
@@ -344,9 +344,11 @@ listDistritosForFilter :
             provId: 0
           }) => x.provId === idProvinciaSeleccionado);
   }
-//#endregion
+
+  //#region VALIDACIONES
   EditarPaciente_Validacion_EsValido = false;
-  html_formEditarPaciente_Validaciones_Esvalido(v_Nombre : any,v_Apellido : any, v_direccionUbigeo : any)
+  html_formEditarPaciente_Validaciones_Esvalido(v_Nombre : any,v_Apellido : any, v_ApellidoMaterno : any,v_FechaNacimiento : any,v_Dni : any, v_direccionUbigeo : any,v_Telefono : any,
+    v_Correo : any, v_FechaEvaluacion : any,v_EntidadProblema : any,v_Modalidad : any)
   {
 
     if(v_Nombre === null || v_Nombre === "")
@@ -367,7 +369,56 @@ listDistritosForFilter :
       return;
     }
 
+    if(v_ApellidoMaterno === null || v_ApellidoMaterno === "")
+    {
+      this.EditarPaciente_Validacion_EsValido =  false;
+      return;
+    }
+
+    if(v_FechaNacimiento===null)
+    {
+      this.EditarPaciente_Validacion_EsValido =  false;
+      return;
+    }
+
+    if(v_Dni === null || v_Dni === "")
+    {
+      this.EditarPaciente_Validacion_EsValido =  false;
+      return;
+    }
+
+    if(v_Telefono === null || v_Telefono === "")
+    {
+      this.EditarPaciente_Validacion_EsValido =  false;
+      return;
+    }
+
+    if(v_Correo === null || v_Correo === "")
+    {
+      this.EditarPaciente_Validacion_EsValido =  false;
+      return;
+    }
+
+    if(v_FechaEvaluacion===null)
+    {
+      this.EditarPaciente_Validacion_EsValido =  false;
+      return;
+    }
+
+    if(v_EntidadProblema === null || v_EntidadProblema === "")
+    {
+      this.EditarPaciente_Validacion_EsValido =  false;
+      return;
+    }
+
+    if(v_Modalidad===null)
+    {
+      this.EditarPaciente_Validacion_EsValido =  false;
+      return;
+    }
+
     this.EditarPaciente_Validacion_EsValido = true;
   }
+//#endregion
 
 }
