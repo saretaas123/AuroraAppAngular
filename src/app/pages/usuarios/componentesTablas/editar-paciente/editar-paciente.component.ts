@@ -187,6 +187,9 @@ listDistritosForFilter :
     this.PacienteService.GetPacienteFullInfoByCasoPacienteId(this.p_modal_InfoPaciente.CasoPacienteId).subscribe(Rpta =>
       {
         this.ApiFullobjPacienteInfo = Rpta;
+
+        console.log("this.ApiFullobjPacienteInfo.rpta.direccionUbigeo:",this.ApiFullobjPacienteInfo.rpta.direccionUbigeo);
+        console.log("this.ApiFullobjPacienteInfo.rpta:",this.ApiFullobjPacienteInfo.rpta);
         //this.ApiFullobjPacienteInfo.fechaDeEvaluacion =
       });
   }
@@ -196,10 +199,25 @@ listDistritosForFilter :
     pFechaNacimiento : string,pDni : string,pTelefono : string,
     pDireccioUbigeo : string,pCorreo : string,pTipoViolencia : string,pRiesgo : string,pFechaDeEvaluacion : any,pEntidadProblema :string,pModalidadAdministrativo :string)
   {
+    console.log("Valor de distrito cuando no esta seleccionado:",pDireccioUbigeo)
+    this.html_formEditarPaciente_Validaciones_Esvalido(pNombres, pApellidoPaterno, pDireccioUbigeo);
+    if(this.EditarPaciente_Validacion_EsValido === false)
+    {
+      Swal.fire(
+        'Datos incompletos',
+        'Complete porfavor los datos requeridos',
+        'error'
+      );
+      return;
+    }
+
+
 
     var RegistroExitoso = false;
     this.p_modal_InfoPaciente = this.vc_InfoPaciente;
     var pCasoPacienteId = this.p_modal_InfoPaciente.CasoPacienteId;
+
+    alert("llamara a la api");
 
     this.PacienteService.PostEditarPaciente(
       Number(pCasoPacienteId),
@@ -288,6 +306,23 @@ listDistritosForFilter :
     }
   }
 
+  Distrito_isChanged : number = -1;
+  onChange_DistritoSeleccionado(idProvinciaSeleccionado : any){
+
+    if(this.Distrito_isChanged===-1){
+      this.Distrito_isChanged = 0;
+
+      this.cbo_DistritoSelected = idProvinciaSeleccionado;
+    }else if(this.Distrito_isChanged===0){
+      this.Provincia_isChanged = 1;
+
+      this.cbo_DistritoSelected = idProvinciaSeleccionado;
+    }else if(this.Distrito_isChanged===1){
+      //Sirve para corregir la seleccion ciclica > NO ELIMINAR
+      this.Distrito_isChanged = 0;
+    }
+  }
+
   FiltrarResultados_Departamento_a_Provincia(idDepartamentoSeleccionado : any)
   {
     this.listProvinciasForFilter = this.ApiFullobjListarProvincia.rpta.filter(
@@ -310,5 +345,29 @@ listDistritosForFilter :
           }) => x.provId === idProvinciaSeleccionado);
   }
 //#endregion
+  EditarPaciente_Validacion_EsValido = false;
+  html_formEditarPaciente_Validaciones_Esvalido(v_Nombre : any,v_Apellido : any, v_direccionUbigeo : any)
+  {
+
+    if(v_Nombre === null || v_Nombre === "")
+    {
+      this.EditarPaciente_Validacion_EsValido =  false;
+      return;
+    }
+
+    if(v_Apellido === null || v_Apellido === "")
+    {
+      this.EditarPaciente_Validacion_EsValido =  false;
+      return;
+    }
+
+    if(v_direccionUbigeo===null)
+    {
+      this.EditarPaciente_Validacion_EsValido =  false;
+      return;
+    }
+
+    this.EditarPaciente_Validacion_EsValido = true;
+  }
 
 }

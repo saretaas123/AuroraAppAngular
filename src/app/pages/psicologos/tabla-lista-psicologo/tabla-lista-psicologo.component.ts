@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, OnChanges, ViewChild, SimpleChanges } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { Psicologo } from 'src/app/interfaces/psicologo';
@@ -23,7 +23,7 @@ const listUsuarios: Psicologo[] = [
   templateUrl: './tabla-lista-psicologo.component.html',
   styleUrls: ['./tabla-lista-psicologo.component.css']
 })
-export class TablaListaPsicologoComponent implements OnInit {
+export class TablaListaPsicologoComponent implements OnInit, OnChanges {
 
   public ApiRptaFullTablaPsicologos : any = {
     mnsj: '',
@@ -90,6 +90,15 @@ export class TablaListaPsicologoComponent implements OnInit {
 
   ngOnInit(): void {
     this.API_TraerDatosPsicologos()
+  }
+
+  ngOnChanges(changes: SimpleChanges)
+  {
+    if(changes['g_TablaPsicologoComponent_TablaPsicologo'])
+    {
+      this.API_TraerDatosPsicologos();
+    }
+
   }
 
   ngAfterViewInit() {

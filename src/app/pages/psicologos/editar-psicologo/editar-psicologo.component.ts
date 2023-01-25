@@ -250,7 +250,7 @@ export class EditarPsicologoComponent implements OnInit {
       'success'
     )
 
-    this._PsicologoService.filter("AddPsicologo");
+    this._PsicologoService.filter("EditPsicologo");
     this.dialog.closeAll();
 
   }

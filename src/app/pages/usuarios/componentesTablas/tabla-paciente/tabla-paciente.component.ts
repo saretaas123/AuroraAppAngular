@@ -176,8 +176,6 @@ export class TablaPacienteComponent implements OnInit, OnChanges {
 
    }
 
-
-
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
   }
@@ -226,6 +224,9 @@ export class TablaPacienteComponent implements OnInit, OnChanges {
       return;
     }
 
+    listUsuarios = [];
+    this.objTablaPacientes = [];
+    this.dataSource = new MatTableDataSource(listUsuarios);
     p_ApiFullTabla.rpta.forEach((itemTabla: any) => {
       this.objTablaPacientes.push(itemTabla);
     });
@@ -273,8 +274,8 @@ export class TablaPacienteComponent implements OnInit, OnChanges {
             pacienteRiesgo : element.pacienteRiesgo,
             poseeFichaRegistro : element.poseeFichaRegistro});
 
-    this.dataSource = new MatTableDataSource(listUsuarios);
   });
+  this.dataSource = new MatTableDataSource(listUsuarios);
 
   }
 
