@@ -6,6 +6,7 @@ import { PsicologoService } from 'src/app/services/auroraapi/psicologo.service';
 import { CargoService} from 'src/app/services/auroraapi/cargo.service'
 import { UbigeoService} from 'src/app/services/auroraapi/ubigeo.service'
 import Swal from 'sweetalert2';
+import { FormControl, Validators } from '@angular/forms';
 
 
 @Component({
@@ -248,5 +249,68 @@ listDistritosForFilter :
       })
 
   }
+
+
+  //#region VALIDACIONES
+
+  Nombre = new FormControl('', [Validators.required,Validators.maxLength(32)]);
+  getErrorMessageNombre() {
+    return this.Nombre.hasError('required') ? 'Nombre requerido' :
+        '';
+  }
+
+  ApellidoPaterno = new FormControl('', [Validators.required,Validators.maxLength(32)]);
+  getErrorMessageApellidoPaterno() {
+    return this.ApellidoPaterno.hasError('required') ? 'Apellido Paterno requerido' :
+        '';
+  }
+
+  ApellidoMaterno = new FormControl('', [Validators.required,Validators.maxLength(32)]);
+  getErrorMessageApellidoMaterno() {
+    return this.ApellidoMaterno.hasError('required') ? 'Apellido Materno requerido' :
+        '';
+  }
+
+  dni = new FormControl('', [Validators.required,Validators.maxLength(15)]);
+  getErrorMessageDni() {
+    return this.dni.hasError('required') ? 'DNI requerido' :
+        '';
+  }
+
+  Cargo = new FormControl('', [Validators.required]);
+  getErrorMessageCargo() {
+    return this.Cargo.hasError('required') ? 'Cargo requerido' :
+        '';
+  }
+
+  email = new FormControl('', [Validators.required, Validators.email]);
+  getErrorMessage() {
+    return this.email.hasError('required') ? 'Correo requerido' :
+        this.email.hasError('email') ? 'No es un correo valido' :
+            '';
+  }
+
+  Departamento = new FormControl('', [Validators.required]);
+  getErrorMessageDepartamento() {
+    return this.Departamento.hasError('required') ? 'Departamento requerido' :
+        '';
+  }
+
+  Provincia = new FormControl('', [Validators.required]);
+  getErrorMessageProvincia() {
+    return this.Provincia.hasError('required') ? 'Provincia requerido' :
+        '';
+  }
+
+  Distrito = new FormControl('', [Validators.required]);
+  getErrorMessageDistrito() {
+    return this.Distrito.hasError('required') ? 'Distrito requerido' :
+        '';
+  }
+
+
+
+
+  //#endregion
 
 }

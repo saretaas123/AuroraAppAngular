@@ -30,6 +30,8 @@ interface modalidad {
 })
 export class CrearUsuarioComponent implements OnInit {
 
+
+
   ApiFullobjListarDepartamento : any ={
     mnsj: "",
     rpta: [
@@ -289,9 +291,8 @@ listDistritosForFilter :
     })
   }
 
-  //#region Validaciones
-
-  formvalidation_string_EsNecesario_Activado = false;
+//#region Validaciones
+ /* formvalidation_string_EsNecesario_Activado = false;
   formvalidation_string_EsNecesario(strValue : string, EsNecesario : boolean)
   {
     if(EsNecesario)
@@ -312,7 +313,103 @@ listDistritosForFilter :
       return true;
 
     return false;
+  }*/
+
+
+
+  Nombre = new FormControl('', [Validators.required,Validators.maxLength(32)]);
+  getErrorMessageNombre() {
+    return this.Nombre.hasError('required') ? 'Nombre requerido' :
+        '';
   }
 
-  //#endregion
+  ApellidoPaterno = new FormControl('', [Validators.required,Validators.maxLength(32)]);
+  getErrorMessageApellidoPaterno() {
+    return this.ApellidoPaterno.hasError('required') ? 'Apellido Paterno requerido' :
+        '';
+  }
+
+  ApellidoMaterno = new FormControl('', [Validators.required,Validators.maxLength(32)]);
+  getErrorMessageApellidoMaterno() {
+    return this.ApellidoMaterno.hasError('required') ? 'Apellido Materno requerido' :
+        '';
+  }
+
+  FechaNacimiento = new FormControl('', [Validators.required]);
+  getErrorMessageFechaNacimiento() {
+    return this.FechaNacimiento.hasError('required') ? 'Fecha nacimiento requerido' :
+        '';
+  }
+
+  dni = new FormControl('', [Validators.required,Validators.maxLength(15)]);
+  getErrorMessageDni() {
+    return this.dni.hasError('required') ? 'DNI requerido' :
+        '';
+  }
+
+
+  Departamento = new FormControl('', [Validators.required]);
+  getErrorMessageDepartamento() {
+    return this.Departamento.hasError('required') ? 'Departamento requerido' :
+        '';
+  }
+
+  Provincia = new FormControl('', [Validators.required]);
+  getErrorMessageProvincia() {
+    return this.Provincia.hasError('required') ? 'Provincia requerido' :
+        '';
+  }
+
+  Distrito = new FormControl('', [Validators.required]);
+  getErrorMessageDistrito() {
+    return this.Distrito.hasError('required') ? 'Distrito requerido' :
+        '';
+  }
+
+  Telefono = new FormControl('', [Validators.required,Validators.maxLength(9)]);
+  getErrorMessageTelefono() {
+    return this.Telefono.hasError('required') ? 'Telefono requerido' :
+        '';
+  }
+
+  email = new FormControl('', [Validators.required, Validators.email]);
+  getErrorMessage() {
+    return this.email.hasError('required') ? 'Correo requerido' :
+        this.email.hasError('email') ? 'No es un correo valido' :
+            '';
+  }
+
+  TipoViolencia = new FormControl('', [Validators.required]);
+  getErrorMessageTipoViolencia() {
+    return this.TipoViolencia.hasError('required') ? 'Tipo Violencia requerido' :
+        '';
+  }
+
+  Riesgo = new FormControl('', [Validators.required]);
+  getErrorMessageRiesgo() {
+    return this.Riesgo.hasError('required') ? 'Riesgo requerido' :
+        '';
+  }
+
+  AnoEvaluacion = new FormControl('', [Validators.required]);
+  getErrorMessageAnoEvaluacion() {
+    return this.AnoEvaluacion.hasError('required') ? 'Año de Evaluacion requerido' :
+        '';
+  }
+
+  EntidadProblema = new FormControl('', [Validators.required,Validators.maxLength(32)]);
+  getErrorMessageEntidadProblema() {
+    return this.EntidadProblema.hasError('required') ? 'Campo requerido' :
+        '';
+  }
+
+  Modalidad = new FormControl('', [Validators.required]);
+  getErrorMessageModalidad() {
+    return this.Modalidad.hasError('required') ? 'Modalidad requerido' :
+        '';
+  }
+
+
+
+//#endregion
 }

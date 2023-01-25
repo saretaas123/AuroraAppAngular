@@ -1,3 +1,11 @@
+.borde{
+  border-color: rgb(113, 118, 128);
+  border-width: 5px;
+  border-style: double;
+}
 
-        
-      
+.texto{
+  color: rgb(113, 118, 128);
+  margin-top: 8px;
+
+}

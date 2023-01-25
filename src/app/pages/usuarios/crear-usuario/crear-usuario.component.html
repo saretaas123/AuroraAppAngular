@@ -10,15 +10,17 @@
     <div class="col-sm">
       <mat-form-field appearance="fill" class="mb-0">
           <mat-label>Nombre</mat-label>
-          <input matInput type="text" #pNombres >
+          <input matInput type="text" #pNombres maxlength="32" [formControl]="Nombre" required>
+          <mat-error *ngIf="Nombre.invalid">{{getErrorMessageNombre()}}</mat-error>
       </mat-form-field>
-      <mat-error class="mt-0" *ngIf="formvalidation_string_EsNecesario(pNombres.value, true)">Nombre es requerido</mat-error>
-      <mat-error class="mt-0" *ngIf="formvalidation_string_TamanoMax(pNombres.value, 31)">Tamaño Excedido (Max. 31)</mat-error>
+      <!--<mat-error class="mt-0" *ngIf="formvalidation_string_EsNecesario(pNombres.value, true)">Nombre es requerido</mat-error>
+      <mat-error class="mt-0" *ngIf="formvalidation_string_TamanoMax(pNombres.value, 31)">Tamaño Excedido (Max. 31)</mat-error>-->
     </div>
     <div class="col-sm">
       <mat-form-field appearance="fill">
           <mat-label>Apellido Paterno</mat-label>
-          <input matInput type="text" #pApellidoPaterno>
+          <input matInput type="text" #pApellidoPaterno maxlength="32" [formControl]="ApellidoPaterno" required>
+          <mat-error *ngIf="ApellidoPaterno.invalid">{{getErrorMessageApellidoPaterno()}}</mat-error>
       </mat-form-field>
     </div>
   </div>
@@ -28,13 +30,15 @@
     <div class="col-sm">
       <mat-form-field appearance="fill">
           <mat-label>Apellido Materno</mat-label>
-          <input matInput type="text" #pApellidoMaterno>
+          <input matInput type="text" #pApellidoMaterno maxlength="32" [formControl]="ApellidoMaterno" required >
+          <mat-error *ngIf="ApellidoMaterno.invalid">{{getErrorMessageApellidoMaterno()}}</mat-error>
       </mat-form-field>
     </div>
     <div class="col-sm">
       <mat-form-field appearance="fill">
           <mat-label>Fecha de nacimiento</mat-label>
-          <input matInput type="date" #pFechaNacimiento>
+          <input matInput type="date" #pFechaNacimiento [formControl]="FechaNacimiento" required>
+          <mat-error *ngIf="FechaNacimiento.invalid">{{getErrorMessageFechaNacimiento()}}</mat-error>
       </mat-form-field>
     </div>
   </div>
@@ -44,21 +48,21 @@
     <div class="col-sm">
       <mat-form-field appearance="fill">
           <mat-label>Dni/Carnet Extranjeria</mat-label>
-          <input matInput type="text" max="8" #pDni>
+          <input matInput type="text" #pDni maxlength="15" [formControl]="dni" >
+          <mat-hint align="start">15 carácteres max</mat-hint>
+          <mat-hint align="end">{{dni.value?.length || 0}}/15</mat-hint>
+          <mat-error *ngIf="dni.invalid">{{getErrorMessageDni()}}</mat-error>
       </mat-form-field>
     </div>
     <div class="col-sm">
-      <!--<mat-form-field appearance="fill">
-          <mat-label>Direccion</mat-label>
-          <input matInput type="text" max="32" #pDireccioUbigeo>
-      </mat-form-field>-->
       <mat-form-field appearance="fill">
         <mat-label>Departamento</mat-label>
-        <mat-select [value]="cbo_DepartamentoSelected">
-          <mat-option *ngFor="let departamento of listDepartamentosForFilter" [value]="departamento.depaId"  (onSelectionChange)="onChange_DepartamentoSeleccionado(departamento.depaId)">
+        <mat-select [value]="cbo_DepartamentoSelected" [formControl]="Departamento" required>
+          <mat-option *ngFor="let departamento of listDepartamentosForFilter" [value]="departamento.depaId"  (onSelectionChange)="onChange_DepartamentoSeleccionado(departamento.depaId)" >
             {{departamento.nombreDepa}}
           </mat-option>
         </mat-select>
+        <mat-error *ngIf="Departamento.invalid">{{getErrorMessageDepartamento()}}</mat-error>
       </mat-form-field>
     </div>
   </div>
@@ -68,21 +72,23 @@
     <div class="col-sm">
       <mat-form-field appearance="fill">
         <mat-label>Provincia</mat-label>
-        <mat-select [disabled]="CBOPrinvinciaEstaDesactivado" [value]="cbo_ProvinciaSelected">
+        <mat-select [disabled]="CBOPrinvinciaEstaDesactivado" [value]="cbo_ProvinciaSelected" [formControl]="Provincia" required>
           <mat-option *ngFor="let provincia of listProvinciasForFilter" [value]="provincia.provId" (onSelectionChange)="onChange_ProvinciaSeleccionado(provincia.provId)">
             {{provincia.nombreProv}}
           </mat-option>
         </mat-select>
+        <mat-error *ngIf="Provincia.invalid">{{getErrorMessageProvincia()}}</mat-error>
       </mat-form-field>
     </div>
     <div class="col-sm">
       <mat-form-field appearance="fill">
         <mat-label>Distrito</mat-label>
-        <mat-select [disabled]="CBODistritoEstaDesactivado" [value]="cbo_DistritoSelected" #pDireccioUbigeo>
+        <mat-select [disabled]="CBODistritoEstaDesactivado" [value]="cbo_DistritoSelected" #pDireccioUbigeo [formControl]="Distrito" required>
           <mat-option *ngFor="let distrito of listDistritosForFilter" [value]="distrito.distId">
             {{distrito.nombreDist}}
           </mat-option>
         </mat-select>
+        <mat-error *ngIf="Distrito.invalid">{{getErrorMessageDistrito()}}</mat-error>
       </mat-form-field>
     </div>
   </div>
@@ -92,13 +98,17 @@
     <div class="col-sm">
       <mat-form-field appearance="fill">
           <mat-label>Telefono</mat-label>
-          <input matInput type="text"  #pTelefono>
+          <input matInput type="text"  #pTelefono maxlength="9" [formControl]="Telefono">
+          <mat-hint align="start">9 carácteres max</mat-hint>
+          <mat-hint align="end">{{Telefono.value?.length || 0}}/9</mat-hint>
+          <mat-error *ngIf="Telefono.invalid">{{getErrorMessageTelefono()}}</mat-error>
       </mat-form-field>
     </div>
     <div class="col-sm">
       <mat-form-field appearance="fill">
           <mat-label>Correo</mat-label>
-          <input matInput type="email" #pCorreo>
+          <input matInput type="email" #pCorreo [formControl]="email" required>
+          <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
       </mat-form-field>
     </div>
   </div>
@@ -108,21 +118,23 @@
     <div class="col-sm">
       <mat-form-field appearance="fill">
         <mat-label>Tipo de Violencia</mat-label>
-        <mat-select #pTipoViolencia>
+        <mat-select #pTipoViolencia [formControl]="TipoViolencia" required>
           <mat-option *ngFor="let tipoViolencia of tiposViolencia" [value]="tipoViolencia.value">
             {{tipoViolencia.viewValue}}
           </mat-option>
         </mat-select>
+        <mat-error *ngIf="TipoViolencia.invalid">{{getErrorMessageTipoViolencia()}}</mat-error>
       </mat-form-field>
     </div>
     <div class="col-sm">
       <mat-form-field appearance="fill">
         <mat-label>Riesgo</mat-label>
-        <mat-select #pRiesgo>
+        <mat-select #pRiesgo [formControl]="Riesgo" required>
           <mat-option *ngFor="let riesgo of riesgos" [value]="riesgo.value">
             {{riesgo.viewValue}}
           </mat-option>
         </mat-select>
+        <mat-error *ngIf="Riesgo.invalid">{{getErrorMessageRiesgo()}}</mat-error>
       </mat-form-field>
     </div>
   </div>
@@ -132,13 +144,15 @@
     <div class="col-sm">
       <mat-form-field appearance="fill">
           <mat-label>Año de Evaluacion</mat-label>
-          <input matInput type="date" #pFechaDeEvaluacion>
+          <input matInput type="date" #pFechaDeEvaluacion [formControl]="AnoEvaluacion" required>
+          <mat-error *ngIf="AnoEvaluacion.invalid">{{getErrorMessageAnoEvaluacion()}}</mat-error>
       </mat-form-field>
     </div>
     <div class="col-sm">
       <mat-form-field appearance="fill">
           <mat-label>Actualmente tiene problemas con</mat-label>
-          <input matInput type="text" #pEntidadProblema>
+          <input matInput type="text" #pEntidadProblema maxlength="32" [formControl]="EntidadProblema" required>
+          <mat-error *ngIf="EntidadProblema.invalid">{{getErrorMessageEntidadProblema()}}</mat-error>
       </mat-form-field>
     </div>
   </div>
@@ -148,11 +162,12 @@
     <div class="col-sm">
       <mat-form-field appearance="fill">
         <mat-label>Modalidad</mat-label>
-        <mat-select #pModalidadAdministrativo>
+        <mat-select #pModalidadAdministrativo [formControl]="Modalidad" required>
           <mat-option *ngFor="let modalidad of modalidades" [value]="modalidad.value">
             {{modalidad.viewValue}}
           </mat-option>
         </mat-select>
+        <mat-error *ngIf="Modalidad.invalid">{{getErrorMessageModalidad()}}</mat-error>
       </mat-form-field>
     </div>
   </div>

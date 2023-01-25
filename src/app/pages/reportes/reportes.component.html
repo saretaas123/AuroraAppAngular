@@ -52,11 +52,12 @@
         <h2 class="text-center mb-3"><i class="fas fa-filter" style="color: rgb(235, 30, 35);"></i>&nbsp;Filtros</h2>
         <div class="container">
           <div class="row">
-            <div class="col-sm">
+            <div class="col-sm borde">
+              <h4 class="texto text-center">Filtros aplicados</h4>
               <button *ngFor="let itemDepartamentoSelected of form_array_ListDepartamento;" (click)="OnClick_QuitarElementoListToFiltro(itemDepartamentoSelected.DistritoId)" class="btn btn-primary m-1 bg-transparent text-primary"><span class="text-primary"><b>Distrito:</b></span><span class="text-muted">{{itemDepartamentoSelected.RutaNombre}}</span><span>{{itemDepartamentoSelected.DistritoNombre}}</span></button>
             </div>
           </div>
-          <div class="row">
+          <div class="row mt-5">
             <div class="col-sm">
               <mat-form-field appearance="fill">
                 <mat-label>Departamento</mat-label>
@@ -112,97 +113,85 @@
                 </mat-select>
               </mat-form-field>
             </div>
+            <div class="col-sm"></div>
+            <div class="col-sm"></div>
+            <div class="col-sm"></div>
           </div>
-        </div>
-        <div class="container">
-          <div class="row">
-            <div class="col-sm">
-              <mat-form-field appearance="fill">
-                <mat-label>Desde [Edad]:</mat-label>
-                <input matInput type="number" #pDesdeEdad>
-             </mat-form-field>
+            <div class="row">
+              <div class="col-sm">
+                <mat-form-field appearance="fill">
+                  <mat-label>Desde [Edad]:</mat-label>
+                  <input matInput type="number" #pDesdeEdad>
+               </mat-form-field>
+              </div>
+              <div class="col-sm">
+                <mat-form-field appearance="fill">
+                  <mat-label>Hasta [Edad]:</mat-label>
+                  <input matInput type="number" #pHastaEdad>
+                </mat-form-field>
+              </div>
+              <div class="col-sm"></div>
+              <div class="col-sm"></div>
+              <div class="col-sm"></div>
             </div>
-            <div class="col-sm">
-              <mat-form-field appearance="fill">
-                <mat-label>Hasta [Edad]:</mat-label>
-                <input matInput type="number" #pHastaEdad>
-            </mat-form-field>
-            </div>
-            <div class="col-sm"></div>
-            <div class="col-sm"></div>
-            <div class="col-sm"></div>
-
-          </div>
         </div>
-
 
         <div class="row">
           <div class="col-md-6">
              <!-- AREA CHART -->
-         <div class="card card-primary">
-          <div class="card-header" style="background-color: rgb(235, 30, 35);">
-            <h3 class="card-title" >Tipo de Violencia </h3>
-            <div class="card-tools">
-              <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                <i class="fas fa-minus"></i>
-              </button>
-            </div>
-          </div>
-          <div class="card-body">
-            <div class="chart">
-              <app-grafico-tipo-violencia></app-grafico-tipo-violencia>
-            </div>
-          </div>
-          <!-- /.card-body -->
-        </div>
-        <!-- /.card -->
-
-
-
-                  <!-- BAR CHART -->
-                  <div class="card card-primary">
-                    <div class="card-header" style="background-color: rgb(235, 30, 35);">
-                      <h3 class="card-title">Autoestima</h3>
+               <div class="card card-primary">
+                 <div class="card-header" style="background-color: rgb(235, 30, 35);">
+                   <h3 class="card-title" >Tipo de Violencia </h3>
                       <div class="card-tools">
-                        <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                          <i class="fas fa-minus"></i>
+                         <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                         <i class="fas fa-minus"></i>
                         </button>
                       </div>
+                  </div>
+                  <div class="card-body">
+                    <div class="chart">
+                      <app-grafico-tipo-violencia></app-grafico-tipo-violencia>
                     </div>
-                    <div class="card-body">
-                      <div class="chart">
-                        <app-grafico-autoestima></app-grafico-autoestima>
-                      </div>
-                    </div>
-                    <!-- /.card-body -->
-                </div>
-                <!-- /.card -->
+                  </div>
+               </div>
 
+             <!-- BAR CHART -->
+             <div class="card card-primary">
+               <div class="card-header" style="background-color: rgb(235, 30, 35);">
+                 <h3 class="card-title">Autoestima</h3>
+                 <div class="card-tools">
+                   <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                     <i class="fas fa-minus"></i>
+                   </button>
+                 </div>
+               </div>
+               <div class="card-body">
+                 <div class="chart">
+                   <app-grafico-autoestima></app-grafico-autoestima>
+                 </div>
+               </div>
+           </div>
 
-
-          <!-- BAR CHART -->
-          <div class="card card-primary">
-            <div class="card-header" style="background-color: rgb(235, 30, 35);">
-              <h3 class="card-title">Motivación al cambio </h3>
-              <div class="card-tools">
-                <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                  <i class="fas fa-minus"></i>
-                </button>
+             <!-- BAR CHART -->
+             <div class="card card-primary">
+               <div class="card-header" style="background-color: rgb(235, 30, 35);">
+                 <h3 class="card-title">Motivación al cambio </h3>
+                 <div class="card-tools">
+                   <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                     <i class="fas fa-minus"></i>
+                   </button>
+                 </div>
+               </div>
+               <div class="card-body">
+                 <div class="chart">
+                  <app-grafico-motivacion></app-grafico-motivacion>
               </div>
-            </div>
-            <div class="card-body">
-              <div class="chart">
-               <app-grafico-motivacion></app-grafico-motivacion>
-              </div>
-            </div>
-            <!-- /.card-body -->
-          </div>
-          <!-- /.card -->
-          </div>
+               </div>
+             </div>
+        </div>
 
 
-          <div class="col-md-6">
-
+        <div class="col-md-6">
           <!-- BAR CHART -->
           <div class="card card-primary">
             <div class="card-header" style="background-color: rgb(235, 30, 35);">
@@ -218,51 +207,44 @@
                 <app-grafico-nivel-riesgo></app-grafico-nivel-riesgo>
               </div>
             </div>
-            <!-- /.card-body -->
           </div>
-          <!-- /.card -->
 
 
-                     <!-- BAR CHART -->
-                     <div class="card card-primary">
-                      <div class="card-header" style="background-color: rgb(235, 30, 35);">
-                        <h3 class="card-title">Toma de Decisiones</h3>
-                        <div class="card-tools">
-                          <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                            <i class="fas fa-minus"></i>
-                          </button>
-                        </div>
-                      </div>
-                      <div class="card-body">
-                        <div class="chart">
-                          <app-grafico-decisiones></app-grafico-decisiones>
-                        </div>
-                      </div>
-                      <!-- /.card-body -->
-                  </div>
-                  <!-- /.card -->
-
-                     <!-- BAR CHART -->
-                     <div class="card card-primary">
-                      <div class="card-header" style="background-color: rgb(235, 30, 35);">
-                        <h3 class="card-title">Autonomía Personal y Afrontamiento en mujeres</h3>
-                        <div class="card-tools">
-                          <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                            <i class="fas fa-minus"></i>
-                          </button>
-                        </div>
-                      </div>
-                      <div class="card-body">
-                        <div class="chart">
-                          <app-grafico-autonomia></app-grafico-autonomia>
-                        </div>
-                      </div>
-                      <!-- /.card-body -->
-                  </div>
-                  <!-- /.card -->
-
-
+          <!-- BAR CHART -->
+          <div class="card card-primary">
+             <div class="card-header" style="background-color: rgb(235, 30, 35);">
+               <h3 class="card-title">Toma de Decisiones</h3>
+               <div class="card-tools">
+                 <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                   <i class="fas fa-minus"></i>
+                 </button>
+               </div>
+             </div>
+             <div class="card-body">
+               <div class="chart">
+                 <app-grafico-decisiones></app-grafico-decisiones>
+               </div>
+             </div>
           </div>
+
+
+          <!-- BAR CHART -->
+           <div class="card card-primary">
+             <div class="card-header" style="background-color: rgb(235, 30, 35);">
+               <h3 class="card-title">Autonomía Personal y Afrontamiento en mujeres</h3>
+               <div class="card-tools">
+                 <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                   <i class="fas fa-minus"></i>
+                 </button>
+               </div>
+             </div>
+             <div class="card-body">
+               <div class="chart">
+                 <app-grafico-autonomia></app-grafico-autonomia>
+               </div>
+             </div>
+          </div>
+        </div>
 
 
         </div>
