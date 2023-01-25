@@ -54,8 +54,14 @@
           <div class="row">
             <div class="col-sm borde">
               <h4 class="texto text-center">Filtros aplicados</h4>
-              <button *ngFor="let itemDepartamentoSelected of form_array_ListDepartamento;" (click)="OnClick_QuitarElementoListToFiltro(itemDepartamentoSelected.DistritoId)" class="btn btn-primary m-1 bg-transparent text-primary"><span class="text-primary"><b>Distrito:</b></span><span class="text-muted">{{itemDepartamentoSelected.RutaNombre}}</span><span>{{itemDepartamentoSelected.DistritoNombre}}</span></button>
+              <button *ngFor="let itemDepartamentoSelected of form_array_ListDepartamento;" (click)="OnClick_QuitarElementoListToFiltro(itemDepartamentoSelected.DistritoId)" class="btn btn-secondary m-1 bg-transparent text-danger"><span class="text-danger"><b>Distrito:</b></span><span class="text-muted">{{itemDepartamentoSelected.RutaNombre}}</span><span><b>{{itemDepartamentoSelected.DistritoNombre}}</b></span></button>
             </div>
+            <nav class="navbar navbar-light bg-light justify-content-between">
+              <a class="navbar-brand"></a>
+              <form class="form-inline">
+                <button type="button" class="btn btn-secondary my-2 my-sm-0 mr-1" >Aplicar filtros</button>
+              </form>
+            </nav>
           </div>
           <div class="row mt-5">
             <div class="col-sm">
