@@ -19,6 +19,7 @@ export class PestanaPacienteComponent implements OnInit {
       casoPacienteId : '0',
       pacienteId : '0',
       psicologoId : '0',
+      poseeFichaRegistro : '0',
       examenPreTestAutoestimaCompletado: false,
       examenPreTestAutonomiaCompletado: false,
       examenPreTestMotivacionAlCambioCompletado: false,

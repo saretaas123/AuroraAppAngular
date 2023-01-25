@@ -31,6 +31,7 @@ export class TablaAvancesProtestComponent implements OnInit {
     rpta : [{
       casoPacienteId : '0',
       pacienteId : '0',
+      poseeFichaRegistro : '0',
       examenPreTestAutoestimaCompletado: false,
       examenPreTestAutonomiaCompletado: false,
       examenPreTestMotivacionAlCambioCompletado: false,

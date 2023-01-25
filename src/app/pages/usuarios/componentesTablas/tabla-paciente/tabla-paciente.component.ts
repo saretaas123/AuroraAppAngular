@@ -11,7 +11,7 @@ import { EditarFichaRegistroComponent} from '../../editar-ficha-registro/editar-
 import * as XLSX from 'xlsx';
 
 var listUsuarios: any [] = [
-  {dni:'',nombre: '', apellidos: '', edad: 0, preTest: 'Incompleto',proTest: 'Incompleto', casoPacienteId: '0',pacienteTipoViolencia:'',pacienteRiesgo:''}
+  {dni:'',nombre: '', apellidos: '', edad: 0, preTest: 'Incompleto',proTest: 'Incompleto', casoPacienteId: '0',pacienteTipoViolencia:'',pacienteRiesgo:'', poseeFichaRegistro : '0'}
 ];
 
 @Component({
@@ -27,6 +27,7 @@ export class TablaPacienteComponent implements OnInit, OnChanges {
     rpta : [{
       casoPacienteId : '0',
       pacienteId : '0',
+      poseeFichaRegistro : 0,
       examenPreTestAutoestimaCompletado: false,
       examenPreTestAutonomiaCompletado: false,
       examenPreTestMotivacionAlCambioCompletado: false,
@@ -82,6 +83,7 @@ export class TablaPacienteComponent implements OnInit, OnChanges {
   public objTablaPacientes : any = [{
     casoPacienteId : '0',
     pacienteId : '0',
+    poseeFichaRegistro : 0,
     examenPreTestAutoestimaCompletado: false,
     examenPreTestAutonomiaCompletado: false,
     examenPreTestMotivacionAlCambioCompletado: false,
@@ -233,7 +235,7 @@ export class TablaPacienteComponent implements OnInit, OnChanges {
         element: { pacienteDni: any; pacienteNombres: any; pacienteApellidoPaterno: string; pacienteApellidoMaterno: string; pacienteFechaNacimiento: any; casoPacienteId: any;
           examenPreTestAutoestimaCompletado: boolean; examenPreTestAutonomiaCompletado: boolean; examenPreTestMotivacionAlCambioCompletado: boolean; examenPreTestTomaDecisionCompletado: boolean;
           examenPostTestAutoestimaCompletado: boolean; examenPostTestAutonomiaCompletado: boolean; examenPostTestMotivacionAlCambioCompletado: boolean; examenPostTestTomaDecisionCompletado: boolean;
-          pacienteTipoViolencia : string, pacienteRiesgo :string           }
+          pacienteTipoViolencia : string, pacienteRiesgo :string , poseeFichaRegistro : any         }
         ) => {
 
           if(element.pacienteDni=== null || element.pacienteDni === ''){return;}
@@ -257,6 +259,8 @@ export class TablaPacienteComponent implements OnInit, OnChanges {
 
           var temp_diferenciaDeEdad = this.CalcularEdadSegunNacimiento(element.pacienteFechaNacimiento, fechaHoy);
 
+          console.log("Tabla paciente element:",element);
+
           listUsuarios.push({
             dni: element.pacienteDni,
             nombre: element.pacienteNombres,
@@ -266,7 +270,8 @@ export class TablaPacienteComponent implements OnInit, OnChanges {
             proTest : temp_postTestStr,
             casoPacienteId : element.casoPacienteId,
             pacienteTipoViolencia : element.pacienteTipoViolencia,
-            pacienteRiesgo : element.pacienteRiesgo});
+            pacienteRiesgo : element.pacienteRiesgo,
+            poseeFichaRegistro : element.poseeFichaRegistro});
 
     this.dataSource = new MatTableDataSource(listUsuarios);
   });
