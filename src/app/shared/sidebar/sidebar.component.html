@@ -35,12 +35,14 @@
               <p>Usuarias</p>
             </a>
           </li>
+          <ng-template [ngIf]="html_pintarOpcionAdmi">
           <li class="nav-item">
            <a routerLink="/dashboard/{{g_routeparam_PsicologoId}}/listapsicologo" class="nav-link">
-              <i class="nav-icon fas fa-users"></i>
+              <i class="nav-icon fa fa-stethoscope"></i>
               <p>Psicologos</p>
             </a>
           </li>
+          </ng-template>
         </ul>
       </nav>
       <!-- /.sidebar-menu -->

@@ -168,7 +168,6 @@ formDenuncia_SeEstaOcultando = true;
       this._FichaRegistroService.GetFichaRegistroByPacienteId(p_PacienteId)
       .subscribe( Rpta =>  {
         this.objAPIRpta_objFichaRegistroFullInfo = Rpta;
-        console.log(Rpta)
 
       });
   }

@@ -45,7 +45,8 @@ import {MatTabsModule} from '@angular/material/tabs';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatSelectModule} from '@angular/material/select';
 
-
+//WEB SERVICES
+import { CookieService } from 'ngx-cookie-service';
 
 //GRAFICOS
 import { NgChartsModule } from 'ng2-charts';
@@ -161,6 +162,9 @@ import { FormsModule } from '@angular/forms';
 
 
 
+  ],
+  providers:[
+    CookieService
   ],
   exports:[
     DashboardComponent,

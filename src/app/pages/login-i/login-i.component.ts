@@ -1,5 +1,6 @@
 import { Component, Injectable, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { CookieService } from 'ngx-cookie-service';
 import { CasopacienteService } from 'src/app/services/auroraapi/casopaciente.service';
 import { PsicologoService } from 'src/app/services/auroraapi/psicologo.service';
 import { UsuarioService } from 'src/app/services/auroraapi/usuario.service';
@@ -57,7 +58,8 @@ export class LoginIComponent  implements OnInit {
     rpta : {
       rpta : false,
       usuarioId : 0,
-      psicologoId : 0
+      psicologoId : 0,
+      psicologoCargoI : 0
     }
   };
 
@@ -77,7 +79,8 @@ export class LoginIComponent  implements OnInit {
 
   constructor(
     private UsuarioService: UsuarioService,
-    private router: Router
+    private router: Router,
+    private _cookieService : CookieService
   ) {
 
 
@@ -90,11 +93,12 @@ export class LoginIComponent  implements OnInit {
     this.UsuarioService.PostLoginInterno(p_Usuario,p_Contrasena).subscribe(APIrpta => {
       this.ApiFullobjPsicologoFullInfo = APIrpta;
       LogeoExitoso = this.ApiFullobjPsicologoFullInfo.rpta.rpta;
-      console.log(APIrpta);
-      console.log(APIrpta);
+
       if(LogeoExitoso)
       {
-
+        this._cookieService.set("PsicologoId",this.ApiFullobjPsicologoFullInfo.rpta.psicologoId);
+        this._cookieService.set("UsuarioId",this.ApiFullobjPsicologoFullInfo.rpta.usuarioId);
+        this._cookieService.set("PsicologoCargo",this.ApiFullobjPsicologoFullInfo.rpta.psicologoCargoIdusuarioId==1?'sdykdydyjlkfd':'ddxasdyayjy31i');
         Swal.fire(
           'Credenciales correctas',
           'Bienvenida ',

@@ -1,4 +1,5 @@
 import { Component, OnInit, Inject } from '@angular/core';
+import { DatePipe } from '@angular/common';
 import { CasopacienteService } from 'src/app/services/auroraapi/casopaciente.service';
 import { PacienteService } from 'src/app/services/auroraapi/paciente.service';
 import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
@@ -187,6 +188,10 @@ listDistritosForFilter :
     this.PacienteService.GetPacienteFullInfoByCasoPacienteId(this.p_modal_InfoPaciente.CasoPacienteId).subscribe(Rpta =>
       {
         this.ApiFullobjPacienteInfo = Rpta;
+
+        var pipe = new DatePipe('en-US');
+        this.ApiFullobjPacienteInfo.rpta.fechaNacimiento =  pipe.transform(this.ApiFullobjPacienteInfo.rpta.fechaNacimiento, 'yyyy-MM-dd');
+        this.ApiFullobjPacienteInfo.rpta.fechaDeEvaluacion =  pipe.transform(this.ApiFullobjPacienteInfo.rpta.fechaDeEvaluacion, 'yyyy-MM-dd');
 
         console.log("this.ApiFullobjPacienteInfo.rpta.direccionUbigeo:",this.ApiFullobjPacienteInfo.rpta.direccionUbigeo);
         console.log("this.ApiFullobjPacienteInfo.rpta:",this.ApiFullobjPacienteInfo.rpta);

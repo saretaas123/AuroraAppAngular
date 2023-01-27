@@ -3,6 +3,7 @@ import { PsicologoService } from 'src/app/services/auroraapi/psicologo.service';
 import { CrearUsuarioComponent} from './crear-usuario/crear-usuario.component';
 import { MatDialog,MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
+import { UbigeoService } from 'src/app/services/auroraapi/ubigeo.service';
 
 
 
@@ -17,9 +18,29 @@ export class UsuariosComponent implements OnInit {
 
   g_FromUser_PsicologoId: any = 1;
 
+  html_Psicologo_DistritoNombre : string = "";
+
   private ApiFullobjPsicologoFullInfo : any = {
     mnsj: '',
     rpta : {}
+  };
+
+  temp_listdistritoEncontrado : any = [
+    {
+      distId: 0,
+      nombreDist: "",
+      provId: 0
+    }];
+
+  ApiFullobjListarDistrito : any ={
+    mnsj: "",
+    rpta: [
+      {
+        distId: 0,
+        nombreDist: "",
+        provId: 0
+      },
+    ]
   };
 
   public objPsicologoFullInfo : any = {
@@ -51,18 +72,40 @@ export class UsuariosComponent implements OnInit {
 
     this.PsicologoService.GetPsicologoFullInfoByPsicologoId(this.g_FromUser_PsicologoId+"").subscribe(apiRpta => {
     this.ApiFullobjPsicologoFullInfo = apiRpta;
-    console.log(this.ApiFullobjPsicologoFullInfo.mnsj);
     this.objPsicologoFullInfo = this.ApiFullobjPsicologoFullInfo.rpta;
+    console.log(this.ApiFullobjPsicologoFullInfo.mnsj);
   })
+  this.ObtenerDistrito();
   }
 
   constructor(
     private PsicologoService: PsicologoService,
     private router: Router,
     public dialog:MatDialog,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private _UbigeoService : UbigeoService
   ){
 
+  }
+
+  ObtenerDistrito(){
+
+    this._UbigeoService.GetDistritoListar().subscribe(apiRpta3 => {
+      this.ApiFullobjListarDistrito = apiRpta3;
+      console.log("this.ApiFullobjListarDistrito:",this.ApiFullobjListarDistrito);
+
+      this.ApiFullobjListarDistrito.rpta.forEach( (item_Distrito :{
+        distId: 0,
+        nombreDist: "",
+        provId: 0
+      }) => {
+        if(item_Distrito.distId === this.objPsicologoFullInfo.ubigeoId)
+        {
+          this.html_Psicologo_DistritoNombre = item_Distrito.nombreDist;
+        }
+      });
+
+    });
   }
 
   openDialog()

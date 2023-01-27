@@ -1,4 +1,5 @@
 import { Component, OnInit,Inject } from '@angular/core';
+import { DatePipe } from '@angular/common';
 import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { PsicologoService } from 'src/app/services/auroraapi/psicologo.service';
 import { CargoService} from 'src/app/services/auroraapi/cargo.service'
