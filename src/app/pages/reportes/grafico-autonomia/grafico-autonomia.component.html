@@ -1,8 +1,8 @@
 <canvas baseChart class="chart"
                 [data]="barChartData"
-                [options]="barChartOptions"       
+                [options]="barChartOptions"
                 [type]="barChartType"
                 (chartHover)="chartHovered($event)"
                 (chartClick)="chartClicked($event)">
                </canvas>
-
+<button class="btn btn-danger" style="background-color: orangered;" (click)="RealizarEstadistica()">Buscar</button>

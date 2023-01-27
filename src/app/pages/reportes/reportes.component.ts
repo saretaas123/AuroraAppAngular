@@ -6,6 +6,7 @@ import { jsPDF } from "jspdf";
 import html2canvas from 'html2canvas';
 import { EstadisticaPacientesService } from 'src/app/services/auroraapi/estadisticaPacientes.service';
 import { UbigeoService} from 'src/app/services/auroraapi/ubigeo.service'
+import { GraficoAutoestimaComponent } from './grafico-autoestima/grafico-autoestima.component';
 
 
 
@@ -17,7 +18,19 @@ import { UbigeoService} from 'src/app/services/auroraapi/ubigeo.service'
 })
 export class ReportesComponent implements OnInit {
 
+  LosFiltrosSeHanModificado : boolean = false;
   DepartamentList: any;
+
+  outPutParametersFilter =
+  {
+    outPut_RegionsId : [],
+    outPut_Distritos : [0,1],
+    outPut_Ano : 0,
+    outPut_EdadMinima : 0,
+    outPut_EdadMaxima :  0,
+    outPut_TipoViolencia : "",
+    outPut_Riesgo : ""
+  }
 
    // CREACION DE PDF
    downloadPDF() {
@@ -90,6 +103,7 @@ export class ReportesComponent implements OnInit {
     correo: "",
     cargoId: 0,
     ubigeoId: 0,
+    ubigeoNombre: 0,
     usuarioId: 0,
     cantPacientes: 0
   };
@@ -137,6 +151,8 @@ export class ReportesComponent implements OnInit {
     private _UbigeoService:UbigeoService) { }
 
   ngOnInit(): void {
+    this.outPutParametersFilter ={outPut_RegionsId : [],outPut_Distritos : [],outPut_Ano : 0,outPut_EdadMinima : 0,
+      outPut_EdadMaxima :  0,outPut_TipoViolencia : "",outPut_Riesgo : ""};
     this.form_array_ListDepartamento = [];
 
     this.ObtenerPsicologoInfo();
@@ -279,6 +295,7 @@ export class ReportesComponent implements OnInit {
     this.temp_array_ListDepartamento = this.form_array_ListDepartamento;
     if(this.temp_array_ListDepartamento.filter(x => x.DistritoId === DistritoIdSeleccionado).length <= 0)
     {
+      this.LosFiltrosSeHanModificado = true;
       this.temp_array_ListDepartamento.push(
         {
           DistritoId: DistritoIdSeleccionado,
@@ -297,6 +314,7 @@ export class ReportesComponent implements OnInit {
     this.temp_array_ListDepartamento = this.temp_array_ListDepartamento.filter(x => x.DistritoId != DistritoId);
 
     this.form_array_ListDepartamento = this.temp_array_ListDepartamento;
+    this.LosFiltrosSeHanModificado = true;
   }
 
   FiltrarResultados_Departamento_a_Provincia(idDepartamentoSeleccionado : any)
@@ -321,4 +339,27 @@ export class ReportesComponent implements OnInit {
           }) => x.provId === idProvinciaSeleccionado);
   }
 
+  onChange_CBO_TipoViolencia()
+  {
+    this.LosFiltrosSeHanModificado = true;
+  }
+
+  onChange_CBO_Riesgo()
+  {
+    this.LosFiltrosSeHanModificado = true;
+  }
+
+  htmlbtn_AplicarFiltros(TipoDeViolencia : any , NivelDeRiesgo : any, pDesdeEdad : any , pHastaEdad: any)
+  {
+    this.outPutParametersFilter = {
+      outPut_RegionsId : [],
+      outPut_Distritos : this.form_array_ListDepartamento,
+      outPut_Ano : 0,
+      outPut_EdadMinima : Number(pDesdeEdad),
+      outPut_EdadMaxima :  Number(pHastaEdad),
+      outPut_TipoViolencia : TipoDeViolencia===null || TipoDeViolencia===undefined?"": TipoDeViolencia,
+      outPut_Riesgo : NivelDeRiesgo===null || NivelDeRiesgo===undefined?"": NivelDeRiesgo,
+    }
+    this.LosFiltrosSeHanModificado = false;
+  }
 }

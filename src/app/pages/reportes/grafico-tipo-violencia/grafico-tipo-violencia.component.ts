@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, Input, ViewChild } from '@angular/core';
 import { ChartConfiguration, ChartData, ChartEvent, ChartType } from 'chart.js';
 import { BaseChartDirective } from 'ng2-charts';
 import { EstadisticaPacientesService } from 'src/app/services/auroraapi/estadisticaPacientes.service';
@@ -9,6 +9,15 @@ import { EstadisticaPacientesService } from 'src/app/services/auroraapi/estadist
   styleUrls: ['./grafico-tipo-violencia.component.css']
 })
 export class GraficoTipoViolenciaComponent implements OnInit {
+
+  @Input() inPutParametersFilter :any = [{
+      outPut_RegionsId : [],
+      outPut_Distritos : [],
+      outPut_Ano : 0,
+      outPut_EdadMinima : 0,
+      outPut_EdadMaxima :  0,
+      outPut_TipoViolencia : "",
+      outPut_Riesgo : "" } ];
 
   @ViewChild(BaseChartDirective) chart: BaseChartDirective | undefined;
 
@@ -38,12 +47,26 @@ export class GraficoTipoViolenciaComponent implements OnInit {
     private _EstadisticaPacientesService : EstadisticaPacientesService) { }
 
   ngOnInit(): void {
-    this.TraerDatosTipoViolencia();
   }
 
   TraerDatosTipoViolencia()
   {
-    this._EstadisticaPacientesService.PostEstadisticaTipoViolenciaTotal([],[],0,0,0,"","").subscribe(Rpta =>
+    //#region Parsear Lista de Distritos Filtro
+    let temp_listDistrito : Array<number> = [];
+    this.inPutParametersFilter.outPut_Distritos.forEach((numeroDistrito : number)=> {
+      temp_listDistrito.push(numeroDistrito);
+    });
+    //#endregion
+
+
+
+    console.log("this.inPutParametersFilter:",this.inPutParametersFilter);
+    this._EstadisticaPacientesService.PostEstadisticaTipoViolenciaTotal(
+      /*this.inPutParametersFilter.outPut_RegionsId*/[],temp_listDistrito,
+      Number(this.inPutParametersFilter.outPut_Ano),Number(this.inPutParametersFilter.outPut_EdadMinima),
+      Number(this.inPutParametersFilter.outPut_EdadMaxima),String(this.inPutParametersFilter.outPut_TipoViolencia),
+      String(this.inPutParametersFilter.outPut_Riesgo)
+      ).subscribe(Rpta =>
       {
         this.apiRpta = Rpta;
         this.listStr_TipoViolencia = this.apiRpta.rpta.listTipoViolencia;
@@ -76,4 +99,8 @@ export class GraficoTipoViolenciaComponent implements OnInit {
   listStr_TipoViolencia : Array<string> = [];
 
 
+  RealizarEstadistica()
+  {
+    this.TraerDatosTipoViolencia();
+  }
 }

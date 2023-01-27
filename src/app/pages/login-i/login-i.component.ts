@@ -59,7 +59,7 @@ export class LoginIComponent  implements OnInit {
       rpta : false,
       usuarioId : 0,
       psicologoId : 0,
-      psicologoCargoI : 0
+      psicologoCargoId : 0
     }
   };
 
@@ -96,9 +96,11 @@ export class LoginIComponent  implements OnInit {
 
       if(LogeoExitoso)
       {
+        this._cookieService.deleteAll();
+        console.log("this.ApiFullobjPsicologoFullInfo.rpta.psicologoCargoIdusuarioId:",this.ApiFullobjPsicologoFullInfo.rpta.psicologoCargoId);
         this._cookieService.set("PsicologoId",this.ApiFullobjPsicologoFullInfo.rpta.psicologoId);
         this._cookieService.set("UsuarioId",this.ApiFullobjPsicologoFullInfo.rpta.usuarioId);
-        this._cookieService.set("PsicologoCargo",this.ApiFullobjPsicologoFullInfo.rpta.psicologoCargoIdusuarioId==1?'sdykdydyjlkfd':'ddxasdyayjy31i');
+        this._cookieService.set("PsicologoCargo",this.ApiFullobjPsicologoFullInfo.rpta.psicologoCargoId==1?'sdykdydyjlkfd':'ddxasdyayjy31i');
         Swal.fire(
           'Credenciales correctas',
           'Bienvenida ',

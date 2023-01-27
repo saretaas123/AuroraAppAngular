@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, Input, ViewChild } from '@angular/core';
 import { ChartConfiguration, ChartData, ChartEvent, ChartType } from 'chart.js';
 import { BaseChartDirective } from 'ng2-charts';
 import { EstadisticaPacientesService } from 'src/app/services/auroraapi/estadisticaPacientes.service';
@@ -9,6 +9,15 @@ import { EstadisticaPacientesService } from 'src/app/services/auroraapi/estadist
   styleUrls: ['./grafico-nivel-riesgo.component.css']
 })
 export class GraficoNivelRiesgoComponent implements OnInit {
+
+  @Input() inPutParametersFilter : any = [{
+      outPut_RegionsId : [],
+      outPut_Distritos : [],
+      outPut_Ano : 0,
+      outPut_EdadMinima : 0,
+      outPut_EdadMaxima :  0,
+      outPut_TipoViolencia : "",
+      outPut_Riesgo : "" } ];
 
   @ViewChild(BaseChartDirective) chart: BaseChartDirective | undefined;
 
@@ -38,12 +47,16 @@ export class GraficoNivelRiesgoComponent implements OnInit {
     private _EstadisticaPacientesService : EstadisticaPacientesService) { }
 
   ngOnInit(): void {
-    this.TraerDatosNivelRiesgo();
   }
 
   TraerDatosNivelRiesgo()
   {
-    this._EstadisticaPacientesService.PostEstadisticaNivelRiesgoTotal([],[],0,0,0,"","").subscribe(Rpta =>
+    this._EstadisticaPacientesService.PostEstadisticaNivelRiesgoTotal(
+      this.inPutParametersFilter.outPut_RegionsId,this.inPutParametersFilter.outPut_Distritos,
+      this.inPutParametersFilter.outPut_Ano,this.inPutParametersFilter.outPut_EdadMinima,
+      this.inPutParametersFilter.outPut_EdadMaxima,this.inPutParametersFilter.outPut_TipoViolencia,
+      this.inPutParametersFilter.outPut_Riesgo
+      ).subscribe(Rpta =>
       {
         this.apiRpta = Rpta;
         this.listStr_NivelRiesgo = this.apiRpta.rpta.listNivelRiesgo;
@@ -74,4 +87,9 @@ export class GraficoNivelRiesgoComponent implements OnInit {
 
   listStr_NivelRiesgo : Array<string> = [];
 
+
+  RealizarEstadistica()
+  {
+    this.TraerDatosNivelRiesgo();
+  }
 }

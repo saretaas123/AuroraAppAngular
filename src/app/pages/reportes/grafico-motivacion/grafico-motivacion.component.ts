@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, Input, ViewChild } from '@angular/core';
 import { ChartConfiguration, ChartData, ChartEvent, ChartType } from 'chart.js';
 import { BaseChartDirective } from 'ng2-charts';
 import { EstadisticaPacientesService } from 'src/app/services/auroraapi/estadisticaPacientes.service';
@@ -9,6 +9,15 @@ import { EstadisticaPacientesService } from 'src/app/services/auroraapi/estadist
   styleUrls: ['./grafico-motivacion.component.css']
 })
 export class GraficoMotivacionComponent implements OnInit {
+
+  @Input() inPutParametersFilter : any = [{
+      outPut_RegionsId : [],
+      outPut_Distritos : [],
+      outPut_Ano : 0,
+      outPut_EdadMinima : 0,
+      outPut_EdadMaxima :  0,
+      outPut_TipoViolencia : "",
+      outPut_Riesgo : "" } ];
 
   @ViewChild(BaseChartDirective) chart: BaseChartDirective | undefined;
 
@@ -40,12 +49,16 @@ export class GraficoMotivacionComponent implements OnInit {
     private _EstadisticaPacientesService : EstadisticaPacientesService) { }
 
   ngOnInit(): void {
-    this.TraerDatosMotivacionAlCambio();
   }
 
   TraerDatosMotivacionAlCambio()
   {
-    this._EstadisticaPacientesService.PostEstadisticaMotivacionAlCambioTotal([],[],0,0,0,"","").subscribe(Rpta =>
+    this._EstadisticaPacientesService.PostEstadisticaMotivacionAlCambioTotal(
+      this.inPutParametersFilter.outPut_RegionsId,this.inPutParametersFilter.outPut_Distritos,
+      this.inPutParametersFilter.outPut_Ano,this.inPutParametersFilter.outPut_EdadMinima,
+      this.inPutParametersFilter.outPut_EdadMaxima,this.inPutParametersFilter.outPut_TipoViolencia,
+      this.inPutParametersFilter.outPut_Riesgo
+      ).subscribe(Rpta =>
       {
         this.apiRpta = Rpta;
 
@@ -113,4 +126,8 @@ export class GraficoMotivacionComponent implements OnInit {
   listPostTestAccion : Array<string> = [];
   listPostTestMantenimiento : Array<string> = [];
 
+  RealizarEstadistica()
+  {
+    this.TraerDatosMotivacionAlCambio();
+  }
 }

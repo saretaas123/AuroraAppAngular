@@ -41,11 +41,11 @@ export class SidebarComponent implements OnInit {
     {
       this._cookieService.deleteAll();
     }
-    else if(this.g_cookie_CargoId === 'd')
+    else if(this.g_cookie_CargoId === "d")
     {
       this.html_pintarOpcionAdmi = false;
     }
-    else if(this.g_cookie_CargoId === 'j')
+    else if(this.g_cookie_CargoId === "j")
     {
       this.html_pintarOpcionAdmi = true;
     }

@@ -29,7 +29,7 @@
                                       </div>
                                       <div class="col-4 mb-3">
                                         <h6>Distrito de Intervención</h6>
-                                        <p class="text-muted">{{objPsicologoFullInfo.ubigeoId}}</p>
+                                        <p class="text-muted">{{objPsicologoFullInfo.ubigeoNombre}}</p>
                                       </div>
                                     </div>
                                   </div>
@@ -59,7 +59,13 @@
             <nav class="navbar navbar-light bg-light justify-content-between">
               <a class="navbar-brand"></a>
               <form class="form-inline">
-                <button type="button" class="btn btn-secondary my-2 my-sm-0 mr-1" >Aplicar filtros</button>
+                <ng-template *ngIf="LosFiltrosSeHanModificado; then thenBlock else elseBlock"></ng-template>
+                  <ng-template #thenBlock>
+                    <button type="button" class="btn btn-primary my-2 my-sm-0 mr-1" (click)="htmlbtn_AplicarFiltros(CBOTipoDeViolencia.value, CBONivelDeRiesgo.value, pDesdeEdad.value, pHastaEdad.value)">Aplicar filtros</button>
+                  </ng-template>
+                  <ng-template #elseBlock>
+                    <button type="button" class="btn btn-secondary my-2 my-sm-0 mr-1">Filtros aplicados</button>
+                  </ng-template>
               </form>
             </nav>
           </div>
@@ -101,21 +107,21 @@
             <div class="col-sm">
               <mat-form-field appearance="fill">
                 <mat-label>Tipo de violencia</mat-label>
-                <mat-select>
-                  <mat-option value="one">Psicologica</mat-option>
-                  <mat-option value="two">Fisica</mat-option>
-                  <mat-option value="two">Economica</mat-option>
-                  <mat-option value="two">Sexual</mat-option>
+                <mat-select #CBOTipoDeViolencia >
+                  <mat-option value="Psicológico" (onSelectionChange)="onChange_CBO_TipoViolencia()">Psicologica</mat-option>
+                  <mat-option value="Físico" (onSelectionChange)="onChange_CBO_TipoViolencia()">Fisica</mat-option>
+                  <mat-option value="Económico" (onSelectionChange)="onChange_CBO_TipoViolencia()">Economica</mat-option>
+                  <mat-option value="Sexual" (onSelectionChange)="onChange_CBO_TipoViolencia()">Sexual</mat-option>
                 </mat-select>
               </mat-form-field>
             </div>
             <div class="col-sm">
               <mat-form-field appearance="fill">
                 <mat-label>Nivel de riesgo</mat-label>
-                <mat-select>
-                  <mat-option value="one">Leve</mat-option>
-                  <mat-option value="two">Moderado</mat-option>
-                  <mat-option value="two">Severo</mat-option>
+                <mat-select #CBONivelDeRiesgo >
+                  <mat-option value="Leve" (onSelectionChange)="onChange_CBO_Riesgo()">Leve</mat-option>
+                  <mat-option value="Moderado" (onSelectionChange)="onChange_CBO_Riesgo()">Moderado</mat-option>
+                  <mat-option value="Severo" (onSelectionChange)="onChange_CBO_Riesgo()">Severo</mat-option>
                 </mat-select>
               </mat-form-field>
             </div>
@@ -156,7 +162,8 @@
                   </div>
                   <div class="card-body">
                     <div class="chart">
-                      <app-grafico-tipo-violencia></app-grafico-tipo-violencia>
+                      <app-grafico-tipo-violencia
+                        [inPutParametersFilter]="outPutParametersFilter"></app-grafico-tipo-violencia>
                     </div>
                   </div>
                </div>
@@ -173,7 +180,8 @@
                </div>
                <div class="card-body">
                  <div class="chart">
-                   <app-grafico-autoestima></app-grafico-autoestima>
+                   <app-grafico-autoestima
+                   [inPutParametersFilter]="outPutParametersFilter"></app-grafico-autoestima>
                  </div>
                </div>
            </div>
@@ -190,7 +198,8 @@
                </div>
                <div class="card-body">
                  <div class="chart">
-                  <app-grafico-motivacion></app-grafico-motivacion>
+                  <app-grafico-motivacion
+                  [inPutParametersFilter]="outPutParametersFilter"></app-grafico-motivacion>
               </div>
                </div>
              </div>
@@ -210,7 +219,8 @@
             </div>
             <div class="card-body">
               <div class="chart">
-                <app-grafico-nivel-riesgo></app-grafico-nivel-riesgo>
+                <app-grafico-nivel-riesgo
+                [inPutParametersFilter]="outPutParametersFilter"></app-grafico-nivel-riesgo>
               </div>
             </div>
           </div>
@@ -228,7 +238,8 @@
              </div>
              <div class="card-body">
                <div class="chart">
-                 <app-grafico-decisiones></app-grafico-decisiones>
+                 <app-grafico-decisiones
+                 [inPutParametersFilter]="outPutParametersFilter"></app-grafico-decisiones>
                </div>
              </div>
           </div>
@@ -246,7 +257,8 @@
              </div>
              <div class="card-body">
                <div class="chart">
-                 <app-grafico-autonomia></app-grafico-autonomia>
+                 <app-grafico-autonomia
+                 [inPutParametersFilter]="outPutParametersFilter"></app-grafico-autonomia>
                </div>
              </div>
           </div>
