@@ -1,3 +1,4 @@
+<ng-template [ngIf]="html_MostrarTabla">
 <canvas baseChart class="chart"
                 [data]="barChartData"
                 [options]="barChartOptions"
@@ -5,4 +6,5 @@
                 (chartHover)="chartHovered($event)"
                 (chartClick)="chartClicked($event)">
                </canvas>
+              </ng-template>
 <button class="btn btn-danger" style="background-color: orangered;" (click)="RealizarEstadistica()">Buscar</button>

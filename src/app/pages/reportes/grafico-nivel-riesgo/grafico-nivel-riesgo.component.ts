@@ -10,6 +10,7 @@ import { EstadisticaPacientesService } from 'src/app/services/auroraapi/estadist
 })
 export class GraficoNivelRiesgoComponent implements OnInit {
 
+  html_MostrarTabla : boolean =false;
   @Input() inPutParametersFilter : any = [{
       outPut_RegionsId : [],
       outPut_Distritos : [],
@@ -90,6 +91,7 @@ export class GraficoNivelRiesgoComponent implements OnInit {
 
   RealizarEstadistica()
   {
+    this.html_MostrarTabla = true;
     this.TraerDatosNivelRiesgo();
   }
 }
