@@ -4,6 +4,7 @@ import { CrearUsuarioComponent} from './crear-usuario/crear-usuario.component';
 import { MatDialog,MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UbigeoService } from 'src/app/services/auroraapi/ubigeo.service';
+import { CookieService } from 'ngx-cookie-service';
 
 
 
@@ -17,6 +18,8 @@ export class UsuariosComponent implements OnInit {
 
 
   g_FromUser_PsicologoId: any = 1;
+  g_cookie_CargoId : any;
+  html_pintarEsAdmi : boolean = false;
 
   private ApiFullobjPsicologoFullInfo : any = {
     mnsj: '',
@@ -70,13 +73,29 @@ export class UsuariosComponent implements OnInit {
     this.g_FromUser_PsicologoId = this.router.url.split('/')[2];
     this.TraerPsicologo();
 
+    this.g_cookie_CargoId = this._cookieService.get("PsicologoCargo").split('y')[2];
+    if(this.g_cookie_CargoId === null)
+    {
+      this._cookieService.deleteAll();
+    }
+    else if(this.g_cookie_CargoId === "d")
+    {
+      this.html_pintarEsAdmi = false;
+    }
+    else if(this.g_cookie_CargoId === "j")
+    {
+      this.html_pintarEsAdmi = true;
+    }
+
+
   }
 
   constructor(
     private PsicologoService: PsicologoService,
     private router: Router,
     public dialog:MatDialog,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private _cookieService : CookieService
   ){
 
   }
@@ -85,7 +104,6 @@ export class UsuariosComponent implements OnInit {
 
     this.PsicologoService.GetPsicologoFullInfoByPsicologoId(this.g_FromUser_PsicologoId+"").subscribe(apiRpta => {
       this.ApiFullobjPsicologoFullInfo = apiRpta;
-      console.log("RPTA:",this.ApiFullobjPsicologoFullInfo.rpta);
       this.objPsicologoFullInfo = this.ApiFullobjPsicologoFullInfo.rpta;
     })
   }

@@ -125,15 +125,12 @@ export class EditarPacienteComponent implements OnInit {
 
   ngOnInit(): void {
     this.TraerDatosPaciente();
-    this.ObtenerDepartamentos();
-    this.ObtenerProvincia();
-    this.ObtenerDistrito();
   }
 
 //#region FILTRAR DEPARTAMENTOS
-  cbo_DepartamentoSelected = null;
-  cbo_ProvinciaSelected = null;
-  cbo_DistritoSelected = null;
+  cbo_DepartamentoSelected : any = null;
+  cbo_ProvinciaSelected : any = null;
+  cbo_DistritoSelected : any = null;
 
   listDepartamentosForFilter :
   [{
@@ -156,18 +153,46 @@ listDistritosForFilter :
   }] = [{ distId: 0, nombreDist: "", provId: 0 }];
 
   ObtenerDepartamentos(){
+    this.CBODepartamentoEstaDesactivado=true;
     this._UbigeoService.GetDepartamentoListar().subscribe(apiRpta1 => {
       this.ApiFullobjListarDepartamento = apiRpta1;
 
       this.listDepartamentosForFilter = this.ApiFullobjListarDepartamento.rpta;
+
+      this.listProvinciasForFilter.forEach(itemProvincia => {
+        if(itemProvincia.provId === this.cbo_ProvinciaSelected)
+        {
+          this.cbo_DepartamentoSelected = itemProvincia.depaId;
+          console.log("Encontro el departamento")
+        }
+
+      });
+      console.log("this.cbo_DepartamentoSelected:",this.cbo_DepartamentoSelected);
+      this.CBODepartamentoEstaDesactivado=false;
     })
   }
 
   ObtenerProvincia(){
+    let temp_distritoEncontrado : any = "";
     this._UbigeoService.GetProvinciaListar().subscribe(apiRpta2 => {
       this.ApiFullobjListarProvincia = apiRpta2;
 
       this.listProvinciasForFilter = this.ApiFullobjListarProvincia.rpta;
+
+      this.listDistritosForFilter.forEach(itemDitristro => {
+        if(itemDitristro.distId === this.cbo_DistritoSelected)
+        {
+          this.cbo_ProvinciaSelected = Number(itemDitristro.provId);
+          console.log("Encontro la provincia")
+        }
+      });
+      console.log("this.cbo_ProvinciaSelected:",this.cbo_ProvinciaSelected);
+
+      //this.cbo_DistritoSelected = temp_distritoEncontrado.distId;
+      this.cbo_ProvinciaSelected = temp_distritoEncontrado.provId;
+
+      this.ObtenerDepartamentos();
+      this.CBOPrinvinciaEstaDesactivado = false;
     })
   }
 
@@ -176,6 +201,9 @@ listDistritosForFilter :
       this.ApiFullobjListarDistrito = apiRpta3;
 
       this.listDistritosForFilter = this.ApiFullobjListarDistrito.rpta;
+
+      this.ObtenerProvincia();
+      this.CBODistritoEstaDesactivado = false;
     })
   }
 //#endregion
@@ -192,10 +220,9 @@ listDistritosForFilter :
         var pipe = new DatePipe('en-US');
         this.ApiFullobjPacienteInfo.rpta.fechaNacimiento =  pipe.transform(this.ApiFullobjPacienteInfo.rpta.fechaNacimiento, 'yyyy-MM-dd');
         this.ApiFullobjPacienteInfo.rpta.fechaDeEvaluacion =  pipe.transform(this.ApiFullobjPacienteInfo.rpta.fechaDeEvaluacion, 'yyyy-MM-dd');
+        this.cbo_DistritoSelected = this.ApiFullobjPacienteInfo.rpta.direccionUbigeo;
 
-        console.log("this.ApiFullobjPacienteInfo.rpta.direccionUbigeo:",this.ApiFullobjPacienteInfo.rpta.direccionUbigeo);
-        console.log("this.ApiFullobjPacienteInfo.rpta:",this.ApiFullobjPacienteInfo.rpta);
-        //this.ApiFullobjPacienteInfo.fechaDeEvaluacion =
+        this.ObtenerDistrito();
       });
   }
 
@@ -204,7 +231,6 @@ listDistritosForFilter :
     pFechaNacimiento : string,pDni : string,pTelefono : string,
     pDireccioUbigeo : string,pCorreo : string,pTipoViolencia : string,pRiesgo : string,pFechaDeEvaluacion : any,pEntidadProblema :string,pModalidadAdministrativo :string)
   {
-    console.log("Valor de distrito cuando no esta seleccionado:",pDireccioUbigeo)
     this.html_formEditarPaciente_Validaciones_Esvalido(pNombres, pApellidoPaterno,pApellidoMaterno,pFechaNacimiento,pDni,pDireccioUbigeo,pTelefono,pCorreo,pFechaDeEvaluacion,pEntidadProblema,pModalidadAdministrativo);
     if(this.EditarPaciente_Validacion_EsValido === false)
     {
@@ -215,8 +241,6 @@ listDistritosForFilter :
       );
       return;
     }
-
-
 
     var RegistroExitoso = false;
     this.p_modal_InfoPaciente = this.vc_InfoPaciente;
@@ -312,6 +336,7 @@ listDistritosForFilter :
   }
 
   Distrito_isChanged : number = -1;
+  CBODepartamentoEstaDesactivado : boolean = false;
   onChange_DistritoSeleccionado(idProvinciaSeleccionado : any){
 
     if(this.Distrito_isChanged===-1){

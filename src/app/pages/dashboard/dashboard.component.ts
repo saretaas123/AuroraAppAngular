@@ -25,6 +25,7 @@ export class DashboardComponent implements OnInit {
     correo: "",
     cargoId: 0,
     ubigeoId: 0,
+    ubigeoNombre: 0,
     usuarioId: 0,
     cantPacientes: 0
   };
@@ -34,7 +35,6 @@ export class DashboardComponent implements OnInit {
 
     this.PsicologoService.GetPsicologoFullInfoByPsicologoId(this.g_routeparam_PsicologoId).subscribe(apiRpta => {
     this.ApiFullobjPsicologoFullInfo = apiRpta;
-    console.log(this.ApiFullobjPsicologoFullInfo.mnsj);
     this.objPsicologoFullInfo = this.ApiFullobjPsicologoFullInfo.rpta;
    })
   }

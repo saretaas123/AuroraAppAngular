@@ -7,6 +7,7 @@ import html2canvas from 'html2canvas';
 import { EstadisticaPacientesService } from 'src/app/services/auroraapi/estadisticaPacientes.service';
 import { UbigeoService} from 'src/app/services/auroraapi/ubigeo.service'
 import { GraficoAutoestimaComponent } from './grafico-autoestima/grafico-autoestima.component';
+import { CookieService } from 'ngx-cookie-service';
 
 
 
@@ -20,6 +21,8 @@ export class ReportesComponent implements OnInit {
 
   LosFiltrosSeHanModificado : boolean = false;
   DepartamentList: any;
+  g_cookie_CargoId : any;
+  html_pintarEsAdmi : boolean = false;
 
   outPutParametersFilter =
   {
@@ -76,7 +79,7 @@ export class ReportesComponent implements OnInit {
     }
   ];
 
-  g_FromUser_PsicologoId: number = 1;
+  g_FromUser_PsicologoId: any = -1;
 
   private ApiFullobjPsicologoFullInfo : any = {
     mnsj: '',
@@ -148,12 +151,31 @@ export class ReportesComponent implements OnInit {
   constructor(
     private PsicologoService: PsicologoService,
     private _EstadisticaPacientesService : EstadisticaPacientesService,
-    private _UbigeoService:UbigeoService) { }
+    private _UbigeoService:UbigeoService,
+    private _cookieService : CookieService) { }
 
   ngOnInit(): void {
     this.outPutParametersFilter ={outPut_RegionsId : [],outPut_Distritos : [],outPut_Ano : 0,outPut_EdadMinima : 0,
       outPut_EdadMaxima :  0,outPut_TipoViolencia : "",outPut_Riesgo : ""};
     this.form_array_ListDepartamento = [];
+
+    this.g_FromUser_PsicologoId = this._cookieService.get("PsicologoId");
+    console.log("this.g_FromUser_PsicologoId:",this.g_FromUser_PsicologoId);
+
+
+    this.g_cookie_CargoId = this._cookieService.get("PsicologoCargo").split('y')[2];
+    if(this.g_cookie_CargoId === null)
+    {
+      this._cookieService.deleteAll();
+    }
+    else if(this.g_cookie_CargoId === "d")
+    {
+      this.html_pintarEsAdmi = false;
+    }
+    else if(this.g_cookie_CargoId === "j")
+    {
+      this.html_pintarEsAdmi = true;
+    }
 
     this.ObtenerPsicologoInfo();
     this.ObtenerDepartamentos();
@@ -189,6 +211,7 @@ export class ReportesComponent implements OnInit {
   {
     this.PsicologoService.GetPsicologoFullInfoByPsicologoId(this.g_FromUser_PsicologoId+"").subscribe(apiRpta => {
       this.ApiFullobjPsicologoFullInfo = apiRpta;
+      console.log(this.ApiFullobjPsicologoFullInfo);
       this.objPsicologoFullInfo = this.ApiFullobjPsicologoFullInfo.rpta;
     });
   }
