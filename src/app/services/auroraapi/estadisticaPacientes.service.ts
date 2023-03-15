@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core'
 import { Observable, Subject } from 'rxjs';
+import { CookieService } from 'ngx-cookie-service';
 
 @Injectable({
     providedIn: 'root'
@@ -11,7 +12,8 @@ export class EstadisticaPacientesService {
     _url = 'https://localhost:7226/api/EstadisticaResultados/';
 
     constructor(
-            private http: HttpClient
+            private http: HttpClient,
+            private _cookieService : CookieService
         ) {
 
         }
@@ -19,7 +21,9 @@ export class EstadisticaPacientesService {
   PostEstadisticaTipoViolenciaTotal(pRegionsId: Array<number>, pDistritosId: Array<number>, pAno : number, pEdadMinima : number,
       pEdadMaxima : number, pTipoViolencia : string, pRiesgo : string)
     {
+      let tokenAccess = this._cookieService.get("TokenAccess");
         let headers = new HttpHeaders().set('Type-content','aplication/json')
+          .set('Authorization','bearer '+tokenAccess);
 
         return this.http.post(this._url + 'ObtenerEstadisticaTipoViolenciaTotal', {
             "regionsId" : pRegionsId,
@@ -36,7 +40,9 @@ export class EstadisticaPacientesService {
     PostEstadisticaNivelRiesgoTotal(pRegionsId: Array<number>, pDistritosId: Array<number>, pAno : number, pEdadMinima : number,
       pEdadMaxima : number, pTipoViolencia : string, pRiesgo : string)
     {
+      let tokenAccess = this._cookieService.get("TokenAccess");
         let headers = new HttpHeaders().set('Type-content','aplication/json')
+          .set('Authorization','bearer '+tokenAccess);
 
         return this.http.post(this._url + 'ObtenerEstadisticaNivelDeRiesgoTotal', {
             "regionsId" : pRegionsId,
@@ -52,7 +58,9 @@ export class EstadisticaPacientesService {
     PostEstadisticaAutoestimaTotal(pRegionsId: Array<number>, pDistritosId: Array<number>, pAno : number, pEdadMinima : number,
       pEdadMaxima : number, pTipoViolencia : string, pRiesgo : string)
     {
+      let tokenAccess = this._cookieService.get("TokenAccess");
         let headers = new HttpHeaders().set('Type-content','aplication/json')
+          .set('Authorization','bearer '+tokenAccess);
 
         return this.http.post(this._url + 'ObtenerEstadisticaAutoestimaTotal', {
             "regionsId" : pRegionsId,
@@ -68,7 +76,9 @@ export class EstadisticaPacientesService {
     PostEstadisticaTomaDeDecisionesTotal(pRegionsId: Array<number>, pDistritosId: Array<number>, pAno : number, pEdadMinima : number,
       pEdadMaxima : number, pTipoViolencia : string, pRiesgo : string)
     {
+      let tokenAccess = this._cookieService.get("TokenAccess");
         let headers = new HttpHeaders().set('Type-content','aplication/json')
+          .set('Authorization','bearer '+tokenAccess);
 
         return this.http.post(this._url + 'ObtenerEstadisticaTomaDeDecisionesTotal', {
             "regionsId" : pRegionsId,
@@ -84,7 +94,9 @@ export class EstadisticaPacientesService {
     PostEstadisticaMotivacionAlCambioTotal(pRegionsId: Array<number>, pDistritosId: Array<number>, pAno : number, pEdadMinima : number,
       pEdadMaxima : number, pTipoViolencia : string, pRiesgo : string)
     {
+      let tokenAccess = this._cookieService.get("TokenAccess");
         let headers = new HttpHeaders().set('Type-content','aplication/json')
+          .set('Authorization','bearer '+tokenAccess);
 
         return this.http.post(this._url + 'ObtenerEstadisticaMotivacionAlCambioTotal', {
             "regionsId" : pRegionsId,
@@ -100,7 +112,9 @@ export class EstadisticaPacientesService {
     PostEstadisticaAutonomiaPersonaTotal(pRegionsId: Array<number>, pDistritosId: Array<number>, pAno : number, pEdadMinima : number,
       pEdadMaxima : number, pTipoViolencia : string, pRiesgo : string)
     {
+      let tokenAccess = this._cookieService.get("TokenAccess");
         let headers = new HttpHeaders().set('Type-content','aplication/json')
+          .set('Authorization','bearer '+tokenAccess);
 
         return this.http.post(this._url + 'ObtenerEstadisticaAutonomiaPersonaTotal', {
             "regionsId" : pRegionsId,

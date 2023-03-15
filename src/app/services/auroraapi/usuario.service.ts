@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core'
 import { Observable, Subject } from 'rxjs';
+import { CookieService } from 'ngx-cookie-service';
 
 @Injectable({
     providedIn: 'root'
@@ -11,9 +12,9 @@ export class UsuarioService {
     _url = 'https://localhost:7226/api/Usuario/';
 
     constructor(
-        private http: HttpClient
+        private http: HttpClient,
+        private _cookieService : CookieService
         ) {
-        console.log('Usuario Service Working')
         }
 
     PostLoginInterno(pUsuario : string, pContrasena : string)
@@ -28,7 +29,9 @@ export class UsuarioService {
 
     GetObtenerInformacionUsuarioByPsicologoId(PsicologoId : string)
     {
+      let tokenAccess = this._cookieService.get("TokenAccess");
         let headers = new HttpHeaders().set('Type-content','aplication/json')
+          .set('Authorization','bearer '+tokenAccess);
 
         return this.http.get(this._url + 'ObtenerInformacionUsuarioByPsicologoId/' +PsicologoId, { headers : headers});
     }
@@ -36,7 +39,9 @@ export class UsuarioService {
     PostEditarContrasena(pPsicologoId:number,pContrasena : string
       )
     {
+      let tokenAccess = this._cookieService.get("TokenAccess");
         let headers = new HttpHeaders().set('Type-content','aplication/json')
+          .set('Authorization','bearer '+tokenAccess);
 
         return this.http.post(this._url + 'EditarContrasenaByPsicologoId' , {
           "psicologoId": pPsicologoId,

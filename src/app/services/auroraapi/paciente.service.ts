@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core'
 import { Observable, Subject } from 'rxjs';
+import { CookieService } from 'ngx-cookie-service';
 
 @Injectable({
     providedIn: 'root'
@@ -11,14 +12,16 @@ export class PacienteService {
     _url = 'https://localhost:7226/api/Paciente/';
 
     constructor(
-            private http: HttpClient
+            private http: HttpClient,
+            private _cookieService : CookieService
         ) {
-            console.log('Paciente Service Working')
         }
 
     GetPacienteById(PacienteId : string)
     {
+      let tokenAccess = this._cookieService.get("TokenAccess");
         let headers = new HttpHeaders().set('Type-content','aplication/json')
+          .set('Authorization','bearer '+tokenAccess);
 
         return this.http.get(this._url + 'ObtenerPacienteById/' +PacienteId, { headers : headers});
 
@@ -26,7 +29,9 @@ export class PacienteService {
 
     GetPacienteByCasoPacienteId(CasoPacienteId : string)
     {
+      let tokenAccess = this._cookieService.get("TokenAccess");
         let headers = new HttpHeaders().set('Type-content','aplication/json')
+          .set('Authorization','bearer '+tokenAccess);
 
         return this.http.get(this._url + 'ObtenerPacienteByCasoPacienteId/' +CasoPacienteId, { headers : headers});
 
@@ -34,7 +39,9 @@ export class PacienteService {
 
     GetPacienteFullInfoById(PacienteId : string)
     {
+      let tokenAccess = this._cookieService.get("TokenAccess");
         let headers = new HttpHeaders().set('Type-content','aplication/json')
+          .set('Authorization','bearer '+tokenAccess);
 
         return this.http.get(this._url + 'ObtenerPacienteFullInfoById/' +PacienteId, { headers : headers});
 
@@ -42,7 +49,9 @@ export class PacienteService {
 
     GetPacienteFullInfoByCasoPacienteId(CasoPacienteId : string)
     {
+      let tokenAccess = this._cookieService.get("TokenAccess");
         let headers = new HttpHeaders().set('Type-content','aplication/json')
+          .set('Authorization','bearer '+tokenAccess);
 
         return this.http.get(this._url + 'ObtenerPacienteFullInfoByCasoPacienteId/' +CasoPacienteId, { headers : headers});
 
@@ -52,7 +61,9 @@ export class PacienteService {
         ,pTelefono : string,pDireccioUbigeo : number,pCorreo : string, pTipoViolencia : string,pRiesgo : string,pFechaDeEvaluacion : string,pEntidadProblema :string,pModalidadAdministrativo :string)
     {
 
+      let tokenAccess = this._cookieService.get("TokenAccess");
         let headers = new HttpHeaders().set('Type-content','aplication/json')
+          .set('Authorization','bearer '+tokenAccess);
 
         return this.http.post(this._url + 'AgregarPaciente', {
             "PsicologoId" : pPsicologoId,
@@ -77,7 +88,9 @@ export class PacienteService {
         ,pTelefono : string,pDireccioUbigeo : number,pCorreo : string, pTipoViolencia : string,pRiesgo : string,pFechaDeEvaluacion : string,pEntidadProblema :string,pModalidadAdministrativo :string)
     {
 
+      let tokenAccess = this._cookieService.get("TokenAccess");
         let headers = new HttpHeaders().set('Type-content','aplication/json')
+          .set('Authorization','bearer '+tokenAccess);
 
         return this.http.put(this._url + 'EditarPaciente', {
             "CasoPacienteId" : pCasoPacienteId,

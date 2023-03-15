@@ -97,9 +97,9 @@ export class LoginIComponent  implements OnInit {
       if(LogeoExitoso)
       {
         this._cookieService.deleteAll();
-        console.log("this.ApiFullobjPsicologoFullInfo.rpta.psicologoCargoIdusuarioId:",this.ApiFullobjPsicologoFullInfo.rpta.psicologoCargoId);
         this._cookieService.set("PsicologoId",this.ApiFullobjPsicologoFullInfo.rpta.psicologoId);
         this._cookieService.set("UsuarioId",this.ApiFullobjPsicologoFullInfo.rpta.usuarioId);
+        this._cookieService.set("TokenAccess",this.ApiFullobjPsicologoFullInfo.rpta.accessToken);
         this._cookieService.set("PsicologoCargo",this.ApiFullobjPsicologoFullInfo.rpta.psicologoCargoId==1?'sdykdydyjlkfd':'ddxasdyayjy31i');
         Swal.fire(
           'Credenciales correctas',

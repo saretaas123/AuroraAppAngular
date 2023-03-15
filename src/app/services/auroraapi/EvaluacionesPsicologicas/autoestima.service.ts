@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core'
 import { Observable, Subject } from 'rxjs';
+import { CookieService } from 'ngx-cookie-service';
 
 @Injectable({
     providedIn: 'root'
@@ -11,7 +12,8 @@ export class EvaluacionAutoestimaService {
     _url = 'https://localhost:7226/api/Evaluacion/';
 
     constructor(
-            private http: HttpClient
+            private http: HttpClient,
+            private _cookieService : CookieService
         ) {
             console.log('Evluacion Service Working')
         }
@@ -19,7 +21,9 @@ export class EvaluacionAutoestimaService {
     PostAPI_EvaluarExamenAutoestimaPreTest(casoPacienteId: number, p01 : number,p02 : number,p03 : number,p04 : number
         ,p05 : number,p06 : number,p07 : number, p08 : number,p09 : number,p10 : number,p11 :number,p12 :number,p13:number,p14:number,p15:number,p16:number,p17:number,p18:number,p19:number,p20:number,p21:number,p22:number)
     {
+      let tokenAccess = this._cookieService.get("TokenAccess");
         let headers = new HttpHeaders().set('Type-content','aplication/json')
+          .set('Authorization','bearer '+tokenAccess);
 
         return this.http.post(this._url + 'EvaluarExamenAutoestimaPre', {
           "casoPacienteId": casoPacienteId,
